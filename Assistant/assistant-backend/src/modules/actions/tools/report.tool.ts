@@ -25,6 +25,16 @@ export class ReportTool implements ApplicationTool {
   constructor(private readonly reports: ReportApplicationService) {}
 
   canHandle(question: string): boolean {
+    // How-to / process questions belong to documentation RAG, not draft creation.
+    if (
+      matchesAny(question, [
+        /\bcomment\b.+\b(cr[ée]er?|crée|cree|faire|g[ée]n[ée]rer|remplir|saisir)\b/i,
+        /\bhow (do|does|can|to)\b.+\b(create|generate|make|fill)\b/i,
+        /\b(qu['’]est[- ]ce|c['’]est quoi|explique|expliquer)\b/i,
+      ])
+    ) {
+      return false;
+    }
     return matchesAny(question, [
       /\b(générer|generer|generate|créer|cree|create|soumettre|submit)\b.{0,40}\b(compte.?rendu|report|cr)\b/i,
       /\b(compte.?rendu|report)\b.{0,20}\b(générer|generer|generate|créer|cree|create)\b/i,

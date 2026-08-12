@@ -22,7 +22,7 @@ const SENSITIVE_SKILLS = new Set<BusinessSkillId>([
   'user',
 ]);
 
-const DEFAULT_TIMEOUT_MS = 8_000;
+const DEFAULT_TIMEOUT_MS = 22_000;
 const CACHE_TTL_MS = 15_000;
 
 export type SkillExecutorOptions = {

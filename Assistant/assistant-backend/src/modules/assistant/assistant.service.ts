@@ -570,7 +570,7 @@ export class AssistantService {
           conversationId: conversation.id,
           query: question,
           queryEmbedding,
-          topK: 5,
+          topK: 10,
         });
         retrievalMs = Math.round(performance.now() - retrievalStart);
         ErrorLogger.logDuration(

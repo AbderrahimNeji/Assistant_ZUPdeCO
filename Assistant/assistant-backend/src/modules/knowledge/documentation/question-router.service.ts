@@ -50,14 +50,40 @@ export class QuestionRouterService {
 
   /** Definition / process / permission — not live lists or KPIs. */
   private isFunctional(question: string): boolean {
+    // How-to / process questions always prefer official documentation, even when
+    // they share verbs with live actions ("créer un compte-rendu").
+    if (this.isHowTo(question)) return true;
+    // Process / glossary / permission cues beat live list cues when both appear
+    // (e.g. "Quelles sont les étapes d'inscription parent ?").
+    if (
+      matchesAny(question, [
+        /\b(how does|how do|what is|what are|qu['’]est[- ]ce|c['’]est quoi|comment (fonctionne|marche|se déroule|se deroule)|définition|definition|explain|explique)\b/i,
+        /\b(documentation|fonctionnel|référence métier|reference metier)\b/i,
+        /\b(rôle du|role du|rôle de|role de|lead qualifi|prospect)\b/i,
+        /\b(peut[- ]on|peut[- ]il|peut[- ]elle|est[- ]il possible|autorisé|autorise|interdit|who can|qui (peut|est autorisé)|can a parent|can a tutor)\b/i,
+        /\b(étape|etape|étapes|etapes|questionnaire|pré[- ]?qualification|pre[- ]?qualification|casier|certification|réunion d['’]information|onboarding|inscription parent)\b/i,
+        /\b(bin[oô]me c[œoe]ur|scoring|durée d['’]une séance|dure une séance)\b/i,
+      ])
+    ) {
+      return true;
+    }
     // "What is the next session?" is operational, not a glossary definition.
     if (this.isBusiness(question)) return false;
+    return false;
+  }
+
+  /**
+   * Procedural / onboarding how-to (French + English).
+   * Example: "comment créer des comptes-rendus" → documentation, not live BI.
+   */
+  private isHowTo(question: string): boolean {
     return matchesAny(question, [
-      /\b(how does|how do|what is|what are|qu['’]est[- ]ce|c['’]est quoi|comment (fonctionne|marche|se déroule|se deroule)|définition|definition|explain|explique)\b/i,
-      /\b(documentation|fonctionnel|référence métier|reference metier)\b/i,
-      /\b(rôle du|role du|rôle de|role de|lead qualifi|prospect)\b/i,
-      /\b(peut[- ]on|est[- ]il possible|autorisé|autorise|interdit|who can|qui (peut|est autorisé))\b/i,
-      /\b(étape|etape|questionnaire|pré[- ]?qualification|pre[- ]?qualification|casier|certification|réunion d['’]information)\b/i,
+      /\bhow (do|does|can|to)\b.+\b(create|make|fill|complete|generate|use|validate|submit|onboard\w*|assign|add|edit)\b/i,
+      /\bcomment\b.+\b(cr[ée]er?|crée|cree|faire|remplir|compl[ée]ter|g[ée]n[ée]rer|utiliser|saisir|valider|soumettre|fonctionne|marche|onboard\w*|ajouter|affecter|modifier)\b/i,
+      /\b(comment (cr[ée]er?|crée|cree|faire|remplir|g[ée]n[ée]rer|saisir|onboard\w*|ajouter|affecter)\b)/i,
+      /\b(onboard\w*|étapes? d['’']?inscription|etapes? d['’']?inscription)\b/i,
+      /\b(que voit|what (does|can) (a |the )?parent|tutor onboard\w*)\b/i,
+      /\b(how to|how do i|how can i)\b/i,
     ]);
   }
 
@@ -96,8 +122,11 @@ export class QuestionRouterService {
   }
 
   private looksDefinitional(question: string): boolean {
-    return matchesAny(question, [
-      /\b(qu['’]est|c['’]est quoi|what is|what are|comment fonctionne|how does|explain|explique)\b/i,
-    ]);
+    return (
+      this.isHowTo(question) ||
+      matchesAny(question, [
+        /\b(qu['’]est|c['’]est quoi|what is|what are|comment fonctionne|how does|explain|explique)\b/i,
+      ])
+    );
   }
 }

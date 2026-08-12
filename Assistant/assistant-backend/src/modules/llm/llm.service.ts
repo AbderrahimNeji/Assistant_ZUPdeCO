@@ -180,6 +180,35 @@ export class LlmService {
       }
     }
 
+    // Final 429 after all models: brief backoff then one more pass on fallbacks.
+    const { status: lastStatus } = readProviderError(lastError);
+    if (lastStatus === 429 || lastStatus === 503) {
+      await new Promise((r) => setTimeout(r, 2_500));
+      for (const { name, client } of this.models.slice().reverse()) {
+        try {
+          const response = await client.invoke(toLlmMessages(prompt));
+          const latencyMs = Math.round(performance.now() - start);
+          ErrorLogger.logDuration('LlmService.ask', latencyMs, {
+            model: name,
+            retryAfterQuota: true,
+          });
+          const usage = readUsage(response);
+          return {
+            text: readModelText(response.content),
+            modelName: name,
+            latencyMs,
+            inputTokens: usage.inputTokens,
+            outputTokens: usage.outputTokens,
+          };
+        } catch (error: unknown) {
+          lastError = error;
+          const { status } = readProviderError(error);
+          if (status === 429 || status === 503) continue;
+          break;
+        }
+      }
+    }
+
     throw this.mapProviderFailure(lastError);
   }
 

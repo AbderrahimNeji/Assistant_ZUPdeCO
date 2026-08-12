@@ -21,6 +21,7 @@ export class ConfigurationSkill implements BusinessSkill {
   readonly id: BusinessSkillId = 'configuration';
   readonly domains = [
     /\b(company|companies|entreprise|entreprises|configuration|config|settings|paramètres|parametres|préférences|preferences|feature.?flag|flags)\b/i,
+    /\b(mati[eè]res?|subjects?|niveaux?|levels?|disciplines?)\b/i,
   ];
   readonly domainTags = ['configuration', 'settings'];
   readonly capabilities: SkillCapability[] = ['status', 'list'];

@@ -244,7 +244,18 @@ function orderSteps(signals: ToolSignal[]): ToolSignal[] {
 
 function detectQuestionIntent(message: string): false | 'strong' | 'soft' {
   if (
-    /\b(what is|what are|what's|whats|explain|describe|tell me about|how does|how do|why|overview|definition)\b/i.test(
+    /\b(what is|what are|what's|whats|explain|describe|tell me about|how does|how do|how to|how can|why|overview|definition)\b/i.test(
+      message,
+    )
+  ) {
+    return 'strong';
+  }
+  // French how-to / process questions ("comment créer des comptes-rendus").
+  if (
+    /\bcomment\b.+\b(cr[ée]er?|crée|cree|faire|remplir|compl[ée]ter|g[ée]n[ée]rer|utiliser|saisir|valider|soumettre|fonctionne|marche|se d[ée]roule)\b/i.test(
+      message,
+    ) ||
+    /\b(qu['’]est[- ]ce|c['’]est quoi|explique|expliquer|définition|definition)\b/i.test(
       message,
     )
   ) {

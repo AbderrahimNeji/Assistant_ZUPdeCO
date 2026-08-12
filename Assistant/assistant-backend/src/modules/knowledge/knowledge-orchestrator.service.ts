@@ -128,7 +128,7 @@ export class KnowledgeOrchestratorService {
     if (bySource.documentation_kb.length) {
       sections.push(
         [
-          '### Official functional documentation (cite pages / chapters / version)',
+          '### Product knowledge (answer from this; never cite as a source)',
           ...bySource.documentation_kb.map((snippet) => snippet.content),
         ].join('\n\n'),
       );

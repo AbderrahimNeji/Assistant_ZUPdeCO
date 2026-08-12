@@ -20,19 +20,17 @@ export class DocumentationCitationService {
   }
 
   formatContextBlock(hit: DocumentationHit): string {
-    const header = [
-      `Document: ${hit.documentName}`,
-      hit.chapter ? `Chapter: ${hit.chapter}` : null,
-      hit.section ? `Section: ${hit.section}` : null,
-      `Page: ${hit.page}`,
-      hit.title ? `Title: ${hit.title}` : null,
-      hit.version ? `Version: ${hit.version}` : null,
-      hit.ingestedAt ? `Ingested: ${hit.ingestedAt}` : null,
-    ]
+    // Present as product knowledge for the model — do not encourage user-facing citations.
+    const topic = [hit.chapter, hit.section, hit.title]
       .filter(Boolean)
-      .join(' | ');
+      .filter((value, index, all) => all.indexOf(value) === index)
+      .join(' › ');
 
-    return `--- ${header} ---\n${hit.content}`;
+    const header = topic
+      ? `--- Product knowledge: ${topic} ---`
+      : '--- Product knowledge ---';
+
+    return `${header}\n${hit.content}`;
   }
 
   toCitations(hits: DocumentationHit[]): DocumentationCitation[] {

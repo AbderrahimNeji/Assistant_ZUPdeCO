@@ -91,6 +91,12 @@ export class ReportSkill implements BusinessSkill {
         );
       }
 
+      // How-to / generation rules — answer from functional documentation facts,
+      // never with an empty live list that becomes « not found in documents ».
+      if (asksHowToCreateOrGenerate(q) || asksRules(q)) {
+        return this.rulesFacts();
+      }
+
       const aggregated = await this.aggregations.tryHandle(this.id, ctx);
       if (aggregated) return aggregated;
 
@@ -109,10 +115,6 @@ export class ReportSkill implements BusinessSkill {
             'Next action: filter submitted / overdue on Comptes-rendus, or ask for pending validation (status=submitted).',
           ],
         };
-      }
-
-      if (asksRules(q)) {
-        return this.rulesFacts();
       }
 
       if (asksTimeline(q) && !reportId && !sessionId && !studentId && !tutorId && !name) {
@@ -287,7 +289,16 @@ export class ReportSkill implements BusinessSkill {
       operation: 'report_rules',
       data: null,
       facts: [
-        '## Report statuses (SessionReportStatus)',
+        '## Création des comptes-rendus (Documentation Fonctionnelle ZupdeCo)',
+        '- **Le CR est créé automatiquement par le système** — on ne le crée pas manuellement depuis un formulaire « Nouveau CR ».',
+        '- Une séance génère au maximum un CR.',
+        '- Génération à la **clôture** de la séance si le statut final est : Réalisée, Tuteur absent, Élève absent, ou Binôme absent.',
+        '- **Aucun CR** si la séance est : À venir, À lancer, En cours, ou Annulée.',
+        '- À la génération → statut **À saisir** ; le tuteur complète la partie tuteur → **Saisi** ; le coordinateur peut **Valider** (contrôle métier).',
+        '- CR tuteur + scoring élève = un seul objet métier ; le scoring est généré avec le CR.',
+        '- Answer as product knowledge — do not cite documentation name, chapter, or page.',
+        '',
+        '## Report statuses (SessionReportStatus — live Ednov)',
         '- `to_complete` — draft shell / à saisir',
         '- `draft` — in progress',
         '- `submitted` — waiting coordinator/volunteer validation',
@@ -296,15 +307,11 @@ export class ReportSkill implements BusinessSkill {
         '',
         '## Validation rules (from Ednov API)',
         '- Only reports with status `submitted` can be validated (PATCH /sessions/:id/reports/:reportId/validate).',
-        '- Validation requires the volunteer/coordinator write scope (action-validate-row on reports).',
         '- There is no `rejected` status and no reject endpoint.',
         '',
-        '## List scope',
-        '- GET /sessions/reports returns reports whose session has already started (future sessions excluded).',
-        '- KPIs: missingReports, overdueReports, pendingReports (à saisir), submittedPendingValidation, validatedReports via GET /sessions/report-kpis.',
-        '',
-        '## Next actions',
-        '- Open report · View session/student/tutor · Ask Copilot to validate (confirmation) · Notify coordinator (advice) · Generate summary from live facts only.',
+        '## Next actions for the user',
+        '- Laisser la séance se clôturer avec un statut générant un CR, puis ouvrir **Comptes-rendus** pour saisir / valider.',
+        '- Do not answer « information not found in documents » for how-to create questions — use the automatic-generation rule above.',
       ],
     };
   }
@@ -1054,8 +1061,27 @@ function asksRejected(q: string): boolean {
   return /\b(reject(?:ed)?|refus(?:é|e|er)?|rejet(?:é|e|er)?)\b/i.test(q);
 }
 
+function asksHowToCreateOrGenerate(q: string): boolean {
+  const reportWord =
+    '(?:compte.?rendu\\w*|comptes?-?rendu\\w*|reports?|\\bcr\\b)';
+  return (
+    new RegExp(
+      `\\bcomment\\b.+\\b(cr[ée]er?|crée|cree|faire|g[ée]n[ée]rer|remplir|saisir)\\b.{0,40}\\b${reportWord}`,
+      'i',
+    ).test(q) ||
+    new RegExp(
+      `\\b${reportWord}.{0,40}\\b(automatique|automatically|g[ée]n[ée]r[ée]e?s?\\s+automat)`,
+      'i',
+    ).test(q) ||
+    new RegExp(
+      `\\bhow (do|does|can|to)\\b.+\\b(create|generate|make)\\b.{0,40}\\b${reportWord}`,
+      'i',
+    ).test(q)
+  );
+}
+
 function asksRules(q: string): boolean {
-  return /\b(rule|rules|règle|regle|règles|regles|how (?:does|do) (?:validation|report)|comment (?:valider|fonctionne)|workflow)\b/i.test(
+  return /\b(rule|rules|règle|regle|règles|regles|how (?:does|do) (?:validation|report)|comment (?:valider|fonctionne)|workflow|g[ée]n[ée]ration du compte.?rendu)\b/i.test(
     q,
   );
 }
@@ -1084,12 +1110,12 @@ function asksMissing(q: string): boolean {
 
 function asksPendingValidation(q: string): boolean {
   return (
-    /\b(pending validation|en attente de validation|à valider|a valider|waiting validation|submittedPendingValidation)\b/i.test(
+    /\b(pending validation|en attente de validat\w*|à valider|a valider|waiting validation|submittedPendingValidation)\b/i.test(
       q,
     ) ||
     (/\b(submitted|soumis)\b/i.test(q) && /\b(valid)/i.test(q)) ||
-    (/\b(compte.?rendu|comptes?-?rendus?|reports?|rapports?)\b/i.test(q) &&
-      /\b(en attente|pending|à valider|a valider)\b/i.test(q) &&
+    (/\b(compte.?rendu|comptes?-?rendus?|reports?|rapports?|\bcr\b)\b/i.test(q) &&
+      /\b(en attente|pending|à valider|a valider|validat\w*)\b/i.test(q) &&
       !/\b(à saisir|a saisir|to_complete|draft|brouillon)\b/i.test(q))
   );
 }

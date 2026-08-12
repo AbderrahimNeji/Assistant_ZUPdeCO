@@ -35,6 +35,32 @@ describe('QuestionRouterService', () => {
     expect(plan.useDocumentation).toBe(true);
   });
 
+  it('routes how-to create comptes-rendus to documentation', () => {
+    for (const q of [
+      'comment creer des comptes rendues',
+      'comment créer des comptes-rendus',
+      'Comment créer un compte rendu ?',
+      'How do I create a session report?',
+    ]) {
+      const plan = router.route(q);
+      expect(plan.intent).toBe('functional');
+      expect(plan.useDocumentation).toBe(true);
+      expect(plan.useBusiness).toBe(false);
+    }
+  });
+
+  it('routes tutor onboarding and parent process questions to documentation', () => {
+    for (const q of [
+      'Comment onboarde-t-on un tuteur ?',
+      'Quelles sont les étapes d’inscription parent ?',
+      'Que voit le parent dans Mes comptes rendus ?',
+      'Tutor onboarding steps',
+    ]) {
+      const plan = router.route(q);
+      expect(plan.useDocumentation).toBe(true);
+    }
+  });
+
   it.each([
     'What is the next session?',
     'Who participates in the next session?',
@@ -105,6 +131,38 @@ describe('QuestionRouterService', () => {
   });
 });
 
+describe('expandDocumentationQuery', () => {
+  // Lazy require keeps this file free of circular imports.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { expandDocumentationQuery } = require('./documentation-query-expand') as {
+    expandDocumentationQuery: (q: string) => string;
+  };
+
+  it('expands CR how-to questions toward auto-generation rules', () => {
+    const out = expandDocumentationQuery('comment creer des comptes rendues');
+    expect(out).toContain('créé automatiquement');
+    expect(out).toContain('Génération du compte rendu');
+  });
+
+  it('expands parent / onboarding / scoring process questions', () => {
+    expect(expandDocumentationQuery('Comment un parent ajoute-t-il un élève ?')).toMatch(
+      /parcours parent/i,
+    );
+    expect(expandDocumentationQuery('Comment onboarde-t-on un tuteur ?')).toMatch(
+      /onboarding tuteur/i,
+    );
+    expect(expandDocumentationQuery('Le scoring bloque-t-il un flux métier ?')).toMatch(
+      /ne bloque pas/i,
+    );
+  });
+
+  it('leaves unrelated questions unchanged', () => {
+    expect(expandDocumentationQuery('Combien d’élèves actifs ?')).toBe(
+      'Combien d’élèves actifs ?',
+    );
+  });
+});
+
 describe('DocumentationChunkerService', () => {
   const chunker = new DocumentationChunkerService();
 
@@ -159,13 +217,13 @@ describe('DocumentationCitationService', () => {
     documentSlug: 'zupdeco-functional',
   };
 
-  it('formats citation headers with document/chapter/section/page', () => {
+  it('formats product-knowledge blocks without citation headers', () => {
     const block = citations.formatContextBlock(hit);
-    expect(block).toContain('Document: Documentation Fonctionnelle ZupdeCo');
-    expect(block).toContain('Chapter: VF-1.1 — PARCOURS TUTEUR');
-    expect(block).toContain('Section: 1. Rôle du tuteur dans Zupdeco');
-    expect(block).toContain('Page: 1');
+    expect(block).toContain('Product knowledge');
+    expect(block).toContain('VF-1.1 — PARCOURS TUTEUR');
     expect(block).toContain('Le tuteur est un bénévole.');
+    expect(block).not.toContain('Document: Documentation Fonctionnelle');
+    expect(block).not.toContain('Page: 1');
   });
 
   it('enriches knowledge snippets for the UI', () => {

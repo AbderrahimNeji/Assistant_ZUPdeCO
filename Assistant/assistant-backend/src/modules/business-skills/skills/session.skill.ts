@@ -469,7 +469,13 @@ export class SessionSkill implements BusinessSkill {
     const query: ListSessionsQuery = {
       limit,
       sortBy: 'sessionDate',
-      sortOrder: filter.kind === 'upcoming' || filter.kind === 'tomorrow' ? 'asc' : 'desc',
+      sortOrder:
+        filter.kind === 'upcoming' ||
+        filter.kind === 'tomorrow' ||
+        filter.operation.includes('this_week') ||
+        filter.operation.includes('week_')
+          ? 'asc'
+          : 'desc',
       ...(filter.dateFrom ? { dateFrom: filter.dateFrom } : {}),
       ...(filter.dateTo ? { dateTo: filter.dateTo } : {}),
       ...(filter.statuses?.length ? { statuses: filter.statuses } : {}),
@@ -483,7 +489,7 @@ export class SessionSkill implements BusinessSkill {
       operation: filter.operation,
       data: { ...page, filter },
       facts: [
-        `${filter.label} via GET /sessions` +
+        `${filter.label} (live Séances)` +
           (filter.dateFrom || filter.dateTo
             ? ` dateFrom=${filter.dateFrom ?? '—'} dateTo=${filter.dateTo ?? '—'}`
             : '') +
@@ -564,6 +570,31 @@ function inferSessionFilter(q: string): SessionFilter | null {
     };
   }
 
+  if (asksThisWeek(q)) {
+    const weekStart = toIsoDate(startOfWeek(new Date()));
+    const weekEnd = toIsoDate(addDays(startOfWeek(new Date()), 6));
+    return {
+      kind: 'upcoming',
+      operation: cancelled
+        ? 'list_sessions_week_cancelled'
+        : completed
+          ? 'list_sessions_week_completed'
+          : 'list_sessions_this_week',
+      label: cancelled
+        ? 'Cancelled sessions this week'
+        : completed
+          ? 'Completed sessions this week'
+          : 'Sessions this week',
+      dateFrom: weekStart,
+      dateTo: weekEnd,
+      statuses: cancelled
+        ? ['CANCELLED']
+        : completed
+          ? ['COMPLETED', 'CLOSED']
+          : undefined,
+    };
+  }
+
   if (cancelled) {
     return {
       kind: 'cancelled',
@@ -596,13 +627,17 @@ function inferSessionFilter(q: string): SessionFilter | null {
 }
 
 function asksToday(q: string) {
-  return /\b(today|aujourd['’]?hui|du jour|cette journée|cette journee)\b/i.test(
+  return /\b(today|aujourd['’']?hui|aujourdhui|du jour|cette journée|cette journee)\b/i.test(
     q,
   );
 }
 
 function asksTomorrow(q: string) {
   return /\b(tomorrow|demain)\b/i.test(q);
+}
+
+function asksThisWeek(q: string) {
+  return /\b(this week|cette semaine|semaine(?:\s+en\s+cours)?)\b/i.test(q);
 }
 
 function asksCancelled(q: string) {
@@ -642,6 +677,16 @@ function asksParticipants(q: string) {
 function addDays(ref: Date, days: number): Date {
   const d = new Date(ref);
   d.setDate(d.getDate() + days);
+  return d;
+}
+
+/** Monday-based week start (local). */
+function startOfWeek(ref: Date): Date {
+  const d = new Date(ref);
+  const day = d.getDay(); // 0 Sun … 6 Sat
+  const diff = day === 0 ? -6 : 1 - day;
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() + diff);
   return d;
 }
 

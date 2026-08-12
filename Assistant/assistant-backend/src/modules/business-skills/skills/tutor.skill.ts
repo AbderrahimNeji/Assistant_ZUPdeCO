@@ -590,136 +590,208 @@ export class TutorSkill implements BusinessSkill {
   }
 
   private async tutorsWithoutAssignedStudents(): Promise<SkillResult> {
-    try {
-      const [tutorsPage, pairsPage] = await Promise.all([
-        this.users.listTutorsPage({ limit: 50, statuses: ['active'] }),
-        this.matching.listPairsPage({ page: 1, pageSize: 100 }),
-      ]);
-      const assigned = new Set(
-        pairsPage.pairs
-          .map((p) => p.tutorUserId || p.tutor?.id)
-          .filter(Boolean) as string[],
-      );
-      const unassigned = tutorsPage.tutors.filter((t) => !assigned.has(t.id));
+    const tutorsCall = await softCall(
+      'Matching · active tutors',
+      () => this.users.listTutorsPage({ limit: 50, statuses: ['active'] }),
+      { timeoutMs: 10_000, retries: 1 },
+    );
+    const pairsCall = await this.loadPairsSample();
 
-      return {
-        skillId: this.id,
-        ok: true,
-        operation: 'tutors_no_assigned_students_sample',
-        data: {
-          unassignedCount: unassigned.length,
-          tutorsSample: tutorsPage.tutors.length,
-          tutorsTotal: tutorsPage.total,
-          pairsSample: pairsPage.pairs.length,
-          pairsTotal: pairsPage.total,
-        },
-        facts: [
-          `Active tutors with no pair in the live Matching sample: ${unassigned.length} of ${tutorsPage.tutors.length}` +
-            (tutorsPage.total != null
-              ? ` (tutors API total ${tutorsPage.total})`
-              : '') +
-            (pairsPage.total != null
-              ? `; pair API total ${pairsPage.total}`
-              : '') +
-            '.',
-          'This is an authorization-scoped sample — not a guaranteed full-company census.',
-          unassigned.length
-            ? '| Tutor | Status | Note |'
-            : 'No unassigned tutors in this sample.',
-          unassigned.length ? '| --- | --- | --- |' : '',
-          ...unassigned
-            .slice(0, 20)
-            .map(
-              (t) =>
-                `| ${tutorDisplayName(t)} | ${statusLabel(t.status)} | no pair in sample |`,
-            ),
-          'Next action: Assign students on Matching, or Open tutor profile.',
-        ].filter(Boolean),
-      };
-    } catch (error) {
+    if (!tutorsCall.ok || !tutorsCall.data) {
       return {
         skillId: this.id,
         ok: true,
         operation: 'tutors_no_assigned_students_partial',
         data: null,
-        facts: apiPartialFacts('GET /sessions/student-tutor-pairs', error),
-        warnings: [safeErrorMessage(error)],
+        facts: apiPartialFacts(
+          'Tuteurs (Ednov)',
+          new Error(tutorsCall.warning ?? 'Active tutors list failed'),
+        ),
+        warnings: collectWarnings(tutorsCall, pairsCall),
       };
     }
-  }
 
-  private async tutorsWorkload(q: string): Promise<SkillResult> {
-    try {
-      const page = await this.matching.listPairsPage({ page: 1, pageSize: 100 });
-      const counts = new Map<
-        string,
-        { label: string; count: number; sessionCountMax: number }
-      >();
-
-      for (const pair of page.pairs) {
-        const tutorId = pair.tutorUserId || pair.tutor?.id;
-        if (!tutorId) continue;
-        const label = displayName(pair.tutor ?? {}) || 'Tutor';
-        const prev = counts.get(tutorId) ?? {
-          label,
-          count: 0,
-          sessionCountMax: 0,
-        };
-        prev.count += 1;
-        if (typeof pair.sessionCount === 'number') {
-          prev.sessionCountMax = Math.max(
-            prev.sessionCountMax,
-            pair.sessionCount,
-          );
-        }
-        if (label !== 'Tutor') prev.label = label;
-        counts.set(tutorId, prev);
-      }
-
-      const ranked = [...counts.values()].sort((a, b) => b.count - a.count);
-      const overloadedHint = asksOverloaded(q);
-      const top = overloadedHint ? ranked.slice(0, 8) : ranked.slice(0, 15);
-
+    const tutorsPage = tutorsCall.data;
+    if (!pairsCall.ok || !pairsCall.data) {
       return {
         skillId: this.id,
         ok: true,
-        operation: overloadedHint
-          ? 'tutors_overloaded_sample'
-          : 'tutors_highest_workload',
-        data: { ranked: top, sampleSize: page.pairs.length },
+        operation: 'tutors_no_assigned_students_partial',
+        data: {
+          tutorsSample: tutorsPage.tutors.length,
+          tutorsTotal: tutorsPage.total,
+        },
         facts: [
-          overloadedHint
-            ? `Highest-workload tutors (proxy for overloaded) from live pair sample (${page.pairs.length} pairs` +
-              (page.total != null ? `, API total ${page.total}` : '') +
-              '):'
-            : `Tutor workload ranking from live pair sample (${page.pairs.length} pairs` +
-              (page.total != null ? `, API total ${page.total}` : '') +
-              '):',
-          top.length
-            ? '| Rank | Tutor | Pair rows in sample | Max sessionCount |'
-            : 'No tutor workload could be derived (empty pair sample).',
-          top.length ? '| --- | --- | ---: | ---: |' : '',
-          ...top.map(
-            (row, i) =>
-              `| ${i + 1} | ${row.label} | ${row.count} | ${
-                row.sessionCountMax > 0 ? row.sessionCountMax : '—'
-              } |`,
-          ),
-          'Workload = pair-row count in the authorization-scoped sample (and sessionCount when present) — not a separate capacity / overload threshold API.',
-          'Dedicated “overloaded” boolean: ' + UNAVAILABLE + '.',
-          'Next action: View timetable / balance assignments on Matching, or Open tutor profile.',
+          ...answerFacts({
+            answer:
+              'Impossible de calculer les tuteurs sans élèves assignés : les affectations Matching n’ont pas pu être chargées à temps.',
+            explanation:
+              pairsCall.warning ??
+              'L’échantillon Matching (paires élève–tuteur) est indisponible.',
+            reasoning:
+              `${tutorsPage.tutors.length} tuteur(s) actif(s) ont bien été listés` +
+              (tutorsPage.total != null
+                ? ` (total API ${tutorsPage.total})`
+                : '') +
+              ', mais sans les paires Matching on ne peut pas savoir qui n’a pas d’élève.',
+            next: 'Réessayez, ou ouvrez Matching / Tuteurs dans Ednov.',
+            source: 'Matching · Tuteurs (Ednov)',
+          }),
+          tutorsPage.tutors.length
+            ? '| Tutor | Status |'
+            : '',
+          tutorsPage.tutors.length ? '| --- | --- |' : '',
+          ...tutorsPage.tutors
+            .slice(0, 15)
+            .map(
+              (t) =>
+                `| ${tutorDisplayName(t)} | ${statusLabel(t.status)} |`,
+            ),
         ].filter(Boolean),
+        warnings: collectWarnings(tutorsCall, pairsCall),
       };
-    } catch (error) {
+    }
+
+    const pairsPage = pairsCall.data;
+    const assigned = new Set(
+      pairsPage.pairs
+        .map((p) => p.tutorUserId || p.tutor?.id)
+        .filter(Boolean) as string[],
+    );
+    const unassigned = tutorsPage.tutors.filter((t) => !assigned.has(t.id));
+
+    return {
+      skillId: this.id,
+      ok: true,
+      operation: 'tutors_no_assigned_students_sample',
+      data: {
+        unassignedCount: unassigned.length,
+        tutorsSample: tutorsPage.tutors.length,
+        tutorsTotal: tutorsPage.total,
+        pairsSample: pairsPage.pairs.length,
+        pairsTotal: pairsPage.total,
+      },
+      facts: [
+        `Active tutors with no pair in the live Matching sample: ${unassigned.length} of ${tutorsPage.tutors.length}` +
+          (tutorsPage.total != null
+            ? ` (tutors API total ${tutorsPage.total})`
+            : '') +
+          (pairsPage.total != null
+            ? `; pair API total ${pairsPage.total}`
+            : '') +
+          '.',
+        'This is an authorization-scoped sample — not a guaranteed full-company census.',
+        unassigned.length
+          ? '| Tutor | Status | Note |'
+          : 'No unassigned tutors in this sample.',
+        unassigned.length ? '| --- | --- | --- |' : '',
+        ...unassigned
+          .slice(0, 20)
+          .map(
+            (t) =>
+              `| ${tutorDisplayName(t)} | ${statusLabel(t.status)} | no pair in sample |`,
+          ),
+        'Next action: Assign students on Matching, or Open tutor profile.',
+        'SOURCE: Matching · Tuteurs (Ednov)',
+      ].filter(Boolean),
+      warnings: collectWarnings(tutorsCall, pairsCall),
+    };
+  }
+
+  private async tutorsWorkload(q: string): Promise<SkillResult> {
+    const pairsCall = await this.loadPairsSample();
+    if (!pairsCall.ok || !pairsCall.data) {
       return {
         skillId: this.id,
         ok: true,
         operation: 'tutors_workload_partial',
         data: null,
-        facts: apiPartialFacts('GET /sessions/student-tutor-pairs', error),
-        warnings: [safeErrorMessage(error)],
+        facts: apiPartialFacts(
+          'Matching · charge tuteurs (Ednov)',
+          new Error(pairsCall.warning ?? 'Matching pairs failed'),
+        ),
+        warnings: collectWarnings(pairsCall),
       };
     }
+
+    const page = pairsCall.data;
+    const counts = new Map<
+      string,
+      { label: string; count: number; sessionCountMax: number }
+    >();
+
+    for (const pair of page.pairs) {
+      const tutorId = pair.tutorUserId || pair.tutor?.id;
+      if (!tutorId) continue;
+      const label = displayName(pair.tutor ?? {}) || 'Tutor';
+      const prev = counts.get(tutorId) ?? {
+        label,
+        count: 0,
+        sessionCountMax: 0,
+      };
+      prev.count += 1;
+      if (typeof pair.sessionCount === 'number') {
+        prev.sessionCountMax = Math.max(
+          prev.sessionCountMax,
+          pair.sessionCount,
+        );
+      }
+      if (label !== 'Tutor') prev.label = label;
+      counts.set(tutorId, prev);
+    }
+
+    const ranked = [...counts.values()].sort((a, b) => b.count - a.count);
+    const overloadedHint = asksOverloaded(q);
+    const top = overloadedHint ? ranked.slice(0, 8) : ranked.slice(0, 15);
+
+    return {
+      skillId: this.id,
+      ok: true,
+      operation: overloadedHint
+        ? 'tutors_overloaded_sample'
+        : 'tutors_highest_workload',
+      data: { ranked: top, sampleSize: page.pairs.length },
+      facts: [
+        overloadedHint
+          ? `Highest-workload tutors (proxy for overloaded) from live pair sample (${page.pairs.length} pairs` +
+            (page.total != null ? `, API total ${page.total}` : '') +
+            '):'
+          : `Tutor workload ranking from live pair sample (${page.pairs.length} pairs` +
+            (page.total != null ? `, API total ${page.total}` : '') +
+            '):',
+        top.length
+          ? '| Rank | Tutor | Pair rows in sample | Max sessionCount |'
+          : 'No tutor workload could be derived (empty pair sample).',
+        top.length ? '| --- | --- | ---: | ---: |' : '',
+        ...top.map(
+          (row, i) =>
+            `| ${i + 1} | ${row.label} | ${row.count} | ${
+              row.sessionCountMax > 0 ? row.sessionCountMax : '—'
+            } |`,
+        ),
+        'Workload = pair-row count in the authorization-scoped sample (and sessionCount when present) — not a separate capacity / overload threshold API.',
+        'Dedicated “overloaded” boolean: ' + UNAVAILABLE + '.',
+        'Next action: View timetable / balance assignments on Matching, or Open tutor profile.',
+        'SOURCE: Matching · Tuteurs (Ednov)',
+      ].filter(Boolean),
+      warnings: collectWarnings(pairsCall),
+    };
+  }
+
+  /** Matching pairs sample with fallback to a smaller page if the first call times out. */
+  private async loadPairsSample() {
+    const primary = await softCall(
+      'Matching · student-tutor pairs',
+      () => this.matching.listPairsPage({ page: 1, pageSize: 40 }),
+      { timeoutMs: 12_000, retries: 0 },
+    );
+    if (primary.ok && primary.data) return primary;
+
+    return softCall(
+      'Matching · student-tutor pairs (small page)',
+      () => this.matching.listPairsPage({ page: 1, pageSize: 20 }),
+      { timeoutMs: 10_000, retries: 0 },
+    );
   }
 
   private async tutorsNoUpcomingSessions(): Promise<SkillResult> {
@@ -787,7 +859,7 @@ export class TutorSkill implements BusinessSkill {
         ok: true,
         operation: 'tutors_no_upcoming_partial',
         data: null,
-        facts: apiPartialFacts('GET /sessions/student-tutor-pairs', error),
+        facts: apiPartialFacts('Matching · Tuteurs (Ednov)', error),
         warnings: [safeErrorMessage(error)],
       };
     }
@@ -820,7 +892,7 @@ export class TutorSkill implements BusinessSkill {
             answer: `Could not search for tutor “${name}” right now.`,
             explanation: search.warning ?? 'GET /search/global failed.',
             next: 'Select the tutor on the page and ask again.',
-            source: 'GET /search/global',
+            source: 'Recherche',
           }),
           warnings: collectWarnings(search),
         };
@@ -857,13 +929,13 @@ export class TutorSkill implements BusinessSkill {
         );
         warnings.push(...collectWarnings(search));
         tutor = search.data?.tutors.find((t) => t.id === tutorId) ?? null;
-        if (tutor) logFallback('GET /users/tutors/:id', 'GET /search/global');
+        if (tutor) logFallback('tutor by id', 'global search');
       }
       if (!tutor && byTutor.timedOut) {
         tutor = recallProfile<EdnovUserRow>(`tutor:${tutorId}`);
         if (tutor) {
           warnings.push('Using recently cached tutor profile.');
-          logFallback('GET /users/tutors/:id', 'cached profile');
+          logFallback('tutor by id', 'cached profile');
         }
       }
       if (!tutor) {
@@ -888,11 +960,11 @@ export class TutorSkill implements BusinessSkill {
       const label = displayName(tutor) || labelHint || 'focused tutor';
       const facts = answerFacts({
         answer: `Tutor ${label} — status ${statusLabel(tutor.status)}, establishment ${establishmentLabelFromRow(tutor)}.`,
-        explanation: 'Page context first, else GET /search/global, then GET /users/tutors/:id.',
+        explanation: 'Page context first, else global search, then tutor profile.',
         reasoning:
           'Profile and status come from Users APIs; assigned students and recent sessions come from Matching pairs. Timeouts are listed as PARTIAL.',
         next: 'View timetable, Show assigned students, Open reports, or Schedule new session.',
-        source: 'GET /users/tutors/:id',
+        source: 'Tuteurs',
         extra: [
           `Current status: ${statusLabel(tutor.status)}.`,
           `Establishment: ${establishmentLabelFromRow(tutor)}.`,
@@ -1014,7 +1086,7 @@ export class TutorSkill implements BusinessSkill {
         try {
           const reports = await this.academic.listReports(10, { tutorId });
           if (reports.length) {
-            facts.push(`Reports for this tutor (GET /sessions/reports?tutorId): ${reports.length} row(s).`);
+            facts.push(`Reports for this tutor: ${reports.length} row(s).`);
             facts.push('| Report | Status |');
             facts.push('| --- | --- |');
             facts.push(

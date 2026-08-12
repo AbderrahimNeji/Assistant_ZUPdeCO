@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
+import { EmbeddingService } from '../../documents/services/embedding.service';
 import {
   KnowledgeRetrieveInput,
   KnowledgeSnippet,
@@ -8,6 +9,7 @@ import {
 } from '../knowledge.types';
 import { DocumentationCitationService } from './documentation-citation.service';
 import { DocumentationRetrievalService } from './documentation-retrieval.service';
+import { expandDocumentationQuery } from './documentation-query-expand';
 
 const DEFAULT_DOC_SIMILARITY_THRESHOLD = 0.42;
 
@@ -23,6 +25,7 @@ export class DocumentationKnowledgeSource implements KnowledgeSource {
   constructor(
     private readonly retrieval: DocumentationRetrievalService,
     private readonly citations: DocumentationCitationService,
+    private readonly embeddings: EmbeddingService,
     private readonly configService: ConfigService,
   ) {
     const configured = this.configService.get<string>(
@@ -35,10 +38,16 @@ export class DocumentationKnowledgeSource implements KnowledgeSource {
   }
 
   async retrieve(input: KnowledgeRetrieveInput): Promise<KnowledgeSnippet[]> {
+    const expanded = expandDocumentationQuery(input.query);
+    const queryEmbedding =
+      expanded === input.query
+        ? input.queryEmbedding
+        : await this.embeddings.embed(expanded);
+
     const hits = await this.retrieval.search(
-      input.query,
-      input.queryEmbedding,
-      input.topK ?? 6,
+      expanded,
+      queryEmbedding,
+      input.topK ?? 12,
     );
 
     if (!hits.length) {

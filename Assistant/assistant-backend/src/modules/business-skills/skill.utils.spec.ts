@@ -17,6 +17,7 @@ describe('apiPartialFacts', () => {
     const blob = facts.join('\n');
     expect(blob).toMatch(/timeout/i);
     expect(blob).not.toMatch(/couldn['’]t find the information/i);
+    expect(blob).not.toMatch(/GET\s+\//i);
     expect(blob).toMatch(/DIRECT ANSWER:/);
     expect(blob).toMatch(/SOURCE:/);
   });

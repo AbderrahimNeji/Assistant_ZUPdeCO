@@ -122,9 +122,11 @@ export class MatchingAdapter {
     const pageSize = Math.min(100, Math.max(1, query.pageSize ?? 20));
     const search = query.search?.trim();
 
+    // Mirror ednov-web: company-scoped matching list.
     const raw = await this.ednov.get<
       Paginated<Record<string, unknown>> | Record<string, unknown>[]
-    >('/sessions/student-tutor-pairs', {
+    >('/companies/current/sessions/student-tutor-pairs', {
+      timeoutMs: 14_000,
       params: {
         page,
         pageSize,
@@ -166,7 +168,8 @@ export class MatchingAdapter {
 
   async getPair(id: string): Promise<StudentTutorPair> {
     const raw = await this.ednov.get<Record<string, unknown>>(
-      `/sessions/student-tutor-pairs/${encodeEdnovId(id)}`,
+      `/companies/current/sessions/student-tutor-pairs/${encodeEdnovId(id)}`,
+      { timeoutMs: 14_000 },
     );
     return this.normalizePair(raw);
   }

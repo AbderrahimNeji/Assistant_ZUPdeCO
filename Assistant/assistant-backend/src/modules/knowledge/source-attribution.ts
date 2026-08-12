@@ -157,35 +157,8 @@ export function buildSourceAttributions(
     );
   }
 
-  const officialByTitle = new Map<string, KnowledgeSnippet[]>();
-  for (const snippet of bySource.documentation_kb) {
-    const key =
-      snippet.documentName?.trim() ||
-      snippet.title.trim() ||
-      'Functional Documentation';
-    const existing = officialByTitle.get(key) ?? [];
-    existing.push(snippet);
-    officialByTitle.set(key, existing);
-  }
-
-  for (const [title, group] of officialByTitle) {
-    const pages = uniqueSortedPages(group.map((snippet) => snippet.page));
-    const chapter = group.find((s) => s.chapter)?.chapter;
-    const section = group.find((s) => s.section)?.section;
-    const version = group.find((s) => s.version)?.version;
-    const contentHash = group.find((s) => s.contentHash)?.contentHash;
-    const ingestedAt = group.find((s) => s.ingestedAt)?.ingestedAt;
-    attributions.push(
-      attributionFromGroup('documentation_kb', title, '📘', pages, {
-        chapter,
-        section,
-        providerId: 'documentation',
-        version,
-        contentHash,
-        ingestedAt,
-      }),
-    );
-  }
+  // Official functional documentation is built-in product knowledge:
+  // retrieved for answering, but never exposed as a user-facing citation.
 
   const documentsByTitle = new Map<string, KnowledgeSnippet[]>();
   for (const snippet of bySource.document_kb) {

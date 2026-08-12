@@ -64,22 +64,42 @@ export function safeErrorMessage(error: unknown): string {
   return 'Ednov request failed';
 }
 
+/** Map internal REST labels to human module names for LLM / UI facts. */
+export function humanizeApiSource(source: string): string {
+  const s = source?.trim() || 'Ednov';
+  if (!/\b(?:GET|POST|PUT|PATCH|DELETE)\b|\//i.test(s)) return s;
+  if (/student-tutor-pairs|matching/i.test(s)) return 'Matching';
+  if (/report-kpis|\/reports|compte.?rendu/i.test(s)) return 'Comptes-rendus';
+  if (/\/tutors/i.test(s)) return 'Tuteurs';
+  if (/\/students/i.test(s)) return 'Élèves';
+  if (/\/sessions/i.test(s)) return 'Séances';
+  if (/onboarding/i.test(s)) return 'Onboarding';
+  if (/establishments/i.test(s)) return 'Établissements';
+  if (/gamification/i.test(s)) return 'Gamification';
+  if (/\/search/i.test(s)) return 'Recherche';
+  if (/vsc/i.test(s)) return 'Rapports VSC';
+  return s.replace(/\b(?:GET|POST|PUT|PATCH|DELETE)\s+\/[A-Za-z0-9_\-/{:}?&=%.]+/gi, 'données Ednov');
+}
+
 /**
  * User-safe facts when a live Ednov call times out or fails.
  * Never maps to “I couldn’t find the information in documents”.
  */
 export function apiPartialFacts(source: string, error?: unknown): string[] {
+  const label = humanizeApiSource(source);
   const message = error ? safeErrorMessage(error) : 'The live API did not respond.';
   const timedOut = /timeout|timed out|etimedout/i.test(message);
   return answerFacts({
     answer: timedOut
-      ? `Live ${source} data could not be retrieved in time — this is a timeout, not missing information.`
-      : `Live ${source} data is incomplete because an Ednov call failed.`,
-    explanation: message,
+      ? `Live ${label} data could not be retrieved in time — this is a timeout, not missing information.`
+      : `Live ${label} data is incomplete because an Ednov call failed.`,
+    explanation: timedOut
+      ? 'The live Ednov request timed out.'
+      : 'The live Ednov request failed.',
     reasoning:
-      'A timeout or partial API failure is not a documentation gap. Answer with any live facts already retrieved, and say which slice could not be loaded.',
+      'A timeout or partial API failure is not a documentation gap. Answer with any live facts already retrieved, and say which slice could not be loaded. Never mention HTTP methods or API paths.',
     next: 'Retry the question, or open the related Ednov page and ask again.',
-    source,
+    source: label,
   });
 }
 

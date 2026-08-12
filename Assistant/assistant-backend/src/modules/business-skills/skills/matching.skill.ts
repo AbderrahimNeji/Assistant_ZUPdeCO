@@ -975,7 +975,7 @@ function matchingPartial(
     operation,
     data: null,
     facts: [
-      ...apiPartialFacts('Matching (GET /sessions/student-tutor-pairs)', error),
+      ...apiPartialFacts('Matching', error),
       ...extra,
     ],
     warnings: [safeErrorMessage(error)],

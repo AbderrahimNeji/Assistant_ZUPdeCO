@@ -51,10 +51,39 @@ export class SensitiveDataRedactor {
   private static readonly SIRET_OR_NATIONAL =
     /\b(?:SIRET|SIREN|NIR|NSS|nationalId|national[_-]?id)\s*[:=]?\s*[\d\s]{9,20}\b/gi;
 
+  /** Internal REST paths must never reach the chat UI. */
+  private static readonly HTTP_API_PATH =
+    /\b(?:GET|POST|PUT|PATCH|DELETE)\s+\/[A-Za-z0-9_\-/{:}?&=%.]+/gi;
+
+  private static humanizeApiPath(match: string): string {
+    const path = match.replace(/^(?:GET|POST|PUT|PATCH|DELETE)\s+/i, '');
+    if (/student-tutor-pairs|matching/i.test(path)) return 'Matching';
+    if (/\/reports|compte.?rendu|report-kpis/i.test(path)) return 'Comptes-rendus';
+    if (/\/tutors/i.test(path)) return 'Tuteurs';
+    if (/\/students/i.test(path)) return 'Élèves';
+    if (/\/sessions/i.test(path)) return 'Séances';
+    if (/onboarding/i.test(path)) return 'Onboarding';
+    if (/\/establishments/i.test(path)) return 'Établissements';
+    if (/\/gamification/i.test(path)) return 'Gamification';
+    if (/\/search/i.test(path)) return 'Recherche';
+    if (/\/users\/login|\/users\/me/i.test(path)) return 'Profil';
+    if (/vsc/i.test(path)) return 'Rapports VSC';
+    return 'données Ednov';
+  }
+
   static redact(text: string): string {
     if (!text) return text;
 
     let out = text;
+    out = out.replace(
+      SensitiveDataRedactor.HTTP_API_PATH,
+      (m) => SensitiveDataRedactor.humanizeApiPath(m),
+    );
+    // Never expose the official documentation product name in answers.
+    out = out.replace(
+      /\bDocumentation Fonctionnelle(?:\s+ZupdeCo)?\b/gi,
+      'règles produit',
+    );
     out = out.replace(SensitiveDataRedactor.PEM_BLOCK, SensitiveDataRedactor.REDACTED);
     out = out.replace(
       SensitiveDataRedactor.CONNECTION_STRING,
@@ -109,8 +138,9 @@ export class SensitiveDataRedactor {
     return text.replace(SensitiveDataRedactor.PHONE, (match) => {
       const digits = match.replace(/\D/g, '');
       if (digits.length < 10) return match;
-      // Avoid redacting ISO dates glued oddly or pure numeric counts
-      if (/^\d{4}-\d{2}-\d{2}$/.test(match.trim())) return match;
+      // Avoid redacting ISO dates / datetimes glued oddly or pure numeric counts
+      if (/^\d{4}-\d{2}-\d{2}/.test(match.trim())) return match;
+      if (/T\d{2}:\d{2}/.test(match)) return match;
       return SensitiveDataRedactor.REDACTED;
     });
   }

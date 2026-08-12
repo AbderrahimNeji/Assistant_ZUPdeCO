@@ -44,6 +44,9 @@ export const AnswerMeta: React.FC<Props> = ({
 }) => {
   const mode = deriveAnswerMode(sources, answerMode);
   const badge = answerBadgeFor(mode);
+  const visibleSources = (sources ?? []).filter(
+    (source) => source.kind !== 'documentation_kb',
+  );
   const [rating, setRating] = React.useState<FeedbackRating | null>(
     initialRating ?? null,
   );
@@ -89,9 +92,9 @@ export const AnswerMeta: React.FC<Props> = ({
 
   return (
     <div className="mt-1 flex max-w-full flex-col gap-1.5">
-      {(badge || (sources && sources.length > 0)) && (
+      {(badge || visibleSources.length > 0) && (
         <div className="flex flex-wrap items-center gap-1.5">
-          {badge && (
+          {badge && badge.mode !== 'documentation' && (
             <span
               className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-background px-2 py-0.5 text-[10px] font-medium text-foreground"
               title={badge.title}
@@ -100,7 +103,7 @@ export const AnswerMeta: React.FC<Props> = ({
               {badge.label}
             </span>
           )}
-          {sources?.map((source, idx) => (
+          {visibleSources.map((source, idx) => (
             <span
               key={`${source.kind}-${source.label}-${idx}`}
               className="inline-flex max-w-full items-center gap-1 truncate rounded-md bg-muted/80 px-1.5 py-0.5 text-[10px] text-muted-foreground"

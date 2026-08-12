@@ -22,8 +22,10 @@ import {
 export class EstablishmentSkill implements BusinessSkill {
   readonly id: BusinessSkillId = 'establishment';
   readonly domains = [
-    /\b(establishment|establishments|école|ecole|écoles|ecoles|school|schools|établissement|etablissement|établissements|etablissements)\b/i,
+    /\b(establishment|establishments|school|schools)\b/i,
+    /(?:^|[^A-Za-z0-9_])(?:écoles?|ecoles?|établissements?|etablissements?)\b/i,
     /\b(plus actifs?|moins actifs?|most active|least active|le plus actif|les plus actifs|top (?:schools?|établissements?|écoles?)|classe(?:r)? les)\b/i,
+    /(?:^|[^A-Za-z0-9_])(?:plus d['’']activité|plus d['’']activite|most activity)\b/i,
   ];
   readonly domainTags = ['establishment', 'school'];
   readonly capabilities: SkillCapability[] = [

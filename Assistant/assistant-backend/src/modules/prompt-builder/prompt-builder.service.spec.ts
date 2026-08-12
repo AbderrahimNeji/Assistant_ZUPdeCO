@@ -144,7 +144,9 @@ describe('PromptBuilderService', () => {
     });
 
     expect(prompt).toContain('Route focus: FUNCTIONAL');
-    expect(prompt).toContain('DOCUMENTATION CITATIONS');
+    expect(prompt).toContain('FUNCTIONAL PRODUCT KNOWLEDGE');
+    expect(prompt).toContain('NEVER cite');
+    expect(prompt).not.toContain('DOCUMENTATION CITATIONS');
     expect(prompt).not.toContain('STRUCTURED ISSUE EXPLANATION');
   });
 });

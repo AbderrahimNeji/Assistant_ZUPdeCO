@@ -64,17 +64,6 @@ describe('buildSourceAttributions', () => {
         document: 'notes.txt',
       },
       {
-        kind: 'documentation_kb',
-        label: 'Documentation Fonctionnelle ZupdeCo',
-        icon: '📘',
-        pages: [1],
-        chapter: 'VF-1.1 — PARCOURS TUTEUR',
-        section: '1. Rôle du tuteur',
-        providerId: 'documentation',
-        document: 'Documentation Fonctionnelle ZupdeCo',
-        page: 1,
-      },
-      {
         kind: 'document_kb',
         label: 'handbook.pdf',
         icon: '📄',
@@ -98,6 +87,8 @@ describe('buildSourceAttributions', () => {
       },
     ]);
 
+    expect(sources.some((s) => s.kind === 'documentation_kb')).toBe(false);
+    expect(JSON.stringify(sources)).not.toContain('Documentation Fonctionnelle');
     expect(JSON.stringify(sources)).not.toContain('secret');
     expect(JSON.stringify(sources)).not.toContain('attachment body');
   });
