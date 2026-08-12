@@ -1,0 +1,790 @@
+/* ============================================
+   DETAILS-VIEW.CSS - Système unifié de Details Views
+   Design harmonisé avec badges alternés A/B
+   ============================================ */
+
+/* ========================================
+   DETAIL BADGE - Systeme colorName + variant
+   ======================================== */
+
+.detail-badge {
+  @apply inline-flex items-center gap-2 px-2 py-0.5 rounded-full border font-medium text-xs;
+  transition: all 200ms var(--ease-default);
+}
+
+/* ========================================
+   BRANDING COLORS (dynamiques via API)
+   ======================================== */
+
+/* Color 1 - Outlined: Border coloré + bg blanc */
+.detail-badge-outlined-color-2 {
+  background-color: white;
+  border-color: var(--color-2-nuance-2);
+  color: var(--color-2-nuance-2);
+}
+
+/* Color 1 - Filled: Bg coloré + texte blanc */
+.detail-badge-filled-color-2 {
+  background-color: var(--color-2-nuance-1);
+  border-color: transparent;
+  color: white;
+}
+
+/* Color 2 - Outlined: Border coloré + bg blanc */
+.detail-badge-outlined-color-1 {
+  background-color: white;
+  border-color: var(--color-1-nuance-2);
+  color: var(--color-1-nuance-2);
+}
+
+/* Color 2 - Filled: Bg coloré + texte blanc */
+.detail-badge-filled-color-1 {
+  background-color: var(--color-1-nuance-1);
+  border-color: transparent;
+  color: white;
+}
+
+/* Color 3 - Outlined: Border coloré + bg blanc */
+.detail-badge-outlined-color-3 {
+  background-color: white;
+  border-color: var(--color-3-nuance-2);
+  color: var(--color-3-nuance-2);
+}
+
+/* Color 3 - Filled: Bg coloré + texte blanc */
+.detail-badge-filled-color-3 {
+  background-color: var(--color-3-nuance-1);
+  border-color: transparent;
+  color: white;
+}
+
+/* ========================================
+   SEMANTIC COLORS (fixes, independants du branding)
+   ======================================== */
+
+/* Success - Filled (bg vert + texte blanc) */
+.detail-badge-filled-success {
+  background-color: #10b981;
+  border-color: transparent;
+  color: white;
+}
+
+/* Success - Outlined (border vert + bg blanc) */
+.detail-badge-outlined-success {
+  background-color: white;
+  border-color: #10b981;
+  color: #10b981;
+}
+
+/* Error - Filled (bg rouge + texte blanc) */
+.detail-badge-filled-error {
+  background-color: #ef4444;
+  border-color: transparent;
+  color: white;
+}
+
+/* Error - Outlined (border rouge + bg blanc) */
+.detail-badge-outlined-error {
+  background-color: white;
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+/* Male - Filled (bg bleu + texte blanc) */
+.detail-badge-filled-male {
+  background-color: #3b82f6;
+  border-color: transparent;
+  color: white;
+}
+
+/* Male - Outlined (border bleu + bg blanc) */
+.detail-badge-outlined-male {
+  background-color: white;
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+/* Female - Filled (bg rose + texte blanc) */
+.detail-badge-filled-female {
+  background-color: #ec4899;
+  border-color: transparent;
+  color: white;
+}
+
+/* Female - Outlined (border rose + bg blanc) */
+.detail-badge-outlined-female {
+  background-color: white;
+  border-color: #ec4899;
+  color: #ec4899;
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+/* Dark mode pour branding outlined */
+.dark .detail-badge-outlined-color-2,
+.dark .detail-badge-outlined-color-1,
+.dark .detail-badge-outlined-color-3 {
+  background-color: rgb(var(--background-rgb));
+}
+
+/* Dark mode pour semantiques outlined */
+.dark .detail-badge-outlined-success,
+.dark .detail-badge-outlined-error,
+.dark .detail-badge-outlined-male,
+.dark .detail-badge-outlined-female {
+  background-color: rgb(var(--background-rgb));
+}
+
+/* ========================================
+   DETAIL FIELD
+   ======================================== */
+
+.detail-field {
+  @apply flex items-center gap-2;
+}
+
+.detail-field-vertical {
+  @apply flex-col items-start;
+}
+
+.detail-field-label {
+  @apply text-sm font-medium text-muted-foreground;
+}
+
+.detail-field-value {
+  @apply text-sm text-foreground;
+}
+
+/* ========================================
+   DETAIL CHIP LIST
+   ======================================== */
+
+.detail-chip-list {
+  @apply flex flex-wrap gap-2;
+}
+
+.detail-chip {
+  @apply inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium;
+  transition: all 200ms var(--ease-default);
+}
+
+/* Filled variants */
+.detail-chip-filled-color-2 {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+  color: var(--color-2-nuance-1);
+  border: 1px solid var(--color-2-nuance-1);
+}
+
+.detail-chip-filled-color-1 {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 10%, transparent);
+  color: var(--color-1-nuance-1);
+  border: 1px solid var(--color-1-nuance-1);
+}
+
+.detail-chip-filled-color-3 {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 10%, transparent);
+  color: var(--color-3-nuance-1);
+  border: 1px solid var(--color-3-nuance-1);
+}
+
+/* Outlined variants */
+.detail-chip-outlined-color-2 {
+  background: transparent;
+  color: var(--color-2-nuance-1);
+  border: 1px solid var(--color-2-nuance-1);
+}
+
+.detail-chip-outlined-color-1 {
+  background: transparent;
+  color: var(--color-1-nuance-1);
+  border: 1px solid var(--color-1-nuance-1);
+}
+
+.detail-chip-outlined-color-3 {
+  background: transparent;
+  color: var(--color-3-nuance-1);
+  border: 1px solid var(--color-3-nuance-1);
+}
+
+/* ========================================
+   DETAIL SECTION
+   ======================================== */
+
+.detail-section {
+  @apply space-y-3;
+}
+
+.detail-section-highlighted {
+  @apply p-4 rounded-xl border;
+  background: color-mix(in srgb, var(--color-2-nuance-1) 5%, transparent);
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+}
+
+.detail-section-header {
+  @apply flex items-center gap-3 mb-3;
+}
+
+.detail-section-icon {
+  @apply flex items-center justify-center w-10 h-10 rounded-lg shrink-0;
+}
+
+.detail-section-title {
+  @apply text-sm font-semibold text-foreground;
+}
+
+.detail-section-content {
+  @apply space-y-3;
+}
+
+/* ========================================
+   AVAILABILITY GRID - Compact Mode
+   ======================================== */
+
+.detail-availability-compact {
+  @apply grid gap-3;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.detail-availability-slot {
+  @apply flex items-center gap-3 p-3 rounded-lg border;
+  background: color-mix(in srgb, var(--color-1-nuance-3) 3%, transparent);
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 30%, transparent);
+}
+
+.detail-availability-slot-icon {
+  @apply flex items-center justify-center w-10 h-10 rounded-lg;
+  background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+}
+
+.detail-availability-slot-content {
+  @apply flex-1;
+}
+
+.detail-availability-slot-day {
+  @apply text-sm font-semibold text-[var(--color-1-nuance-1)];
+}
+
+.detail-availability-slot-time {
+  @apply text-xs text-muted-foreground;
+}
+
+/* ========================================
+   AVAILABILITY GRID - Full Mode (Intelligent)
+   ======================================== */
+
+.detail-availability-grid-full {
+  @apply overflow-x-auto;
+}
+
+.detail-availability-grid-header {
+  @apply grid gap-2 mb-2;
+  grid-template-columns: 80px repeat(var(--days-count, 7), minmax(60px, 1fr));
+}
+
+.detail-availability-grid-corner {
+  @apply flex items-center justify-center text-xs font-medium text-muted-foreground;
+}
+
+.detail-availability-grid-day-header {
+  @apply flex items-center justify-center text-xs font-semibold text-foreground p-2 rounded-lg;
+  background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+  color: var(--color-2-nuance-1);
+}
+
+.detail-availability-grid-body {
+  @apply grid gap-2;
+  grid-template-columns: 80px repeat(var(--days-count, 7), minmax(60px, 1fr));
+}
+
+.detail-availability-grid-time-label {
+  @apply flex items-center justify-end pr-3 text-xs font-medium text-muted-foreground;
+}
+
+.detail-availability-grid-cell {
+  @apply rounded-lg border transition-all duration-200;
+  min-height: 40px;
+}
+
+.detail-availability-grid-cell-available {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+  border-color: var(--color-2-nuance-1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.detail-availability-grid-cell-empty {
+  background: var(--muted);
+  border-color: transparent;
+  opacity: 0.3;
+}
+
+/* ========================================
+   DETAILS VIEW CONTENT - Grid Layout
+   ======================================== */
+
+.details-view-header {
+  @apply flex items-center justify-between mb-6;
+}
+
+.details-view-header-left {
+  @apply flex items-center gap-4;
+}
+
+.details-view-header-icon {
+  @apply flex items-center justify-center w-14 h-14 rounded-xl shrink-0;
+  background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+  box-shadow: 0 2px 10px -3px rgba(var(--color-2-rgb), 0.15);
+}
+
+.details-view-header-content {
+  @apply flex-1;
+}
+
+.details-view-header-title {
+  @apply text-xl font-bold text-[var(--color-1-nuance-1)];
+}
+
+.details-view-header-subtitle {
+  @apply text-sm text-muted-foreground mt-1;
+}
+
+.details-view-header-right {
+  @apply flex items-center gap-2;
+}
+
+.details-view-badges {
+  @apply flex flex-wrap gap-3 mb-6;
+}
+
+.details-view-header-with-badges {
+  @apply flex items-center gap-3 flex-wrap mb-1;
+}
+
+.details-view-grid {
+  @apply grid gap-6;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* ========================================
+   COLUMN SPAN UTILITIES
+   ======================================== */
+
+/* Compact sections - always take 1 column */
+.details-view-grid .section-card-compact {
+  grid-column: span 1;
+}
+
+/* Full-width sections - take entire row */
+.details-view-grid .section-card-full {
+  grid-column: 1 / -1;
+}
+
+/* ========================================
+   RESPONSIVE - Container Queries (Legacy pour ancien wrapper)
+   ======================================== */
+
+/* Note: Ces container queries sans nom sont conservées pour 
+   .details-view-collapse-wrapper (ancien système) */
+
+/* Section dashboard 1/3 ou mobile */
+@container (max-width: 400px) {
+  .details-view-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-availability-compact {
+    grid-template-columns: 1fr;
+  }
+
+  .details-view-header {
+    @apply flex-col items-start gap-3;
+  }
+
+  .details-view-header-right {
+    @apply w-full justify-end;
+  }
+}
+
+/* Section dashboard 1/2 */
+@container (min-width: 401px) and (max-width: 600px) {
+  .details-view-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-availability-compact {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Section full ou management page */
+@container (min-width: 601px) {
+  .details-view-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-availability-compact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large screens */
+@container (min-width: 900px) {
+  .details-view-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========================================
+   DETAILS VIEW COLLAPSE - Wrapper
+   ======================================== */
+
+.details-view-collapse-wrapper {
+  @apply w-full;
+  container-type: inline-size;
+}
+
+.details-view-collapse-content {
+  @apply p-6;
+  background: rgb(var(--card-rgb));
+  border: 1px solid var(--color-1-nuance-3);
+  border-radius: var(--radius-xl);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes details-collapse-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.details-collapse-enter-active {
+  animation: details-collapse-enter 400ms var(--ease-out);
+}
+
+/* ========================================
+   TABLE ROW COLLAPSE - Collapse intégré dans le tableau
+   ======================================== */
+
+.table-row-expanded {
+  background: transparent;
+}
+
+.table-row-collapse-content {
+  container-type: inline-size;
+  container-name: table-collapse;
+  padding: 1rem;
+  animation: slideDown 300ms ease-out;
+  background: color-mix(in srgb, var(--color-1-nuance-3) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+  border-radius: var(--radius-lg);
+  margin: 0.5rem 1rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive pour collapse dans tableau - Breakpoints basés sur analyse du dashboard */
+
+/* 1 COLONNE : Sections étroites (1/3 page ~427px) */
+@container table-collapse (max-width: 550px) {
+  .details-view-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .details-view-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .details-view-badges {
+    flex-wrap: wrap;
+  }
+
+  /* Compact sections take full width on mobile */
+  .details-view-grid .section-card-compact {
+    grid-column: 1 / -1;
+  }
+}
+
+/* 2 COLONNES : Sections moyennes (1/2 page ~652px et petits 2/3) */
+@container table-collapse (min-width: 551px) and (max-width: 850px) {
+  .details-view-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* 2-3 COLONNES : Sections larges (2/3 page ~877px) */
+@container table-collapse (min-width: 851px) and (max-width: 1199px) {
+  .details-view-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* 3 COLONNES : Très larges sections (full page Management ~1328px) */
+@container table-collapse (min-width: 1200px) {
+  .details-view-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* ========================================
+   DETAILS VIEW MODAL - Container queries
+   ======================================== */
+
+.details-view-modal {
+  container-type: inline-size;
+  container-name: modal-details;
+}
+
+/* Responsive pour modal - Breakpoints optimisés pour modals */
+
+/* Petites modals (mobile ou fenêtre étroite) */
+@container modal-details (max-width: 600px) {
+  .details-view-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .details-view-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .details-view-badges {
+    flex-wrap: wrap;
+  }
+
+  .detail-availability-compact {
+    grid-template-columns: 1fr;
+  }
+
+  /* Compact sections take full width on mobile */
+  .details-view-grid .section-card-compact {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Modals moyennes */
+@container modal-details (min-width: 601px) and (max-width: 900px) {
+  .details-view-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .detail-availability-compact {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Grandes modals */
+@container modal-details (min-width: 901px) {
+  .details-view-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .detail-availability-compact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+.dark .details-view-collapse-content {
+  background: rgb(var(--card-rgb));
+  border-color: var(--color-1-nuance-3);
+}
+
+.dark .detail-availability-slot {
+  background: color-mix(in srgb, var(--color-1-nuance-3) 5%, transparent);
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+}
+
+.dark .detail-availability-grid-day-header {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+}
+
+.dark .detail-availability-grid-cell-empty {
+  background: color-mix(in srgb, var(--muted) 20%, transparent);
+}
+
+.dark .table-row-collapse-content {
+  background: color-mix(in srgb, var(--color-1-nuance-3) 8%, transparent);
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+}
+
+/* ========================================
+   PARTICIPANT CHIPS
+   ======================================== */
+
+.participant-chip-list {
+  @apply flex flex-wrap gap-2;
+}
+
+/* Legacy separator (kept for compatibility) */
+.participant-separator {
+  @apply flex items-center justify-center px-3;
+}
+
+.participant-separator-line {
+  @apply w-px h-8 bg-gradient-to-b from-transparent via-[var(--color-1-nuance-3)] to-transparent;
+}
+
+/* ========================================
+   PARTICIPANTS LAYOUT — side by side
+   ======================================== */
+
+.participants-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  min-height: 0;
+}
+
+.participants-group {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0 1rem;
+}
+
+.participants-group:first-child {
+  padding-left: 0;
+}
+
+.participants-group:last-child {
+  padding-right: 0;
+}
+
+.participants-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-2-nuance-1);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.participants-group-header--student {
+  color: var(--color-1-nuance-1);
+}
+
+.participants-group-header--volunteer {
+  color: var(--color-3-nuance-1);
+}
+
+.participants-group-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 9999px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+  color: var(--color-2-nuance-1);
+  margin-left: auto;
+}
+
+.participants-group-count--student {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent);
+  color: var(--color-1-nuance-1);
+}
+
+.participants-group-count--volunteer {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 15%, transparent);
+  color: var(--color-3-nuance-1);
+}
+
+/* Vertical divider */
+.participants-divider {
+  flex-shrink: 0;
+  width: 1px;
+  align-self: stretch;
+  margin: 0.5rem 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--color-1-nuance-3) 60%, transparent) 25%,
+    color-mix(in srgb, var(--color-1-nuance-3) 60%, transparent) 75%,
+    transparent 100%
+  );
+}
+
+/* ========================================
+   SECTION CARD (for modern cards)
+   ======================================== */
+
+.section-card {
+  @apply rounded-2xl p-5 transition-all;
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 30%, transparent);
+  background: var(--card);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+}
+
+/* Time pill style */
+.time-pill {
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium;
+  background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+  color: var(--color-2-nuance-1);
+  border: 1px solid var(--color-2-nuance-1);
+}
+
+/* Empty state for participants */
+.empty-state {
+  @apply flex flex-col items-center justify-center py-6 px-4 text-center rounded-xl;
+  background: color-mix(in srgb, var(--muted) 30%, transparent);
+  border: 2px dashed var(--color-1-nuance-3);
+}
+
+.empty-state-text {
+  @apply text-sm text-muted-foreground mt-2;
+}
+
+/* Dark mode adjustments */
+.dark .section-card {
+  background: var(--card);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 20%, transparent);
+}
+
+.dark .section-card:hover {
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+}
+
+.dark .time-pill {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+  border-color: var(--color-2-nuance-1);
+}
+
+.dark .empty-state {
+  background: color-mix(in srgb, var(--muted) 20%, transparent);
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 30%, transparent);
+}

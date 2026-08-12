@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "ednov-dev",
+    "staging": "ednov-staging",
+    "production": "ednov-prod"
+  }
+}

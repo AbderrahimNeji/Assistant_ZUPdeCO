@@ -1,0 +1,63 @@
+---
+description: Règles du framework de développement Ednov — branching, Linear, PR. Appliquer sur toute tâche de dev.
+globs: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+alwaysApply: true
+---
+
+# Framework de développement Ednov — Mobile
+
+## 1. Convention de nommage des branches
+
+**Format obligatoire :**
+```
+<type>/poc-<numéro>-<description-courte>
+```
+
+**Types valides :** `feat`, `fix`, `chore`, `hotfix`, `refactor`
+
+**Exemples :**
+```
+feat/poc-123-add-session-attendance
+fix/poc-456-fix-cr-display
+chore/poc-789-update-expo-sdk
+```
+
+Toujours copier depuis Linear : ticket → **"Copy git branch name"**, puis adapter le préfixe de type.
+
+Toujours partir de `develop` à jour :
+```bash
+git checkout develop && git pull
+git checkout -b feat/poc-XXX-ma-feature
+```
+
+## 2. Workflow Linear
+
+```
+1. Ticket Linear → passer "In Progress"
+2. Créer la branche (convention ci-dessus)
+3. Développer + committer
+4. gh pr create  →  template PR chargé automatiquement
+5. Remplir "Closes POC-XXX" dans le template
+6. Merge → develop  →  ticket "In Review" auto + commentaire
+7. QA valide → Merge → main  →  ticket "Done" auto
+```
+
+## 3. Avant chaque PR
+
+```bash
+npm run lint
+# Tester sur iOS ET Android (simulateur ou device physique)
+```
+
+## 4. Règles d'or
+
+```
+✅ Branche depuis develop à jour
+✅ Nom de branche avec POC-XXX
+✅ Testé iOS + Android avant PR
+✅ Template PR rempli (Linear + description + screenshots)
+
+❌ Jamais committer sur develop ou main directement
+❌ PR sans numéro de ticket Linear
+❌ PR sans screenshots pour les changements UI
+```

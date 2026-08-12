@@ -1,0 +1,3 @@
+firstName,lastName,email,establishmentId,phone,profileId,roleIds,gradeLevel,isMinor,status
+Alice,Martin,alice.martin.import@example.com,00000000-0000-4000-8000-000000000001,+33123456789,,,Terminale,false,active
+Bob,Durand,bob.durand.import@example.com,00000000-0000-4000-8000-000000000001,,,,Première,,

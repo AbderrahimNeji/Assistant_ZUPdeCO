@@ -1,0 +1,69 @@
+# Flow 08 — Relance de l'app hors ligne après une session en ligne
+#
+# Scénario (bug rapporté par QA) :
+#   1. L'utilisateur s'est connecté en ligne (cache peuplé)
+#   2. Il coupe l'internet PUIS relance l'app
+#   3. L'app doit charger normalement depuis le cache — PAS de chargement infini
+#   4. Les onglets doivent afficher les données mises en cache
+#   5. La bannière hors ligne doit être visible
+#
+# Prérequis : flow 00 complété
+
+appId: com.zupdeco.ednov
+---
+
+# Assurer réseau actif au départ
+- setAirplaneMode: disable
+
+- launchApp:
+    clearState: false
+
+- waitForAnimationToEnd
+- assertVisible: "Tableau de bord"
+
+# Quitter l'app (mise en arrière-plan puis terminaison)
+- stopApp
+
+# Passer en mode avion avant de relancer
+- setAirplaneMode: enable
+- waitForAnimationToEnd
+
+# Relancer l'app sans internet
+- launchApp:
+    clearState: false
+
+- waitForAnimationToEnd
+
+# L'app doit charger depuis le cache — pas de spinner infini
+# Timeout implicite de Maestro (30s) : si le tableau de bord n'apparaît pas, le test échoue
+- assertVisible: "Tableau de bord"
+
+# La bannière hors ligne doit être affichée
+- assertVisible:
+    id: "offline-banner"
+
+# Aucun écran d'erreur
+- assertNotVisible: "Impossible de charger"
+- assertNotVisible: "Erreur"
+
+# Navigation entre les onglets : tout doit afficher les données en cache
+- tapOn:
+    label: "Séances"
+- waitForAnimationToEnd
+- assertNotVisible: "Erreur réseau"
+
+- tapOn:
+    label: "Comptes rendus"
+- waitForAnimationToEnd
+- assertNotVisible: "Erreur réseau"
+
+- tapOn:
+    label: "Profil"
+- waitForAnimationToEnd
+- assertNotVisible: "Erreur réseau"
+
+- tapOn:
+    label: "Tableau de bord"
+
+# --- Nettoyer ---
+- setAirplaneMode: disable

@@ -1,0 +1,50 @@
+---
+description: Never use border-left as a visual accent
+alwaysApply: true
+---
+
+# Forbidden: border-left as accent
+
+**NEVER** use `border-left` (or `border-right`) as a visual accent or decoration on UI components.
+
+## ❌ Avoid
+
+```css
+.element {
+  border-left: 2px solid var(--color-1);
+}
+
+.card {
+  border-left: 3px solid blue;
+}
+```
+
+## ✅ Allowed alternatives
+
+- Background with gradient
+- Colored box-shadow
+- Pseudo-elements (`::before`, `::after`)
+- Border-radius with background
+- Glow effects with `box-shadow`
+
+```css
+/* Subtle gradient */
+.element {
+  background: linear-gradient(135deg, color-mix(...), ...);
+}
+
+/* Colored shadow */
+.element {
+  box-shadow: -2px 0 0 0 var(--color-accent);
+}
+
+/* Pseudo-element */
+.element::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--color-accent);
+}
+```

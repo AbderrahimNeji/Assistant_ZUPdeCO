@@ -1,0 +1,255 @@
+name: Linear Sync
+
+on:
+  pull_request:
+    types: [opened, reopened, closed]
+    branches: [develop, main]
+
+jobs:
+  sync-linear:
+    name: Sync ticket Linear
+    runs-on: ubuntu-latest
+    if: |
+      github.event.action == 'opened' ||
+      github.event.action == 'reopened' ||
+      (github.event.action == 'closed' && github.event.pull_request.merged == true)
+
+    steps:
+      - name: Extract Linear ticket ID from branch
+        id: extract
+        run: |
+          BRANCH="${{ github.event.pull_request.head.ref }}"
+          echo "Branch: $BRANCH"
+          echo "Event: ${{ github.event.action }}"
+          TICKET=$(echo "$BRANCH" | grep -oiE 'poc-[0-9]+' | head -1 | tr '[:lower:]' '[:upper:]')
+          if [ -z "$TICKET" ]; then
+            echo "⚠️  Aucun ticket POC-XXX trouvé dans la branche '$BRANCH' — skip"
+            echo "found=false" >> $GITHUB_OUTPUT
+          else
+            echo "✅ Ticket trouvé: $TICKET"
+            echo "ticket=$TICKET" >> $GITHUB_OUTPUT
+            echo "found=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get Linear issue (ID + current status)
+        id: issue
+        if: steps.extract.outputs.found == 'true'
+        run: |
+          TICKET="${{ steps.extract.outputs.ticket }}"
+          RESPONSE=$(curl -s -X POST https://api.linear.app/graphql \
+            -H "Authorization: ${{ secrets.LINEAR_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"query\": \"{ issue(id: \\\"$TICKET\\\") { id title state { id name type } } }\"}")
+          echo "Response: $RESPONSE"
+          ISSUE_ID=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['data']['issue']['id'])" 2>/dev/null || echo "")
+          STATE_TYPE=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['data']['issue']['state']['type'])" 2>/dev/null || echo "")
+          STATE_NAME=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['data']['issue']['state']['name'])" 2>/dev/null || echo "")
+          if [ -z "$ISSUE_ID" ]; then
+            echo "❌ Impossible de trouver le ticket $TICKET sur Linear"
+            echo "found=false" >> $GITHUB_OUTPUT
+          else
+            echo "issue_id=$ISSUE_ID" >> $GITHUB_OUTPUT
+            echo "state_type=$STATE_TYPE" >> $GITHUB_OUTPUT
+            echo "state_name=$STATE_NAME" >> $GITHUB_OUTPUT
+            echo "found=true" >> $GITHUB_OUTPUT
+            echo "✅ Ticket $TICKET trouvé — statut actuel: $STATE_NAME ($STATE_TYPE)"
+          fi
+
+      # ── PR ouverte : Todo/Backlog → In Progress ──────────────────────────────
+      - name: Update ticket status → In Progress (PR ouverte)
+        if: |
+          steps.issue.outputs.found == 'true' &&
+          (github.event.action == 'opened' || github.event.action == 'reopened') &&
+          (steps.issue.outputs.state_type == 'unstarted' || steps.issue.outputs.state_type == 'backlog')
+        run: |
+          curl -s -X POST https://api.linear.app/graphql \
+            -H "Authorization: ${{ secrets.LINEAR_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"query\": \"mutation { issueUpdate(id: \\\"${{ steps.issue.outputs.issue_id }}\\\", input: { stateId: \\\"3c4c871e-05e4-4c3b-9d5c-9b776fcc3e05\\\" }) { success } }\"}"
+          echo "✅ Ticket ${{ steps.extract.outputs.ticket }} → In Progress"
+
+      - name: Skip status update (PR ouverte — ticket déjà en cours)
+        if: |
+          steps.issue.outputs.found == 'true' &&
+          (github.event.action == 'opened' || github.event.action == 'reopened') &&
+          steps.issue.outputs.state_type == 'started'
+        run: |
+          echo "ℹ️  Ticket ${{ steps.extract.outputs.ticket }} déjà en statut '${{ steps.issue.outputs.state_name }}'"
+
+      # ── PR mergée → develop : In Review + label Dev + commentaire ────────────
+      - name: Update ticket status → In Review (merge sur develop)
+        if: |
+          steps.issue.outputs.found == 'true' &&
+          github.event.action == 'closed' &&
+          github.event.pull_request.base.ref == 'develop'
+        run: |
+          curl -s -X POST https://api.linear.app/graphql \
+            -H "Authorization: ${{ secrets.LINEAR_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"query\": \"mutation { issueUpdate(id: \\\"${{ steps.issue.outputs.issue_id }}\\\", input: { stateId: \\\"88fbcfd6-f07e-4806-9669-c32b052905c6\\\" }) { success } }\"}"
+          echo "✅ Ticket ${{ steps.extract.outputs.ticket }} → In Review"
+
+      - name: Add label Dev (merge sur develop)
+        if: |
+          steps.issue.outputs.found == 'true' &&
+          github.event.action == 'closed' &&
+          github.event.pull_request.base.ref == 'develop'
+        env:
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+          ISSUE_ID: ${{ steps.issue.outputs.issue_id }}
+          TICKET: ${{ steps.extract.outputs.ticket }}
+          LABEL_NAME: Dev
+        run: |
+          python3 - << 'PYEOF'
+          import json, urllib.request, os
+          def linear(token, query):
+              data = json.dumps({"query": query}).encode()
+              req = urllib.request.Request("https://api.linear.app/graphql", data=data,
+                  headers={"Authorization": token, "Content-Type": "application/json"}, method="POST")
+              with urllib.request.urlopen(req) as r:
+                  return json.loads(r.read())
+          token = os.environ['LINEAR_API_KEY']
+          issue_id = os.environ['ISSUE_ID']
+          ticket = os.environ['TICKET']
+          label_name = os.environ['LABEL_NAME']
+          resp = linear(token, '{ issueLabels { nodes { id name } } }')
+          all_labels = resp.get('data', {}).get('issueLabels', {}).get('nodes', [])
+          matched = [l for l in all_labels if l['name'].lower() == label_name.lower()]
+          if not matched:
+              print(f"Warning: label '{label_name}' not found in workspace")
+              exit(0)
+          label_id = matched[0]['id']
+          resp2 = linear(token, '{ issue(id: ' + json.dumps(issue_id) + ') { labels { nodes { id } } } }')
+          current_ids = [l['id'] for l in resp2['data']['issue']['labels']['nodes']]
+          if label_id in current_ids:
+              print(f"Label '{label_name}' already on {ticket}")
+          else:
+              new_ids = json.dumps(current_ids + [label_id])
+              resp3 = linear(token, 'mutation { issueUpdate(id: ' + json.dumps(issue_id) + ', input: { labelIds: ' + new_ids + ' }) { success } }')
+              ok = resp3.get('data', {}).get('issueUpdate', {}).get('success', False)
+              print(f"Label '{label_name}' added to {ticket}" if ok else f"Error: {resp3}")
+          PYEOF
+
+      - name: Post comment on Linear ticket (merge sur develop)
+        if: |
+          steps.issue.outputs.found == 'true' &&
+          github.event.action == 'closed' &&
+          github.event.pull_request.base.ref == 'develop'
+        env:
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          COMMIT_SHA: ${{ github.sha }}
+          REPO: ${{ github.repository }}
+          ISSUE_ID: ${{ steps.issue.outputs.issue_id }}
+          TICKET: ${{ steps.extract.outputs.ticket }}
+        run: |
+          python3 - << 'PYEOF'
+          import json, urllib.request, os
+          issue_id = os.environ['ISSUE_ID']
+          ticket   = os.environ['TICKET']
+          token    = os.environ['LINEAR_API_KEY']
+          lines = [
+              "Deploye sur dev - pret pour QA",
+              "",
+              "PR : #" + os.environ['PR_NUMBER'] + " " + os.environ['PR_TITLE'] + " (" + os.environ['PR_URL'] + ")",
+              "Merge par : @" + os.environ['PR_AUTHOR'],
+              "Commit : " + os.environ['COMMIT_SHA'],
+              "Repo : " + os.environ['REPO'],
+              "",
+              "---",
+              "",
+              os.environ['PR_BODY'],
+          ]
+          comment = "\n".join(lines)
+          mutation = "mutation { commentCreate(input: { issueId: " + json.dumps(issue_id) + ", body: " + json.dumps(comment) + " }) { success } }"
+          payload = json.dumps({"query": mutation}).encode()
+          req = urllib.request.Request("https://api.linear.app/graphql", data=payload,
+              headers={"Authorization": token, "Content-Type": "application/json"}, method="POST")
+          with urllib.request.urlopen(req) as r:
+              resp = json.loads(r.read())
+              ok = resp.get("data", {}).get("commentCreate", {}).get("success", False)
+              print("Comment posted on " + ticket if ok else "Error: " + str(resp))
+          PYEOF
+
+      # ── PR mergée → main : label Preprod + commentaire ───────────────────────
+      # ⚠️  Statut "Done" réservé au QA/PO — ne jamais le setter ici
+      - name: Add label Preprod (merge sur main)
+        if: |
+          steps.issue.outputs.found == 'true' &&
+          github.event.action == 'closed' &&
+          github.event.pull_request.base.ref == 'main'
+        env:
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+          ISSUE_ID: ${{ steps.issue.outputs.issue_id }}
+          TICKET: ${{ steps.extract.outputs.ticket }}
+          LABEL_NAME: Preprod
+        run: |
+          python3 - << 'PYEOF'
+          import json, urllib.request, os
+          def linear(token, query):
+              data = json.dumps({"query": query}).encode()
+              req = urllib.request.Request("https://api.linear.app/graphql", data=data,
+                  headers={"Authorization": token, "Content-Type": "application/json"}, method="POST")
+              with urllib.request.urlopen(req) as r:
+                  return json.loads(r.read())
+          token = os.environ['LINEAR_API_KEY']
+          issue_id = os.environ['ISSUE_ID']
+          ticket = os.environ['TICKET']
+          label_name = os.environ['LABEL_NAME']
+          resp = linear(token, '{ issueLabels { nodes { id name } } }')
+          all_labels = resp.get('data', {}).get('issueLabels', {}).get('nodes', [])
+          matched = [l for l in all_labels if l['name'].lower() == label_name.lower()]
+          if not matched:
+              print(f"Warning: label '{label_name}' not found in workspace")
+              exit(0)
+          label_id = matched[0]['id']
+          resp2 = linear(token, '{ issue(id: ' + json.dumps(issue_id) + ') { labels { nodes { id } } } }')
+          current_ids = [l['id'] for l in resp2['data']['issue']['labels']['nodes']]
+          if label_id in current_ids:
+              print(f"Label '{label_name}' already on {ticket}")
+          else:
+              new_ids = json.dumps(current_ids + [label_id])
+              resp3 = linear(token, 'mutation { issueUpdate(id: ' + json.dumps(issue_id) + ', input: { labelIds: ' + new_ids + ' }) { success } }')
+              ok = resp3.get('data', {}).get('issueUpdate', {}).get('success', False)
+              print(f"Label '{label_name}' added to {ticket}" if ok else f"Error: {resp3}")
+          PYEOF
+
+      - name: Post comment on Linear ticket (merge sur main)
+        if: |
+          steps.issue.outputs.found == 'true' &&
+          github.event.action == 'closed' &&
+          github.event.pull_request.base.ref == 'main'
+        env:
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          COMMIT_SHA: ${{ github.sha }}
+          ISSUE_ID: ${{ steps.issue.outputs.issue_id }}
+          TICKET: ${{ steps.extract.outputs.ticket }}
+        run: |
+          python3 - << 'PYEOF'
+          import json, urllib.request, os
+          issue_id = os.environ['ISSUE_ID']
+          ticket   = os.environ['TICKET']
+          token    = os.environ['LINEAR_API_KEY']
+          lines = [
+              "Deploye en production",
+              "",
+              "Commit : " + os.environ['COMMIT_SHA'],
+              "PR : " + os.environ['PR_URL'],
+              "Par : @" + os.environ['PR_AUTHOR'],
+          ]
+          comment = "\n".join(lines)
+          mutation = "mutation { commentCreate(input: { issueId: " + json.dumps(issue_id) + ", body: " + json.dumps(comment) + " }) { success } }"
+          payload = json.dumps({"query": mutation}).encode()
+          req = urllib.request.Request("https://api.linear.app/graphql", data=payload,
+              headers={"Authorization": token, "Content-Type": "application/json"}, method="POST")
+          with urllib.request.urlopen(req) as r:
+              resp = json.loads(r.read())
+              ok = resp.get("data", {}).get("commentCreate", {}).get("success", False)
+              print("Comment posted on " + ticket if ok else "Error: " + str(resp))
+          PYEOF

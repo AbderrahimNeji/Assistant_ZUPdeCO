@@ -1,0 +1,53 @@
+---
+description: Règles spécifiques TypeORM et migrations pour le backend Ednov. Appliquer sur tout fichier migration, entity ou DTO.
+globs: ["migrations/**/*.ts", "src/**/*.entity.ts", "src/**/*.dto.ts", "data-source.ts"]
+alwaysApply: false
+---
+
+# Règles Migrations & TypeORM — Backend Ednov
+
+## Générer une migration
+
+Toujours utiliser le Makefile, jamais la commande TypeORM directement :
+```bash
+make migrate-create NAME=AddPhoneToUser
+# → génère migrations/1748XXXXXXXXXX-AddPhoneToUser.ts
+```
+
+## Nommage des migrations
+
+- **PascalCase** obligatoire : `AddPhoneToUser`, `CreateSessionTable`, `FixRoleGroupIndex`
+- Être descriptif : pas de `Migration1`, `Fix`, `Update`
+- Le timestamp est généré automatiquement, ne pas le modifier
+
+## Structure d'une migration correcte
+
+```typescript
+export class AddPhoneToUser1748000000000 implements MigrationInterface {
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.addColumn('user', new TableColumn({
+      name: 'phone',
+      type: 'varchar',
+      isNullable: true,
+    }));
+  }
+
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropColumn('user', 'phone');
+  }
+}
+```
+
+## Règles obligatoires
+
+- La méthode `down()` doit **toujours** être l'inverse exact de `up()`
+- Ne jamais utiliser `synchronize: true` dans la config TypeORM en dehors du dev local
+- Ne jamais modifier une migration déjà appliquée sur staging/prod → créer une nouvelle
+- Une migration ne doit jamais dépendre de données métier (seeders séparés)
+
+## Checklist avant commit
+
+- [ ] `npm run migration:run` → aucune erreur
+- [ ] `npm run migration:revert` → retour à l'état précédent sans erreur
+- [ ] `npm run migration:run` → ré-application sans erreur
+- [ ] La migration est dans la même PR que l'entité/DTO qui l'utilise

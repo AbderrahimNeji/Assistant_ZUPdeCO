@@ -1,0 +1,29 @@
+# CodeRabbit configuration for ednov-mobile-v2
+# https://docs.coderabbit.ai/reference/configuration
+
+language: "en-US"
+
+reviews:
+  profile: "assertive"
+  high_level_summary: true
+  review_status: true
+  path_filters:
+    - "!node_modules/**"
+    - "!.expo/**"
+    - "!dist/**"
+    - "!build/**"
+    - "!*.lock"
+    - "!package-lock.json"
+  path_instructions:
+    - path: "app/**"
+      instructions: "Expo Router file-based routing. Prefer layout components and proper route structure. Check accessibility (labels, roles) and NativeWind/Tailwind usage."
+    - path: "components/**"
+      instructions: "React Native components. Use NativeWind for styling, support both light/dark themes where relevant. Prefer reusable, accessible components."
+    - path: "hooks/**"
+      instructions: "Custom hooks. Prefer TanStack Query for server state; keep side effects and cleanup correct."
+    - path: "services/**"
+      instructions: "API and service layer. Validate error handling, typing, and base URL/env usage."
+    - path: "store/**"
+      instructions: "Zustand or other client state. Keep stores focused and avoid unnecessary re-renders."
+  auto_review:
+    enabled: true

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "129518665055",
+    "project_id": "zupdeco-development",
+    "storage_bucket": "zupdeco-development.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129518665055:android:60e0bec537d6a1c93e0aea",
+        "android_client_info": {
+          "package_name": "com.zupdeco.ednov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129518665055-6k2bd27816ki4r5ndtog5p31ud579bfl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsPnxEdohBxeqdHTreP0urvJOY_HAbYkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129518665055-6k2bd27816ki4r5ndtog5p31ud579bfl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,62 @@
+/* Dynamic theme colors - These will be overridden by JavaScript */
+:root {
+  /* Couleur 1 (Primary) - Boutons, icônes principales, menus sidebar */
+  --color-2-nuance-1: #2c5282;
+  --color-2-nuance-2: #1e3a5f;
+  --color-2-nuance-3: #1a2f4a;
+  --color-2-rgb: 44, 82, 130;
+
+  /* Couleur 2 (Secondary) - Titres, borders colorés, SPINNERS */
+  --color-1-nuance-1: #ff8c42;
+  --color-1-nuance-2: #ff6b2e;
+  --color-1-nuance-3: #e65a1a;
+  --color-1-rgb: 255, 140, 66;
+
+  /* Couleur 3 (Accent) - Éléments tertiaires */
+  --color-3-nuance-1: #2dd4bf;
+  --color-3-nuance-2: #14b8a6;
+  --color-3-nuance-3: #0f766e;
+  --color-3-rgb: 45, 212, 191;
+
+  /* ═══════════════════════════════════════
+     SEMANTIC STATUS COLORS (fixes)
+     ═══════════════════════════════════════ */
+
+  /* Status colors - Convention UI universelle */
+  --status-success: 10, 134, 66; /* Vert - "active", "completed", "validated" */
+  --status-danger: var(
+    --color-error
+  ); /* Rouge - "suspended", "inactive", "cancelled", "closed", "overdue" */
+  --status-neutral: 156, 163, 175; /* Gris - "deactivated" */
+  --status-pending: 202, 138, 4; /* Jaune plus foncé - "to-complete", "en attente" */
+  --status-warning: 245, 158, 11; /* Orange - warnings, "suspended" (establishments) */
+
+  /* Accent colors - Couleurs spécifiques qui peuvent être réutilisées */
+  --accent-purple: 124, 58, 237; /* Violet - session type "other", session status "closed" */
+  --accent-red-core: 220, 38, 38; /* Rouge cœur - pair type "binome coeur" */
+
+  /* Gender colors - Couleurs sémantiques pour les genres */
+  --gender-male: 59, 130, 246; /* Bleu - genre masculin */
+  --gender-female: 236, 72, 153; /* Rose - genre féminin */
+}
+
+.dark {
+  /* Dark mode color variants */
+  --color-2-nuance-1: #3d6ba8;
+  --color-2-nuance-2: #2c5282;
+  --color-2-nuance-3: #1e3a5f;
+  --color-2-rgb: 61, 107, 168;
+
+  --color-1-nuance-1: #ff7020;
+  --color-1-nuance-2: #e65a1a;
+  --color-1-nuance-3: #cc3f00;
+  --color-1-rgb: 255, 112, 32;
+
+  --color-3-nuance-1: #5eead4;
+  --color-3-nuance-2: #2dd4bf;
+  --color-3-nuance-3: #14b8a6;
+  --color-3-rgb: 94, 234, 212;
+
+  /* Dark mode - ajustements pour les couleurs sémantiques si nécessaire */
+  --status-neutral: 156, 163, 175;
+}

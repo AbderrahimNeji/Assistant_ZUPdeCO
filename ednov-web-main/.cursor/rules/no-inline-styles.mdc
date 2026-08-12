@@ -1,0 +1,53 @@
+# Forbidden: Inline CSS
+
+**NEVER** write inline CSS in components. Always use dedicated stylesheet files.
+
+## ❌ Avoid
+
+```tsx
+// Inline styles forbidden
+<div style={{ padding: '10px', color: 'red' }}>Content</div>
+
+<button style={{ backgroundColor: 'blue' }}>Click</button>
+
+const styles = { margin: '20px' };
+<div style={styles}>Content</div>
+```
+
+## ✅ Rule to follow
+
+**Always** put styles in the CSS file that **matches** the component/file being edited.
+
+### Expected layout
+
+- `Component.tsx` → styles in `component.css` (same folder or appropriate styles folder)
+- `FeaturePage.tsx` → styles in `feature-page.css`
+- Dashboard section → styles in `dashboard-sections.css`
+
+### Correct examples
+
+```tsx
+// Component.tsx
+import './component.css';
+
+<div className="component-container">Content</div>
+```
+
+```css
+/* component.css */
+.component-container {
+  padding: var(--spacing-md);
+  color: var(--color-text);
+}
+```
+
+## Rare exception
+
+Only **runtime-computed** styles (e.g. `left: ${x}px` from user coordinates) may use `style={}` — and those cases must include an explanatory comment.
+
+## Process
+
+1. Identify the CSS file for the component
+2. If it does not exist, create it with the project naming convention
+3. Add the needed CSS classes
+4. Use `className` in JSX/TSX

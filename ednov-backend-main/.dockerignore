@@ -1,0 +1,25 @@
+# Dependencies & build output (fresh install + build in Docker)
+node_modules
+dist
+coverage
+*.log
+
+# Env & secrets — never bake into image layers
+.env
+.env.*
+!.env.example
+
+# Git & IDE
+.git
+.gitignore
+.cursor
+.vscode
+*.md
+!README.md
+
+# Tests & local tooling
+test
+**/*.spec.ts
+**/*.e2e-spec.ts
+jest.config.*
+.eslintrc*

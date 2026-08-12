@@ -1,0 +1,1748 @@
+[
+  {
+    "id": "53234465-769d-40cc-99b1-387adaa8f36f",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "4d389bc2-d60b-43b1-97f3-b8dd51b9f26e",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "postits": {
+        "sortBy": "custom",
+        "positions": [
+          {
+            "id": "74dc3331-4623-42d0-82ed-e9931837c351",
+            "order": 0,
+            "section": "depasse"
+          },
+          {
+            "id": "16d6dc54-badc-4c0b-a8ef-eccc3db39262",
+            "order": 1,
+            "section": "done"
+          },
+          {
+            "id": "d6506fc1-6695-4462-beb0-92c4b3ad54dd",
+            "order": 2,
+            "section": "en_cours"
+          },
+          {
+            "id": "4ff5eabd-dff3-4a6b-9d71-c87e60dc97c2",
+            "order": 3,
+            "section": "en_cours"
+          },
+          {
+            "id": "08645f0d-10cf-4b38-967b-5ead7c96c55b",
+            "order": 4,
+            "section": "en_cours"
+          },
+          {
+            "id": "9bde5665-f64b-4252-aa75-55b01893f761",
+            "order": 5,
+            "section": "depasse"
+          },
+          {
+            "id": "31a5bd41-2f36-4b73-84f5-452bf3e7d6a8",
+            "order": 6,
+            "section": "depasse"
+          },
+          {
+            "id": "f0554345-c645-4839-ad25-b3d75a053cea",
+            "order": 7,
+            "section": "depasse"
+          },
+          {
+            "id": "78dd2ed6-525e-4639-ab17-ccf4bde1d780",
+            "order": 8,
+            "section": "depasse"
+          },
+          {
+            "id": "aac52ccd-d698-46cd-add6-8bac120b38c0",
+            "order": 9,
+            "section": "depasse"
+          },
+          {
+            "id": "6b42ceb5-8458-4c5a-9b79-6de9a4805858",
+            "order": 10,
+            "section": "depasse"
+          },
+          {
+            "id": "005d856d-bac0-48be-a34d-49a9faf442bc",
+            "order": 11,
+            "section": "depasse"
+          },
+          {
+            "id": "ab3d5930-52e0-4b9e-bcef-b9883b90cf95",
+            "order": 12,
+            "section": "depasse"
+          },
+          {
+            "id": "77f7499e-387e-49f0-8885-30a25aeb62b1",
+            "order": 13,
+            "section": "en_cours"
+          },
+          {
+            "id": "1bff0333-e221-4cad-8eeb-79bffd912790",
+            "order": 14,
+            "section": "en_cours"
+          },
+          {
+            "id": "5608c8ab-4ac5-4652-9779-15c6fb12f9b3",
+            "order": 15,
+            "section": "en_cours"
+          },
+          {
+            "id": "d9cc5ecb-1b14-4d6b-90c0-f465e3d1356c",
+            "order": 16,
+            "section": "done"
+          },
+          {
+            "id": "bd30f135-65b7-4e95-973d-b2158e238bc7",
+            "order": 17,
+            "section": "done"
+          },
+          {
+            "id": "ed01bab8-6730-4cb6-8066-962dd7e7c8d0",
+            "order": 18,
+            "section": "done"
+          },
+          {
+            "id": "8d85bc0a-4ab8-46d4-838c-a1aff04acb80",
+            "order": 19,
+            "section": "done"
+          },
+          {
+            "id": "a878161d-bc30-43c7-a073-292f8186990a",
+            "order": 20,
+            "section": "en_cours"
+          }
+        ]
+      },
+      "sidebar": {
+        "openMenus": [],
+        "isCollapsed": true,
+        "lastUpdated": "2026-03-11T12:01:22.029Z"
+      },
+      "sessions": {
+        "defaultView": "cards"
+      },
+      "dashboard": {
+        "sections": [
+          {
+            "id": "section-postits",
+            "order": 0,
+            "width": "full"
+          },
+          {
+            "id": "section-stats",
+            "order": 1,
+            "width": "1/3"
+          },
+          {
+            "id": "section-sessions",
+            "order": 2,
+            "width": "1/3"
+          },
+          {
+            "id": "section-calendar",
+            "order": 3,
+            "width": "1/2"
+          },
+          {
+            "id": "section-charts",
+            "order": 4,
+            "width": "1/2"
+          }
+        ]
+      },
+      "notifications": {
+        "rappelCRDelayMinutes": 60,
+        "rappelSeanceMinutesBefore": 15
+      }
+    },
+    "created_at": "2026-03-05 10:24:34.504562+00",
+    "updated_at": "2026-03-24 11:04:05.702957+00"
+  },
+  {
+    "id": "794bae43-f188-4b95-b3bd-fbf5d882bdb8",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "56898b0c-a26a-43ab-8ab4-471df3d9ffdc",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "pairs": {
+        "filterVisibility": {
+          "filter-type": true,
+          "filter-matiere": false,
+          "filter-periode": true,
+          "filter-date-range": false,
+          "filter-tutor-search": true,
+          "filter-etablissement": true,
+          "filter-student-search": true
+        }
+      },
+      "admins": {
+        "defaultView": "list",
+        "filterVisibility": {
+          "filter-dates": true,
+          "filter-statut": true,
+          "filter-etablissement": true
+        }
+      },
+      "levels": {
+        "defaultView": "list"
+      },
+      "tutors": {
+        "defaultView": "list",
+        "filterVisibility": {
+          "filter-statut": true,
+          "filter-matiere": false,
+          "filter-experience": true,
+          "filter-disponibilite": true,
+          "filter-etablissement": true
+        }
+      },
+      "postits": {
+        "sortBy": "custom",
+        "positions": [
+          {
+            "id": "4ff5eabd-dff3-4a6b-9d71-c87e60dc97c2",
+            "order": 0,
+            "section": "done"
+          },
+          {
+            "id": "74dc3331-4623-42d0-82ed-e9931837c351",
+            "order": 1,
+            "section": "depasse"
+          },
+          {
+            "id": "31a5bd41-2f36-4b73-84f5-452bf3e7d6a8",
+            "order": 2,
+            "section": "done"
+          },
+          {
+            "id": "16d6dc54-badc-4c0b-a8ef-eccc3db39262",
+            "order": 3,
+            "section": "done"
+          },
+          {
+            "id": "9bde5665-f64b-4252-aa75-55b01893f761",
+            "order": 4,
+            "section": "done"
+          },
+          {
+            "id": "78dd2ed6-525e-4639-ab17-ccf4bde1d780",
+            "order": 5,
+            "section": "depasse"
+          },
+          {
+            "id": "aac52ccd-d698-46cd-add6-8bac120b38c0",
+            "order": 6,
+            "section": "depasse"
+          },
+          {
+            "id": "6b42ceb5-8458-4c5a-9b79-6de9a4805858",
+            "order": 7,
+            "section": "depasse"
+          },
+          {
+            "id": "ab3d5930-52e0-4b9e-bcef-b9883b90cf95",
+            "order": 8,
+            "section": "depasse"
+          },
+          {
+            "id": "08645f0d-10cf-4b38-967b-5ead7c96c55b",
+            "order": 9,
+            "section": "done"
+          },
+          {
+            "id": "671177ae-fcf2-4a3e-bf3e-3d72a316f095",
+            "order": 10,
+            "section": "done"
+          },
+          {
+            "id": "d6506fc1-6695-4462-beb0-92c4b3ad54dd",
+            "order": 11,
+            "section": "depasse"
+          },
+          {
+            "id": "1470a8d4-f915-4eac-943d-52e771e74637",
+            "order": 12,
+            "section": "en_cours"
+          },
+          {
+            "id": "5608c8ab-4ac5-4652-9779-15c6fb12f9b3",
+            "order": 13,
+            "section": "en_cours"
+          },
+          {
+            "id": "77f7499e-387e-49f0-8885-30a25aeb62b1",
+            "order": 14,
+            "section": "en_cours"
+          },
+          {
+            "id": "d9cc5ecb-1b14-4d6b-90c0-f465e3d1356c",
+            "order": 15,
+            "section": "done"
+          },
+          {
+            "id": "bd30f135-65b7-4e95-973d-b2158e238bc7",
+            "order": 16,
+            "section": "done"
+          },
+          {
+            "id": "ed01bab8-6730-4cb6-8066-962dd7e7c8d0",
+            "order": 17,
+            "section": "done"
+          },
+          {
+            "id": "8d85bc0a-4ab8-46d4-838c-a1aff04acb80",
+            "order": 18,
+            "section": "done"
+          },
+          {
+            "id": "d6c37291-507f-4ade-a1ad-56bc2d7c1897",
+            "order": 19,
+            "section": "depasse"
+          },
+          {
+            "id": "26caa987-820d-46d1-b69f-1a4b95745e58",
+            "order": 20,
+            "section": "en_cours"
+          },
+          {
+            "id": "1d1ecbd3-0c03-4d67-a046-902a0904e58f",
+            "order": 21,
+            "section": "en_cours"
+          },
+          {
+            "id": "0d654f66-57b0-4112-87a2-2cf264199815",
+            "order": 22,
+            "section": "en_cours"
+          },
+          {
+            "id": "8a316041-72bc-4d5d-afcb-82feb8ea65fa",
+            "order": 23,
+            "section": "en_cours"
+          },
+          {
+            "id": "d4962813-ceee-4735-b19b-3712fa2207e5",
+            "order": 24,
+            "section": "en_cours"
+          },
+          {
+            "id": "c0164edf-a36e-408f-9eab-fe6142832bfc",
+            "order": 25,
+            "section": "en_cours"
+          }
+        ]
+      },
+      "reports": {
+        "defaultView": "list"
+      },
+      "sidebar": {
+        "openMenus": [
+          "Configuration"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-27T10:07:22.365Z"
+      },
+      "calendar": {
+        "defaultView": "month",
+        "eventSources": [
+          "session",
+          "postit",
+          "holiday"
+        ],
+        "vacationZoneId": "9243719d-9fca-4266-b771-cb55a711d57f"
+      },
+      "holidays": {
+        "defaultView": "list",
+        "filterVisibility": {
+          "filter-type": true,
+          "filter-periode": true,
+          "filter-date-range": true
+        }
+      },
+      "programs": {
+        "defaultView": "list"
+      },
+      "sessions": {
+        "defaultView": "list"
+      },
+      "students": {
+        "defaultView": "list",
+        "filterVisibility": {
+          "filter-dates": true,
+          "filter-statut": true,
+          "filter-subject": true,
+          "filter-is-minor": true,
+          "filter-grade-level": true,
+          "filter-etablissement": true,
+          "filter-special-needs": true
+        }
+      },
+      "subjects": {
+        "defaultView": "list"
+      },
+      "dashboard": {
+        "stats": {
+          "order": [
+            "stat-sessions-total",
+            "stat-reports-pending",
+            "stat-reports-completion",
+            "stat-students-active",
+            "stat-tutors-active",
+            "stat-establishments",
+            "stat-sessions-by-status",
+            "stat-attendance-rate",
+            "stat-vsc-reports",
+            "stat-sessions-month",
+            "stat-students-active",
+            "stat-sessions-hours",
+            "stat-students-accompanied",
+            "stat-sessions-completed"
+          ],
+          "visibility": {
+            "stat-vsc-reports": false,
+            "stat-students-active": false,
+            "stat-tutors-active": true,
+            "stat-establishments": true,
+            "stat-sessions-hours": true,
+            "stat-sessions-month": false,
+            "stat-sessions-total": true,
+            "stat-attendance-rate": false,
+            "stat-reports-pending": true,
+            "stat-students-active": true,
+            "stat-reports-completion": true,
+            "stat-sessions-by-status": false,
+            "stat-sessions-completed": true,
+            "stat-students-accompanied": true
+          }
+        }
+      },
+      "activities": {
+        "defaultView": "list"
+      },
+      "volunteers": {
+        "defaultView": "list"
+      },
+      "schoolYears": {
+        "defaultView": "list"
+      },
+      "vsc-reports": {
+        "defaultView": "list",
+        "filterVisibility": {
+          "filter-statut": true,
+          "filter-periode": true,
+          "filter-category": true,
+          "filter-date-range": true,
+          "filter-etablissement": true
+        }
+      },
+      "activityTypes": {
+        "defaultView": "cards"
+      },
+      "establishments": {
+        "defaultView": "list",
+        "filterVisibility": {
+          "establishment-dates": true,
+          "establishment-types": true,
+          "establishment-cities": true,
+          "establishment-quotas": true,
+          "establishment-search": true,
+          "establishment-calendar": true,
+          "establishment-statuses": true,
+          "establishment-departments": true
+        }
+      },
+      "matching-pairs": {
+        "defaultView": "list"
+      },
+      "admins-management": {
+        "defaultView": "list"
+      },
+      "levels-management": {
+        "defaultView": "list"
+      },
+      "sessions-matching": {
+        "filterVisibility": {
+          "filter-type": true,
+          "filter-level": true,
+          "filter-search": true,
+          "filter-matiere": true,
+          "filter-periode": true,
+          "filter-date-range": true,
+          "filter-etablissement": true
+        }
+      },
+      "students-matching": {
+        "filterVisibility": {
+          "filter-statut": true,
+          "filter-subject": false,
+          "filter-grade-level": true
+        }
+      },
+      "tutors-management": {
+        "defaultView": "list"
+      },
+      "reports-management": {
+        "defaultView": "list"
+      },
+      "holidays-management": {
+        "defaultView": "list"
+      },
+      "programs-management": {
+        "defaultView": "list"
+      },
+      "sessions-management": {
+        "defaultView": "list"
+      },
+      "students-management": {
+        "defaultView": "list"
+      },
+      "subjects-management": {
+        "defaultView": "list"
+      },
+      "activities-management": {
+        "defaultView": "list"
+      },
+      "volunteers-management": {
+        "defaultView": "list"
+      },
+      "vsc-reports-management": {
+        "defaultView": "list"
+      },
+      "school-years-management": {
+        "defaultView": "list"
+      },
+      "activity-types-management": {
+        "defaultView": "list"
+      },
+      "establishments-management": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-03-11 20:49:43.002019+00",
+    "updated_at": "2026-04-27 10:16:55.487509+00"
+  },
+  {
+    "id": "93651d7f-be3a-4e20-96a5-99fe3a092055",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "48d1a33b-9dbe-44ac-bcc3-a6689a226981",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 02:03:26.605855+00",
+    "updated_at": "2026-03-24 02:03:26.605855+00"
+  },
+  {
+    "id": "2672aaaf-0c22-4b3a-ba46-cbffdecf0ad9",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "55b03ef0-1d6a-46a2-b6fb-a0f51a861cef",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-03-31T14:56:26.012Z"
+      }
+    },
+    "created_at": "2026-03-24 03:03:12.295053+00",
+    "updated_at": "2026-03-31 14:56:26.397674+00"
+  },
+  {
+    "id": "ae02bd9d-9971-4b27-8aea-ef2e4afb5a9f",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "1c4f750b-4b30-406d-b10b-4b56a4423d68",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [],
+        "isCollapsed": false,
+        "lastUpdated": "2026-03-24T09:55:28.238Z"
+      },
+      "volunteers-management": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-03-24 09:46:49.839501+00",
+    "updated_at": "2026-03-24 10:03:24.613913+00"
+  },
+  {
+    "id": "05ff2d1c-a135-47fb-9c3b-1085ac9f1fb6",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "6c1ed9de-c0cf-4492-80ab-69f5683a645d",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 10:15:05.174448+00",
+    "updated_at": "2026-03-24 10:15:05.174448+00"
+  },
+  {
+    "id": "0c78161c-324a-4e82-b824-2ff1944efd9b",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "2880d7de-06c6-4313-abd1-aa924dfdb817",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 10:38:29.350527+00",
+    "updated_at": "2026-03-24 10:38:29.350527+00"
+  },
+  {
+    "id": "67465de9-b995-4c40-8f6a-1766601394cb",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "41a401d7-9766-4227-bb0f-a648b56c7f8c",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "establishments-management": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-03-24 11:03:44.40597+00",
+    "updated_at": "2026-03-24 11:18:22.052639+00"
+  },
+  {
+    "id": "016c5849-1d0a-4a29-ad1a-792437d1fafd",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "6aa34e39-483d-4ed3-8e61-6324c89c0e99",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [],
+        "isCollapsed": false,
+        "lastUpdated": "2026-03-24T11:32:41.738Z"
+      },
+      "sessions-management": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-03-24 11:31:57.683445+00",
+    "updated_at": "2026-03-24 11:41:52.233118+00"
+  },
+  {
+    "id": "af5cbdc1-e45f-4c4d-86b0-905536a524ec",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "e7992ed3-0b93-49e6-b223-aace7cfd3511",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 11:34:16.588784+00",
+    "updated_at": "2026-03-24 11:34:16.588784+00"
+  },
+  {
+    "id": "f8bde1e3-61b2-4f23-b92c-c1b6c7d30a30",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "3c5881de-949d-424b-9812-0bc436cdcda1",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 11:38:30.42172+00",
+    "updated_at": "2026-03-24 11:38:30.42172+00"
+  },
+  {
+    "id": "fbe265aa-cb3c-4a0e-bbe2-3dc866d1c600",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "59000a3f-d626-4b96-836f-d2b7e1dc6674",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 11:53:21.759041+00",
+    "updated_at": "2026-03-24 11:53:21.759041+00"
+  },
+  {
+    "id": "8cbc44bb-b249-4dae-966f-c7cabf26782b",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "6f760dfe-94de-4353-8f60-fe7ed6fc37da",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 12:05:24.512744+00",
+    "updated_at": "2026-03-24 12:05:24.512744+00"
+  },
+  {
+    "id": "75441a9a-8d34-4aa7-ac44-313660326d7f",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "4662ca76-02c4-4416-b613-179cc7a8b67f",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 12:45:50.312353+00",
+    "updated_at": "2026-03-24 12:45:50.312353+00"
+  },
+  {
+    "id": "db02ce33-84a7-4643-a920-ed8c7ef1b11d",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "2959ac4b-e69d-44d7-8ec0-06b4d354e97a",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Configuration"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-04T00:59:24.789Z"
+      },
+      "volunteers": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-03-24 12:47:48.897845+00",
+    "updated_at": "2026-04-04 00:59:25.950555+00"
+  },
+  {
+    "id": "9b1db151-13be-4ba1-a26e-e3ca7148ff1d",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "0e7588dd-cf6e-4211-ba8f-316c6f2c4867",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 12:48:15.250752+00",
+    "updated_at": "2026-03-24 12:48:15.250752+00"
+  },
+  {
+    "id": "7523ea6d-cd48-4355-8b3b-5a136cc75558",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "c0719b58-846d-4a86-99c3-eb6197f06eaf",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [],
+        "isCollapsed": false,
+        "lastUpdated": "2026-03-31T09:33:30.741Z"
+      }
+    },
+    "created_at": "2026-03-24 13:07:11.14652+00",
+    "updated_at": "2026-03-31 09:33:30.451028+00"
+  },
+  {
+    "id": "16451839-47ec-430c-b58d-6704b515bad8",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "f30b7952-521b-4bef-952f-8cabe3f50f79",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 13:59:00.21125+00",
+    "updated_at": "2026-03-24 13:59:00.21125+00"
+  },
+  {
+    "id": "a6b158e9-ed6a-4ef5-b67f-109f9012f8bb",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "f35c1f63-221a-43d5-ae1c-fb1e96b3e750",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 14:11:30.906539+00",
+    "updated_at": "2026-03-24 14:11:30.906539+00"
+  },
+  {
+    "id": "81b23907-c5e3-4ed3-92b3-616fdbbef414",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "79aa0954-fdcf-492c-8354-17515ed0eb86",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-24 14:15:25.411748+00",
+    "updated_at": "2026-03-24 14:15:25.411748+00"
+  },
+  {
+    "id": "c6bc3449-e60f-4175-be0c-5c56d1842f67",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "99b483d3-0597-4a97-81e5-493673ea21f3",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Tutorat"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-04T00:35:31.616Z"
+      }
+    },
+    "created_at": "2026-03-24 14:16:27.759739+00",
+    "updated_at": "2026-04-04 00:35:32.115922+00"
+  },
+  {
+    "id": "8073f155-e8eb-42d8-a73e-c65c5e0d70f3",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "dda2b50d-37b0-410c-a04a-be1b9535b263",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-25 14:41:18.308582+00",
+    "updated_at": "2026-03-25 14:41:18.308582+00"
+  },
+  {
+    "id": "69d483d1-ba88-4395-bcab-84e028ee8458",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "0ef5eb25-1f28-4ac0-8f98-aec67d356cd9",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-26 12:38:40.534399+00",
+    "updated_at": "2026-03-26 12:38:40.534399+00"
+  },
+  {
+    "id": "b4f5f9b4-64b3-4be9-b7cc-916b69346443",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "c6170184-b600-4855-8c94-53ab47f7f81d",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [],
+        "isCollapsed": false,
+        "lastUpdated": "2026-03-26T12:53:58.152Z"
+      }
+    },
+    "created_at": "2026-03-26 12:44:33.324582+00",
+    "updated_at": "2026-03-26 12:53:58.779341+00"
+  },
+  {
+    "id": "28a7121c-91d9-4e63-aaa4-70183c7e6b8c",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "c7cc095e-ead1-445a-829e-1a64d9a1f8a5",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-26 13:05:48.542401+00",
+    "updated_at": "2026-03-26 13:05:48.542401+00"
+  },
+  {
+    "id": "c3f1b1e1-05e4-4ce8-ab0d-5ca557505485",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "2a03896e-5889-465e-aaa6-1f00bcba0ecb",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-26 13:21:31.569718+00",
+    "updated_at": "2026-03-26 13:21:31.569718+00"
+  },
+  {
+    "id": "de8c1900-6f80-49db-96be-d3a866ab34df",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "a0722b3a-cb80-4783-afb4-ee122e859eb2",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "tutors": {
+        "filterVisibility": {
+          "filter-statut": true,
+          "filter-matiere": true,
+          "filter-experience": true,
+          "filter-disponibilite": true,
+          "filter-etablissement": true
+        }
+      },
+      "sidebar": {
+        "openMenus": [],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-17T14:41:43.235Z"
+      }
+    },
+    "created_at": "2026-03-27 12:26:56.987644+00",
+    "updated_at": "2026-04-17 14:41:43.690909+00"
+  },
+  {
+    "id": "4487d7da-1461-44dd-9fec-50812f8d4f0a",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "b8e126fa-c4a3-4ee6-a047-df60854f47af",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "pairs": {
+        "filterVisibility": {
+          "filter-type": true,
+          "filter-matiere": false,
+          "filter-periode": true,
+          "filter-date-range": false,
+          "filter-tutor-search": true,
+          "filter-etablissement": true,
+          "filter-student-search": true
+        }
+      },
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-02T10:17:33.709Z"
+      },
+      "dashboard": {
+        "stats": {
+          "order": [
+            "stat-sessions-total",
+            "stat-reports-pending",
+            "stat-reports-completion",
+            "stat-students-active",
+            "stat-tutors-active",
+            "stat-establishments",
+            "stat-sessions-by-status",
+            "stat-attendance-rate",
+            "stat-vsc-reports",
+            "stat-sessions-month",
+            "stat-students-active",
+            "stat-sessions-hours",
+            "stat-students-accompanied",
+            "stat-sessions-completed"
+          ],
+          "visibility": {
+            "stat-vsc-reports": false,
+            "stat-students-active": false,
+            "stat-tutors-active": true,
+            "stat-establishments": true,
+            "stat-sessions-hours": true,
+            "stat-sessions-month": false,
+            "stat-sessions-total": true,
+            "stat-attendance-rate": false,
+            "stat-reports-pending": true,
+            "stat-students-active": true,
+            "stat-reports-completion": true,
+            "stat-sessions-by-status": false,
+            "stat-sessions-completed": true,
+            "stat-students-accompanied": true
+          }
+        }
+      },
+      "matching-pairs": {
+        "defaultView": "list"
+      },
+      "tutors-management": {
+        "defaultView": "cards"
+      },
+      "reports-management": {
+        "defaultView": "cards"
+      },
+      "sessions-management": {
+        "defaultView": "list"
+      },
+      "students-management": {
+        "defaultView": "list"
+      },
+      "vsc-reports-management": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-03-27 12:34:44.638314+00",
+    "updated_at": "2026-04-02 10:22:40.045405+00"
+  },
+  {
+    "id": "dc4250a2-3074-426a-88a0-77d052ad7ed6",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "edca9e7f-caf1-4153-a3cb-3e734ff597c9",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Tutorat"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-03-31T09:39:49.019Z"
+      },
+      "sessions-management": {
+        "defaultView": "cards"
+      }
+    },
+    "created_at": "2026-03-27 12:44:51.684267+00",
+    "updated_at": "2026-03-31 09:53:09.350794+00"
+  },
+  {
+    "id": "1d86b141-fe11-4f17-975c-d084130c5a78",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "15883fae-ced1-4ca7-8366-86b3a5d7bf00",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "notifications": {
+        "rappelCRDelayMinutes": 30
+      }
+    },
+    "created_at": "2026-03-28 07:16:53.048927+00",
+    "updated_at": "2026-03-28 07:29:49.112593+00"
+  },
+  {
+    "id": "420fba60-fca5-4c98-8c77-788080b87abb",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "91608cf0-c6db-47df-bb00-d78ac6e8a385",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-30 11:47:31.986786+00",
+    "updated_at": "2026-03-30 11:47:31.986786+00"
+  },
+  {
+    "id": "803257fa-81bd-47a0-add5-c4789d6f329a",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "bf39e862-8d8e-4090-b37f-3b05141509ca",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-30 14:51:27.26354+00",
+    "updated_at": "2026-03-30 14:51:27.26354+00"
+  },
+  {
+    "id": "326364fb-123c-4b42-b7e4-d4570085ddd1",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "205180d0-b6aa-437f-b31a-926aa6d6b3c7",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "matching-pairs": {
+        "defaultView": "cards"
+      }
+    },
+    "created_at": "2026-03-30 14:56:36.348512+00",
+    "updated_at": "2026-03-30 15:00:20.019228+00"
+  },
+  {
+    "id": "61062c59-61a3-4862-b2a6-470ac717d3b1",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "5631e6a4-432b-4533-992c-41e75832ba35",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "tutors-management": {
+        "defaultView": "cards"
+      }
+    },
+    "created_at": "2026-03-30 20:29:00.5782+00",
+    "updated_at": "2026-03-30 20:43:17.421737+00"
+  },
+  {
+    "id": "eeac96eb-66e8-4ab1-a67c-b95af885485e",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "fab55b3d-3d06-4b27-b712-84cbc1a1a46a",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-30 20:46:55.267739+00",
+    "updated_at": "2026-03-30 20:46:55.267739+00"
+  },
+  {
+    "id": "d555ba19-118f-4e21-97ad-0651b943fa87",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "c4a1bd87-4c01-406e-bbbf-51eacd078cc8",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-03-31T15:23:06.526Z"
+      },
+      "reports-management": {
+        "defaultView": "list"
+      },
+      "students-management": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-03-30 20:50:09.690162+00",
+    "updated_at": "2026-03-31 15:26:13.178726+00"
+  },
+  {
+    "id": "410f79bd-7241-495c-b0ed-10d37e1d16ff",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "dcb5d082-e808-4873-a92b-f2a296c669b9",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-31 09:50:24.217612+00",
+    "updated_at": "2026-03-31 09:50:24.217612+00"
+  },
+  {
+    "id": "e996089e-babe-419c-8518-16c253e0c568",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "47cbdfb8-ea68-411a-b125-fcfac07c74d0",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Ressources"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-03-31T15:47:48.342Z"
+      }
+    },
+    "created_at": "2026-03-31 15:46:16.237857+00",
+    "updated_at": "2026-03-31 15:47:48.97856+00"
+  },
+  {
+    "id": "1cc16031-8515-4849-8393-6dea55b89fa4",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "8d464360-3f16-4fa9-a533-92557c6e5756",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-03-31T15:48:47.133Z"
+      }
+    },
+    "created_at": "2026-03-31 15:48:30.455017+00",
+    "updated_at": "2026-03-31 15:48:47.567206+00"
+  },
+  {
+    "id": "2197d11a-d871-4658-85d3-bbdfa489a0de",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "c78f2650-7e4d-4903-8ff9-05ec179f0c86",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-03-31 16:12:24.271115+00",
+    "updated_at": "2026-03-31 16:12:24.271115+00"
+  },
+  {
+    "id": "f9b038e9-eb87-4dba-bad3-b9ac88297c93",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "d7bb6616-e2db-43d2-b8f0-1ace8bb56e41",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Tutorat"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T00:16:53.134Z"
+      }
+    },
+    "created_at": "2026-04-01 00:15:37.550021+00",
+    "updated_at": "2026-04-01 00:16:53.595306+00"
+  },
+  {
+    "id": "8e9996a1-6da1-4709-a3c0-5758316cd893",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "9568172f-19a7-4dba-925b-5e7e2764974f",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T09:12:51.818Z"
+      }
+    },
+    "created_at": "2026-04-01 00:20:39.491661+00",
+    "updated_at": "2026-04-01 09:12:52.320905+00"
+  },
+  {
+    "id": "f4f282f3-0e49-4165-98e1-14925db9742e",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "ff9f17f9-c436-43bc-8030-141165bb795e",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T00:32:13.803Z"
+      }
+    },
+    "created_at": "2026-04-01 00:29:04.251596+00",
+    "updated_at": "2026-04-01 00:32:14.590034+00"
+  },
+  {
+    "id": "ed2a12d4-a1dd-46ef-b081-5a3ff36810eb",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "7f4db4dc-2600-4fe9-a780-bcb00c6cff6f",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Tutorat"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T06:05:17.927Z"
+      },
+      "calendar": {
+        "defaultView": "month",
+        "eventSources": [
+          "session",
+          "postit",
+          "holiday"
+        ],
+        "vacationZoneId": "9243719d-9fca-4266-b771-cb55a711d57f"
+      }
+    },
+    "created_at": "2026-04-01 00:33:44.220268+00",
+    "updated_at": "2026-04-24 08:27:39.638836+00"
+  },
+  {
+    "id": "bec94740-01aa-440e-99a2-d95377dc1794",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "fcbdb874-c8db-4a63-93f3-505b5b8d3d2b",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-01 01:08:19.492931+00",
+    "updated_at": "2026-04-01 01:08:19.492931+00"
+  },
+  {
+    "id": "a0bc906c-16ec-47ee-9415-ccb50d5bbb64",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "c39d6154-5ddc-4436-9625-82b20321ec8b",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Configuration"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T02:01:06.631Z"
+      }
+    },
+    "created_at": "2026-04-01 01:10:01.304861+00",
+    "updated_at": "2026-04-01 02:01:06.93566+00"
+  },
+  {
+    "id": "313155d5-02d7-4dbd-bd0b-f1851e0b3d9c",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "ba4762b0-29cb-435d-b337-37944b00ca38",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-01 01:10:28.421656+00",
+    "updated_at": "2026-04-01 01:10:28.421656+00"
+  },
+  {
+    "id": "aa6b90a0-587c-4f75-b034-c5390d1b45d2",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "cce737f5-91c5-4930-952e-8781314dbece",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-01 01:11:08.784527+00",
+    "updated_at": "2026-04-01 01:11:08.784527+00"
+  },
+  {
+    "id": "17145021-8d22-44cd-bcb8-bde9e7c62d17",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "7f9f15fa-b7c5-42e4-84aa-86f37e7ef41c",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T06:03:22.798Z"
+      }
+    },
+    "created_at": "2026-04-01 01:11:44.624023+00",
+    "updated_at": "2026-04-01 06:03:23.173377+00"
+  },
+  {
+    "id": "a623fc30-2339-4e58-9957-572e093b4067",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "c8157894-f79d-4933-a33f-12531aed7083",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Tutorat"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T09:34:01.033Z"
+      }
+    },
+    "created_at": "2026-04-01 01:41:25.139864+00",
+    "updated_at": "2026-04-01 09:34:01.5057+00"
+  },
+  {
+    "id": "b9898c99-fb36-4952-8b7a-eddff9f31881",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "ebf95afd-2750-4be3-a903-d2b3341f1f32",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-01 01:51:19.628896+00",
+    "updated_at": "2026-04-01 01:51:19.628896+00"
+  },
+  {
+    "id": "b66a090b-c474-4de5-af7a-3d2935b99644",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "2591689a-283d-4852-b8e2-ca6531ea2c03",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-01 01:58:31.073048+00",
+    "updated_at": "2026-04-01 01:58:31.073048+00"
+  },
+  {
+    "id": "79d8ba98-4749-410b-87cb-8ea424e4e6cc",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "b795776f-c15f-4dac-98c6-391e582618ea",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-01 02:09:21.619263+00",
+    "updated_at": "2026-04-01 02:09:21.619263+00"
+  },
+  {
+    "id": "f43f623b-1336-457c-b389-66951918423b",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "91553a67-213f-45cf-8be1-ad9a532df8c8",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T02:20:49.308Z"
+      }
+    },
+    "created_at": "2026-04-01 02:20:28.405714+00",
+    "updated_at": "2026-04-01 02:20:49.632934+00"
+  },
+  {
+    "id": "343548cb-15b5-4218-8aa3-aca8b9ff8363",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "09f15eb9-3684-4e96-88df-c2286399e2c7",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Configuration"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T06:02:07.707Z"
+      }
+    },
+    "created_at": "2026-04-01 05:53:16.960561+00",
+    "updated_at": "2026-04-01 06:02:08.089555+00"
+  },
+  {
+    "id": "f532bbd8-6e51-427f-8f22-33868dce7771",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-01 07:03:52.413439+00",
+    "updated_at": "2026-04-01 07:03:52.413439+00"
+  },
+  {
+    "id": "46310397-db8d-46e4-aeb5-445571008a68",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "a07e04ea-0149-4269-9908-ff0baa286b09",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Configuration"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T08:27:48.937Z"
+      }
+    },
+    "created_at": "2026-04-01 08:26:36.457817+00",
+    "updated_at": "2026-04-01 08:27:49.327476+00"
+  },
+  {
+    "id": "b14ee6c4-bdd1-47ea-bc99-a21ed2d4f97c",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "560a6d77-cc82-455a-8aee-896a38095edc",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T08:32:43.128Z"
+      }
+    },
+    "created_at": "2026-04-01 08:30:37.635584+00",
+    "updated_at": "2026-04-01 08:32:43.678555+00"
+  },
+  {
+    "id": "e9504c39-20f5-4b63-8482-69f348d24cea",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "6ec1219f-0f0a-49a9-9cea-f80b55a185c7",
+    "is_dark_mode": true,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Usagers"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-01T08:50:10.711Z"
+      }
+    },
+    "created_at": "2026-04-01 08:36:07.794259+00",
+    "updated_at": "2026-04-01 08:50:11.12846+00"
+  },
+  {
+    "id": "25d6a0a0-7e1f-4e56-8209-1399f25588b3",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "73b2d635-fe95-4716-9157-59523048d61a",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-07 09:31:24.217843+00",
+    "updated_at": "2026-04-07 09:31:24.217843+00"
+  },
+  {
+    "id": "f38f26e2-4f2c-4995-a7f3-8bd779efe476",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "6afa9eaa-0ffa-40a6-b555-c3394a24cb4c",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-08 08:25:59.234846+00",
+    "updated_at": "2026-04-08 08:25:59.234846+00"
+  },
+  {
+    "id": "9704147c-aa8b-4659-8dc2-dd2924770370",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "823af336-b4df-42ff-960b-039213f01870",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-08 08:31:04.198654+00",
+    "updated_at": "2026-04-08 08:31:04.198654+00"
+  },
+  {
+    "id": "aabd2864-44b2-4d8b-bd85-a1f1a5eb9a0b",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "b59d15f4-f0bc-4278-b8f2-7cfa645fbaa9",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-09 07:17:04.735513+00",
+    "updated_at": "2026-04-09 07:17:04.735513+00"
+  },
+  {
+    "id": "5322d00e-edcc-4bcf-a444-222087ca7948",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "85a4d6ab-9a84-437a-b61f-9036c7f93181",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "students": {
+        "filterVisibility": {
+          "filter-statut": true,
+          "filter-subject": true,
+          "filter-grade-level": true
+        }
+      },
+      "dashboard": {
+        "sections": [
+          {
+            "id": "section-calendar",
+            "order": 0,
+            "width": "full"
+          },
+          {
+            "id": "section-stats",
+            "order": 1,
+            "width": "full"
+          },
+          {
+            "id": "section-postits",
+            "order": 2,
+            "width": "full"
+          },
+          {
+            "id": "section-sessions",
+            "order": 3,
+            "width": "1/3"
+          },
+          {
+            "id": "section-pairs",
+            "order": 4,
+            "width": "1/3"
+          },
+          {
+            "id": "section-tutors",
+            "order": 5,
+            "width": "1/3"
+          },
+          {
+            "id": "section-sessions-chart",
+            "order": 6,
+            "width": "full"
+          },
+          {
+            "id": "section-resources-chart",
+            "order": 7,
+            "width": "full"
+          },
+          {
+            "id": "section-establishments",
+            "order": 8,
+            "width": "full"
+          },
+          {
+            "id": "section-students",
+            "order": 9,
+            "width": "full"
+          },
+          {
+            "id": "section-volunteers",
+            "order": 10,
+            "width": "full"
+          },
+          {
+            "id": "section-reports",
+            "order": 11,
+            "width": "full"
+          },
+          {
+            "id": "section-vsc-reports",
+            "order": 12,
+            "width": "full"
+          },
+          {
+            "id": "section-holidays",
+            "order": 13,
+            "width": "full"
+          }
+        ]
+      },
+      "reports-management": {
+        "defaultView": "list"
+      },
+      "students-management": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-04-09 07:31:24.581773+00",
+    "updated_at": "2026-04-10 09:24:38.496245+00"
+  },
+  {
+    "id": "08500045-360d-4c80-87ff-0eeb5f47b45b",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "b81615ad-8e69-4298-98c7-9295c8a978de",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sidebar": {
+        "openMenus": [
+          "Tutorat"
+        ],
+        "isCollapsed": false,
+        "lastUpdated": "2026-04-23T10:43:36.952Z"
+      },
+      "sessions": {
+        "filterVisibility": {
+          "filter-type": true,
+          "filter-statut": true,
+          "filter-periode": true
+        }
+      },
+      "reports-management": {
+        "defaultView": "list"
+      },
+      "sessions-management": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-04-09 07:45:27.09922+00",
+    "updated_at": "2026-04-23 10:44:24.014048+00"
+  },
+  {
+    "id": "3567f5ab-0c78-45ae-a58e-8bb649a72122",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "c65d21c7-73eb-4d50-8e08-55417966888b",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-09 07:56:22.179531+00",
+    "updated_at": "2026-04-09 07:56:22.179531+00"
+  },
+  {
+    "id": "c8569151-edc2-4220-9270-f96e4017f00f",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "7110a6c2-8232-4801-939f-bb41e09798c3",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-09 08:18:16.645874+00",
+    "updated_at": "2026-04-09 08:18:16.645874+00"
+  },
+  {
+    "id": "fa4fcb35-d98f-4130-8d00-901be922cb2a",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-09 08:23:17.005417+00",
+    "updated_at": "2026-04-09 08:23:17.005417+00"
+  },
+  {
+    "id": "3b11b22a-a0ce-4eea-b3a9-39decf71b231",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "189e3a37-7509-4124-8c4a-da2fb84370e6",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-09 08:46:10.923356+00",
+    "updated_at": "2026-04-09 08:46:10.923356+00"
+  },
+  {
+    "id": "52a49322-aad9-4c18-80c6-5586c36ee031",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "1d678750-a39c-4063-8a0d-1160d64084d4",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-10 08:06:54.058545+00",
+    "updated_at": "2026-04-10 08:06:54.058545+00"
+  },
+  {
+    "id": "b0ef12e9-a743-4c3e-b722-a572fb9d1de5",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "cf7d9a59-ac01-4839-a5c7-df265ff78252",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-10 08:09:36.631255+00",
+    "updated_at": "2026-04-10 08:09:36.631255+00"
+  },
+  {
+    "id": "35861c19-2886-4c33-811f-f0ab18cbba8d",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "c6292635-7d57-463f-8158-2aac929b3419",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-10 08:17:30.514915+00",
+    "updated_at": "2026-04-10 08:28:58.946528+00"
+  },
+  {
+    "id": "61f18c7f-83b3-4d9e-855b-aed455481ca9",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "1dc39b79-ccdf-4111-bf3e-599390d52cc0",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-10 08:27:30.276054+00",
+    "updated_at": "2026-04-10 08:27:30.276054+00"
+  },
+  {
+    "id": "b511f934-f2a4-4fdb-b7c4-0ba41362ea57",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "086d8872-ec93-441c-a030-d5068fb7062d",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-10 10:24:54.038087+00",
+    "updated_at": "2026-04-10 10:24:54.038087+00"
+  },
+  {
+    "id": "f4934998-3ac8-4c3b-85fd-bcc126b84811",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "ee5ab2b2-1585-4d2e-8fdd-50e20b8b6136",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-14 11:08:17.629505+00",
+    "updated_at": "2026-04-14 11:08:17.629505+00"
+  },
+  {
+    "id": "94678fb9-7cba-4690-a767-4858168e19ec",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "312ef13c-1eb6-4173-a828-79b4f4f54ba3",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-14 11:13:45.792963+00",
+    "updated_at": "2026-04-14 11:13:45.792963+00"
+  },
+  {
+    "id": "ed58ee1d-1b8d-4df1-87d8-3abc65ca95d2",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "289bc423-02d1-4a72-aed1-8006f3fdd784",
+    "is_dark_mode": true,
+    "interface_configs": {},
+    "created_at": "2026-04-14 11:18:58.800835+00",
+    "updated_at": "2026-04-14 11:40:37.665519+00"
+  },
+  {
+    "id": "ed18766d-a288-454c-9410-17e2db1323ee",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "24105a9c-0ef7-483e-a14b-f8b66c63c1a9",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-14 15:20:38.145619+00",
+    "updated_at": "2026-04-14 15:20:38.145619+00"
+  },
+  {
+    "id": "d6b5b84f-bcd7-4172-8cb0-0f7632f02ea3",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "7cdfe3e6-a997-4d6c-a659-f3fbddec5d6e",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-14 15:25:30.773823+00",
+    "updated_at": "2026-04-14 15:25:30.773823+00"
+  },
+  {
+    "id": "e7999e77-53b0-424f-8cf3-d287cd887ce3",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "bf9be8e2-929c-4a4b-99ad-b29abe0d6ceb",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-14 15:29:11.091536+00",
+    "updated_at": "2026-04-14 15:29:11.091536+00"
+  },
+  {
+    "id": "efcc310a-5654-4981-8e9e-b6b8ef1e94c2",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "29d62d4c-1248-46ea-9f04-9ecc61d4730a",
+    "is_dark_mode": false,
+    "interface_configs": {
+      "sessions": {
+        "filterVisibility": {
+          "filter-type": true,
+          "filter-level": false,
+          "filter-statut": true,
+          "filter-matiere": false,
+          "filter-periode": false,
+          "filter-date-range": true,
+          "filter-etablissement": false
+        }
+      },
+      "dashboard": {
+        "stats": {
+          "order": [
+            "stat-sessions-total",
+            "stat-reports-pending",
+            "stat-reports-completion",
+            "stat-students-active",
+            "stat-tutors-active",
+            "stat-establishments",
+            "stat-sessions-by-status",
+            "stat-attendance-rate",
+            "stat-vsc-reports",
+            "stat-sessions-month",
+            "stat-students-active",
+            "stat-sessions-hours",
+            "stat-students-accompanied",
+            "stat-sessions-completed"
+          ],
+          "visibility": {
+            "stat-vsc-reports": false,
+            "stat-students-active": false,
+            "stat-tutors-active": true,
+            "stat-establishments": true,
+            "stat-sessions-hours": true,
+            "stat-sessions-month": false,
+            "stat-sessions-total": true,
+            "stat-attendance-rate": false,
+            "stat-reports-pending": true,
+            "stat-students-active": true,
+            "stat-reports-completion": true,
+            "stat-sessions-by-status": false,
+            "stat-sessions-completed": true,
+            "stat-students-accompanied": true
+          }
+        }
+      },
+      "matching-pairs": {
+        "defaultView": "list"
+      }
+    },
+    "created_at": "2026-04-15 07:47:48.185736+00",
+    "updated_at": "2026-04-15 08:56:23.097802+00"
+  },
+  {
+    "id": "1529d085-c23e-4694-9f80-4d9cb0f5c595",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "f03e1262-4929-4897-bfaa-a431585906af",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-15 09:01:27.631983+00",
+    "updated_at": "2026-04-15 09:01:27.631983+00"
+  },
+  {
+    "id": "c2e1cf37-3d7b-40dc-87a0-0760fa23a173",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "2ec5d6e4-0588-440b-918b-8d064e80fe22",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-17 12:49:22.813338+00",
+    "updated_at": "2026-04-17 12:49:22.813338+00"
+  },
+  {
+    "id": "ae4dd306-5718-4e6e-bace-08df71b9d1e2",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "8414f05d-7056-49f4-be7e-f70996f214e7",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-20 15:24:08.414721+00",
+    "updated_at": "2026-04-20 15:24:08.414721+00"
+  },
+  {
+    "id": "e6acfe8f-84aa-48f8-b292-b429e71ff7e8",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "296cbe87-a2d3-4d55-b7c6-ef07fe50cb31",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-21 11:20:07.613913+00",
+    "updated_at": "2026-04-21 11:20:07.613913+00"
+  },
+  {
+    "id": "ef676008-77bf-452b-9462-3baff1c86520",
+    "company_id": "354eb5d0-17a4-4906-8b27-7c6339bdcd70",
+    "user_id": "fd1ba668-d547-413d-bd54-fb4c0504c926",
+    "is_dark_mode": false,
+    "interface_configs": {},
+    "created_at": "2026-04-21 15:29:56.376422+00",
+    "updated_at": "2026-04-21 15:29:56.376422+00"
+  }
+]

@@ -1,0 +1,751 @@
+/* ============================================
+   UNAUTHORIZED PAGE — Design + Animations
+   ============================================ */
+
+/* ── Root ─────────────────────────────────── */
+.unauth-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Background orbs ─────────────────────── */
+.unauth-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(70px);
+  will-change: transform;
+}
+
+.unauth-orb-1 {
+  width: 500px;
+  height: 500px;
+  top: -120px;
+  right: -100px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, rgb(var(--color-error)) 15%, transparent),
+    transparent 70%
+  );
+  animation: orb-drift-1 18s ease-in-out infinite;
+}
+
+.unauth-orb-2 {
+  width: 380px;
+  height: 380px;
+  bottom: -80px;
+  left: -80px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-1-nuance-1) 10%, transparent),
+    transparent 70%
+  );
+  animation: orb-drift-2 22s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+.unauth-orb-3 {
+  width: 260px;
+  height: 260px;
+  top: 50%;
+  left: 15%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-2-nuance-1) 8%, transparent),
+    transparent 70%
+  );
+  animation: orb-drift-3 26s ease-in-out infinite;
+  animation-delay: 6s;
+}
+
+@keyframes orb-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 30px) scale(1.1);
+  }
+  66% {
+    transform: translate(30px, -20px) scale(0.9);
+  }
+}
+@keyframes orb-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(35px, -25px) scale(1.08);
+  }
+  70% {
+    transform: translate(-30px, 20px) scale(0.92);
+  }
+}
+@keyframes orb-drift-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -30px) scale(1.12);
+  }
+}
+
+/* ── Floating rings ───────────────────────── */
+.unauth-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1.5px solid;
+  opacity: 0;
+  animation: ring-float 8s ease-in-out infinite;
+}
+
+.unauth-ring-1 {
+  width: 180px;
+  height: 180px;
+  top: 12%;
+  left: 10%;
+  border-color: color-mix(in srgb, rgb(var(--color-error)) 25%, transparent);
+  animation-delay: 0s;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, rgb(var(--color-error)) 20%, transparent));
+}
+
+.unauth-ring-2 {
+  width: 120px;
+  height: 120px;
+  bottom: 18%;
+  right: 12%;
+  border-color: color-mix(in srgb, var(--color-1-nuance-1) 20%, transparent);
+  animation-delay: 2s;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-1-nuance-1) 20%, transparent));
+}
+
+.unauth-ring-3 {
+  width: 80px;
+  height: 80px;
+  top: 55%;
+  left: 8%;
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent);
+  animation-delay: 4s;
+}
+
+@keyframes ring-float {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg) scale(0.9);
+  }
+  20% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(15px, -20px) rotate(180deg) scale(1.1);
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(360deg) scale(0.9);
+  }
+}
+
+/* ── Floating particles ───────────────────── */
+.unauth-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: particle-rise 6s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+.unauth-particle-1 {
+  left: 15%;
+  top: 70%;
+  background: rgb(var(--color-error));
+  animation-delay: 0s;
+  box-shadow: 0 0 8px rgb(var(--color-error));
+}
+.unauth-particle-2 {
+  left: 25%;
+  top: 60%;
+  background: var(--color-1-nuance-1);
+  animation-delay: 0.8s;
+  box-shadow: 0 0 8px var(--color-1-nuance-1);
+}
+.unauth-particle-3 {
+  left: 75%;
+  top: 75%;
+  background: rgb(var(--color-error));
+  animation-delay: 1.6s;
+  box-shadow: 0 0 8px rgb(var(--color-error));
+}
+.unauth-particle-4 {
+  left: 85%;
+  top: 55%;
+  background: var(--color-2-nuance-1);
+  animation-delay: 2.4s;
+  box-shadow: 0 0 8px var(--color-2-nuance-1);
+}
+.unauth-particle-5 {
+  left: 40%;
+  top: 80%;
+  background: rgb(var(--color-error));
+  animation-delay: 3.2s;
+  width: 4px;
+  height: 4px;
+}
+.unauth-particle-6 {
+  left: 60%;
+  top: 65%;
+  background: var(--color-1-nuance-1);
+  animation-delay: 4s;
+  width: 4px;
+  height: 4px;
+}
+.unauth-particle-7 {
+  left: 10%;
+  top: 40%;
+  background: var(--color-2-nuance-1);
+  animation-delay: 1.2s;
+}
+.unauth-particle-8 {
+  left: 90%;
+  top: 35%;
+  background: rgb(var(--color-error));
+  animation-delay: 3.6s;
+  width: 5px;
+  height: 5px;
+}
+
+@keyframes particle-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  15% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(1.5);
+  }
+}
+
+/* ── Card ─────────────────────────────────── */
+.unauth-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 440px;
+  width: 100%;
+  margin: 0 1rem;
+  padding: 3rem 2.5rem 2.5rem;
+  border-radius: 2rem;
+  z-index: 10;
+  animation: card-entrance 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  background: rgb(var(--card-rgb));
+  box-shadow:
+    0 24px 64px rgb(0 0 0 / 0.1),
+    0 0 0 1px rgb(var(--border-rgb) / 0.4),
+    0 0 80px color-mix(in srgb, rgb(var(--color-error)) 6%, transparent);
+}
+
+@keyframes card-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.88);
+    filter: blur(12px);
+  }
+  60% {
+    transform: translateY(-8px) scale(1.02);
+  }
+  80% {
+    transform: translateY(3px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ── Icon halo ───────────────────────────── */
+.unauth-icon-halo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, rgb(var(--color-error)) 12%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+  filter: blur(20px);
+  animation: halo-pulse 4s ease-in-out infinite;
+}
+
+@keyframes halo-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.15);
+  }
+}
+
+/* ── Icon wrapper ────────────────────────── */
+.unauth-icon-wrap {
+  position: relative;
+  margin-bottom: 2rem;
+  animation: icon-entrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+}
+
+@keyframes icon-entrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-20deg);
+  }
+  60% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.unauth-icon-ring {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, rgb(var(--color-error)) 30%, transparent);
+  animation: icon-ring-spin 8s linear infinite;
+  box-shadow: 0 0 20px color-mix(in srgb, rgb(var(--color-error)) 15%, transparent);
+}
+
+.unauth-icon-ring::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: rgb(var(--color-error));
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgb(var(--color-error));
+}
+
+@keyframes icon-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.unauth-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 1.5rem;
+  background: color-mix(in srgb, rgb(var(--color-error)) 12%, rgb(var(--muted-rgb)));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, rgb(var(--color-error)) 25%, transparent),
+    0 0 40px color-mix(in srgb, rgb(var(--color-error)) 20%, transparent),
+    inset 0 1px 0 rgb(255 255 255 / 0.1);
+  animation: icon-box-pulse 3s ease-in-out infinite;
+}
+
+@keyframes icon-box-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, rgb(var(--color-error)) 25%, transparent),
+      0 0 40px color-mix(in srgb, rgb(var(--color-error)) 20%, transparent),
+      inset 0 1px 0 rgb(255 255 255 / 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, rgb(var(--color-error)) 40%, transparent),
+      0 0 60px color-mix(in srgb, rgb(var(--color-error)) 30%, transparent),
+      inset 0 1px 0 rgb(255 255 255 / 0.1);
+  }
+}
+
+.unauth-icon {
+  width: 48px;
+  height: 48px;
+  color: rgb(var(--color-error));
+  filter: drop-shadow(0 0 14px color-mix(in srgb, rgb(var(--color-error)) 60%, transparent));
+  animation: icon-shake 6s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes icon-shake {
+  0%,
+  85%,
+  100% {
+    transform: rotate(0deg);
+  }
+  88% {
+    transform: rotate(-8deg);
+  }
+  91% {
+    transform: rotate(8deg);
+  }
+  94% {
+    transform: rotate(-5deg);
+  }
+  97% {
+    transform: rotate(3deg);
+  }
+}
+
+/* ── 403 Code ────────────────────────────── */
+.unauth-code {
+  font-size: 6.5rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  background: linear-gradient(
+    135deg,
+    rgb(var(--color-error)),
+    color-mix(in srgb, rgb(var(--color-error)) 55%, var(--color-1-nuance-1)),
+    rgb(var(--color-error))
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 6px 16px color-mix(in srgb, rgb(var(--color-error)) 25%, transparent));
+  animation:
+    code-entrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s both,
+    code-shimmer 4s linear 1s infinite;
+  margin-bottom: 0.25rem;
+}
+
+@keyframes code-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.7);
+    filter: blur(10px) drop-shadow(0 0 0 transparent);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes code-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ── Scan line ───────────────────────────── */
+.unauth-scan {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, rgb(var(--color-error)) 60%, transparent),
+    transparent
+  );
+  border-radius: 1px;
+  margin-bottom: 1.75rem;
+  animation: scan-slide 3s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+@keyframes scan-slide {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+/* ── Title ───────────────────────────────── */
+.unauth-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.875rem;
+  animation: text-in 0.5s ease-out 0.5s both;
+}
+
+/* ── Description ─────────────────────────── */
+.unauth-desc {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+  max-width: 310px;
+  animation: text-in 0.5s ease-out 0.6s both;
+  margin-bottom: 2rem;
+}
+
+@keyframes text-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Bottom tag ──────────────────────────── */
+.unauth-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  background: color-mix(in srgb, rgb(var(--color-error)) 8%, rgb(var(--muted-rgb)));
+  color: rgb(var(--color-error));
+  border: 1px solid color-mix(in srgb, rgb(var(--color-error)) 20%, transparent);
+  animation: text-in 0.5s ease-out 0.75s both;
+  letter-spacing: 0.01em;
+}
+
+.unauth-tag-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--color-error));
+  box-shadow: 0 0 6px rgb(var(--color-error));
+  animation: dot-blink 1.5s ease-in-out infinite;
+}
+
+@keyframes dot-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ── Dark mode tweaks ────────────────────── */
+.dark .unauth-card {
+  box-shadow:
+    0 24px 64px rgb(0 0 0 / 0.3),
+    0 0 0 1px rgb(var(--border-rgb) / 0.3),
+    0 0 80px color-mix(in srgb, rgb(var(--color-error)) 8%, transparent);
+}
+
+/* ============================================
+   NOT FOUND PAGE — Color overrides (blue/primary)
+   ============================================ */
+
+.notfound-orb-1 {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent),
+    transparent 70%
+  );
+}
+
+.notfound-orb-2 {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent),
+    transparent 70%
+  );
+}
+
+.notfound-ring-1 {
+  border-color: color-mix(in srgb, var(--color-1-nuance-1) 25%, transparent);
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-1-nuance-1) 20%, transparent));
+}
+
+.notfound-ring-2 {
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent);
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent));
+}
+
+.notfound-particle-1,
+.notfound-particle-3,
+.notfound-particle-5,
+.notfound-particle-8 {
+  background: var(--color-1-nuance-1);
+  box-shadow: 0 0 8px var(--color-1-nuance-1);
+}
+
+.notfound-particle-2,
+.notfound-particle-4,
+.notfound-particle-6,
+.notfound-particle-7 {
+  background: var(--color-2-nuance-1);
+  box-shadow: 0 0 8px var(--color-2-nuance-1);
+}
+
+.notfound-card {
+  box-shadow:
+    0 24px 64px rgb(0 0 0 / 0.1),
+    0 0 0 1px rgb(var(--border-rgb) / 0.4),
+    0 0 80px color-mix(in srgb, var(--color-1-nuance-1) 6%, transparent);
+}
+
+.notfound-icon-halo {
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--color-1-nuance-1) 12%, transparent),
+    transparent 70%
+  );
+}
+
+.notfound-icon-ring {
+  border-color: color-mix(in srgb, var(--color-1-nuance-1) 30%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent);
+  animation: icon-ring-spin 10s linear infinite;
+}
+
+.notfound-icon-ring::before {
+  background: var(--color-1-nuance-1);
+  box-shadow: 0 0 12px var(--color-1-nuance-1);
+}
+
+.notfound-icon-box {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 10%, rgb(var(--muted-rgb)));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-1-nuance-1) 25%, transparent),
+    0 0 40px color-mix(in srgb, var(--color-1-nuance-1) 18%, transparent),
+    inset 0 1px 0 rgb(255 255 255 / 0.1);
+  animation: notfound-box-pulse 3s ease-in-out infinite;
+}
+
+@keyframes notfound-box-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-1-nuance-1) 25%, transparent),
+      0 0 40px color-mix(in srgb, var(--color-1-nuance-1) 18%, transparent),
+      inset 0 1px 0 rgb(255 255 255 / 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-1-nuance-1) 40%, transparent),
+      0 0 60px color-mix(in srgb, var(--color-1-nuance-1) 28%, transparent),
+      inset 0 1px 0 rgb(255 255 255 / 0.1);
+  }
+}
+
+.notfound-icon {
+  color: var(--color-1-nuance-1);
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--color-1-nuance-1) 60%, transparent));
+}
+
+.notfound-code {
+  background: linear-gradient(
+    135deg,
+    var(--color-1-nuance-1),
+    color-mix(in srgb, var(--color-1-nuance-1) 55%, var(--color-2-nuance-1)),
+    var(--color-1-nuance-1)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--color-1-nuance-1) 25%, transparent));
+}
+
+.notfound-scan {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-1-nuance-1) 60%, transparent),
+    transparent
+  );
+}
+
+.notfound-tag {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 8%, rgb(var(--muted-rgb)));
+  color: var(--color-1-nuance-1);
+  border-color: color-mix(in srgb, var(--color-1-nuance-1) 20%, transparent);
+}
+
+.notfound-tag-dot {
+  background: var(--color-1-nuance-1);
+  box-shadow: 0 0 6px var(--color-1-nuance-1);
+}
+
+.dark .notfound-card {
+  box-shadow:
+    0 24px 64px rgb(0 0 0 / 0.3),
+    0 0 0 1px rgb(var(--border-rgb) / 0.3),
+    0 0 80px color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent);
+}
+
+/* ── Reduced motion ──────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .unauth-orb,
+  .unauth-ring,
+  .unauth-particle,
+  .unauth-icon-halo,
+  .unauth-icon-ring,
+  .unauth-icon-box,
+  .unauth-icon,
+  .unauth-scan,
+  .unauth-code,
+  .unauth-tag-dot {
+    animation: none !important;
+  }
+  .unauth-card,
+  .unauth-icon-wrap,
+  .unauth-title,
+  .unauth-desc,
+  .unauth-tag {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}

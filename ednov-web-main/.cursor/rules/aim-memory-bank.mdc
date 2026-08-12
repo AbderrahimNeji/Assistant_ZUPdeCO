@@ -1,0 +1,35 @@
+---
+description: Project persistence via MCP Aim Memory Bank (.aim / JSONL)
+globs: **/*
+alwaysApply: true
+---
+
+# Aim Memory Bank (MCP)
+
+The **Aim-Memory-Bank** server does **not** persist anything automatically: you must call its tools (`aim_memory_*`). Use them for **durable** facts useful in future chats (team, you, another session).
+
+## When to write (proactive but restrained)
+
+- Architecture decisions, conventions, important paths, recurring pitfalls.
+- Stable API contracts / DTOs, business rules clarified after investigation.
+- **Do not** memorize every message, every typo, or entire PR diffs.
+
+## How to write
+
+| Action | Tool |
+|--------|------|
+| New entity (project, concept, person, module…) | `aim_memory_store` |
+| Enrich an existing entity | `aim_memory_add_facts` |
+| Check / avoid duplicates | `aim_memory_search` then store or add_facts |
+| See stores and effective location | `aim_memory_list_stores` |
+
+Useful parameters:
+
+- **`location: "project"`** — forces storage under `.aim` at the Cursor workspace root (creates `.aim` if needed).
+- **`context`** — optional; in a monorepo with a single workspace root, separate by domain: e.g. `"frontend"`, `"backend"`, `"shared"` (files like `memory-<context>.jsonl`).
+
+Entities: `name`, `entityType`, `observations` (list of short factual strings).
+
+## Cost reminder
+
+Each MCP call has a token cost in the conversation turn; prefer **dense** observations and **batched** updates instead of repeated micro-writes.

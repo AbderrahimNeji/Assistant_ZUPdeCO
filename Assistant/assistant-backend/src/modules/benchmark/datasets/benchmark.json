@@ -1,0 +1,202 @@
+[
+  {
+    "question": "What does JWT stand for and what is it used for?",
+    "expectedAnswer": "JWT stands for JSON Web Token. It is a compact, URL-safe token format used to securely transmit claims between parties, most commonly for authenticating API requests after a user logs in."
+  },
+  {
+    "question": "What are the three parts of a JWT and what does each contain?",
+    "expectedAnswer": "A JWT has three Base64URL-encoded parts separated by dots: the header (algorithm and token type), the payload (claims such as sub, email, role, and exp), and the signature (used to verify integrity and authenticity)."
+  },
+  {
+    "question": "How should a client send a JWT to a NestJS API?",
+    "expectedAnswer": "The client should send the JWT in the HTTP Authorization header using the Bearer scheme, for example: Authorization: Bearer <access_token>."
+  },
+  {
+    "question": "What is the purpose of the JWT signature?",
+    "expectedAnswer": "The signature proves the token was issued by a trusted party and was not altered. It is created by signing the encoded header and payload with a secret or private key."
+  },
+  {
+    "question": "Which algorithms are commonly used to sign JWTs?",
+    "expectedAnswer": "Common signing algorithms include HMAC with SHA-256 (HS256) using a shared secret, and RSA (RS256) using an asymmetric key pair."
+  },
+  {
+    "question": "What claims are typically included in a JWT payload for this assistant backend?",
+    "expectedAnswer": "Typical claims include sub (user id), email, role, and expiration (exp). The NestJS JwtStrategy maps sub to req.user.id."
+  },
+  {
+    "question": "Why should JWT access tokens expire?",
+    "expectedAnswer": "Expiration limits the useful lifetime of a stolen or leaked token, reducing the attack window and forcing clients to re-authenticate or refresh credentials."
+  },
+  {
+    "question": "What is Prisma and why is it used in this project?",
+    "expectedAnswer": "Prisma is a TypeScript ORM that provides a type-safe client generated from a schema. This project uses it to access PostgreSQL models such as User, Conversation, Document, and BenchmarkRun."
+  },
+  {
+    "question": "Where is the Prisma data model defined?",
+    "expectedAnswer": "The Prisma data model is defined in prisma/schema.prisma. It declares models, relations, enums, and the PostgreSQL datasource."
+  },
+  {
+    "question": "What does prisma generate do?",
+    "expectedAnswer": "prisma generate reads schema.prisma and generates the Prisma Client TypeScript library used by the application to query the database safely."
+  },
+  {
+    "question": "How do you apply schema changes to PostgreSQL with Prisma?",
+    "expectedAnswer": "You create and apply migrations with prisma migrate dev (development) or prisma migrate deploy (production). This updates the database schema to match schema.prisma."
+  },
+  {
+    "question": "How do you create a related record with nested writes in Prisma?",
+    "expectedAnswer": "Use nested create syntax, for example prisma.benchmarkRun.create({ data: { ..., results: { create: [...] } } }) to insert a parent and children in one transaction."
+  },
+  {
+    "question": "How do you fetch a BenchmarkRun with its results in Prisma?",
+    "expectedAnswer": "Use findUnique or findMany with include: { results: true } so Prisma eagerly loads the related BenchmarkResult rows."
+  },
+  {
+    "question": "What does onDelete: Cascade mean on a Prisma relation?",
+    "expectedAnswer": "When the parent record is deleted, related child records are automatically deleted by the database foreign-key cascade rule."
+  },
+  {
+    "question": "What is PostgreSQL and what role does it play here?",
+    "expectedAnswer": "PostgreSQL is an open-source relational database. This backend stores users, conversations, documents, embeddings metadata, and benchmark history in PostgreSQL via Prisma."
+  },
+  {
+    "question": "What is a primary key in PostgreSQL?",
+    "expectedAnswer": "A primary key uniquely identifies each row in a table. In this project, most models use a String cuid() id as the primary key."
+  },
+  {
+    "question": "What is a foreign key and give an example from this app?",
+    "expectedAnswer": "A foreign key references another table's primary key. For example, BenchmarkResult.benchmarkRunId references BenchmarkRun.id."
+  },
+  {
+    "question": "Why are indexes useful in PostgreSQL?",
+    "expectedAnswer": "Indexes speed up lookups and filters on frequently queried columns, reducing full table scans and improving query latency."
+  },
+  {
+    "question": "What does ACID mean for database transactions?",
+    "expectedAnswer": "ACID stands for Atomicity, Consistency, Isolation, and Durability. It describes guarantees that keep database transactions reliable under concurrent access and failures."
+  },
+  {
+    "question": "How do INNER JOIN and LEFT JOIN differ?",
+    "expectedAnswer": "INNER JOIN returns only rows that match in both tables. LEFT JOIN returns all rows from the left table and matching rows from the right table, with NULLs where there is no match."
+  },
+  {
+    "question": "What is NestJS?",
+    "expectedAnswer": "NestJS is a progressive Node.js framework for building scalable server-side applications. It uses TypeScript and a modular architecture with dependency injection."
+  },
+  {
+    "question": "How is a NestJS application organized?",
+    "expectedAnswer": "NestJS apps are organized into modules. Each module groups related controllers (HTTP routes) and providers/services (business logic), and can import or export providers."
+  },
+  {
+    "question": "What is dependency injection in NestJS?",
+    "expectedAnswer": "Dependency injection lets NestJS construct and inject provider instances into constructors. Services declare dependencies, and the IoC container resolves them."
+  },
+  {
+    "question": "What does the @Injectable() decorator do?",
+    "expectedAnswer": "@Injectable() marks a class as a provider that can be managed by Nest's dependency injection system and injected into other classes."
+  },
+  {
+    "question": "How do you protect a NestJS route with JWT authentication?",
+    "expectedAnswer": "Apply JwtAuthGuard with @UseGuards(JwtAuthGuard). Passport JWT extracts the Bearer token, validates it, and attaches the user to the request."
+  },
+  {
+    "question": "What is a DTO in NestJS and why use validation decorators?",
+    "expectedAnswer": "A DTO (Data Transfer Object) defines the shape of request or response data. class-validator decorators such as @IsString and @IsNotEmpty enable automatic validation via ValidationPipe."
+  },
+  {
+    "question": "What is Swagger used for in this API?",
+    "expectedAnswer": "Swagger (OpenAPI) documents endpoints, request bodies, and auth schemes. This project exposes interactive docs at /api/docs using @nestjs/swagger."
+  },
+  {
+    "question": "What is Retrieval Augmented Generation (RAG)?",
+    "expectedAnswer": "RAG retrieves relevant document chunks for a user question and passes that context to an LLM so answers are grounded in your knowledge base instead of model memory alone."
+  },
+  {
+    "question": "Why does an AI assistant use RAG?",
+    "expectedAnswer": "RAG reduces hallucinations, keeps answers aligned with uploaded documents, and allows the assistant to cite or rely on private knowledge that was not part of the LLM training data."
+  },
+  {
+    "question": "What are the main steps of the RAG pipeline in this backend?",
+    "expectedAnswer": "Documents are uploaded, parsed, chunked, and embedded. At query time the question is embedded, similar chunks are retrieved, a prompt is built with that context, and the LLM generates an answer."
+  },
+  {
+    "question": "What is document chunking and why is it needed?",
+    "expectedAnswer": "Chunking splits long documents into smaller text segments. Smaller chunks embed more precisely and retrieve more relevant context for a specific question."
+  },
+  {
+    "question": "What happens if the retrieved context is insufficient?",
+    "expectedAnswer": "The assistant should avoid inventing facts and instead indicate that the information was not found in the uploaded documents."
+  },
+  {
+    "question": "What is the role of the LLM in a RAG system?",
+    "expectedAnswer": "The LLM generates the final natural-language answer using the user question and the retrieved context provided in the prompt."
+  },
+  {
+    "question": "What is vector search?",
+    "expectedAnswer": "Vector search finds items whose embedding vectors are closest to a query embedding, enabling semantic retrieval rather than exact keyword matching."
+  },
+  {
+    "question": "How does cosine similarity work for retrieval?",
+    "expectedAnswer": "Cosine similarity measures the angle between two vectors. A score near 1 means the texts are semantically similar; near 0 means they are dissimilar."
+  },
+  {
+    "question": "What does top-K retrieval mean?",
+    "expectedAnswer": "Top-K retrieval returns the K highest-scoring chunks for a query. This project commonly retrieves the top 5 chunks for RAG context."
+  },
+  {
+    "question": "How does vector search differ from keyword search?",
+    "expectedAnswer": "Keyword search matches lexical terms. Vector search matches meaning, so paraphrased questions can still find relevant passages."
+  },
+  {
+    "question": "What is an embedding space?",
+    "expectedAnswer": "An embedding space is a high-dimensional vector space where semantically similar texts are positioned close together and dissimilar texts are farther apart."
+  },
+  {
+    "question": "What are text embeddings?",
+    "expectedAnswer": "Embeddings are dense numeric vectors produced by an embedding model. They encode semantic meaning so texts can be compared mathematically."
+  },
+  {
+    "question": "Which embedding approach does this project use?",
+    "expectedAnswer": "This project uses EmbeddingService with the Xenova/all-MiniLM-L6-v2 model via @xenova/transformers to create normalized mean-pooled embeddings."
+  },
+  {
+    "question": "Why must queries and documents use the same embedding model?",
+    "expectedAnswer": "Comparable similarity scores require that query and document vectors live in the same embedding space produced by the same model and preprocessing."
+  },
+  {
+    "question": "What does normalizing an embedding vector achieve?",
+    "expectedAnswer": "Normalization scales a vector to unit length so cosine similarity can be computed efficiently and consistently, often as a simple dot product."
+  },
+  {
+    "question": "How does the AI assistant use conversation memory?",
+    "expectedAnswer": "The assistant stores user and assistant messages for a conversation so later turns can remain context-aware and history can be reviewed."
+  },
+  {
+    "question": "What is intent detection in the assistant pipeline?",
+    "expectedAnswer": "Intent detection classifies what the user wants to do so the system can route processing or enrich the response pipeline accordingly."
+  },
+  {
+    "question": "Why does the assistant detect language?",
+    "expectedAnswer": "Language detection helps the system understand the user's language and can guide response generation or language-specific handling."
+  },
+  {
+    "question": "How can the assistant reduce incorrect answers?",
+    "expectedAnswer": "By retrieving relevant document context with RAG, constraining the LLM to that context, measuring answer quality in benchmarks, and declining to invent missing information."
+  },
+  {
+    "question": "What does the Benchmark module measure?",
+    "expectedAnswer": "The Benchmark module runs dataset questions through AssistantService.chat(), records latency, similarity to expected answers, success, and retrieved sources, then stores a BenchmarkRun history."
+  },
+  {
+    "question": "How is answer similarity computed in benchmarks?",
+    "expectedAnswer": "Expected and generated answers are embedded with EmbeddingService, then cosine similarity is computed and clamped to a score between 0 and 1."
+  },
+  {
+    "question": "What is a successful benchmark result?",
+    "expectedAnswer": "A result is marked successful when its similarity score meets or exceeds the configured threshold (currently 0.5), indicating the generated answer is sufficiently close to the expected answer."
+  },
+  {
+    "question": "Why store benchmark history in PostgreSQL?",
+    "expectedAnswer": "Persisting BenchmarkRun and BenchmarkResult rows lets you compare latency, similarity, and success rate across executions over time and inspect individual question outcomes."
+  }
+]

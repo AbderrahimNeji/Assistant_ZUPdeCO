@@ -1,0 +1,49 @@
+{
+  "cli": {
+    "version": ">= 12.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://ednov-poc-dev-4dvoe.ondigitalocean.app/api/v1",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyDlH82OVofyKPk-NgZTnOLB7dmmSbmY60o",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "zupdeco-development.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "zupdeco-development",
+        "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET": "zupdeco-development.appspot.com",
+        "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "129518665055",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:129518665055:web:5b083469ef603de73e0aea"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://ednov-poc-dev-4dvoe.ondigitalocean.app/api/v1",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyDlH82OVofyKPk-NgZTnOLB7dmmSbmY60o",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "zupdeco-development.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "zupdeco-development",
+        "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET": "zupdeco-development.appspot.com",
+        "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "129518665055",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:129518665055:web:5b083469ef603de73e0aea"
+      }
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://monkfish-app-f5d5m.ondigitalocean.app/api/v1",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyDlH82OVofyKPk-NgZTnOLB7dmmSbmY60o",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "zupdeco-development.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "zupdeco-development",
+        "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET": "zupdeco-development.appspot.com",
+        "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "129518665055",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:129518665055:web:5b083469ef603de73e0aea"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

@@ -1,0 +1,5 @@
+# Type-check avec tsc-files (plus rapide)
+npx tsc-files --noEmit || exit 1
+
+# Puis lint-staged
+npx lint-staged

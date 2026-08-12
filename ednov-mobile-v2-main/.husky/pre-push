@@ -1,0 +1,43 @@
+#!/bin/sh
+# Vérifie que le nom de branche respecte la convention Ednov avant chaque push
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Branches toujours autorisées
+ALLOWED_EXACT="main develop HEAD"
+ALLOWED_PREFIX="dependabot/"
+
+for allowed in $ALLOWED_EXACT; do
+  [ "$BRANCH" = "$allowed" ] && exit 0
+done
+
+case "$BRANCH" in
+  dependabot/*) exit 0 ;;
+esac
+
+# Convention : <type>/poc-<numéro>-<description>
+PATTERN="^(feat|fix|chore|hotfix|refactor)/poc-[0-9]+-[a-z0-9-]+$"
+
+if ! echo "$BRANCH" | grep -qE "$PATTERN"; then
+  echo ""
+  echo "╔══════════════════════════════════════════════════════════════╗"
+  echo "║  ❌  Nom de branche non conforme — push refusé              ║"
+  echo "╠══════════════════════════════════════════════════════════════╣"
+  echo "║  Branche actuelle : $BRANCH"
+  echo "║"
+  echo "║  Format attendu   : <type>/poc-<numéro>-<description>"
+  echo "║  Types valides    : feat | fix | chore | hotfix | refactor"
+  echo "║"
+  echo "║  Exemples :"
+  echo "║    feat/poc-123-add-phone-to-user"
+  echo "║    fix/poc-456-fix-migration-role-groups"
+  echo "║    chore/poc-789-update-dependencies"
+  echo "║"
+  echo "║  Pour renommer votre branche :"
+  echo "║    git branch -m $BRANCH <nouveau-nom>"
+  echo "╚══════════════════════════════════════════════════════════════╝"
+  echo ""
+  exit 1
+fi
+
+exit 0

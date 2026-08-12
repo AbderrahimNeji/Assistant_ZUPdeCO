@@ -1,0 +1,140 @@
+---
+description: Backend-driven UI; use Supabase MCP to inspect interface_elements, roles, and role_interface_elements before implementing.
+alwaysApply: true
+---
+
+# Dynamic interface elements — Backend-driven UI
+
+## Core principle
+
+**All frontend interface elements are managed dynamically** through the backend and database according to user preferences and access rights.
+
+Rendering of components, menus, sections, buttons, etc. is **controlled by the database**, not hardcoded in the frontend.
+
+## Strict rule
+
+Before working on conditional rendering of UI elements, permissions, or accessible features:
+
+1. **Read the database structure** via MCP Supabase
+2. **Understand the permission system** in place
+3. **Use existing examples** to replicate patterns
+
+## MCP Supabase — mandatory reference (source of truth)
+
+Because **Supabase MCP** is available in this project, you **must** use it to inspect the live database before designing or changing dynamic UI behavior. Do not guess column names, keys, or role bindings.
+
+**Always query and review** (structure + representative rows) at least these tables:
+
+| Table | Purpose |
+|-------|--------|
+| **`interface_elements`** | Canonical list of UI elements (keys, types, labels, defaults, etc.) |
+| **`roles`** | Role definitions used for access control |
+| **`role_interface_elements`** | Join between roles and `interface_elements` (per-role visibility, order, overrides) |
+
+Use the **actual rows and relationships** in these tables as your **examples**: how `element_key` / IDs are named, how roles are linked, and how overrides differ from defaults. If a table name differs in your environment (e.g. legacy naming), confirm it with `list_tables` / `information_schema`, then apply the same rule—**read first, implement second**.
+
+## Key tables to inspect
+
+### Main tables
+
+- **`roles`** — user roles and their permissions
+- **`interface_elements`** — available UI elements (menus, sections, actions, etc.)
+- **Join table `role_interface_elements`** — mapping between roles and accessible interface elements (per-role settings)
+
+### Discovery process
+
+```sql
+-- 1. List permission-related tables
+SELECT table_name 
+FROM information_schema.tables 
+WHERE table_name LIKE '%role%' 
+   OR table_name LIKE '%interface%' 
+   OR table_name LIKE '%permission%';
+
+-- 2. Describe structure
+-- Use supabase_describe_table on each identified table
+
+-- 3. Read sample data
+-- Run SELECT queries to understand relationships and patterns
+```
+
+## Workflow for adding or changing interface elements
+
+### ❌ Bad approach
+
+```tsx
+// Hardcoding permissions in the frontend
+{user.role === 'admin' && <AdminPanel />}
+{user.role === 'tutor' && <TutorDashboard />}
+```
+
+### ✅ Good approach
+
+1. **Check** the `interface_elements` table to see if the element exists
+2. **Inspect** the join table to see which roles have access
+3. **Use** the existing permission system
+4. **Replicate** patterns observed in other components
+
+```tsx
+// Use the dynamic permission system
+{hasAccess('admin_panel') && <AdminPanel />}
+{hasAccess('tutor_dashboard') && <TutorDashboard />}
+```
+
+## Example use cases
+
+### Before adding a new menu
+1. Read `interface_elements` to see how existing menus are structured
+2. Understand fields such as `element_type`, `element_key`, `display_name`, etc.
+3. See how existing menus are linked to roles
+
+### Before conditionally showing a button
+1. Check whether an `interface_element` exists for that action type
+2. See which roles have access via the join table
+3. Use the same logic as existing buttons
+
+### Before creating a new section
+1. Read several existing section examples in `interface_elements`
+2. Understand the hierarchy (sections > sub-sections > actions)
+3. Replicate the pattern for the new section
+
+## MCP Supabase commands to use
+
+```text
+# Structure discovery
+supabase_list_tables
+supabase_describe_table("roles")
+supabase_describe_table("interface_elements")
+supabase_describe_table("role_interface_elements")
+
+# Sample reads
+supabase_query("SELECT * FROM roles LIMIT 5")
+supabase_query("SELECT * FROM interface_elements WHERE element_type = 'menu' LIMIT 10")
+supabase_query("SELECT * FROM role_interface_elements LIMIT 10")
+
+# Understand relationships
+supabase_query("
+  SELECT r.name, ie.element_key, ie.display_name
+  FROM roles r
+  JOIN role_interface_elements rie ON r.id = rie.role_id
+  JOIN interface_elements ie ON ie.id = rie.interface_element_id
+  WHERE r.name = 'admin'
+")
+```
+
+## Important points
+
+- **Never** hardcode permissions in the frontend
+- **Never** create an interface element without checking whether it must be managed dynamically
+- **Always** consult the database before implementing a permission system
+- **Always** replicate existing patterns for consistency
+
+## System documentation
+
+If exact table names or relationships differ, **always**:
+1. List all permission-related tables
+2. Describe their structure
+3. Read sample data
+4. Understand relationships before implementing
+
+The permission system is **critical** — take time to understand it before making changes.

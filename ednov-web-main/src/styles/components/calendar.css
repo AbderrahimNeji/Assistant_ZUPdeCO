@@ -1,0 +1,1532 @@
+/* ============================================
+   CALENDAR.CSS - Styles calendrier modernes
+   Design épuré avec glassmorphism
+   ============================================ */
+
+/* ========================================
+   MINI CALENDAR
+   ======================================== */
+
+.mini-calendar {
+  padding: var(--space-5, 1.25rem);
+  border-radius: var(--radius-xl, 1rem);
+
+  /* Glassmorphism */
+  background: rgb(var(--card-rgb, 255, 255, 255) / 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+
+  /* Shadow */
+  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgb(0 0 0 / 0.1));
+}
+
+/* Mini Calendar Header */
+.mini-calendar-header {
+  @apply flex items-center justify-between flex-wrap;
+  gap: var(--space-2, 0.5rem);
+  margin-bottom: var(--space-4, 1rem);
+}
+
+.mini-calendar-title {
+  font-size: var(--font-body-lg, 1rem);
+  font-weight: 600;
+  color: rgb(var(--foreground-rgb, 15, 23, 42));
+}
+
+/* Mini Calendar Navigation Buttons */
+.mini-calendar-nav-button {
+  @apply inline-flex items-center justify-center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-lg, 0.75rem);
+  background: color-mix(in srgb, var(--color-1-nuance-3) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+  cursor: pointer;
+  color: var(--color-1-nuance-1);
+
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.mini-calendar-nav-button:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+  border-color: var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+  transform: scale(1.05);
+}
+
+.mini-calendar-nav-button:active {
+  background: var(--color-2-nuance-1);
+  border-color: var(--color-2-nuance-1);
+  color: white;
+  transform: scale(0.95);
+}
+
+.mini-calendar-nav-button:focus {
+  outline: 2px solid color-mix(in srgb, var(--color-2-nuance-1) 50%, transparent);
+  outline-offset: 2px;
+}
+
+.mini-calendar-nav-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Today Button */
+.mini-calendar-today-button {
+  @apply w-full;
+  padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+  margin-bottom: var(--space-4, 1rem);
+  border-radius: var(--radius-lg, 0.75rem);
+  font-size: var(--font-body-sm, 0.8125rem);
+  font-weight: 500;
+
+  background: color-mix(in srgb, var(--color-1-nuance-3) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+  color: var(--color-1-nuance-1);
+  cursor: pointer;
+
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.mini-calendar-today-button:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 12%, transparent);
+  border-color: var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+}
+
+/* Mini Calendar Grid */
+.mini-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+/* Day Headers */
+.mini-calendar-day-header {
+  @apply flex items-center justify-center;
+  height: 28px;
+  font-size: var(--font-caption, 0.75rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider, 0.05em);
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.4);
+}
+
+/* Day Cells */
+.mini-calendar-day {
+  @apply relative flex items-center justify-center;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md, 0.5rem);
+  font-size: var(--font-body-sm, 0.8125rem);
+  font-weight: 500;
+  cursor: pointer;
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.8);
+
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.mini-calendar-day-number {
+  position: relative;
+  z-index: 1;
+}
+
+.mini-calendar-day:hover:not(.mini-calendar-day-disabled):not(.mini-calendar-day-today) {
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.8);
+  transform: scale(1.05);
+}
+
+/* Today */
+.mini-calendar-day-today {
+  background: linear-gradient(135deg, var(--color-2-nuance-1), var(--color-2-nuance-2));
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgb(var(--primary-rgb, 59, 130, 246) / 0.3);
+}
+
+.mini-calendar-day-today:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgb(var(--primary-rgb, 59, 130, 246) / 0.4);
+}
+
+/* Selected */
+.mini-calendar-day-selected:not(.mini-calendar-day-today) {
+  background: rgb(var(--primary-rgb, 59, 130, 246) / 0.1);
+  color: var(--color-2-nuance-1);
+  font-weight: 600;
+}
+
+/* Disabled / Other Month */
+.mini-calendar-day-disabled {
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.25);
+  cursor: default;
+}
+
+/* Event Indicator (colored dot at bottom) */
+.mini-calendar-day-event-indicator {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full, 9999px);
+  z-index: 1;
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.mini-calendar-day-today .mini-calendar-day-event-indicator {
+  filter: brightness(2);
+}
+
+/* Badge for multiple events (+X) */
+.mini-calendar-day-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 9px;
+  font-weight: 700;
+  color: white;
+  z-index: 2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.mini-calendar-day:hover .mini-calendar-day-badge {
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Events Popover */
+.mini-calendar-events-popover {
+  width: 280px;
+  max-height: 400px;
+  border-radius: var(--radius-xl, 1rem);
+  background: rgb(var(--card-rgb, 255, 255, 255) / 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  animation: mini-calendar-popover-in 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+  overflow: hidden;
+}
+
+@keyframes mini-calendar-popover-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mini-calendar-events-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+  color: var(--color-1-nuance-1);
+  font-size: var(--font-body-sm, 0.8125rem);
+}
+
+.mini-calendar-events-popover-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-md, 0.5rem);
+  background: transparent;
+  border: none;
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.5);
+  cursor: pointer;
+  transition: all 150ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.mini-calendar-events-popover-close:hover {
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.8);
+  color: rgb(var(--foreground-rgb, 15, 23, 42));
+}
+
+.mini-calendar-events-popover-content {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--space-2, 0.5rem);
+}
+
+.mini-calendar-events-popover-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 0.75rem);
+  padding: var(--space-3, 0.75rem);
+  border-radius: var(--radius-lg, 0.75rem);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all 150ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+  text-align: left;
+}
+
+.mini-calendar-events-popover-item:hover {
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.6);
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+  transform: translateX(2px);
+}
+
+.mini-calendar-events-popover-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg, 0.75rem);
+  flex-shrink: 0;
+}
+
+.mini-calendar-events-popover-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.mini-calendar-events-popover-title {
+  font-size: var(--font-body-sm, 0.8125rem);
+  font-weight: 500;
+  color: rgb(var(--foreground-rgb, 15, 23, 42));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: var(--space-1, 0.25rem);
+}
+
+.mini-calendar-events-popover-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  font-size: var(--font-caption, 0.75rem);
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.6);
+}
+
+.mini-calendar-events-popover-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2, 0.5rem);
+  border-radius: var(--radius-full, 9999px);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.mini-calendar-events-popover-footer {
+  padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+  font-size: var(--font-caption, 0.75rem);
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.6);
+  text-align: center;
+}
+
+/* ========================================
+   FULL CALENDAR EVENTS POPOVER
+   ======================================== */
+
+.full-calendar-events-popover {
+  width: 280px;
+  max-height: 400px;
+  border-radius: var(--radius-xl, 1rem);
+  background: rgb(var(--card-rgb, 255, 255, 255) / 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  animation: full-calendar-popover-in 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+  overflow: hidden;
+}
+
+@keyframes full-calendar-popover-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.full-calendar-events-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+  color: var(--color-1-nuance-1);
+  font-size: var(--font-body-sm, 0.8125rem);
+}
+
+.full-calendar-events-popover-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-md, 0.5rem);
+  background: transparent;
+  border: none;
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.5);
+  cursor: pointer;
+  transition: all 150ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.full-calendar-events-popover-close:hover {
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.8);
+  color: rgb(var(--foreground-rgb, 15, 23, 42));
+}
+
+.full-calendar-events-popover-content {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--space-2, 0.5rem);
+}
+
+.full-calendar-events-popover-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 0.75rem);
+  padding: var(--space-3, 0.75rem);
+  border-radius: var(--radius-lg, 0.75rem);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all 150ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+  text-align: left;
+}
+
+.full-calendar-events-popover-item:hover {
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.6);
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+  transform: translateX(2px);
+}
+
+.full-calendar-events-popover-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg, 0.75rem);
+  flex-shrink: 0;
+}
+
+.full-calendar-events-popover-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.full-calendar-events-popover-title {
+  font-size: var(--font-body-sm, 0.8125rem);
+  font-weight: 500;
+  color: rgb(var(--foreground-rgb, 15, 23, 42));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: var(--space-1, 0.25rem);
+}
+
+.full-calendar-events-popover-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  font-size: var(--font-caption, 0.75rem);
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.6);
+}
+
+.full-calendar-events-popover-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2, 0.5rem);
+  border-radius: var(--radius-full, 9999px);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.full-calendar-events-popover-footer {
+  padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+  font-size: var(--font-caption, 0.75rem);
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.6);
+  text-align: center;
+}
+
+/* ========================================
+   CALENDAR FILTER TOGGLES
+   ======================================== */
+
+.calendar-filter-toggle {
+  @apply flex items-center justify-center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg, 0.75rem);
+  cursor: pointer;
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.calendar-filter-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Session Filter (Color 1 - Blue/Primary) */
+.calendar-filter-session {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 12%, transparent);
+  border: 1px solid var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+}
+
+.calendar-filter-session:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-2) 25%, transparent);
+  border-color: var(--color-2-nuance-2);
+  color: var(--color-2-nuance-1);
+  transform: scale(1.05);
+}
+
+.calendar-filter-session.calendar-filter-toggle-active {
+  background: var(--color-2-nuance-1);
+  border-color: var(--color-2-nuance-1);
+  color: white;
+}
+
+.calendar-filter-session.calendar-filter-toggle-active:hover {
+  background: var(--color-2-nuance-2);
+  border-color: var(--color-2-nuance-2);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* PostIt Filter (Color 2 - Green/Secondary) */
+.calendar-filter-postit {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 12%, transparent);
+  border: 1px solid var(--color-1-nuance-1);
+  color: var(--color-1-nuance-1);
+}
+
+.calendar-filter-postit:hover {
+  background: color-mix(in srgb, var(--color-1-nuance-2) 25%, transparent);
+  border-color: var(--color-1-nuance-2);
+  color: var(--color-1-nuance-1);
+  transform: scale(1.05);
+}
+
+.calendar-filter-postit.calendar-filter-toggle-active {
+  background: var(--color-1-nuance-1);
+  border-color: var(--color-1-nuance-1);
+  color: white;
+}
+
+.calendar-filter-postit.calendar-filter-toggle-active:hover {
+  background: var(--color-1-nuance-2);
+  border-color: var(--color-1-nuance-2);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Holiday Filter (Color 3 - Amber/Accent) */
+.calendar-filter-holiday {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 12%, transparent);
+  border: 1px solid var(--color-3-nuance-1);
+  color: var(--color-3-nuance-1);
+}
+
+.calendar-filter-holiday:hover {
+  background: color-mix(in srgb, var(--color-3-nuance-2) 25%, transparent);
+  border-color: var(--color-3-nuance-2);
+  color: var(--color-3-nuance-1);
+  transform: scale(1.05);
+}
+
+.calendar-filter-holiday.calendar-filter-toggle-active {
+  background: var(--color-3-nuance-1);
+  border-color: var(--color-3-nuance-1);
+  color: white;
+}
+
+.calendar-filter-holiday.calendar-filter-toggle-active:hover {
+  background: var(--color-3-nuance-2);
+  border-color: var(--color-3-nuance-2);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ========================================
+   FULL CALENDAR
+   ======================================== */
+
+.calendar-container {
+  padding: var(--space-6, 1.5rem);
+  border-radius: var(--radius-xl, 1rem);
+
+  /* Glassmorphism */
+  background: rgb(var(--card-rgb, 255, 255, 255) / 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+}
+
+.calendar-header {
+  @apply flex items-center justify-between flex-wrap gap-3;
+  padding-bottom: var(--space-4, 1rem);
+  margin-bottom: var(--space-4, 1rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+}
+
+.calendar-title {
+  font-size: var(--font-heading-3, 1.25rem);
+  font-weight: 600;
+  color: var(--color-1-nuance-1);
+}
+
+/* Calendar Grid */
+.calendar-grid {
+  display: grid;
+  gap: var(--space-1, 0.25rem);
+}
+
+/* Calendar Day Cell */
+.calendar-day-cell {
+  padding: var(--space-2, 0.5rem);
+  border-radius: var(--radius-md, 0.5rem);
+  border: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+  cursor: pointer;
+
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.calendar-day-cell:hover {
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.5);
+  border-color: rgb(var(--border-rgb, 226, 232, 240) / 0.3);
+}
+
+.calendar-day-cell-today {
+  background: rgb(var(--primary-rgb, 59, 130, 246) / 0.05);
+  border-color: var(--color-2-nuance-1);
+}
+
+.calendar-day-cell-selected {
+  background: rgb(var(--primary-rgb, 59, 130, 246) / 0.1);
+  border-color: var(--color-2-nuance-1);
+  box-shadow: 0 0 0 2px rgb(var(--primary-rgb, 59, 130, 246) / 0.1);
+}
+
+.calendar-day-cell-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.calendar-day-cell-disabled:hover {
+  background: transparent;
+}
+
+/* ========================================
+   CALENDAR EVENTS
+   ======================================== */
+
+.calendar-event {
+  padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
+  border-radius: var(--radius-sm, 0.375rem);
+  font-size: var(--font-caption, 0.75rem);
+  font-weight: 500;
+
+  transition: all 150ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.calendar-event:hover {
+  transform: translateY(-1px);
+}
+
+.calendar-event-session {
+  background: rgb(var(--primary-rgb, 59, 130, 246) / 0.15);
+  color: var(--color-2-nuance-1);
+}
+
+.calendar-event-postit {
+  background: rgb(var(--color-warning) / 0.2);
+  color: rgb(var(--color-warning));
+}
+
+.calendar-event-postit-overdue {
+  background: rgb(var(--color-error) / 0.15);
+  color: rgb(var(--color-error));
+}
+
+.calendar-event-holiday {
+  background: rgb(var(--secondary-rgb, 16, 185, 129) / 0.15);
+  color: var(--color-1-nuance-1);
+}
+
+/* Calendar Event Badge */
+.calendar-event-badge {
+  @apply inline-flex items-center;
+  gap: var(--space-1, 0.25rem);
+  padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
+  border-radius: var(--radius-full, 9999px);
+  font-size: var(--font-caption, 0.75rem);
+  font-weight: 500;
+}
+
+.calendar-event-badge-session {
+  background: rgb(var(--primary-rgb, 59, 130, 246) / 0.15);
+  color: var(--color-2-nuance-1);
+}
+
+.calendar-event-badge-postit {
+  background: rgb(var(--color-warning) / 0.2);
+  color: rgb(var(--color-warning));
+}
+
+/* ========================================
+   CALENDAR LEGEND
+   ======================================== */
+
+.calendar-legend {
+  @apply flex items-center flex-wrap;
+  gap: var(--space-4, 1rem);
+  margin-top: var(--space-4, 1rem);
+  padding-top: var(--space-4, 1rem);
+  border-top: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+}
+
+.calendar-legend-item {
+  @apply flex items-center;
+  gap: var(--space-2, 0.5rem);
+  font-size: var(--font-caption, 0.75rem);
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.6);
+}
+
+.calendar-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full, 9999px);
+}
+
+.calendar-legend-session .calendar-legend-dot {
+  background: var(--color-2-nuance-1);
+}
+
+.calendar-legend-postit .calendar-legend-dot {
+  background: var(--color-1-nuance-1);
+}
+
+.calendar-legend-holiday .calendar-legend-dot {
+  background: var(--color-3-nuance-1);
+}
+
+/* ========================================
+   DARK MODE OVERRIDES
+   ======================================== */
+
+.dark .mini-calendar {
+  background: rgb(var(--card-rgb, 30, 41, 59) / 0.6);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+}
+
+.dark .mini-calendar-nav-button {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+  color: var(--color-1-nuance-1);
+}
+
+.dark .mini-calendar-nav-button:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent);
+  border-color: var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+}
+
+.dark .mini-calendar-nav-button:active {
+  background: var(--color-2-nuance-1);
+  border-color: var(--color-2-nuance-1);
+  color: white;
+}
+
+.dark .mini-calendar-today-button {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-2-nuance-1) 40%, transparent);
+  color: var(--color-2-nuance-1);
+}
+
+.dark .mini-calendar-today-button:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent);
+  border-color: var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+}
+
+.dark .mini-calendar-events-popover {
+  background: rgb(var(--card-rgb, 30, 41, 59) / 0.95);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.dark .mini-calendar-events-popover-header {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 35%, transparent);
+}
+
+.dark .mini-calendar-events-popover-close:hover {
+  background: rgb(var(--muted-rgb, 51, 65, 85) / 0.8);
+}
+
+.dark .mini-calendar-events-popover-item:hover {
+  background: rgb(var(--muted-rgb, 51, 65, 85) / 0.6);
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 40%, transparent);
+}
+
+.dark .mini-calendar-events-popover-footer {
+  border-top: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 35%, transparent);
+}
+
+.dark .full-calendar-events-popover {
+  background: rgb(var(--card-rgb, 30, 41, 59) / 0.95);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.dark .full-calendar-events-popover-header {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 35%, transparent);
+}
+
+.dark .full-calendar-events-popover-close:hover {
+  background: rgb(var(--muted-rgb, 51, 65, 85) / 0.8);
+}
+
+.dark .full-calendar-events-popover-item:hover {
+  background: rgb(var(--muted-rgb, 51, 65, 85) / 0.6);
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 40%, transparent);
+}
+
+.dark .full-calendar-events-popover-footer {
+  border-top: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 35%, transparent);
+}
+
+.dark .calendar-container {
+  background: rgb(var(--card-rgb, 30, 41, 59) / 0.7);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+}
+
+.dark .calendar-header {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 35%, transparent);
+}
+
+/* Dark mode filter overrides - each filter keeps its own color */
+.dark .calendar-filter-session {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+  border-color: var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+}
+
+.dark .calendar-filter-session:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-2) 25%, transparent);
+  border-color: var(--color-2-nuance-2);
+}
+
+.dark .calendar-filter-session.calendar-filter-toggle-active {
+  background: var(--color-2-nuance-1);
+  border-color: var(--color-2-nuance-1);
+  color: white;
+}
+
+.dark .calendar-filter-postit {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent);
+  border-color: var(--color-1-nuance-1);
+  color: var(--color-1-nuance-1);
+}
+
+.dark .calendar-filter-postit:hover {
+  background: color-mix(in srgb, var(--color-1-nuance-2) 25%, transparent);
+  border-color: var(--color-1-nuance-2);
+}
+
+.dark .calendar-filter-postit.calendar-filter-toggle-active {
+  background: var(--color-1-nuance-1);
+  border-color: var(--color-1-nuance-1);
+  color: white;
+}
+
+.dark .calendar-filter-holiday {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 15%, transparent);
+  border-color: var(--color-3-nuance-1);
+  color: var(--color-3-nuance-1);
+}
+
+.dark .calendar-filter-holiday:hover {
+  background: color-mix(in srgb, var(--color-3-nuance-2) 25%, transparent);
+  border-color: var(--color-3-nuance-2);
+}
+
+.dark .calendar-filter-holiday.calendar-filter-toggle-active {
+  background: var(--color-3-nuance-1);
+  border-color: var(--color-3-nuance-1);
+  color: white;
+}
+
+.dark .calendar-event-postit {
+  background: rgb(var(--color-warning) / 0.15);
+  color: rgb(var(--color-warning));
+}
+
+/* ========================================
+   REACT BIG CALENDAR THEMING
+   ======================================== */
+
+.rbc-calendar {
+  font-family: inherit;
+  background: transparent;
+}
+
+/* Toolbar */
+.rbc-toolbar {
+  @apply flex flex-wrap items-center justify-between;
+  padding: var(--space-4, 1rem);
+  gap: var(--space-3, 0.75rem);
+  margin-bottom: var(--space-4, 1rem);
+  border-radius: var(--radius-lg, 0.75rem);
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.3);
+}
+
+.rbc-toolbar-label {
+  font-size: var(--font-heading-3, 1.25rem);
+  font-weight: 600;
+  color: var(--color-1-nuance-1);
+}
+
+/* Toolbar Buttons */
+.rbc-btn-group {
+  @apply flex items-center;
+  gap: var(--space-1, 0.25rem);
+}
+
+.rbc-toolbar button {
+  padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+  border-radius: var(--radius-lg, 0.75rem);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+  background: color-mix(in srgb, var(--color-1-nuance-3) 8%, transparent);
+  color: var(--color-1-nuance-1);
+  font-size: var(--font-body-sm, 0.8125rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.rbc-toolbar button:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+  border-color: var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+}
+
+.rbc-toolbar button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+  border-color: var(--color-2-nuance-1);
+}
+
+.rbc-toolbar button:active {
+  background: var(--color-2-nuance-1);
+  border-color: var(--color-2-nuance-1);
+  color: white;
+  transform: scale(0.98);
+}
+
+.rbc-toolbar button.rbc-active {
+  background: var(--color-2-nuance-1);
+  color: white !important;
+  border-color: transparent;
+  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgb(0 0 0 / 0.1));
+}
+
+.rbc-toolbar button.rbc-active:hover {
+  background: var(--color-2-nuance-2);
+  color: white !important;
+}
+
+/* Header Cells */
+.rbc-header {
+  padding: var(--space-3, 0.75rem);
+  font-weight: 600;
+  font-size: var(--font-caption, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider, 0.05em);
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.5);
+  border-bottom: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+  background: transparent;
+}
+
+.rbc-header + .rbc-header {
+  border-left: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+}
+
+/* Month View */
+.rbc-month-view {
+  border: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+  border-radius: var(--radius-lg, 0.75rem);
+  overflow: hidden;
+}
+
+.rbc-month-row {
+  border-bottom: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+}
+
+.rbc-month-row:last-child {
+  border-bottom: none;
+}
+
+/* Month view row content */
+.rbc-month-view .rbc-row-content {
+  position: relative;
+  min-height: 24px;
+}
+
+/* Event takes full available space in month view */
+.rbc-month-view .rbc-row-segment {
+  width: 100%;
+}
+
+.rbc-month-view .rbc-event {
+  width: 100%;
+}
+
+/* Day Background */
+.rbc-day-bg {
+  transition: background 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.rbc-day-bg:hover {
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.3);
+}
+
+.rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+}
+
+/* Today */
+.rbc-today {
+  background: rgb(var(--primary-rgb, 59, 130, 246) / 0.05);
+}
+
+/* Off Range */
+.rbc-off-range-bg {
+  position: relative;
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.3);
+}
+
+.rbc-off-range-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 999;
+}
+
+.rbc-off-range {
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.3);
+}
+
+.rbc-off-range-bg * {
+  pointer-events: none !important;
+}
+
+/* Date Cell */
+.rbc-date-cell {
+  padding: var(--space-2, 0.5rem);
+  text-align: right;
+  font-size: var(--font-body-sm, 0.8125rem);
+  font-weight: 500;
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.8);
+}
+
+.rbc-date-cell.rbc-now {
+  font-weight: 700;
+  color: var(--color-2-nuance-1);
+}
+
+/* Custom Date Cell for badge positioning */
+.rbc-date-cell {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
+}
+
+.rbc-date-cell-wrapper {
+  position: relative;
+}
+
+.rbc-date-cell-label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Badge +X for multiple events - positioned next to day number */
+.rbc-date-cell-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 10px;
+  font-weight: 700;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+  margin-left: 4px;
+}
+
+.rbc-date-cell-badge:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.rbc-date-cell-badge:active {
+  transform: scale(1.05);
+}
+
+/* Events */
+.rbc-event {
+  border-radius: var(--radius-md, 0.5rem);
+  padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
+  font-size: var(--font-caption, 0.75rem);
+  font-weight: 500;
+  border: 1px solid color-mix(in srgb, var(--color-3-nuance-1) 60%, transparent);
+  background: linear-gradient(135deg, var(--color-2-nuance-1), var(--color-2-nuance-2));
+  color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.rbc-event:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-3-nuance-1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+/* Events qui se chevauchent */
+.rbc-event-overlaps {
+  border: 2px solid var(--color-3-nuance-1) !important;
+  box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Meilleur espacement entre events */
+.rbc-row-segment {
+  padding: 1px 2px;
+}
+
+.rbc-event:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(var(--primary-rgb, 59, 130, 246) / 0.3);
+}
+
+.rbc-event.rbc-selected {
+  box-shadow: 0 0 0 2px var(--color-2-nuance-1);
+}
+
+.rbc-event-label {
+  display: none;
+}
+
+.rbc-event-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Show More */
+.rbc-show-more {
+  display: none !important;
+}
+
+/* Agenda View */
+.rbc-agenda-view {
+  border-radius: var(--radius-lg, 0.75rem);
+  overflow: hidden;
+}
+
+.rbc-agenda-view table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.rbc-agenda-view table thead {
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.5);
+}
+
+.rbc-agenda-view table th,
+.rbc-agenda-view table td {
+  padding: var(--space-3, 0.75rem);
+  border-bottom: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+}
+
+.rbc-agenda-date-cell,
+.rbc-agenda-time-cell {
+  font-size: var(--font-body-sm, 0.8125rem);
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.7);
+}
+
+.rbc-agenda-event-cell {
+  font-size: var(--font-body, 0.875rem);
+  color: rgb(var(--foreground-rgb, 15, 23, 42));
+}
+
+/* Time View (Week/Day) */
+.rbc-time-view {
+  border: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+  border-radius: var(--radius-lg, 0.75rem);
+  overflow: hidden;
+}
+
+.rbc-time-header {
+  border-bottom: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+}
+
+.rbc-time-content {
+  border-top: none;
+}
+
+.rbc-timeslot-group {
+  border-bottom: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.05);
+}
+
+.rbc-time-slot {
+  font-size: var(--font-caption, 0.75rem);
+  color: rgb(var(--foreground-rgb, 15, 23, 42) / 0.4);
+}
+
+.rbc-time-gutter {
+  background: rgb(var(--muted-rgb, 241, 245, 249) / 0.3);
+}
+
+.rbc-day-slot .rbc-time-slot {
+  border-top: 1px solid rgb(var(--border-rgb, 226, 232, 240) / 0.05);
+}
+
+.rbc-current-time-indicator {
+  background: rgb(var(--color-error));
+  height: 2px;
+}
+
+.rbc-current-time-indicator::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgb(var(--color-error));
+}
+
+/* Dark Mode */
+.dark .rbc-toolbar {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 8%, transparent);
+}
+
+.dark .rbc-toolbar button {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 10%, transparent);
+  border-color: color-mix(in srgb, var(--color-3-nuance-1) 40%, transparent);
+  color: var(--color-3-nuance-1);
+}
+
+.dark .rbc-toolbar button:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent);
+  border-color: var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+}
+
+.dark .rbc-toolbar button:active {
+  background: var(--color-2-nuance-1);
+  color: white;
+}
+
+.dark .rbc-header {
+  color: var(--color-3-nuance-2);
+  border-color: color-mix(in srgb, var(--color-3-nuance-1) 30%, transparent);
+}
+
+.dark .rbc-month-view,
+.dark .rbc-time-view {
+  border-color: color-mix(in srgb, var(--color-3-nuance-1) 35%, transparent);
+}
+
+.dark .rbc-day-bg + .rbc-day-bg,
+.dark .rbc-month-row {
+  border-color: color-mix(in srgb, var(--color-3-nuance-1) 20%, transparent);
+}
+
+.dark .rbc-off-range-bg {
+  background: rgb(var(--muted-rgb, 51, 65, 85) / 0.2);
+}
+
+.dark .rbc-off-range-bg::after {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.dark .rbc-today {
+  background: rgb(var(--primary-rgb, 96, 165, 250) / 0.1);
+}
+
+.dark .rbc-date-cell {
+  color: rgb(var(--foreground-rgb, 248, 250, 252) / 0.8);
+}
+
+.dark .rbc-agenda-view table thead {
+  background: rgb(var(--muted-rgb, 51, 65, 85) / 0.3);
+}
+
+.dark .rbc-time-gutter {
+  background: rgb(var(--muted-rgb, 51, 65, 85) / 0.2);
+}
+
+/* ========================================
+   CALENDAR EVENT MODAL
+   ======================================== */
+
+/* Badge alternating: Style A = white bg, colored border/text. Style B = colored bg, white text */
+.calendar-event-modal-badge {
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full border;
+}
+
+.calendar-event-modal-badge-a-color-2 {
+  background-color: white;
+  border-color: var(--color-2-nuance-2);
+  color: var(--color-2-nuance-2);
+}
+
+.calendar-event-modal-badge-b-color-2 {
+  background-color: var(--color-2-nuance-1);
+  border-color: var(--color-2-nuance-2);
+  color: white;
+}
+
+.calendar-event-modal-badge-a-color-1 {
+  background-color: white;
+  border-color: var(--color-1-nuance-2);
+  color: var(--color-1-nuance-2);
+}
+
+.calendar-event-modal-badge-b-color-1 {
+  background-color: var(--color-1-nuance-1);
+  border-color: var(--color-1-nuance-2);
+  color: white;
+}
+
+.calendar-event-modal-badge-a-color-3 {
+  background-color: white;
+  border-color: var(--color-3-nuance-2);
+  color: var(--color-3-nuance-2);
+}
+
+.calendar-event-modal-badge-b-color-3 {
+  background-color: var(--color-3-nuance-1);
+  border-color: var(--color-3-nuance-2);
+  color: white;
+}
+
+/* Priority badge (red) */
+.calendar-event-modal-badge-priority {
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full border-2;
+  background-color: white;
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+/* Post-it thematic badge (color-3 filled) */
+.calendar-event-modal-badge-thematic {
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full border;
+  background-color: var(--color-3-nuance-1);
+  border-color: var(--color-3-nuance-2);
+  color: white;
+}
+
+/* Session: icon boxes color-1 n1, n2, n3 */
+.calendar-event-modal-icon-box-c2-n1 {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent);
+}
+
+.calendar-event-modal-icon-box-c2-n1 svg {
+  color: var(--color-1-nuance-1);
+}
+
+.calendar-event-modal-icon-box-c2-n2 {
+  background: color-mix(in srgb, var(--color-1-nuance-2) 15%, transparent);
+}
+
+.calendar-event-modal-icon-box-c2-n2 svg {
+  color: var(--color-1-nuance-2);
+}
+
+.calendar-event-modal-icon-box-c2-n3 {
+  background: color-mix(in srgb, var(--color-1-nuance-3) 15%, transparent);
+}
+
+.calendar-event-modal-icon-box-c2-n3 svg {
+  color: var(--color-1-nuance-3);
+}
+
+/* Post-it: icon box color-3 n1 */
+.calendar-event-modal-icon-box-c3-n1 {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 15%, transparent);
+}
+
+.calendar-event-modal-icon-box-c3-n1 svg {
+  color: var(--color-3-nuance-1);
+}
+
+/* Session: section borders and labels */
+.calendar-event-modal-section-border-c2 {
+  border-color: var(--color-1-nuance-2);
+}
+
+.calendar-event-modal-section-label-c2 {
+  color: var(--color-1-nuance-1);
+}
+
+/* Post-it: section border and label */
+.calendar-event-modal-section-border-c3 {
+  border-color: var(--color-3-nuance-2);
+}
+
+.calendar-event-modal-section-label-c3 {
+  color: var(--color-3-nuance-1);
+}
+
+/* Holiday: section border and label */
+.calendar-event-modal-section-border-c1 {
+  border-color: var(--color-2-nuance-2);
+}
+
+.calendar-event-modal-section-label-c1 {
+  color: var(--color-2-nuance-1);
+}
+
+/* Info boxes with colored borders */
+.calendar-event-modal-info-box-c1 {
+  border-color: var(--color-2-nuance-2);
+}
+
+.calendar-event-modal-info-box-c2 {
+  border-color: var(--color-1-nuance-2);
+}
+
+.calendar-event-modal-info-box-c3 {
+  border-color: var(--color-3-nuance-2);
+}
+
+.calendar-event-modal-creator-border-c3 {
+  border-color: var(--color-3-nuance-3);
+}
+
+.calendar-event-modal-creator-border-c3 svg {
+  color: var(--color-3-nuance-2);
+}
+
+/* Holiday: timeline */
+.calendar-event-modal-timeline-wrap {
+  @apply relative pl-16;
+}
+
+.calendar-event-modal-timeline-line {
+  position: absolute;
+  left: 1.5rem;
+  width: 2px;
+  top: 3.25rem;
+  bottom: 3rem;
+  border-radius: 9999px;
+  background-color: var(--color-2-nuance-2);
+}
+
+.calendar-event-modal-timeline-icon-start {
+  @apply absolute -left-16 w-12 h-12 rounded-full flex items-center justify-center border-2 shadow-sm;
+  background-color: var(--card);
+  border-color: var(--color-2-nuance-1);
+}
+
+.calendar-event-modal-timeline-icon-start svg {
+  color: var(--color-2-nuance-1);
+}
+
+.calendar-event-modal-timeline-icon-end {
+  @apply absolute -left-16 w-12 h-12 rounded-full flex items-center justify-center border-2 shadow-sm;
+  background-color: var(--card);
+  border-color: var(--color-2-nuance-3);
+}
+
+.calendar-event-modal-timeline-icon-end svg {
+  color: var(--color-2-nuance-3);
+}
+
+.calendar-event-modal-period-title {
+  @apply text-sm font-medium mb-6;
+  color: var(--color-2-nuance-1);
+}
+
+/* Modal action buttons by event type */
+[data-event-type='session'] .calendar-event-modal-btn-close {
+  background-color: var(--color-2-nuance-1);
+  border: 1px solid var(--color-2-nuance-2);
+  color: white;
+}
+
+[data-event-type='session'] .calendar-event-modal-btn-edit {
+  background-color: var(--color-1-nuance-1);
+  border: 1px solid var(--color-1-nuance-2);
+  color: white;
+}
+
+[data-event-type='postit'] .calendar-event-modal-btn-close {
+  background-color: var(--color-1-nuance-1);
+  border: 1px solid var(--color-1-nuance-2);
+  color: white;
+}
+
+[data-event-type='postit'] .calendar-event-modal-btn-edit {
+  background-color: var(--color-3-nuance-1);
+  border: 1px solid var(--color-3-nuance-2);
+  color: white;
+}
+
+[data-event-type='holiday'] .calendar-event-modal-btn-close {
+  background-color: var(--color-3-nuance-1);
+  border: 1px solid var(--color-3-nuance-2);
+  color: white;
+}
+
+[data-event-type='holiday'] .calendar-event-modal-btn-edit {
+  background-color: var(--color-1-nuance-1);
+  border: 1px solid var(--color-1-nuance-2);
+  color: white;
+}

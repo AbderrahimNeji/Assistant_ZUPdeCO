@@ -1,0 +1,69 @@
+# Flow 02 — Navigation sur les écrans en mode hors ligne
+#
+# Vérifie que chaque onglet affiche les données mises en cache (aucun écran d'erreur)
+# quand l'appareil est en mode avion.
+#
+# Prérequis : flow 00 complété
+
+appId: com.zupdeco.ednov
+---
+
+- launchApp:
+    clearState: false
+
+- waitForAnimationToEnd
+- assertVisible: "Tableau de bord"
+
+# --- Activer le mode avion ---
+- setAirplaneMode: enable
+- waitForAnimationToEnd
+
+# La bannière hors ligne doit être présente
+- assertVisible:
+    id: "offline-banner"
+
+# --- Tableau de bord offline ---
+- assertVisible: "Tableau de bord"
+# Aucun écran d'erreur
+- assertNotVisible: "Impossible de charger"
+- assertNotVisible: "Erreur"
+- scroll
+
+# --- Séances offline ---
+- tapOn:
+    label: "Séances"
+- waitForAnimationToEnd
+- assertVisible: "Séances"
+- assertNotVisible: "Impossible de charger"
+- assertNotVisible: "Erreur réseau"
+# Les séances mises en cache doivent être visibles
+- scroll
+
+# --- Comptes rendus offline ---
+- tapOn:
+    label: "Comptes rendus"
+- waitForAnimationToEnd
+- assertVisible: "Comptes rendus"
+- assertNotVisible: "Impossible de charger"
+- assertNotVisible: "Erreur réseau"
+- scroll
+
+# --- Profil offline ---
+- tapOn:
+    label: "Profil"
+- waitForAnimationToEnd
+- assertNotVisible: "Impossible de charger"
+- assertNotVisible: "Erreur réseau"
+
+# --- Retour au tableau de bord ---
+- tapOn:
+    label: "Tableau de bord"
+- waitForAnimationToEnd
+
+# --- Désactiver le mode avion ---
+- setAirplaneMode: disable
+- waitForAnimationToEnd
+
+# La bannière doit disparaître
+- assertNotVisible:
+    id: "offline-banner"

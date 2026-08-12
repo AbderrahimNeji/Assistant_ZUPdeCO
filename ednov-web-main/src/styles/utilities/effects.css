@@ -1,0 +1,126 @@
+/* ============================================
+   EFFECTS.CSS - Effets visuels (shadows, gradients)
+   ============================================ */
+
+/* Shadows avec couleurs du thème */
+.shadow-primary {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 0 0 1px var(--color-2-nuance-1);
+}
+
+.shadow-primary-lg {
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    0 0 0 2px var(--color-2-nuance-1);
+}
+
+.shadow-secondary {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 0 0 1px var(--color-1-nuance-1);
+}
+
+.shadow-accent {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 0 0 1px var(--color-3-nuance-1);
+}
+
+/* Gradients avec couleurs du thème */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--color-2-nuance-1) 0%, var(--color-2-nuance-2) 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, var(--color-1-nuance-1) 0%, var(--color-1-nuance-2) 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--color-3-nuance-1) 0%, var(--color-3-nuance-2) 100%);
+}
+
+/* Gradient Overlay (pour cards) */
+.gradient-overlay {
+  position: relative;
+}
+
+.gradient-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Glassmorphism */
+.glass-effect {
+  @apply backdrop-blur-sm border;
+  background-color: hsl(var(--background) / 0.8);
+}
+
+.glass-effect-strong {
+  @apply backdrop-blur-md border shadow-lg;
+  background-color: hsl(var(--background) / 0.9);
+}
+
+/* Glow Effects */
+.glow-primary {
+  box-shadow: 0 0 20px var(--color-2-nuance-1);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px var(--color-1-nuance-1);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px var(--color-3-nuance-1);
+}
+
+/* Hover Glow */
+.hover-glow-primary {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.hover-glow-primary:hover {
+  box-shadow: 0 0 30px var(--color-2-nuance-1);
+}
+
+/* Shimmer Effect (pour loading states) */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Blur Overlay */
+.blur-overlay {
+  @apply backdrop-blur-lg;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Frosted Glass */
+.frosted-glass {
+  @apply backdrop-blur-xl border;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark .frosted-glass {
+  background-color: rgba(0, 0, 0, 0.1);
+}

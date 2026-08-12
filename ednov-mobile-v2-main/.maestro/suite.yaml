@@ -1,0 +1,24 @@
+# Suite Maestro — Mode offline ednov mobile
+#
+# Lance tous les flows dans l'ordre correct.
+# Variables d'environnement requises :
+#   TEST_EMAIL     — email du compte de test (tuteur valide)
+#   TEST_PASSWORD  — mot de passe du compte de test
+#
+# Usage :
+#   maestro test .maestro/suite.yaml \
+#     -e TEST_EMAIL=tuteur@example.com \
+#     -e TEST_PASSWORD=motdepasse
+#
+# Note : les flows 03 à 06 nécessitent des CRs "À saisir" dans le compte de test.
+
+flows:
+  - flows/00_login_and_cache.yaml
+  - flows/01_offline_banner.yaml
+  - flows/02_offline_browse.yaml
+  - flows/03_offline_cr_create.yaml
+  - flows/04_offline_cr_update.yaml
+  - flows/05_sync_on_reconnect.yaml
+  - flows/06_offline_multiple_crs.yaml
+  - flows/07_offline_login_blocked.yaml
+  - flows/08_app_relaunch_offline.yaml

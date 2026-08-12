@@ -1,0 +1,310 @@
+.availability-grid-container {
+  width: 100%;
+}
+
+.availability-section {
+  background-image: linear-gradient(to right, rgba(var(--color-2-rgb), 0.03), #ffffff);
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(var(--color-2-rgb), 0.2);
+  transition: all 0.2s ease;
+}
+
+.availability-section:hover {
+  box-shadow: var(--shadow-xs);
+}
+
+.availability-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.availability-icon-container {
+  padding: 0.375rem;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+}
+
+.availability-icon-container .w-4 {
+  color: var(--color-2-nuance-1);
+}
+
+.availability-section-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-2-nuance-1);
+}
+
+.availability-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.625rem;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+.availability-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.availability-legend-color {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 0.125rem;
+}
+
+.availability-legend-checked {
+  background-color: color-mix(in srgb, var(--color-2-nuance-1) 12%, transparent);
+  border: 1px solid var(--color-2-nuance-1);
+}
+
+.availability-legend-disabled {
+  background-color: color-mix(in srgb, var(--color-1-nuance-1) 5%, transparent);
+  border: 1px solid rgba(var(--color-1-rgb), 0.2);
+}
+
+.availability-timetable {
+  overflow: auto;
+  padding-bottom: 0.25rem;
+  margin: 0 -0.25rem;
+  padding: 0 0.25rem;
+}
+
+.availability-timetable::-webkit-scrollbar {
+  height: 6px;
+}
+
+.availability-timetable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.availability-timetable::-webkit-scrollbar-thumb {
+  background: rgba(var(--color-2-rgb), 0.2);
+  border-radius: 3px;
+}
+
+.availability-timetable::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--color-2-rgb), 0.3);
+}
+
+.availability-timetable-inner {
+  min-width: max-content;
+}
+
+.availability-timetable-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.125rem;
+}
+
+.availability-timetable-header {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: var(--background);
+}
+
+.availability-timetable-header-cell {
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--color-2-nuance-1);
+  border-bottom: 1px solid rgba(var(--color-2-rgb), 0.2);
+}
+
+.availability-timetable-time {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.125rem 0;
+}
+
+.availability-timetable-time-text {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--color-1-nuance-1);
+}
+
+.availability-day-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.availability-day-header {
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--color-2-nuance-1);
+  border-bottom: 1px solid rgba(var(--color-2-rgb), 0.2);
+}
+
+.availability-timeslot {
+  position: relative;
+  height: 2rem;
+  padding: 0.125rem;
+}
+
+.availability-timeslot-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.availability-timeslot-inner {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.375rem;
+  box-shadow: var(--shadow-xs);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.125rem;
+  cursor: pointer;
+}
+
+.availability-timeslot-status {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.availability-timeslot-checked {
+  background-color: color-mix(in srgb, var(--color-2-nuance-1) 12%, transparent);
+  border: 1px solid var(--color-2-nuance-1);
+}
+
+.availability-timeslot-checked .w-3 {
+  color: var(--color-2-nuance-1);
+}
+
+.availability-timeslot-checked:hover {
+  background-color: color-mix(in srgb, var(--color-2-nuance-1) 18%, transparent);
+}
+
+.availability-timeslot-unchecked {
+  background-color: color-mix(in srgb, var(--color-1-nuance-1) 5%, transparent);
+  border: 1px solid rgba(var(--color-1-rgb), 0.15);
+}
+
+.availability-timeslot-unchecked .w-3 {
+  color: var(--color-2-nuance-1);
+}
+
+.availability-timeslot-unchecked:hover {
+  background-color: color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent);
+  border-color: rgba(var(--color-1-rgb), 0.25);
+}
+
+.availability-timeslot-disabled {
+  cursor: default !important;
+  opacity: 0.6;
+}
+
+.availability-timeslot-disabled:hover {
+  background-color: color-mix(in srgb, var(--color-1-nuance-1) 5%, transparent) !important;
+  border-color: rgba(var(--color-1-rgb), 0.15) !important;
+}
+
+.dark .availability-section {
+  background-image: linear-gradient(
+    to right,
+    rgba(var(--color-2-rgb), 0.05),
+    rgba(var(--background-rgb), 1)
+  );
+  border: 1px solid rgba(var(--color-2-rgb), 0.25);
+}
+
+.dark .availability-timetable-header {
+  background-color: var(--background);
+}
+
+.dark .availability-legend-disabled {
+  background-color: color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent);
+  border: 1px solid rgba(var(--color-1-rgb), 0.25);
+}
+
+.dark .availability-timeslot-unchecked {
+  background-color: color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent);
+  border: 1px solid rgba(var(--color-1-rgb), 0.2);
+}
+
+.w-4 {
+  width: 1rem;
+  height: 1rem;
+}
+
+.w-3 {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.availability-show-more {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(var(--color-2-rgb), 0.15);
+  display: flex;
+  justify-content: center;
+}
+
+.availability-timeslot-hidden {
+  display: none;
+}
+
+.availability-show-more-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-2-nuance-1);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-2-nuance-1) 8%, transparent),
+    color-mix(in srgb, var(--color-2-nuance-1) 12%, transparent)
+  );
+  border: 1px solid rgba(var(--color-2-rgb), 0.25);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-xs);
+}
+
+.availability-show-more-btn:hover:not(:disabled) {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-2-nuance-1) 12%, transparent),
+    color-mix(in srgb, var(--color-2-nuance-1) 18%, transparent)
+  );
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.availability-show-more-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-xs);
+}
+
+.availability-show-more-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

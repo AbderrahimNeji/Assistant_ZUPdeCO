@@ -1,0 +1,293 @@
+/* ============================================
+   SLIDING-CALENDAR.CSS - Calendrier coulissant hebdomadaire
+   Style avec cadre et taille appropriée pour le header
+   ============================================ */
+
+.sliding-calendar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgb(var(--card-rgb) / 0.5);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 30%, transparent);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Header avec mois et semaine */
+.sliding-calendar-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-right: var(--space-3);
+  border-right: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 25%, transparent);
+}
+
+.sliding-calendar-header-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.sliding-calendar-month {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-2-nuance-1);
+  line-height: 1.2;
+}
+
+.sliding-calendar-week-number {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-3-nuance-2);
+  line-height: 1;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-3-nuance-2) 10%, transparent);
+}
+
+/* Navigation et jours en ligne */
+.sliding-calendar-week {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.sliding-calendar-nav-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 35%, transparent);
+  background: rgb(var(--card-rgb) / 0.5);
+  color: var(--color-2-nuance-1);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sliding-calendar-nav-btn:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 12%, transparent);
+  border-color: var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+}
+
+.sliding-calendar-nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* Grille des jours en ligne horizontale */
+.sliding-calendar-days {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Jour individuel - plus gros et visible */
+.sliding-calendar-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid transparent;
+  background: rgb(var(--card-rgb) / 0.5);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 3rem;
+}
+
+.sliding-calendar-day:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+  transform: translateY(-2px);
+}
+
+/* Jour normal */
+.sliding-calendar-day--normal {
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 25%, transparent);
+}
+
+/* Aujourd'hui - orange vif comme dans la capture */
+.sliding-calendar-day--today {
+  background: #ff6b35;
+  border-color: #ff6b35;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+.sliding-calendar-day--today:hover {
+  background: #ff5520;
+  border-color: #ff5520;
+  transform: translateY(-2px);
+}
+
+/* Jour sélectionné - bleu */
+.sliding-calendar-day--selected {
+  background: var(--color-2-nuance-1);
+  border-color: var(--color-2-nuance-1);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+}
+
+.sliding-calendar-day--selected:hover {
+  background: var(--color-2-nuance-2);
+  border-color: var(--color-2-nuance-2);
+  transform: translateY(-2px);
+}
+
+/* Nom du jour */
+.sliding-calendar-day-name {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-1-nuance-2);
+  line-height: 1;
+}
+
+.sliding-calendar-day--today .sliding-calendar-day-name {
+  color: white;
+}
+
+.sliding-calendar-day--selected .sliding-calendar-day-name {
+  color: white;
+}
+
+/* Numéro du jour */
+.sliding-calendar-day-number {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-1-nuance-1);
+  line-height: 1;
+}
+
+.sliding-calendar-day--today .sliding-calendar-day-number {
+  color: white;
+}
+
+.sliding-calendar-day--selected .sliding-calendar-day-number {
+  color: white;
+}
+
+/* Petits points oranges sous les jours avec événements (optionnel) */
+.sliding-calendar-day::after {
+  content: '';
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.3125rem;
+  height: 0.3125rem;
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.sliding-calendar-day--has-events::after {
+  background: #ff6b35;
+  opacity: 1;
+}
+
+.sliding-calendar-day--today.sliding-calendar-day--has-events::after {
+  background: white;
+}
+
+.sliding-calendar-day--selected.sliding-calendar-day--has-events::after {
+  background: white;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sliding-calendar-container {
+    padding: var(--space-2-5) var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .sliding-calendar-header {
+    padding-right: var(--space-2);
+  }
+
+  .sliding-calendar-month {
+    font-size: 0.8125rem;
+  }
+
+  .sliding-calendar-week-number {
+    font-size: 0.6875rem;
+  }
+
+  .sliding-calendar-days {
+    gap: var(--space-1-5);
+  }
+
+  .sliding-calendar-day {
+    min-width: 2.75rem;
+    padding: 0.4375rem 0.625rem;
+  }
+
+  .sliding-calendar-day-name {
+    font-size: 0.625rem;
+  }
+
+  .sliding-calendar-day-number {
+    font-size: 1rem;
+  }
+
+  .sliding-calendar-nav-btn {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sliding-calendar-container {
+    padding: var(--space-2) var(--space-2-5);
+    gap: var(--space-1-5);
+  }
+
+  .sliding-calendar-header {
+    padding-right: var(--space-1-5);
+  }
+
+  .sliding-calendar-month {
+    font-size: 0.75rem;
+  }
+
+  .sliding-calendar-week-number {
+    font-size: 0.625rem;
+    padding: 0.0625rem 0.375rem;
+  }
+
+  .sliding-calendar-week {
+    gap: var(--space-1-5);
+  }
+
+  .sliding-calendar-days {
+    gap: var(--space-1);
+  }
+
+  .sliding-calendar-day {
+    min-width: 2.5rem;
+    padding: 0.375rem 0.5rem;
+  }
+
+  .sliding-calendar-day-name {
+    font-size: 0.5625rem;
+  }
+
+  .sliding-calendar-day-number {
+    font-size: 0.9375rem;
+  }
+
+  .sliding-calendar-nav-btn {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}

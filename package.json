@@ -1,0 +1,15 @@
+{
+  "name": "all-app",
+  "private": true,
+  "description": "Ednov + Assistant local workspace scripts",
+  "scripts": {
+    "dev:all": "concurrently -k -n ednov,assistant,web -c blue,magenta,green \"npm run dev:ednov\" \"npm run dev:assistant\" \"npm run dev:web\"",
+    "dev:ednov": "npm --prefix ednov-backend-main run dev",
+    "dev:assistant": "npm --prefix Assistant/assistant-backend run start:dev",
+    "dev:web": "npm --prefix ednov-web-main run dev",
+    "dev:stack": "bash scripts/dev-stack.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.4"
+  }
+}

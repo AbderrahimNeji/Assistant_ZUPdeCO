@@ -1,0 +1,68 @@
+/* Modal fullscreen */
+.dashboard-editor-modal {
+  max-width: 900px !important;
+  max-height: 90vh !important;
+}
+
+/* Container pour le zoom */
+.dashboard-editor-container {
+  width: 100%;
+  max-height: 65vh;
+  overflow: auto;
+  padding: 1rem;
+  position: relative;
+  background: var(--background);
+  border-radius: 8px;
+}
+
+/* Placeholder des sections */
+.section-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  padding: 1rem;
+  background: var(--color-background-secondary);
+  border: 2px dashed var(--color-border);
+  border-radius: 12px;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.section-placeholder:hover {
+  background: var(--color-background-tertiary);
+  border-color: var(--color-primary);
+}
+
+.section-placeholder h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.section-placeholder p {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Overlay transparent */
+.section-interaction-blocker {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  cursor: grab;
+  background: transparent;
+}
+
+.section-interaction-blocker:active {
+  cursor: grabbing;
+}
+
+/* Section content en mode édition */
+.section-content[data-edit-mode='true'] {
+  pointer-events: none;
+  user-select: none;
+}

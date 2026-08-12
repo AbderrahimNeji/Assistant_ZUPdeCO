@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benchmark Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a222c;
+      --panel-2: #222c38;
+      --border: #2a3542;
+      --text: #e8eef4;
+      --muted: #8b9aab;
+      --accent: #3d9a7a;
+      --good: #2f9e6b;
+      --warn: #c9a227;
+      --bad: #c45c5c;
+      --link: #6db3ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #1c3a32 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #243044 0%, transparent 50%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header, main { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+    header {
+      padding-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: end;
+    }
+
+    h1 { margin: 0; font-size: 1.45rem; letter-spacing: -0.02em; }
+    .subtitle { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+    .auth, .filters, .export-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    input, select, button {
+      font: inherit;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      padding: 0.5rem 0.75rem;
+    }
+
+    input[type="password"], input[type="text"] { min-width: min(280px, 70vw); }
+    input[type="date"] { color-scheme: dark; }
+
+    button {
+      background: var(--accent);
+      border-color: transparent;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button.secondary { background: var(--panel-2); border-color: var(--border); }
+    button:hover { filter: brightness(1.08); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    main { padding-top: 1rem; padding-bottom: 2rem; display: grid; gap: 1rem; }
+
+    .status { min-height: 1.2rem; color: var(--muted); font-size: 0.85rem; }
+    .status.error { color: var(--bad); }
+    .status.ok { color: var(--good); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+    .stat label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
+    }
+    .stat strong { font-size: 1.25rem; }
+
+    .charts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+    .panel h2 {
+      margin: 0 0 0.75rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    canvas { width: 100% !important; max-height: 240px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.65rem 0.55rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-weight: 600;
+    }
+    tbody tr { cursor: pointer; }
+    tbody tr:hover { background: #243040; }
+    tbody tr.active { background: #243a34; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border-radius: 999px;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .kpi-good { color: var(--good); background: #2f9e6b22; }
+    .kpi-warn { color: var(--warn); background: #c9a22722; }
+    .kpi-bad { color: var(--bad); background: #c45c5c22; }
+
+    .details-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .hidden { display: none; }
+
+    .table-wrap { overflow-x: auto; }
+
+    @media (max-width: 700px) {
+      header, main { padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Benchmark Dashboard</h1>
+      <p class="subtitle">History, details, trends, filters, and exports</p>
+    </div>
+    <div class="auth">
+      <input id="token" type="password" placeholder="Paste JWT access_token" />
+      <button id="load" type="button">Load history</button>
+    </div>
+  </header>
+
+  <main>
+    <p id="status" class="status">Enter a JWT from POST /api/auth/login, then load history.</p>
+
+    <section class="panel">
+      <h2>Filters</h2>
+      <div class="filters">
+        <select id="filter-dataset">
+          <option value="">All datasets</option>
+        </select>
+        <input id="filter-from" type="date" title="From date" />
+        <input id="filter-to" type="date" title="To date" />
+        <select id="filter-status">
+          <option value="all">All runs</option>
+          <option value="success">Success only</option>
+          <option value="failures">Failures only</option>
+        </select>
+        <button id="apply-filters" class="secondary" type="button">Apply</button>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><label>Runs</label><strong id="stat-runs">—</strong></div>
+      <div class="stat"><label>Latest success</label><strong id="stat-success">—</strong></div>
+      <div class="stat"><label>Latest similarity</label><strong id="stat-similarity">—</strong></div>
+      <div class="stat"><label>Latest latency</label><strong id="stat-latency">—</strong></div>
+      <div class="stat"><label>Questions (latest)</label><strong id="stat-questions">—</strong></div>
+      <div class="stat"><label>High similarity ≥0.8</label><strong id="stat-high">—</strong></div>
+    </section>
+
+    <section class="charts">
+      <div class="panel"><h2>Latency trend</h2><canvas id="latencyChart"></canvas></div>
+      <div class="panel"><h2>Similarity trend</h2><canvas id="similarityChart"></canvas></div>
+      <div class="panel"><h2>Success rate trend</h2><canvas id="successChart"></canvas></div>
+      <div class="panel"><h2>Questions per run</h2><canvas id="questionsChart"></canvas></div>
+    </section>
+
+    <section class="panel">
+      <h2>Benchmark history</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Dataset</th>
+              <th>Questions</th>
+              <th>Success</th>
+              <th>Similarity</th>
+              <th>Latency</th>
+            </tr>
+          </thead>
+          <tbody id="history-body">
+            <tr><td colspan="6">No data loaded</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="details" class="panel hidden">
+      <div class="details-head">
+        <h2 id="details-title">Run details</h2>
+        <div class="export-row">
+          <button class="secondary" type="button" data-export="json">Export JSON</button>
+          <button class="secondary" type="button" data-export="csv">Export CSV</button>
+          <button class="secondary" type="button" data-export="pdf">Export PDF</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Similarity</th>
+              <th>Latency</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="details-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const API = '/api/benchmark';
+    let charts = {};
+    let runs = [];
+    let selectedId = null;
+    let selectedSummary = null;
+
+    function token() {
+      return document.getElementById('token').value.trim();
+    }
+
+    function authHeaders() {
+      return { Authorization: 'Bearer ' + token() };
+    }
+
+    function pct(value) {
+      return ((value ?? 0) * 100).toFixed(0) + '%';
+    }
+
+    function seconds(ms) {
+      return ((ms ?? 0) / 1000).toFixed(1) + ' s';
+    }
+
+    function shortDate(value) {
+      if (!value) return '—';
+      return new Date(value).toLocaleDateString(undefined, {
+        day: '2-digit',
+        month: 'short',
+      });
+    }
+
+    function chartLabel(value, index) {
+      if (!value) return 'Run ' + (index + 1);
+      return new Date(value).toLocaleString(undefined, {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+    }
+
+    function similarityClass(score) {
+      if (score >= 0.8) return 'kpi-good';
+      if (score >= 0.6) return 'kpi-warn';
+      return 'kpi-bad';
+    }
+
+    function latencyClass(ms) {
+      const secondsValue = (ms ?? 0) / 1000;
+      if (secondsValue <= 10) return 'kpi-good';
+      if (secondsValue <= 30) return 'kpi-warn';
+      return 'kpi-bad';
+    }
+
+    function badge(text, cls) {
+      return '<span class="badge ' + cls + '">' + text + '</span>';
+    }
+
+    function setStatus(message, type) {
+      const el = document.getElementById('status');
+      el.textContent = message;
+      el.className = 'status' + (type ? ' ' + type : '');
+    }
+
+    function makeChart(id, labels, data, color, suggestedMax) {
+      charts[id]?.destroy();
+      charts[id] = new Chart(document.getElementById(id), {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            data,
+            borderColor: color,
+            backgroundColor: color + '33',
+            fill: true,
+            tension: 0.25,
+            pointRadius: 3,
+          }],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: {
+              ticks: { color: '#8b9aab', maxRotation: 0 },
+              grid: { color: '#2a354244' },
+            },
+            y: {
+              suggestedMin: 0,
+              suggestedMax,
+              ticks: { color: '#8b9aab' },
+              grid: { color: '#2a354244' },
+            },
+          },
+        },
+      });
+    }
+
+    function renderKpis(latest) {
+      document.getElementById('stat-runs').textContent = String(runs.length);
+      if (!latest) {
+        ['stat-success', 'stat-similarity', 'stat-latency', 'stat-questions', 'stat-high']
+          .forEach((id) => { document.getElementById(id).textContent = '—'; });
+        return;
+      }
+
+      const sim = latest.averageSimilarity ?? 0;
+      const lat = latest.averageLatency ?? 0;
+
+      document.getElementById('stat-success').innerHTML =
+        badge(pct(latest.successRate), latest.successRate >= 0.8 ? 'kpi-good' : latest.successRate >= 0.6 ? 'kpi-warn' : 'kpi-bad');
+      document.getElementById('stat-similarity').innerHTML =
+        badge(sim.toFixed(2), similarityClass(sim));
+      document.getElementById('stat-latency').innerHTML =
+        badge(seconds(lat), latencyClass(lat));
+      document.getElementById('stat-questions').textContent = String(latest.totalQuestions);
+      document.getElementById('stat-high').innerHTML =
+        badge(pct(latest.highSimilarityRate), similarityClass(latest.highSimilarityRate));
+    }
+
+    function renderCharts() {
+      const chronological = [...runs].reverse();
+      const labels = chronological.map((run, i) => chartLabel(run.createdAt, i));
+
+      makeChart(
+        'latencyChart',
+        labels,
+        chronological.map((r) => Number(((r.averageLatency ?? 0) / 1000).toFixed(2))),
+        '#3d9a7a',
+      );
+      makeChart(
+        'similarityChart',
+        labels,
+        chronological.map((r) => Number((r.averageSimilarity ?? 0).toFixed(4))),
+        '#c9a227',
+        1,
+      );
+      makeChart(
+        'successChart',
+        labels,
+        chronological.map((r) => Number(((r.successRate ?? 0) * 100).toFixed(2))),
+        '#5b8def',
+        100,
+      );
+      makeChart(
+        'questionsChart',
+        labels,
+        chronological.map((r) => r.totalQuestions ?? 0),
+        '#9b7bff',
+      );
+    }
+
+    function renderHistory() {
+      const body = document.getElementById('history-body');
+      if (!runs.length) {
+        body.innerHTML = '<tr><td colspan="6">No matching runs</td></tr>';
+        return;
+      }
+
+      body.innerHTML = runs.map((run) => {
+        const sim = run.averageSimilarity ?? 0;
+        const lat = run.averageLatency ?? 0;
+        return [
+          '<tr data-id="' + run.id + '"' + (run.id === selectedId ? ' class="active"' : '') + '>',
+          '<td>' + shortDate(run.createdAt) + '</td>',
+          '<td>' + (run.dataset || 'unknown') + '</td>',
+          '<td>' + run.totalQuestions + '</td>',
+          '<td>' + badge(pct(run.successRate), run.successRate >= 0.8 ? 'kpi-good' : run.successRate >= 0.6 ? 'kpi-warn' : 'kpi-bad') + '</td>',
+          '<td>' + badge(sim.toFixed(2), similarityClass(sim)) + '</td>',
+          '<td>' + badge(seconds(lat), latencyClass(lat)) + '</td>',
+          '</tr>',
+        ].join('');
+      }).join('');
+
+      body.querySelectorAll('tr[data-id]').forEach((row) => {
+        row.addEventListener('click', () => openDetails(row.getAttribute('data-id')));
+      });
+    }
+
+    async function openDetails(id) {
+      selectedId = id;
+      renderHistory();
+      setStatus('Loading run details…');
+
+      try {
+        const response = await fetch(API + '/' + id, { headers: authHeaders() });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        selectedSummary = await response.json();
+
+        document.getElementById('details').classList.remove('hidden');
+        document.getElementById('details-title').textContent =
+          'Run details — ' + (selectedSummary.dataset || 'unknown') + ' · ' + shortDate(selectedSummary.createdAt);
+
+        const rows = (selectedSummary.results || []).map((result) => {
+          const sim = result.similarity ?? 0;
+          return [
+            '<tr>',
+            '<td>' + escapeHtml(result.question) + '</td>',
+            '<td>' + badge(sim.toFixed(2), similarityClass(sim)) + '</td>',
+            '<td>' + badge(seconds(result.latencyMs), latencyClass(result.latencyMs)) + '</td>',
+            '<td>' + (result.success ? '✅' : '❌') + '</td>',
+            '</tr>',
+          ].join('');
+        });
+
+        document.getElementById('details-body').innerHTML =
+          rows.join('') || '<tr><td colspan="4">No question results</td></tr>';
+        setStatus('Loaded details for ' + id.slice(0, 8) + '…', 'ok');
+      } catch (error) {
+        setStatus(error.message || String(error), 'error');
+      }
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function queryFromFilters() {
+      const params = new URLSearchParams();
+      const dataset = document.getElementById('filter-dataset').value;
+      const from = document.getElementById('filter-from').value;
+      const to = document.getElementById('filter-to').value;
+      const status = document.getElementById('filter-status').value;
+
+      if (dataset) params.set('dataset', dataset);
+      if (from) params.set('from', from);
+      if (to) params.set('to', to);
+      if (status && status !== 'all') params.set('status', status);
+      return params.toString();
+    }
+
+    async function loadDatasets() {
+      const response = await fetch(API + '/datasets', { headers: authHeaders() });
+      if (!response.ok) return;
+      const payload = await response.json();
+      const select = document.getElementById('filter-dataset');
+      const current = select.value;
+      select.innerHTML = '<option value="">All datasets</option>';
+      (payload.datasets || []).forEach((name) => {
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        select.appendChild(option);
+      });
+      select.value = current;
+    }
+
+    async function loadHistory() {
+      if (!token()) {
+        setStatus('Paste a JWT access_token first.', 'error');
+        return;
+      }
+
+      localStorage.setItem('benchmarkJwt', token());
+      setStatus('Loading…');
+
+      try {
+        await loadDatasets();
+        const qs = queryFromFilters();
+        const response = await fetch(API + '/history' + (qs ? '?' + qs : ''), {
+          headers: authHeaders(),
+        });
+        if (!response.ok) throw new Error('HTTP ' + response.status + ' — check your token');
+
+        const payload = await response.json();
+        runs = [...(payload.runs || [])].reverse();
+
+        renderKpis(runs[0]);
+        renderCharts();
+        renderHistory();
+
+        if (!runs.length) {
+          document.getElementById('details').classList.add('hidden');
+          setStatus('No benchmark runs match these filters.', '');
+          return;
+        }
+
+        setStatus('Loaded ' + runs.length + ' run(s). Click a row for details.', 'ok');
+      } catch (error) {
+        setStatus(error.message || String(error), 'error');
+      }
+    }
+
+    async function exportSelected(format) {
+      if (!selectedId) {
+        setStatus('Select a run first.', 'error');
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          API + '/' + selectedId + '/export?format=' + format,
+          { headers: authHeaders() },
+        );
+        if (!response.ok) throw new Error('Export failed: HTTP ' + response.status);
+
+        const blob = await response.blob();
+        const disposition = response.headers.get('Content-Disposition') || '';
+        const match = disposition.match(/filename="?([^"]+)"?/);
+        const filename = match?.[1] || ('benchmark.' + format);
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        setStatus('Exported ' + filename, 'ok');
+      } catch (error) {
+        setStatus(error.message || String(error), 'error');
+      }
+    }
+
+    document.getElementById('load').addEventListener('click', loadHistory);
+    document.getElementById('apply-filters').addEventListener('click', loadHistory);
+    document.querySelectorAll('[data-export]').forEach((button) => {
+      button.addEventListener('click', () => exportSelected(button.getAttribute('data-export')));
+    });
+
+    const saved = localStorage.getItem('benchmarkJwt');
+    if (saved) document.getElementById('token').value = saved;
+  </script>
+</body>
+</html>

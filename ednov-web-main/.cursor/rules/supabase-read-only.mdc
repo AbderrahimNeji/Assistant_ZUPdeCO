@@ -1,0 +1,69 @@
+# Supabase MCP — Read-only by default
+
+## Strict rule
+
+- **ALWAYS** read the database using MCP Supabase tools
+- **NEVER** write to the database without **explicit prior** user approval
+
+## Tools allowed without confirmation
+
+**Read-only** MCP Supabase tools may be used freely:
+
+- `supabase_query` (SELECT only)
+- `supabase_list_tables`
+- `supabase_describe_table`
+- Any tool that does not modify data
+
+## Tools requiring user confirmation
+
+**Write** MCP Supabase tools require **explicit confirmation**:
+
+- `supabase_insert`
+- `supabase_update`
+- `supabase_delete`
+- `supabase_upsert`
+- Any tool that modifies data
+
+## Process for changes
+
+1. **Analyze** the user’s request
+2. **Determine** whether a database change is needed
+3. **Ask for explicit confirmation**:
+   - Explain which table(s) will be modified
+   - Explain what data will be inserted/updated/deleted
+   - Wait for an affirmative response from the user
+4. **Run** the write operation only after confirmation
+
+## Examples
+
+### ✅ Allowed without confirmation
+
+```text
+Agent: I will read the `students` table to list minor students.
+[Call supabase_query with SELECT]
+```
+
+### ❌ Forbidden without confirmation
+
+```text
+Agent: I will create the student in the database.
+[Direct supabase_insert call] ← FORBIDDEN
+```
+
+### ✅ Good process for writes
+
+```text
+Agent: To create this student, I need to insert one row into `students` with:
+- name: "Jane Doe"
+- birthDate: "2010-05-15"
+- email: "jane.doe@example.com"
+
+May I proceed with the database insert?
+
+[Wait for user response]
+[If yes → call supabase_insert]
+```
+
+## Exceptions
+
+None. Even for operations that seem “obvious” or “safe”, **always** ask for confirmation before any database write.

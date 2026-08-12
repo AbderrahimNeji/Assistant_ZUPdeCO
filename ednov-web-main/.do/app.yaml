@@ -1,0 +1,39 @@
+name: ednov-web
+region: fra
+
+static_sites:
+  - name: ednov-web-frontend
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: your-username/your-repo
+    build_command: npm run build
+    output_dir: dist
+    environment_slug: node-js
+    envs:
+      - key: NODE_VERSION
+        value: "20"
+      - key: VITE_API_URL
+        value: ${VITE_API_URL}
+        type: SECRET
+      - key: VITE_FIREBASE_API_KEY
+        value: ${VITE_FIREBASE_API_KEY}
+        type: SECRET
+      - key: VITE_FIREBASE_AUTH_DOMAIN
+        value: ${VITE_FIREBASE_AUTH_DOMAIN}
+        type: SECRET
+      - key: VITE_FIREBASE_PROJECT_ID
+        value: ${VITE_FIREBASE_PROJECT_ID}
+        type: SECRET
+      - key: VITE_FIREBASE_STORAGE_BUCKET
+        value: ${VITE_FIREBASE_STORAGE_BUCKET}
+        type: SECRET
+      - key: VITE_FIREBASE_MESSAGING_SENDER_ID
+        value: ${VITE_FIREBASE_MESSAGING_SENDER_ID}
+        type: SECRET
+      - key: VITE_FIREBASE_APP_ID
+        value: ${VITE_FIREBASE_APP_ID}
+        type: SECRET
+    routes:
+      - path: /
+    catchall_document: index.html

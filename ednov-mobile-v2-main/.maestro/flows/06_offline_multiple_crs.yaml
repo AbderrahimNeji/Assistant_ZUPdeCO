@@ -1,0 +1,92 @@
+# Flow 06 — Plusieurs CRs créés hors ligne (test de la file d'attente)
+#
+# Scénario :
+#   1. L'utilisateur passe en mode avion
+#   2. Il crée 2 CRs différents hors ligne depuis des séances distinctes
+#   3. La bannière indique progressivement "1 action", puis "2 actions en attente"
+#   4. Au retour en ligne, les 2 CRs se synchronisent
+#   5. La bannière affiche "2 action(s) synchronisée(s)"
+#
+# Prérequis : flow 00 complété (au moins 2 CRs "À saisir" différents en cache)
+
+appId: com.zupdeco.ednov
+---
+
+- launchApp:
+    clearState: false
+
+- waitForAnimationToEnd
+- assertVisible: "Tableau de bord"
+
+# --- Activer le mode avion ---
+- setAirplaneMode: enable
+- waitForAnimationToEnd
+
+- assertVisible:
+    id: "offline-banner"
+
+# --- Premier CR offline ---
+- tapOn:
+    label: "Comptes rendus"
+- waitForAnimationToEnd
+
+- tapOn: "À saisir"
+- waitForAnimationToEnd
+- assertVisible: "Saisir un CR"
+
+- tapOn:
+    id: "cr-note-5"
+- tapOn:
+    id: "cr-commentaire"
+- inputText: "Premier CR offline — Maestro test."
+- hideKeyboard
+- tapOn:
+    label: "Très à l'aise"
+
+- tapOn:
+    id: "cr-submit-button"
+- waitForAnimationToEnd
+- assertVisible: "Sauvegardé localement"
+- assertVisible: "1 action en attente"
+
+# Retour à la liste
+- back
+- waitForAnimationToEnd
+
+# --- Deuxième CR offline (chercher un autre CR "À saisir") ---
+# Faire défiler pour trouver un autre CR "À saisir"
+- scroll
+- tapOn: "À saisir"
+- waitForAnimationToEnd
+- assertVisible: "Saisir un CR"
+
+- tapOn:
+    id: "cr-note-2"
+- tapOn:
+    id: "cr-commentaire"
+- inputText: "Deuxième CR offline — session difficile."
+- hideKeyboard
+- tapOn:
+    label: "En difficulté"
+
+- tapOn:
+    id: "cr-submit-button"
+- waitForAnimationToEnd
+- assertVisible: "Sauvegardé localement"
+
+# La bannière doit maintenant indiquer 2 actions
+- assertVisible: "2 action"
+
+# --- Retour en ligne et synchronisation ---
+- setAirplaneMode: disable
+
+# Attendre la synchronisation automatique
+- extendedWaitUntil:
+    visible: "action(s) synchronisée(s)"
+    timeout: 20000
+
+# La bannière de sync doit confirmer 2 synchronisations
+- assertVisible: "action(s) synchronisée(s)"
+
+# La file doit être vide
+- assertNotVisible: "en attente"

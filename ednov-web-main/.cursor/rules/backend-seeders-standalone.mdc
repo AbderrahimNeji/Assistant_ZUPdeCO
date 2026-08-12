@@ -1,0 +1,25 @@
+---
+description: New backend seeders runnable on their own (run script + npm script)
+globs: ednov-backend/**/seeders/**/*.ts,ednov-backend/**/seeds/**/*.ts
+alwaysApply: false
+---
+
+# Backend seeders — **standalone** execution
+
+For **any new or refactored** seeder in `ednov-backend`:
+
+## Requirements
+
+1. **Runnable entry point** — like existing `run-*.seeder.ts` files:
+   - Load `dotenv` with the path to the backend root (e.g. `join(__dirname, '../../../.env')` from `src/database/seeders/`).
+   - Import `dataSource` from `data-source`, `initialize()` if needed, call the seed function, `destroy()`, `process.exit(0|1)` with error handling.
+
+2. **Reusable logic** — keep logic in an exported module (e.g. `my-feature.seeder.ts` with `export async function seedMyFeature(dataSource: DataSource)`), and the runner calls that function.
+
+3. **`package.json`** — add a `seed:<name>` script that runs **`ts-node`** on the **run** file (or the single file if everything is in one file), following existing entries (`seed:filters`, `seed:sidebar-permissions`, etc.).
+
+4. Do not only wire the seeder into `seed.ts` / aggregates without a way to run **one** seeder in isolation.
+
+## Shape reference
+
+Align with `src/database/seeders/run-consolidated-filters.seeder.ts` + `consolidated-filters.seeder.ts`.

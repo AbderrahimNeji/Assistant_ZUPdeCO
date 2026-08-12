@@ -1,0 +1,23 @@
+---
+description: Data fetching (React Query), state (Zustand), and env vars for Ednov-mobile
+globs: "**/*.ts,**/**/api/**/*,**/**/hooks/**/*,**/**/store/**/*"
+alwaysApply: false
+---
+
+# Ednov-mobile: Data & State
+
+## Server / API data
+
+- Use **React Query** (@tanstack/react-query) for all server data: `useQuery` for reads, `useMutation` for writes.
+- Do not store server data in Zustand or ad-hoc global state; keep it in React Query cache.
+- Use consistent query keys (e.g. by feature or resource) and handle loading and error states in the UI.
+- Prefer a shared API client (e.g. Axios instance) with base URL from env; do not hardcode API URLs or keys.
+
+## Client-only state
+
+- Use **Zustand** for client-only global state (e.g. UI preferences, offline flags).
+- Use local `useState` (or `useReducer`) for state that is truly local to a screen or component.
+
+## Environment and secrets
+
+- Use `process.env.EXPO_PUBLIC_*` for any value that may vary by environment (API URL, feature flags). Never commit secrets; use EAS Secrets or app config for sensitive values in builds.

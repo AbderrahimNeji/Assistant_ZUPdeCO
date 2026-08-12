@@ -1,0 +1,92 @@
+---
+description: Règles du framework de développement Ednov — branching, Linear, migrations, PR. Appliquer sur toute tâche de dev.
+globs: ["**/*.ts", "**/*.tsx", "**/*.js"]
+alwaysApply: true
+---
+
+# Framework de développement Ednov — Backend
+
+## 1. Convention de nommage des branches
+
+**Format obligatoire :**
+```
+<type>/poc-<numéro>-<description-courte>
+```
+
+**Types valides :** `feat`, `fix`, `chore`, `hotfix`, `refactor`
+
+**Exemples :**
+```
+feat/poc-123-add-phone-to-user
+fix/poc-456-fix-migration-role-groups
+chore/poc-789-update-dependencies
+```
+
+Toujours copier depuis Linear : ticket → **"Copy git branch name"**, puis adapter le préfixe de type.
+
+Toujours partir de `develop` à jour :
+```bash
+git checkout develop && git pull
+git checkout -b feat/poc-XXX-ma-feature
+```
+
+## 2. Workflow Linear
+
+```
+1. Ticket Linear → passer "In Progress"
+2. Créer la branche (convention ci-dessus)
+3. Développer + committer
+4. gh pr create  →  template PR chargé automatiquement
+5. Remplir "Closes POC-XXX" dans le template
+6. Merge → develop  →  ticket "In Review" auto + commentaire
+7. QA valide → Merge → main  →  ticket "Done" auto
+```
+
+## 3. Migrations (règle critique)
+
+- **1 migration max par PR**
+- Générer : `make migrate-create NAME=NomExplicite`
+- **Toujours tester** : `run` → `revert` → `run` avant la PR
+- Ne jamais lancer `migration:run` sur une base partagée manuellement
+- Committer la migration dans la même PR que le code qui l'utilise
+
+```bash
+make migrate-create NAME=AddPhoneToUser
+npm run migration:run
+npm run migration:revert
+npm run migration:run
+# → tout passe → commit + PR
+```
+
+## 4. Base de données locale
+
+Chaque développeur a sa propre base PostgreSQL locale via Docker.
+Ne jamais pointer sur la base Supabase partagée pour développer.
+
+```bash
+make setup    # premier setup (Docker + migrations + seeds)
+make dev      # lancer le backend
+make reset-db # repartir d'une base propre
+```
+
+## 5. Avant chaque PR
+
+```bash
+make ci   # lint + typecheck + tests — doit passer en local
+```
+
+## 6. Règles d'or
+
+```
+✅ Base locale uniquement
+✅ Branche depuis develop à jour
+✅ Nom de branche avec POC-XXX
+✅ make ci passe avant de push
+✅ Template PR rempli (Linear + description + comment tester)
+✅ Migration testée run/revert/run
+
+❌ Jamais committer sur develop ou main directement
+❌ Jamais migration:run sur une base partagée
+❌ Jamais supprimer une migration déjà appliquée
+❌ PR sans numéro de ticket Linear
+```

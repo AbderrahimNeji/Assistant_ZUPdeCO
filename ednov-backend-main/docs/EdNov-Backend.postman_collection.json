@@ -1,0 +1,1714 @@
+{
+  "info": {
+    "_postman_id": "b8e809cc-6d74-4f29-8a0f-e2f1f1db8b4d",
+    "name": "EdNov Backend",
+    "description": "Collection Postman importable pour tester le backend EdNov. Variables incluses dans la collection: baseUrl, firebaseToken et IDs metier reutilisables.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{firebaseToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000/api/v1", "type": "string" },
+    { "key": "firebaseToken", "value": "", "type": "string" },
+    { "key": "companyId", "value": "", "type": "string" },
+    { "key": "companyCode", "value": "EDNOVTEST", "type": "string" },
+    { "key": "establishmentId", "value": "", "type": "string" },
+    { "key": "roomId", "value": "", "type": "string" },
+    { "key": "roleId", "value": "", "type": "string" },
+    { "key": "profileId", "value": "", "type": "string" },
+    { "key": "ruleId", "value": "", "type": "string" },
+    { "key": "ruleOverrideId", "value": "", "type": "string" },
+    { "key": "programId", "value": "", "type": "string" },
+    { "key": "levelId", "value": "", "type": "string" },
+    { "key": "subjectId", "value": "", "type": "string" },
+    { "key": "schoolYearId", "value": "", "type": "string" },
+    { "key": "holidayId", "value": "", "type": "string" },
+    { "key": "activityTypeId", "value": "", "type": "string" },
+    { "key": "activityId", "value": "", "type": "string" },
+    { "key": "userId", "value": "", "type": "string" },
+    { "key": "sessionId", "value": "", "type": "string" },
+    { "key": "participantId", "value": "", "type": "string" },
+    { "key": "reportId", "value": "", "type": "string" },
+    { "key": "vscReportId", "value": "", "type": "string" },
+    { "key": "binomeCoeurId", "value": "", "type": "string" },
+    { "key": "postItId", "value": "", "type": "string" },
+    { "key": "resourceId", "value": "", "type": "string" },
+    { "key": "themeId", "value": "", "type": "string" },
+    { "key": "mediaAssetId", "value": "", "type": "string" },
+    { "key": "emailTemplateId", "value": "", "type": "string" },
+    { "key": "documentTemplateId", "value": "", "type": "string" },
+    { "key": "gamificationLevelId", "value": "", "type": "string" },
+    { "key": "gamificationBadgeId", "value": "", "type": "string" },
+    { "key": "gamificationXpRuleId", "value": "", "type": "string" },
+    { "key": "interfaceName", "value": "dashboard", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "00 - Health",
+      "item": [
+        {
+          "name": "GET Health",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/health",
+            "description": "Verifie la disponibilite du backend et de ses dependances."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "01 - Auth",
+      "item": [
+        {
+          "name": "GET Users Login",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/users/login",
+            "description": "Valide le token Firebase et retourne l'utilisateur applicatif courant."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 - Companies",
+      "item": [
+        {
+          "name": "POST Create Company",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"EDNOV TEST\",\n  \"code\": \"{{companyCode}}\"\n}"
+            },
+            "url": "{{baseUrl}}/companies"
+          },
+          "response": []
+        },
+        {
+          "name": "GET List Companies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/companies"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Company By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Company",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"EDNOV TEST UPDATED\"\n}"
+            },
+            "url": "{{baseUrl}}/companies/{{companyId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Company",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Manager Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/companies/dashboard/manager"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03 - Establishments And Rooms",
+      "item": [
+        {
+          "name": "POST Create Establishment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Etablissement Test\",\n  \"city\": \"Tunis\"\n}"
+            },
+            "url": "{{baseUrl}}/companies/{{companyId}}/establishments"
+          },
+          "response": []
+        },
+        {
+          "name": "GET List Establishments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}/establishments"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Establishment By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}/establishments/{{establishmentId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Establishment",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Etablissement Test Updated\"\n}"
+            },
+            "url": "{{baseUrl}}/companies/{{companyId}}/establishments/{{establishmentId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Establishment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}/establishments/{{establishmentId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Create Room",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Salle A\",\n  \"capacity\": 20\n}"
+            },
+            "url": "{{baseUrl}}/companies/{{companyId}}/rooms"
+          },
+          "response": []
+        },
+        {
+          "name": "GET List Rooms",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}/rooms"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Room By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}/rooms/{{roomId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Room",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Salle A Updated\"\n}"
+            },
+            "url": "{{baseUrl}}/companies/{{companyId}}/rooms/{{roomId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Room",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}/rooms/{{roomId}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04 - Roles",
+      "item": [
+        {
+          "name": "POST Create Role",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"TUTOR\",\n  \"name\": \"Tutor\"\n}"
+            },
+            "url": "{{baseUrl}}/roles"
+          },
+          "response": []
+        },
+        {
+          "name": "GET List Roles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/roles"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Role By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/roles/{{roleId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Role",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tutor Updated\"\n}"
+            },
+            "url": "{{baseUrl}}/roles/{{roleId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Role",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/roles/{{roleId}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "05 - Profiles",
+      "item": [
+        {
+          "name": "POST Create Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tutor Profile\",\n  \"code\": \"TUTOR_PROFILE\"\n}"
+            },
+            "url": "{{baseUrl}}/profiles"
+          },
+          "response": []
+        },
+        {
+          "name": "GET List Profiles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/profiles"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Profile By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/profiles/{{profileId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Profile",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tutor Profile Updated\"\n}"
+            },
+            "url": "{{baseUrl}}/profiles/{{profileId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Profile",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/profiles/{{profileId}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "06 - Rules",
+      "item": [
+        {
+          "name": "POST Create Rule",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"MATCHING_MAX_STUDENTS\",\n  \"name\": \"Matching Max Students\",\n  \"value\": 5\n}"
+            },
+            "url": "{{baseUrl}}/rules"
+          },
+          "response": []
+        },
+        {
+          "name": "GET List Rules",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/rules"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Rule By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/rules/{{ruleId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Rule",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": 6\n}"
+            },
+            "url": "{{baseUrl}}/rules/{{ruleId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Rule",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/rules/{{ruleId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Create Rule Override",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scope\": \"company\",\n  \"value\": 8\n}"
+            },
+            "url": "{{baseUrl}}/rules/{{ruleId}}/overrides"
+          },
+          "response": []
+        },
+        {
+          "name": "GET List Rule Overrides",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/rules/{{ruleId}}/overrides"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Rule Override By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/rules/{{ruleId}}/overrides/{{ruleOverrideId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Rule Override",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": 10\n}"
+            },
+            "url": "{{baseUrl}}/rules/{{ruleId}}/overrides/{{ruleOverrideId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Rule Override",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/rules/{{ruleId}}/overrides/{{ruleOverrideId}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "07 - Academic",
+      "item": [
+        {
+          "name": "POST Create Program",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Programme Test\"\n}" },
+            "url": "{{baseUrl}}/academic/programs"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Programs",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/programs" },
+          "response": []
+        },
+        {
+          "name": "GET Program By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/programs/{{programId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Program",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Programme Test Updated\"\n}" },
+            "url": "{{baseUrl}}/academic/programs/{{programId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Program",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/academic/programs/{{programId}}" },
+          "response": []
+        },
+        {
+          "name": "POST Create Level",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Niveau 1\"\n}" },
+            "url": "{{baseUrl}}/academic/levels"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Levels",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/levels" },
+          "response": []
+        },
+        {
+          "name": "GET Level By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/levels/{{levelId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Level",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Niveau 1 Updated\"\n}" },
+            "url": "{{baseUrl}}/academic/levels/{{levelId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Level",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/academic/levels/{{levelId}}" },
+          "response": []
+        },
+        {
+          "name": "POST Create Subject",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Mathematiques\"\n}" },
+            "url": "{{baseUrl}}/academic/subjects"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Subjects",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/subjects" },
+          "response": []
+        },
+        {
+          "name": "GET Subject By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/subjects/{{subjectId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Subject",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Mathematiques Updated\"\n}" },
+            "url": "{{baseUrl}}/academic/subjects/{{subjectId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Subject",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/academic/subjects/{{subjectId}}" },
+          "response": []
+        },
+        {
+          "name": "POST Create School Year",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"2025-2026\",\n  \"startDate\": \"2025-09-01\",\n  \"endDate\": \"2026-06-30\"\n}"
+            },
+            "url": "{{baseUrl}}/academic/school-years"
+          },
+          "response": []
+        },
+        {
+          "name": "GET School Years",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/school-years" },
+          "response": []
+        },
+        {
+          "name": "GET School Year By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/school-years/{{schoolYearId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH School Year",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"2025-2026 Updated\"\n}" },
+            "url": "{{baseUrl}}/academic/school-years/{{schoolYearId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE School Year",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/academic/school-years/{{schoolYearId}}" },
+          "response": []
+        },
+        {
+          "name": "POST Create Holiday",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Holiday Test\",\n  \"startDate\": \"2026-01-10\",\n  \"endDate\": \"2026-01-12\"\n}"
+            },
+            "url": "{{baseUrl}}/academic/holidays"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Holidays",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/holidays" },
+          "response": []
+        },
+        {
+          "name": "GET Holiday By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/academic/holidays/{{holidayId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Holiday",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Holiday Test Updated\"\n}" },
+            "url": "{{baseUrl}}/academic/holidays/{{holidayId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Holiday",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/academic/holidays/{{holidayId}}" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "08 - Activity",
+      "item": [
+        {
+          "name": "POST Create Activity Type",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Tutoring\"\n}" },
+            "url": "{{baseUrl}}/activity-types"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Activity Types",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/activity-types" },
+          "response": []
+        },
+        {
+          "name": "GET Activity Type By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/activity-types/{{activityTypeId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Activity Type",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Tutoring Updated\"\n}" },
+            "url": "{{baseUrl}}/activity-types/{{activityTypeId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Activity Type",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/activity-types/{{activityTypeId}}" },
+          "response": []
+        },
+        {
+          "name": "POST Create Activity",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Math Tutoring\",\n  \"activityTypeId\": \"{{activityTypeId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/activities"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Activities",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/activities" },
+          "response": []
+        },
+        {
+          "name": "GET Activity By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/activities/{{activityId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Activity",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Math Tutoring Updated\"\n}" },
+            "url": "{{baseUrl}}/activities/{{activityId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Activity",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/activities/{{activityId}}" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "09 - Users",
+      "item": [
+        {
+          "name": "POST Create User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"roleIds\": [\"{{roleId}}\"],\n  \"profileId\": \"{{profileId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/users"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Bulk Create Users",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"firstName\": \"Alice\",\n    \"lastName\": \"Tutor\",\n    \"email\": \"alice.tutor@example.com\",\n    \"roleIds\": [\"{{roleId}}\"],\n    \"profileId\": \"{{profileId}}\"\n  },\n  {\n    \"firstName\": \"Bob\",\n    \"lastName\": \"Student\",\n    \"email\": \"bob.student@example.com\",\n    \"roleIds\": [\"{{roleId}}\"],\n    \"profileId\": \"{{profileId}}\"\n  }\n]"
+            },
+            "url": "{{baseUrl}}/users/bulk"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Import Users CSV (Minimal)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "description": "Import CSV sans paramètres de query : fallback automatique sur le rôle STUDENT si applicable.\n\nColonnes obligatoires dans le fichier : firstName, lastName, email, establishmentId (UUID).\nColonnes optionnelles : firebaseUid, phone, photoUrl, status, roleIds, profileId, gradeLevel, isMinor.\n\nSélectionner un fichier CSV (ex. docs/samples/students-import-example.csv — remplacer establishmentId par un UUID réel du tenant).\n\nComportement : import partiel ; emails déjà existants ignorés (skippedExistingEmailCount) ; création en base avec firebaseUid généré ou fourni (pas de création de compte Firebase Admin via cet endpoint).",
+            "url": "{{baseUrl}}/users/import-csv"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Import Users CSV (Advanced Query)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "description": "Même contrat CSV que la requête minimale, avec query optionnels :\n- defaultProfileId : profil par défaut si absent par ligne\n- defaultRoleId : rôle par défaut si roleIds absent\n- dryRun=true : valider/parser sans insérer\n\nColonnes obligatoires : firstName, lastName, email, establishmentId.",
+            "url": {
+              "raw": "{{baseUrl}}/users/import-csv?defaultProfileId={{profileId}}&defaultRoleId={{roleId}}&dryRun=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "import-csv"
+              ],
+              "query": [
+                {
+                  "key": "defaultProfileId",
+                  "value": "{{profileId}}"
+                },
+                {
+                  "key": "defaultRoleId",
+                  "value": "{{roleId}}"
+                },
+                {
+                  "key": "dryRun",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET List Users",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/users" },
+          "response": []
+        },
+        {
+          "name": "GET User By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/users/{{userId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Update Current User",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Current Updated\"\n}" },
+            "url": "{{baseUrl}}/users/me"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Update User By Id",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"John Updated\"\n}" },
+            "url": "{{baseUrl}}/users/{{userId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE User",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/users/{{userId}}" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "10 - Settings",
+      "item": [
+        {
+          "name": "GET Settings",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/settings" },
+          "response": []
+        },
+        {
+          "name": "PUT Settings",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"timezone\": \"Africa/Tunis\"\n}" },
+            "url": "{{baseUrl}}/settings"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Feature Flags",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/settings/feature-flags" },
+          "response": []
+        },
+        {
+          "name": "PUT Feature Flags",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"gamification\": true,\n  \"branding\": true\n}" },
+            "url": "{{baseUrl}}/settings/feature-flags"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "11 - Branding",
+      "item": [
+        {
+          "name": "GET Branding",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding" },
+          "response": []
+        },
+        {
+          "name": "GET Branding Complete",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding/complete" },
+          "response": []
+        },
+        {
+          "name": "PUT Branding",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fontFamily\": \"Poppins\",\n  \"primaryColorLight\": \"#3b82f6\",\n  \"primaryColorDark\": \"#1d4ed8\"\n}"
+            },
+            "url": "{{baseUrl}}/branding"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Branding Logo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": "{{baseUrl}}/branding/logo"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Create Theme",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Theme Test\"\n}" },
+            "url": "{{baseUrl}}/branding/themes"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Themes",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding/themes" },
+          "response": []
+        },
+        {
+          "name": "GET Theme By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding/themes/{{themeId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Theme",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Theme Test Updated\"\n}" },
+            "url": "{{baseUrl}}/branding/themes/{{themeId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Theme",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/branding/themes/{{themeId}}" },
+          "response": []
+        },
+        {
+          "name": "POST Create Media Asset",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Hero Image\",\n  \"type\": \"image\",\n  \"url\": \"https://example.com/hero.png\"\n}" },
+            "url": "{{baseUrl}}/branding/media-assets"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Media Assets",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding/media-assets" },
+          "response": []
+        },
+        {
+          "name": "GET Media Asset By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding/media-assets/{{mediaAssetId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Media Asset",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Hero Image Updated\"\n}" },
+            "url": "{{baseUrl}}/branding/media-assets/{{mediaAssetId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Media Asset",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/branding/media-assets/{{mediaAssetId}}" },
+          "response": []
+        },
+        {
+          "name": "POST Create Email Template",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Welcome Email\",\n  \"subject\": \"Bienvenue\",\n  \"html\": \"<p>Bienvenue</p>\"\n}" },
+            "url": "{{baseUrl}}/branding/email-templates"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Email Templates",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding/email-templates" },
+          "response": []
+        },
+        {
+          "name": "GET Email Template By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding/email-templates/{{emailTemplateId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Email Template",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"subject\": \"Bienvenue Updated\"\n}" },
+            "url": "{{baseUrl}}/branding/email-templates/{{emailTemplateId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Email Template",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/branding/email-templates/{{emailTemplateId}}" },
+          "response": []
+        },
+        {
+          "name": "POST Create Document Template",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Convention\",\n  \"content\": \"Template content\"\n}" },
+            "url": "{{baseUrl}}/branding/document-templates"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Document Templates",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding/document-templates" },
+          "response": []
+        },
+        {
+          "name": "GET Document Template By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/branding/document-templates/{{documentTemplateId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Document Template",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Convention Updated\"\n}" },
+            "url": "{{baseUrl}}/branding/document-templates/{{documentTemplateId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Document Template",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/branding/document-templates/{{documentTemplateId}}" },
+          "response": []
+        },
+        {
+          "name": "GET Public Branding",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/public/branding/{{companyCode}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "12 - User Preferences And Interface",
+      "item": [
+        {
+          "name": "GET User Preferences",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/user-preferences" },
+          "response": []
+        },
+        {
+          "name": "PUT User Preferences",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isDarkMode\": true,\n  \"interfaceConfigs\": {\n    \"dashboard\": {\n      \"filters\": {\n        \"period\": \"current-week\"\n      }\n    }\n  }\n}"
+            },
+            "url": "{{baseUrl}}/user-preferences"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH User Preferences Interface",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order\": [\"card-1\", \"card-2\"],\n  \"filters\": {\n    \"status\": \"active\"\n  }\n}"
+            },
+            "url": "{{baseUrl}}/user-preferences/interface/{{interfaceName}}"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Interface Elements",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/interface-elements/{{interfaceName}}" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "13 - Sessions",
+      "item": [
+        {
+          "name": "GET Session Config",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/config" },
+          "response": []
+        },
+        {
+          "name": "PUT Session Config",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"autoAssignmentEnabled\": true\n}" },
+            "url": "{{baseUrl}}/sessions/config"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Create Session",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"establishmentId\": \"{{establishmentId}}\",\n  \"roomId\": \"{{roomId}}\",\n  \"programId\": \"{{programId}}\",\n  \"levelId\": \"{{levelId}}\",\n  \"subjectId\": \"{{subjectId}}\",\n  \"schoolYearId\": \"{{schoolYearId}}\",\n  \"activityId\": \"{{activityId}}\",\n  \"title\": \"Session Test\",\n  \"startAt\": \"2026-03-20T10:00:00.000Z\",\n  \"endAt\": \"2026-03-20T12:00:00.000Z\"\n}"
+            },
+            "url": "{{baseUrl}}/sessions"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Sessions",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions" },
+          "response": []
+        },
+        {
+          "name": "GET Session By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Session",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"title\": \"Session Test Updated\"\n}" },
+            "url": "{{baseUrl}}/sessions/{{sessionId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Session",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}" },
+          "response": []
+        },
+        {
+          "name": "GET Report KPIs",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/report-kpis" },
+          "response": []
+        },
+        {
+          "name": "GET Coordinator Dashboard",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/dashboard/coordinator" },
+          "response": []
+        },
+        {
+          "name": "GET Tutor Dashboard",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/dashboard/tutor" },
+          "response": []
+        },
+        {
+          "name": "GET Attendance History",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/attendance-history" },
+          "response": []
+        },
+        {
+          "name": "GET Students Analytics",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/analytics/students" },
+          "response": []
+        },
+        {
+          "name": "GET Tutors Analytics",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/analytics/tutors" },
+          "response": []
+        },
+        {
+          "name": "GET Sessions Export",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/export" },
+          "response": []
+        },
+        {
+          "name": "GET Assignment Candidates",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/assignment-candidates" },
+          "response": []
+        },
+        {
+          "name": "PUT Manual Assignments",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pairs\": [\n    {\n      \"studentId\": \"{{userId}}\",\n      \"tutorId\": \"{{userId}}\"\n    }\n  ]\n}"
+            },
+            "url": "{{baseUrl}}/sessions/{{sessionId}}/assignments"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Auto Assignments",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"force\": false\n}" },
+            "url": "{{baseUrl}}/sessions/{{sessionId}}/assignments/auto"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Participants",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/participants" },
+          "response": []
+        },
+        {
+          "name": "POST Add Participant",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"role\": \"student\"\n}"
+            },
+            "url": "{{baseUrl}}/sessions/{{sessionId}}/participants"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Participant By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/participants/{{participantId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Participant",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"present\"\n}" },
+            "url": "{{baseUrl}}/sessions/{{sessionId}}/participants/{{participantId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Participant",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/participants/{{participantId}}" },
+          "response": []
+        },
+        {
+          "name": "GET Reports",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/reports" },
+          "response": []
+        },
+        {
+          "name": "POST Create Report",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"summary\": \"Report test\",\n  \"status\": \"submitted\"\n}"
+            },
+            "url": "{{baseUrl}}/sessions/{{sessionId}}/reports"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Report By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/reports/{{reportId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Report",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"summary\": \"Report test updated\"\n}" },
+            "url": "{{baseUrl}}/sessions/{{sessionId}}/reports/{{reportId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Report",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/reports/{{reportId}}" },
+          "response": []
+        },
+        {
+          "name": "GET VSC Reports",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/vsc-reports" },
+          "response": []
+        },
+        {
+          "name": "POST Create VSC Report",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"summary\": \"VSC report test\",\n  \"status\": \"submitted\"\n}"
+            },
+            "url": "{{baseUrl}}/sessions/{{sessionId}}/vsc-reports"
+          },
+          "response": []
+        },
+        {
+          "name": "GET VSC Report By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/vsc-reports/{{vscReportId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH VSC Report",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"summary\": \"VSC report test updated\"\n}" },
+            "url": "{{baseUrl}}/sessions/{{sessionId}}/vsc-reports/{{vscReportId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE VSC Report",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/sessions/{{sessionId}}/vsc-reports/{{vscReportId}}" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "14 - Binome Coeur",
+      "item": [
+        {
+          "name": "POST Create Binome Coeur",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"studentId\": \"{{userId}}\",\n  \"tutorId\": \"{{userId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/companies/{{companyId}}/binome-coeur"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Binome Coeur List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}/binome-coeur"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Binome Coeur",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/companies/{{companyId}}/binome-coeur/{{binomeCoeurId}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "15 - Post-Its",
+      "item": [
+        {
+          "name": "POST Create Post-It",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Post-it test\",\n  \"content\": \"Contenu test\"\n}"
+            },
+            "url": "{{baseUrl}}/post-its"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Post-Its",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/post-its" },
+          "response": []
+        },
+        {
+          "name": "GET Post-It By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/post-its/{{postItId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Post-It",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"title\": \"Post-it updated\"\n}" },
+            "url": "{{baseUrl}}/post-its/{{postItId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Post-It",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/post-its/{{postItId}}" },
+          "response": []
+        },
+        {
+          "name": "PATCH Archive Post-It",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": "{{baseUrl}}/post-its/{{postItId}}/archive"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Priority Post-It",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": "{{baseUrl}}/post-its/{{postItId}}/priority"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Status Post-It",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"done\"\n}" },
+            "url": "{{baseUrl}}/post-its/{{postItId}}/status"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Share Post-It To User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"userIds\": [\"{{userId}}\"]\n}" },
+            "url": "{{baseUrl}}/post-its/{{postItId}}/share"
+          },
+          "response": []
+        },
+        {
+          "name": "POST Share Post-It To Role",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"roleIds\": [\"{{roleId}}\"]\n}" },
+            "url": "{{baseUrl}}/post-its/{{postItId}}/share/role"
+          },
+          "response": []
+        },
+        {
+          "name": "GET Post-It Shares",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/post-its/{{postItId}}/shares" },
+          "response": []
+        },
+        {
+          "name": "DELETE Post-It Share By User",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/post-its/{{postItId}}/share/{{userId}}" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "16 - Calendar",
+      "item": [
+        {
+          "name": "GET Calendar Events",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/calendar/events" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "17 - Resources",
+      "item": [
+        {
+          "name": "GET Resources",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/resources" },
+          "response": []
+        },
+        {
+          "name": "GET Resource By Id",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/resources/{{resourceId}}" },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "18 - Gamification",
+      "item": [
+        {
+          "name": "GET Gamification Me",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/gamification/me" },
+          "response": []
+        },
+        {
+          "name": "GET Gamification History",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/gamification/me/history" },
+          "response": []
+        },
+        {
+          "name": "GET Gamification Leaderboard",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/gamification/leaderboard" },
+          "response": []
+        },
+        {
+          "name": "GET Admin Niveaux",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/admin/gamification/niveaux" },
+          "response": []
+        },
+        {
+          "name": "POST Admin Niveau",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Niveau Bronze\",\n  \"minXp\": 0\n}" },
+            "url": "{{baseUrl}}/admin/gamification/niveaux"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Admin Niveau",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Niveau Bronze Updated\"\n}" },
+            "url": "{{baseUrl}}/admin/gamification/niveaux/{{gamificationLevelId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Admin Niveau",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/admin/gamification/niveaux/{{gamificationLevelId}}" },
+          "response": []
+        },
+        {
+          "name": "GET Admin Badges",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/admin/gamification/badges" },
+          "response": []
+        },
+        {
+          "name": "POST Admin Badge",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Super Tutor\"\n}" },
+            "url": "{{baseUrl}}/admin/gamification/badges"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Admin Badge",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Super Tutor Updated\"\n}" },
+            "url": "{{baseUrl}}/admin/gamification/badges/{{gamificationBadgeId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Admin Badge",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/admin/gamification/badges/{{gamificationBadgeId}}" },
+          "response": []
+        },
+        {
+          "name": "GET Admin XP Rules",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/admin/gamification/xp-rules" },
+          "response": []
+        },
+        {
+          "name": "POST Admin XP Rule",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"code\": \"SESSION_COMPLETED\",\n  \"xp\": 50\n}" },
+            "url": "{{baseUrl}}/admin/gamification/xp-rules"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH Admin XP Rule",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"xp\": 60\n}" },
+            "url": "{{baseUrl}}/admin/gamification/xp-rules/{{gamificationXpRuleId}}"
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Admin XP Rule",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/admin/gamification/xp-rules/{{gamificationXpRuleId}}" },
+          "response": []
+        },
+        {
+          "name": "POST Admin Toggle Gamification",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"enabled\": true\n}" },
+            "url": "{{baseUrl}}/admin/gamification/toggle"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "19 - Activity Feed",
+      "item": [
+        {
+          "name": "GET Activity Feed Me",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/activity-feed/me" },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

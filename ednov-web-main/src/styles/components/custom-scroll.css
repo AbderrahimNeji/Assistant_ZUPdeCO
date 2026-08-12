@@ -1,0 +1,87 @@
+/* ============================================
+   CUSTOM-SCROLL.CSS - Scrollbar personnalisé
+   ============================================ */
+
+.custom-scroll-area {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   HORIZONTAL VARIANT
+   ======================================== */
+
+.custom-scroll-area-horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* ========================================
+   WEBKIT BROWSERS (Chrome, Safari, Edge)
+   ======================================== */
+
+.custom-scroll-area::-webkit-scrollbar,
+.custom-scroll-area-horizontal::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scroll-area::-webkit-scrollbar-track,
+.custom-scroll-area-horizontal::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--color-1-nuance-3) 10%, transparent);
+  border-radius: 4px;
+  margin: 4px 0;
+}
+
+.custom-scroll-area::-webkit-scrollbar-thumb,
+.custom-scroll-area-horizontal::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.custom-scroll-area::-webkit-scrollbar-thumb:hover,
+.custom-scroll-area-horizontal::-webkit-scrollbar-thumb:hover {
+  background: var(--color-1-nuance-3);
+}
+
+.custom-scroll-area::-webkit-scrollbar-thumb:active,
+.custom-scroll-area-horizontal::-webkit-scrollbar-thumb:active {
+  background: var(--color-1-nuance-2);
+}
+
+/* ========================================
+   FIREFOX
+   ======================================== */
+
+.custom-scroll-area,
+.custom-scroll-area-horizontal {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent)
+    color-mix(in srgb, var(--color-1-nuance-3) 10%, transparent);
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+.dark .custom-scroll-area::-webkit-scrollbar-track,
+.dark .custom-scroll-area-horizontal::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 8%, transparent);
+}
+
+.dark .custom-scroll-area::-webkit-scrollbar-thumb,
+.dark .custom-scroll-area-horizontal::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+}
+
+.dark .custom-scroll-area::-webkit-scrollbar-thumb:hover,
+.dark .custom-scroll-area-horizontal::-webkit-scrollbar-thumb:hover {
+  background: var(--color-1-nuance-3);
+}
+
+.dark .custom-scroll-area,
+.dark .custom-scroll-area-horizontal {
+  scrollbar-color: color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent)
+    color-mix(in srgb, var(--color-3-nuance-1) 8%, transparent);
+}

@@ -1,0 +1,178 @@
+import { DocumentationChunkerService } from './documentation-chunker.service';
+import { QuestionRouterService } from './question-router.service';
+import { DocumentationCitationService } from './documentation-citation.service';
+import type { DocumentationHit } from './documentation.types';
+
+describe('QuestionRouterService', () => {
+  const router = new QuestionRouterService();
+
+  it('routes functional definition questions to documentation', () => {
+    const plan = router.route("Qu'est-ce qu'un tuteur ?");
+    expect(plan.intent).toBe('functional');
+    expect(plan.useDocumentation).toBe(true);
+    expect(plan.useBusiness).toBe(false);
+  });
+
+  it('routes counting questions to business', () => {
+    const plan = router.route('Combien d’élèves actifs ?');
+    expect(plan.intent).toBe('business');
+    expect(plan.useBusiness).toBe(true);
+    expect(plan.useDocumentation).toBe(false);
+  });
+
+  it('routes hybrid matching diagnosis questions to both', () => {
+    const plan = router.route(
+      "Pourquoi cet élève ne peut pas être matché ?",
+    );
+    expect(plan.intent).toBe('hybrid');
+    expect(plan.useDocumentation).toBe(true);
+    expect(plan.useBusiness).toBe(true);
+  });
+
+  it('routes onboarding how-to to documentation', () => {
+    const plan = router.route('Comment fonctionne le matching ?');
+    expect(plan.intent).toBe('functional');
+    expect(plan.useDocumentation).toBe(true);
+  });
+
+  it.each([
+    'What is the next session?',
+    'Who participates in the next session?',
+    'Show upcoming sessions',
+    'Open the profile of Mohamed',
+    'Open Mohamed',
+    'Open this student',
+    'Show this student\'s profile',
+    'Show tutor profile',
+    'Why isn\'t this student matched?',
+    'Why can\'t Mohamed be matched?',
+    'Who can be matched with this student?',
+    'Who is waiting for a tutor?',
+    'What is the next session?',
+    'Which establishment has the most students?',
+    'Which establishment has the most sessions?',
+    'List reports awaiting validation',
+    'Quels comptes-rendus sont encore en attente de validation',
+    'Show unmatched students',
+    'Which tutor has the highest workload?',
+    "Who attended today's session?",
+    'Which reports are missing?',
+    'Which students joined this month?',
+    'How many active tutors?',
+    'Which coordinator manages this establishment?',
+    "Show today's schedule",
+    'Which sessions are cancelled?',
+    'How many students?',
+    'Active students',
+    'Inactive students',
+    'Students without tutor',
+    'Students without reports',
+    'Students by establishment',
+    'Students registered today',
+    'Most active tutors',
+    'Tutors without students',
+    'Tutor workload',
+    'Tutor availability',
+    "Today's sessions",
+    "Tomorrow's sessions",
+    'Cancelled sessions',
+    'Completed sessions',
+    'Upcoming sessions',
+    'Missing reports',
+    'Validated reports',
+    'Pending reports',
+    'Reports by tutor',
+    'Students without matching',
+    'Tutors available',
+    "Today's KPIs",
+    'Most active establishment',
+    'Least active establishment',
+    'Attendance trend',
+    'Session evolution',
+    'Tutor activity',
+    'Student activity',
+    'Quels établissements sont les plus actifs ?',
+    'Quel établissement est le plus actif ?',
+    'Quel établissement est le plus actif et pourquoi',
+    'Classe les établissements.',
+    'Top établissements.',
+    'Most active establishments.',
+    'Top schools.',
+  ])('routes live operational question to business: %s', (question) => {
+    const plan = router.route(question);
+    expect(plan.useBusiness).toBe(true);
+    expect(plan.intent).not.toBe('functional');
+  });
+});
+
+describe('DocumentationChunkerService', () => {
+  const chunker = new DocumentationChunkerService();
+
+  it('preserves chapter/section hierarchy and page metadata', async () => {
+    const drafts = await chunker.chunkPages([
+      {
+        page: 1,
+        text: [
+          'VF-1.1 — PARCOURS TUTEUR',
+          'Version Finale',
+          '1. Rôle du tuteur dans Zupdeco',
+          'Le tuteur est un bénévole qui accompagne un ou plusieurs élèves.',
+          'Il ne décide ni des binômes, ni des séances.',
+        ].join('\n'),
+      },
+      {
+        page: 4,
+        text: [
+          '3.4 Statut après questionnaire',
+          'Une fois le questionnaire validé :',
+          '• le tuteur passe en statut Lead qualifié,',
+          '• les étapes d’onboarding deviennent visibles.',
+        ].join('\n'),
+      },
+    ]);
+
+    expect(drafts.length).toBeGreaterThan(0);
+    expect(drafts.some((d) => d.chapter.includes('VF-1.1'))).toBe(true);
+    expect(drafts.some((d) => /Rôle du tuteur|Lead qualifié|questionnaire/i.test(d.content))).toBe(
+      true,
+    );
+    expect(drafts.every((d) => d.page >= 1)).toBe(true);
+    expect(drafts.every((d) => d.keywords.length > 0)).toBe(true);
+  });
+});
+
+describe('DocumentationCitationService', () => {
+  const citations = new DocumentationCitationService();
+
+  const hit: DocumentationHit = {
+    id: 'c1',
+    content: 'Le tuteur est un bénévole.',
+    score: 0.9,
+    semanticScore: 0.9,
+    keywordScore: 0.8,
+    page: 1,
+    chapter: 'VF-1.1 — PARCOURS TUTEUR',
+    section: '1. Rôle du tuteur dans Zupdeco',
+    title: '1. Rôle du tuteur dans Zupdeco',
+    keywords: ['tuteur'],
+    documentName: 'Documentation Fonctionnelle ZupdeCo',
+    documentSlug: 'zupdeco-functional',
+  };
+
+  it('formats citation headers with document/chapter/section/page', () => {
+    const block = citations.formatContextBlock(hit);
+    expect(block).toContain('Document: Documentation Fonctionnelle ZupdeCo');
+    expect(block).toContain('Chapter: VF-1.1 — PARCOURS TUTEUR');
+    expect(block).toContain('Section: 1. Rôle du tuteur dans Zupdeco');
+    expect(block).toContain('Page: 1');
+    expect(block).toContain('Le tuteur est un bénévole.');
+  });
+
+  it('enriches knowledge snippets for the UI', () => {
+    const snippet = citations.enrichSnippet(hit, 'documentation_kb');
+    expect(snippet.source).toBe('documentation_kb');
+    expect(snippet.page).toBe(1);
+    expect(snippet.chapter).toContain('VF-1.1');
+    expect(snippet.providerId).toBe('documentation');
+  });
+});

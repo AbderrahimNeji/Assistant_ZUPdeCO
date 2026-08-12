@@ -1,0 +1,167 @@
+/* ========================================
+   DASHBOARD SECTIONS
+   ======================================== */
+
+.dashboard-section {
+  @apply relative;
+  padding: var(--space-6, 1.5rem);
+  border-radius: var(--radius-xl, 1rem);
+
+  background: rgb(var(--card-rgb, 255, 255, 255));
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+
+  transition: all 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+/* Light mode: bordures Section = color 1 nuance 3 */
+:root:not(.dark) .dashboard-section {
+  border-color: var(--color-2-nuance-3);
+}
+
+.dashboard-section:hover {
+  border-color: var(--color-2-nuance-3);
+}
+
+.dashboard-section-edit-mode {
+  border-color: rgb(var(--primary-rgb, 59, 130, 246) / 0.3);
+  opacity: 0.5;
+}
+
+.dashboard-section-edit-mode:hover {
+  opacity: 1;
+}
+
+.dashboard-section-active {
+  border-color: var(--color-1-nuance-1);
+}
+
+.dashboard-section-dragging {
+  opacity: 0.7;
+  transform: scale(1.02) rotate(1deg);
+}
+
+/* Dashboard Section Drag Handle */
+.dashboard-section-drag-handle {
+  @apply flex items-center justify-center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md, 0.5rem);
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+  border: 1.5px solid var(--color-2-nuance-1);
+  color: var(--color-2-nuance-1);
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.dashboard-section-drag-handle:hover {
+  background: var(--color-2-nuance-1);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Dashboard Section Resize Button Container - positioned on the right edge */
+.dashboard-section-resize-button-container {
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+/* Dashboard Section Visibility Button Container - positioned on the left edge */
+.dashboard-section-visibility-button-container {
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+/* Dashboard Section Preview */
+.dashboard-section-preview {
+  border: 2px dashed var(--color-2-nuance-2) !important;
+  animation: preview-pulse 0.8s ease-in-out infinite;
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent),
+    inset 0 0 20px color-mix(in srgb, var(--color-2-nuance-1) 5%, transparent);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode adjustments */
+.dark .dashboard-section {
+  background: rgb(var(--card-rgb, 30, 41, 59));
+  border-color: rgb(var(--border-rgb, 51, 65, 85) / 0.6);
+}
+
+.dark .dashboard-section:hover {
+  border-color: var(--color-2-nuance-3);
+}
+
+/* Hidden dashboard section in edit mode - override edit-mode opacity */
+.dashboard-section-edit-mode.dashboard-section-hidden {
+  opacity: 0.4 !important;
+}
+
+.dashboard-section-edit-mode.dashboard-section-hidden:hover {
+  opacity: 0.7 !important;
+}
+
+/* Banner "section cachée" — wrapper container */
+.dashboard-section-hidden-banner {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 7rem;
+  pointer-events: none;
+}
+
+/* Banner "section cachée" — étiquette */
+.dashboard-section-hidden-banner-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 24px;
+  border-radius: 4px;
+  background: rgb(var(--background-rgb));
+  border: 1px solid var(--color-2-nuance-2);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 400;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Icône Eye dans le banner */
+.dashboard-section-hidden-banner-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--color-2-nuance-1);
+}
+
+/* Section content wrapper */
+.section-content {
+  pointer-events: auto;
+  opacity: 1;
+  user-select: auto;
+}
+
+.section-content.dragging-any {
+  pointer-events: none;
+  opacity: 0.7;
+  user-select: none;
+}
+
+/* Overlay de blocage des interactions pendant le drag */
+.section-interaction-blocker {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  cursor: grabbing;
+  background-color: transparent;
+  pointer-events: auto;
+}

@@ -1,0 +1,285 @@
+/* Global Search Dropdown Styles */
+
+.global-search-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 720px;
+  max-height: 580px;
+  background: hsl(var(--popover));
+  border: 1px solid var(--color-2-nuance-1);
+  border-radius: 16px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 0 40px color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent);
+  overflow: hidden;
+  z-index: 99999;
+  animation: slideIn 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Search Icon */
+.global-search-icon {
+  color: var(--color-1-nuance-2) !important;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.global-search-section {
+  padding: 0;
+}
+
+.global-search-section:first-child {
+  padding-top: 0;
+}
+
+.global-search-section:last-child {
+  padding-bottom: 0;
+}
+
+.global-search-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px 8px 20px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-2-nuance-1);
+  background: transparent;
+  border-bottom: none;
+}
+
+.global-search-section-header svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-2-nuance-1);
+}
+
+.global-search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.global-search-divider {
+  height: 2px;
+  background: var(--color-2-nuance-1);
+  margin: 0;
+  opacity: 0.4;
+}
+
+.global-search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 120ms cubic-bezier(0.2, 0, 0, 1);
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid var(--color-2-nuance-1);
+  border-bottom-width: 1px;
+  opacity: 1;
+}
+
+.global-search-result-item:last-child {
+  border-bottom: none;
+}
+
+.global-search-result-item:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 12%, transparent);
+}
+
+.global-search-result-item.active {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 18%, transparent);
+  border-left: 3px solid var(--color-2-nuance-1);
+  padding-left: 17px;
+}
+
+.global-search-result-item:active {
+  transform: scale(0.99);
+}
+
+.global-search-result-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+}
+
+.global-search-result-icon.icon-color-1 {
+  color: var(--color-1-nuance-1);
+  background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent);
+  border-color: var(--color-1-nuance-1);
+}
+
+.global-search-result-icon.icon-color-2 {
+  color: var(--color-2-nuance-1);
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+  border-color: var(--color-2-nuance-1);
+}
+
+.global-search-result-icon.icon-color-3 {
+  color: var(--color-3-nuance-1);
+  background: color-mix(in srgb, var(--color-3-nuance-1) 15%, transparent);
+  border-color: var(--color-3-nuance-1);
+}
+
+.global-search-result-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.global-search-result-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.global-search-result-sublabel {
+  font-size: 11px;
+  color: var(--color-3-nuance-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 1px;
+  line-height: 1.3;
+}
+
+.global-search-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 20px;
+  gap: 10px;
+}
+
+.global-search-loader-text {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  font-weight: 500;
+}
+
+.global-search-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  text-align: center;
+  gap: 6px;
+}
+
+.global-search-empty-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-2-nuance-1);
+  margin-bottom: 6px;
+}
+
+.global-search-empty-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin: 0;
+}
+
+.global-search-empty-description {
+  font-size: 12px;
+  color: hsl(var(--muted-foreground));
+  margin: 0;
+}
+
+.global-search-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-top: 0;
+  border-top: 2px solid var(--color-2-nuance-1);
+  background: color-mix(in srgb, var(--color-2-nuance-1) 8%, transparent);
+  font-size: 11px;
+  color: var(--color-3-nuance-1);
+  font-weight: 600;
+}
+
+.global-search-pagination-info {
+  font-weight: 500;
+}
+
+.global-search-pagination-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.global-search-pagination-button {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: var(--color-2-nuance-1);
+  border: none;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 120ms cubic-bezier(0.2, 0, 0, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global-search-pagination-button:hover:not(:disabled) {
+  background: var(--color-3-nuance-1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-2-nuance-1) 35%, transparent);
+}
+
+.global-search-pagination-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.global-search-min-length-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  font-weight: 500;
+}
+
+.global-search-min-length-hint svg {
+  color: var(--color-2-nuance-1);
+}
+
+.global-search-scrollable {
+  max-height: 520px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

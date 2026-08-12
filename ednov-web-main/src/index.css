@@ -1,0 +1,1033 @@
+@import './styles/design-system.css';
+@import './styles/themes.css';
+@import './styles/postit.css';
+@import './styles/drag-drop.css';
+@import './styles/utilities/helpers.css';
+@import './styles/utilities/animations.css';
+@import './styles/utilities/effects.css';
+@import './styles/components/calendar.css';
+@import './styles/components/cards.css';
+@import './styles/components/dashboard-sections.css';
+@import './styles/components/forms.css';
+@import './styles/components/navigation.css';
+@import './styles/components/report-validate-wait-modal.css';
+@import './styles/components/tables.css';
+@import './styles/components/data-table.css';
+@import './styles/components/management-page.css';
+@import './styles/components/session-creation.css';
+@import './styles/components/details-view.css';
+@import './styles/components/tabs.css';
+@import './styles/components/matching.css';
+@import './styles/components/sliding-calendar.css';
+@import './styles/components/custom-scroll.css';
+@import './styles/components/spinner.css';
+@import './styles/components/AvailabilityGrid.css';
+@import './styles/components/global-search.css';
+@import './styles/components/dashboard.css';
+@import './styles/pages/login.css';
+@import './styles/pages/unauthorized.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: var(--font-family);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 217 33% 18%;
+    --card-foreground: 210 40% 98%;
+    --popover: 217 33% 18%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    min-height: 100%;
+    height: 100%;
+  }
+  #root {
+    min-height: 100%;
+    height: 100%;
+  }
+
+  /*
+   * Changement clair/sombre : beaucoup de composants ont transition: all sur fond / texte / bordure.
+   * Sans ce garde-fou, le navigateur anime chaque propriété avec des durées différentes → effet « en cascade ».
+   * themeStore ajoute cette classe le temps d’un tick, puis la retire (voir themeStore.applyTheme).
+   */
+  html.theme-no-transition,
+  html.theme-no-transition *,
+  html.theme-no-transition *::before,
+  html.theme-no-transition *::after {
+    transition-property: none !important;
+  }
+}
+
+/* ─── Session badges & filter buttons — couleurs charte ───────────────────────
+   Placées dans @layer utilities pour avoir la même priorité que les utilities
+   Tailwind et ainsi surcharger le `* { border-color: hsl(var(--border)) }`
+   défini dans @layer base ci-dessus.
+   ──────────────────────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* ══════════════════════════════════════════════════════
+     PÉRIODE — segmented control (pill)
+     Inactif  : fond blanc, bordure color-2, texte color-2
+     Actif    : fond color-2 plein, texte blanc
+  ══════════════════════════════════════════════════════ */
+  .session-period-btn {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .session-period-btn--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: var(--color-2-nuance-1) !important;
+    color: white !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     GENERIC FILTER OPTIONS (réutilisables pour filtres non-statuts)
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond plein coloré, texte blanc
+  ══════════════════════════════════════════════════════ */
+  .filter-option-primary {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .session-type-homework--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+
+  .session-type-tutoring {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .session-type-tutoring--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-1-nuance-1) 10%, transparent) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+
+  .session-type-workshop {
+    border: 1px solid var(--color-3-nuance-2) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-3-nuance-2) !important;
+  }
+  .session-type-workshop--active {
+    border: 1px solid var(--color-3-nuance-2) !important;
+    background: color-mix(in srgb, var(--color-3-nuance-2) 10%, transparent) !important;
+    color: var(--color-3-nuance-2) !important;
+  }
+
+  .session-type-other {
+    border: 1px solid rgb(var(--accent-purple)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--accent-purple)) !important;
+  }
+  .session-type-other--active {
+    border: 1px solid rgb(var(--accent-purple)) !important;
+    background: color-mix(in srgb, rgb(var(--accent-purple)) 10%, transparent) !important;
+    color: rgb(var(--accent-purple)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     STATUTS DE SÉANCES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+     Exception "En cours" : fond blanc toujours (pas de ghost)
+  ══════════════════════════════════════════════════════ */
+  .session-status-planned {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .session-status-planned--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+
+  .session-status-inprogress {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .session-status-inprogress--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: rgb(var(--status-danger)) !important;
+    color: white !important;
+  }
+
+  .session-status-completed {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .session-status-completed--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+
+  .session-status-closed {
+    border: 1px solid rgb(var(--accent-purple)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--accent-purple)) !important;
+  }
+  .session-status-closed--active {
+    border: 1px solid rgb(var(--accent-purple)) !important;
+    background: color-mix(in srgb, rgb(var(--accent-purple)) 15%, transparent) !important;
+    color: rgb(var(--accent-purple)) !important;
+  }
+
+  .session-status-cancelled {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .session-status-cancelled--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     PAIR TYPE BADGES (matching source)
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .pair-type-manual {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .pair-type-manual--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+
+  .pair-type-binome {
+    border: 1px solid rgb(var(--accent-red-core)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--accent-red-core)) !important;
+  }
+  .pair-type-binome--active {
+    border: 1px solid rgb(var(--accent-red-core)) !important;
+    background: color-mix(in srgb, rgb(var(--accent-red-core)) 15%, transparent) !important;
+    color: rgb(var(--accent-red-core)) !important;
+  }
+
+  .pair-type-balanced {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .pair-type-balanced--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+
+  .pair-type-history {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+  .pair-type-history--active {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-3-nuance-1) 15%, transparent) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     PROGRAM STATUS BADGES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .program-status-draft {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .program-status-draft--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+
+  .program-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .program-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+
+  .program-status-suspended {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+  .program-status-suspended--active {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-3-nuance-1) 15%, transparent) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+
+  .program-status-closed {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .program-status-closed--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     STUDENT STATUS BADGES
+     Pattern unifié avec sessions:
+     - Inactif : fond card (blanc/dark), bordure, texte coloré
+     - Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .student-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .student-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+
+  .student-status-suspended {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .student-status-suspended--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  .student-status-deactivated {
+    border: 1px solid rgb(var(--status-neutral)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-neutral)) !important;
+  }
+  .student-status-deactivated--active {
+    border: 1px solid rgb(var(--status-neutral)) !important;
+    background: color-mix(in srgb, rgb(var(--status-neutral)) 15%, transparent) !important;
+    color: rgb(var(--status-neutral)) !important;
+  }
+
+  /* Report status badges (align with session-status-* pattern) */
+  .report-status-to-complete {
+    border: 1px solid rgb(var(--status-pending)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-pending)) !important;
+  }
+  .report-status-to-complete--active {
+    border: 1px solid rgb(var(--status-pending)) !important;
+    background: color-mix(in srgb, rgb(var(--status-pending)) 15%, transparent) !important;
+    color: rgb(var(--status-pending)) !important;
+  }
+  .report-status-draft {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .report-status-draft--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .report-status-submitted {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .report-status-submitted--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .report-status-validated {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .report-status-validated--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+
+  /* Tutor status badges (align with session-status-* pattern) */
+  .tutor-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .tutor-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .tutor-status-suspended {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .tutor-status-suspended--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  .tutor-status-deactivated {
+    border: 1px solid rgb(var(--status-neutral)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-neutral)) !important;
+  }
+  .tutor-status-deactivated--active {
+    border: 1px solid rgb(var(--status-neutral)) !important;
+    background: color-mix(in srgb, rgb(var(--status-neutral)) 15%, transparent) !important;
+    color: rgb(var(--status-neutral)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     VOLUNTEER STATUS BADGES
+     Pattern unifié avec sessions:
+     - Inactif : fond card (blanc/dark), bordure, texte coloré
+     - Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .volunteer-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .volunteer-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .volunteer-status-suspended {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .volunteer-status-suspended--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  .volunteer-status-deactivated {
+    border: 1px solid rgb(var(--status-neutral)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-neutral)) !important;
+  }
+  .volunteer-status-deactivated--active {
+    border: 1px solid rgb(var(--status-neutral)) !important;
+    background: color-mix(in srgb, rgb(var(--status-neutral)) 15%, transparent) !important;
+    color: rgb(var(--status-neutral)) !important;
+  }
+
+  /* VSC Report status badges (identical pattern to report-status) */
+  .vsc-report-status-draft {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .vsc-report-status-draft--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+
+  .vsc-report-status-submitted {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .vsc-report-status-submitted--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+
+  .vsc-report-status-validated {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .vsc-report-status-validated--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     CATÉGORIES DE RAPPORTS VSC
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .vsc-report-category-daily {
+    border: 1px solid var(--color-3-nuance-2) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-3-nuance-2) !important;
+  }
+  .vsc-report-category-daily--active {
+    border: 1px solid var(--color-3-nuance-2) !important;
+    background: color-mix(in srgb, var(--color-3-nuance-2) 15%, transparent) !important;
+    color: var(--color-3-nuance-2) !important;
+  }
+
+  .vsc-report-category-weekly {
+    border: 1px solid rgb(var(--accent-purple)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--accent-purple)) !important;
+  }
+  .vsc-report-category-weekly--active {
+    border: 1px solid rgb(var(--accent-purple)) !important;
+    background: color-mix(in srgb, rgb(var(--accent-purple)) 15%, transparent) !important;
+    color: rgb(var(--accent-purple)) !important;
+  }
+
+  .report-status-overdue {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .report-status-overdue--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     ADMIN STATUS & ROLE BADGES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .admin-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .admin-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .admin-status-suspended {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .admin-status-suspended--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  .admin-status-deactivated {
+    border: 1px solid rgb(var(--status-neutral)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-neutral)) !important;
+  }
+  .admin-status-deactivated--active {
+    border: 1px solid rgb(var(--status-neutral)) !important;
+    background: color-mix(in srgb, rgb(var(--status-neutral)) 15%, transparent) !important;
+    color: rgb(var(--status-neutral)) !important;
+  }
+
+  .admin-role-admin {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: transparent !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .admin-role-admin:hover {
+    background: color-mix(in srgb, var(--color-2-nuance-1) 8%, transparent) !important;
+  }
+  .admin-role-admin--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: var(--color-2-nuance-1) !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
+  .admin-role-admin--active:hover {
+    background: color-mix(in srgb, var(--color-2-nuance-1) 90%, black) !important;
+  }
+
+  .admin-role-coordinator {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: transparent !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .admin-role-coordinator:hover {
+    background: color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent) !important;
+  }
+  .admin-role-coordinator--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: var(--color-1-nuance-1) !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
+  .admin-role-coordinator--active:hover {
+    background: color-mix(in srgb, var(--color-1-nuance-1) 90%, black) !important;
+  }
+
+  .admin-role-manager {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: transparent !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+  .admin-role-manager:hover {
+    background: color-mix(in srgb, var(--color-3-nuance-1) 8%, transparent) !important;
+  }
+  .admin-role-manager--active {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: var(--color-3-nuance-1) !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
+  .admin-role-manager--active:hover {
+    background: color-mix(in srgb, var(--color-3-nuance-1) 90%, black) !important;
+  }
+
+  .admin-role-all {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: transparent !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .admin-role-all:hover {
+    background: color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent) !important;
+  }
+  .admin-role-all--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: var(--color-1-nuance-1) !important;
+    color: white !important;
+    font-weight: 600 !important;
+  }
+  .admin-role-all--active:hover {
+    background: color-mix(in srgb, var(--color-1-nuance-1) 90%, black) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     ESTABLISHMENT TYPE & STATUS BADGES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .establishment-type-college {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .establishment-type-lycee {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .establishment-type-professionnel {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+
+  .establishment-type-other {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .establishment-type-other--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+
+  .establishment-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .establishment-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .establishment-status-suspended {
+    border: 1px solid rgb(var(--status-warning)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-warning)) !important;
+  }
+  .establishment-status-suspended--active {
+    border: 1px solid rgb(var(--status-warning)) !important;
+    background: color-mix(in srgb, rgb(var(--status-warning)) 15%, transparent) !important;
+    color: rgb(var(--status-warning)) !important;
+  }
+  .establishment-status-closed {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .establishment-status-closed--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     HOLIDAY TYPE BADGES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .holiday-type-national {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .holiday-type-national--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .holiday-type-regional {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .holiday-type-regional--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .holiday-type-establishment {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+  .holiday-type-establishment--active {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-3-nuance-1) 15%, transparent) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     ACTIVITY TYPE STATUS BADGES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .activity-type-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .activity-type-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .activity-type-status-inactive {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .activity-type-status-inactive--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     SUBJECT CYCLE BADGES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .subject-cycle-primary {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .subject-cycle-primary--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .subject-cycle-middle {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .subject-cycle-middle--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .subject-cycle-high {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: hsl(var(--card)) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+  .subject-cycle-high--active {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-3-nuance-1) 15%, transparent) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     SCHOOL YEAR STATUS BADGES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .school-year-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .school-year-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .school-year-status-closed {
+    border: 1px solid hsl(var(--muted-foreground)) !important;
+    background: hsl(var(--card)) !important;
+    color: hsl(var(--muted-foreground)) !important;
+  }
+  .school-year-status-closed--active {
+    border: 1px solid hsl(var(--muted-foreground)) !important;
+    background: color-mix(in srgb, hsl(var(--muted-foreground)) 15%, transparent) !important;
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     GENERIC FILTER OPTIONS (réutilisables pour filtres non-statuts)
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond plein coloré, texte blanc
+  ══════════════════════════════════════════════════════ */
+  .filter-option-primary {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent) !important;
+    color: var(--color-2-nuance-1) !important;
+  }
+  .filter-option-primary--active {
+    border: 1px solid var(--color-2-nuance-1) !important;
+    background: var(--color-2-nuance-1) !important;
+    color: white !important;
+  }
+  .filter-option-secondary {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-1-nuance-1) 10%, transparent) !important;
+    color: var(--color-1-nuance-1) !important;
+  }
+  .filter-option-secondary--active {
+    border: 1px solid var(--color-1-nuance-1) !important;
+    background: var(--color-1-nuance-1) !important;
+    color: white !important;
+  }
+  .filter-option-tertiary {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: color-mix(in srgb, var(--color-3-nuance-1) 10%, transparent) !important;
+    color: var(--color-3-nuance-1) !important;
+  }
+  .filter-option-tertiary--active {
+    border: 1px solid var(--color-3-nuance-1) !important;
+    background: var(--color-3-nuance-1) !important;
+    color: white !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     ACTIVITY STATUS BADGES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .activity-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .activity-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+
+  .activity-status-inactive {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .activity-status-inactive--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     SUBJECT STATUS BADGES
+     Inactif  : fond blanc, bordure colorée, texte coloré
+     Actif    : fond ghost (couleur 15%), bordure, texte coloré
+  ══════════════════════════════════════════════════════ */
+  .subject-status-active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+  .subject-status-active--active {
+    border: 1px solid rgb(var(--status-success)) !important;
+    background: color-mix(in srgb, rgb(var(--color-success)) 15%, transparent) !important;
+    color: rgb(var(--status-success)) !important;
+  }
+
+  .subject-status-inactive {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: hsl(var(--card)) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+  .subject-status-inactive--active {
+    border: 1px solid rgb(var(--status-danger)) !important;
+    background: color-mix(in srgb, rgb(var(--status-danger)) 15%, transparent) !important;
+    color: rgb(var(--status-danger)) !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   ADMIN ROLE FILTER BADGES - HORS LAYER pour max priority
+   Inactif  : fond transparent, bordure colorée, texte coloré
+   Actif    : fond plein coloré, texte blanc
+   ══════════════════════════════════════════════════════ */
+.admin-role-admin {
+  border: 1px solid var(--color-2-nuance-1) !important;
+  background: transparent !important;
+  color: var(--color-2-nuance-1) !important;
+}
+.admin-role-admin:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 8%, transparent) !important;
+}
+.admin-role-admin--active {
+  border: 1px solid var(--color-2-nuance-1) !important;
+  background: var(--color-2-nuance-1) !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+.admin-role-admin--active:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 90%, black) !important;
+}
+
+.admin-role-coordinator {
+  border: 1px solid var(--color-1-nuance-1) !important;
+  background: transparent !important;
+  color: var(--color-1-nuance-1) !important;
+}
+.admin-role-coordinator:hover {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent) !important;
+}
+.admin-role-coordinator--active {
+  border: 1px solid var(--color-1-nuance-1) !important;
+  background: var(--color-1-nuance-1) !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+.admin-role-coordinator--active:hover {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 90%, black) !important;
+}
+
+.admin-role-manager {
+  border: 1px solid var(--color-3-nuance-1) !important;
+  background: transparent !important;
+  color: var(--color-3-nuance-1) !important;
+}
+.admin-role-manager:hover {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 8%, transparent) !important;
+}
+.admin-role-manager--active {
+  border: 1px solid var(--color-3-nuance-1) !important;
+  background: var(--color-3-nuance-1) !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+.admin-role-manager--active:hover {
+  background: color-mix(in srgb, var(--color-3-nuance-1) 90%, black) !important;
+}
+
+.admin-role-all {
+  border: 1px solid var(--color-1-nuance-1) !important;
+  background: transparent !important;
+  color: var(--color-1-nuance-1) !important;
+}
+.admin-role-all:hover {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent) !important;
+}
+.admin-role-all--active {
+  border: 1px solid var(--color-1-nuance-1) !important;
+  background: var(--color-1-nuance-1) !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+.admin-role-all--active:hover {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 90%, black) !important;
+}

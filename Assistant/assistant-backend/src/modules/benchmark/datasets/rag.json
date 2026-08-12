@@ -1,0 +1,10 @@
+[
+  {
+    "question":"What is Retrieval Augmented Generation?",
+    "expectedAnswer":"RAG combines retrieval with generation."
+  },
+  {
+    "question":"What is JWT?",
+    "expectedAnswer":"JSON Web Token."
+  }
+]

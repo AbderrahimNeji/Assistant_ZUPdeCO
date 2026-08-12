@@ -1,0 +1,598 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  PARENT
+  TUTOR
+  COORDINATOR
+  ADMIN
+}
+
+enum DocumentStatus {
+  PROCESSING
+  INDEXED
+  FAILED
+}
+
+enum DocumentKind {
+  USER_UPLOAD
+  FUNCTIONAL_DOCUMENTATION
+}
+
+enum BenchmarkJobStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+enum WorkflowJobStatus {
+  QUEUED
+  RUNNING
+  WAITING_CONFIRMATION
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String   @unique
+  password  String
+
+  role UserRole @default(STUDENT)
+
+  conversations           Conversation[]
+  conversationAttachments ConversationAttachment[]
+  documents               Document[]
+  coursesTaught           Course[]         @relation("CourseTutor")
+  registrations           Registration[]   @relation("StudentRegistrations")
+  benchmarkRuns           BenchmarkRun[]
+  benchmarkJobs           BenchmarkJob[]
+  messageFeedbacks        MessageFeedback[]
+  assistantTurnMetrics    AssistantTurnMetric[]
+  evaluationEvents        EvaluationEvent[]
+  workflowJobs            WorkflowJob[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// Logout / session revocation — hashed bearer tokens until JWT expiry.
+model RevokedToken {
+  tokenHash String   @id
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([expiresAt])
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  title     String?
+  pinned    Boolean  @default(false)
+  /// Active conversation branch (fork lineage id).
+  activeBranchId String?
+  /// Tip message of the active path (leaf).
+  activeLeafId   String?
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  messages    Message[]
+  attachments ConversationAttachment[]
+  feedbacks   MessageFeedback[]
+  turnMetrics AssistantTurnMetric[]
+  workflowJobs WorkflowJob[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Message {
+  id String @id @default(cuid())
+
+  role    String
+  content String @db.Text
+  /// Structured source attribution for assistant replies (no retrieved text).
+  sources Json?
+  /// Optional action buttons / confirmation metadata for the Action Engine.
+  actions Json?
+  /// Safe high-level execution inspector payload (no prompts / retrieved text).
+  executionTrace Json?
+  /// Proactive next-step suggestions for the user.
+  suggestedActions Json?
+
+  /// Parent in the conversation tree (null = root).
+  parentMessageId String?
+  parent          Message?  @relation("MessageTree", fields: [parentMessageId], references: [id], onDelete: SetNull)
+  children        Message[] @relation("MessageTree")
+
+  /// Fork lineage id. Shared by messages on the same edited path.
+  branchId String
+  /// Sibling version among children of the same parent (1-based).
+  version  Int    @default(1)
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  feedbacks   MessageFeedback[]
+  turnMetric  AssistantTurnMetric?
+
+  createdAt DateTime @default(now())
+
+  @@index([conversationId, branchId])
+  @@index([parentMessageId])
+}
+
+/// Temporary conversation-scoped file context (not indexed into the permanent KB).
+model ConversationAttachment {
+  id String @id @default(cuid())
+
+  name     String
+  mimeType String?
+  size     Int?
+  /// Extracted plain text used as ephemeral conversation context.
+  text String @db.Text
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([conversationId, userId])
+  @@index([userId])
+}
+
+model Document {
+  id          String   @id @default(cuid())
+
+  name        String
+  mimeType    String
+  size        Int
+
+  status       DocumentStatus @default(PROCESSING)
+  errorMessage String?
+  pageCount    Int?
+  /// Extracted text kept for re-indexing / retry after failures.
+  rawText      String?  @db.Text
+
+  /// USER_UPLOAD = personal KB; FUNCTIONAL_DOCUMENTATION = shared official docs.
+  kind DocumentKind @default(USER_UPLOAD)
+  /// Stable slug for system documentation (e.g. zupdeco-functional).
+  slug String? @unique
+  /// SHA-256 of source bytes (documentation versioning).
+  contentHash String?
+  /// Human / release version label (e.g. VF-1.1 or ISO date).
+  version     String?
+  /// When this revision was ingested into the index.
+  ingestedAt  DateTime?
+
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  chunks      DocumentChunk[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([kind, status])
+}
+
+model DocumentChunk {
+  id          String   @id @default(cuid())
+
+  chunkIndex  Int
+
+  page Int @default(1)
+
+  content     String   @db.Text
+
+  embedding   Json
+
+  /// Hierarchical metadata for documentation RAG citations.
+  chapter  String?
+  section  String?
+  title    String?
+  keywords String[] @default([])
+
+  documentId  String
+  document    Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+
+  @@index([documentId, chunkIndex])
+} 
+model BenchmarkRun {
+  id             String   @id @default(cuid())
+  createdAt      DateTime @default(now())
+
+  dataset        String   @default("unknown")
+
+  totalQuestions Int
+  successCount   Int
+  failedCount    Int
+
+  averageLatency Float
+  averageScore   Float?
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  results BenchmarkResult[]
+  jobs    BenchmarkJob[]
+}
+
+/// Durable async benchmark job state (survives restarts / multi-instance polls).
+model BenchmarkJob {
+  id               String             @id @default(cuid())
+  jobId            String             @unique
+  userId           String
+  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dataset          String
+  status           BenchmarkJobStatus @default(PENDING)
+  current          Int                @default(0)
+  total            Int                @default(0)
+  currentQuestion  String?
+  startedAt        DateTime           @default(now())
+  completedAt      DateTime?
+  runId            String?
+  run              BenchmarkRun?      @relation(fields: [runId], references: [id], onDelete: SetNull)
+  error            String?            @db.Text
+  workerId         String?
+  updatedAt        DateTime           @updatedAt
+
+  @@index([userId, status])
+  @@index([status, updatedAt])
+}
+
+model BenchmarkResult {
+  id String @id @default(cuid())
+
+  question        String @db.Text
+  expectedAnswer  String? @db.Text
+  generatedAnswer String @db.Text
+
+  latencyMs         Float
+  similarity        Float?
+  success           Boolean
+  retrievedSources  Int @default(0)
+  failureReason     String?
+  retrievedContext  String? @db.Text
+
+  benchmarkRunId String
+  benchmarkRun   BenchmarkRun @relation(fields: [benchmarkRunId], references: [id], onDelete: Cascade)
+}
+/// Catalog course for tutoring / programs.
+model Course {
+  id          String  @id @default(cuid())
+  title       String
+  description String  @db.Text
+  subject     String?
+  level       String?
+  isPublished Boolean @default(true)
+
+  tutorUserId String?
+  tutor       User?   @relation("CourseTutor", fields: [tutorUserId], references: [id], onDelete: SetNull)
+
+  registrations Registration[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isPublished, subject])
+  @@index([tutorUserId])
+}
+
+model Program {
+  id          String  @id @default(cuid())
+  name        String
+  description String  @db.Text
+  isPublished Boolean @default(true)
+
+  registrations Registration[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isPublished])
+}
+
+model Registration {
+  id     String @id @default(cuid())
+  status String @default("ACTIVE")
+
+  studentUserId String
+  student       User   @relation("StudentRegistrations", fields: [studentUserId], references: [id], onDelete: Cascade)
+
+  courseId String?
+  course   Course? @relation(fields: [courseId], references: [id], onDelete: SetNull)
+
+  programId String?
+  program   Program? @relation(fields: [programId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([studentUserId, status])
+  @@index([courseId])
+  @@index([programId])
+}
+
+model Faq {
+  id          String   @id @default(cuid())
+  question    String
+  answer      String   @db.Text
+  /// Roles allowed to see this FAQ (empty = all authenticated users).
+  audience    String[] @default([])
+  isPublished Boolean  @default(true)
+  tags        String[] @default([])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isPublished])
+}
+
+model Policy {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String   @db.Text
+  content     String   @db.Text
+  audience    String[] @default([])
+  isPublished Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isPublished])
+}
+
+/// User rating on an assistant message (metadata only — no prompts / retrieved text).
+enum FeedbackRating {
+  HELPFUL
+  NOT_HELPFUL
+}
+
+enum EvaluationFlagType {
+  REPEATED_TOOL_FAILURES
+  REPEATED_LOW_RATINGS
+  REPEATED_PLANNER_FALLBACKS
+  REPEATED_UNANSWERED
+}
+
+enum EvaluationFlagStatus {
+  OPEN
+  REVIEWED
+  RESOLVED
+}
+
+model MessageFeedback {
+  id String @id @default(cuid())
+
+  messageId String
+  message   Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  rating  FeedbackRating
+  comment String? @db.Text
+  /// Detailed feedback categories (incorrect, missing, wrong_source, …).
+  categories String[] @default([])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([messageId, userId])
+  @@index([conversationId, createdAt])
+  @@index([userId, createdAt])
+  @@index([rating, createdAt])
+}
+
+/// Functional / business / hybrid QA evaluation runs (scaffolding).
+model EvaluationQaRun {
+  id        String   @id @default(cuid())
+  name      String
+  dataset   String   @default("default")
+  mode      String   @default("hybrid") // functional | business | hybrid
+  status    String   @default("completed")
+  summary   Json?
+  userId    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cases EvaluationQaCase[]
+
+  @@index([dataset, createdAt])
+  @@index([mode, createdAt])
+}
+
+model EvaluationQaCase {
+  id             String   @id @default(cuid())
+  runId          String
+  run            EvaluationQaRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  question       String   @db.Text
+  expectedAnswer String?  @db.Text
+  actualAnswer   String?  @db.Text
+  sources        Json?
+  scores         Json?
+  latencyMs      Int?
+  passed         Boolean?
+  notes          String?  @db.Text
+  createdAt      DateTime @default(now())
+
+  @@index([runId])
+}
+
+/// Sensitive business-skill / tool call audit trail (no payloads with PII blobs).
+model SecurityAuditEvent {
+  id        String   @id @default(cuid())
+  type      String
+  userId    String?
+  companyId String?
+  skillId   String?
+  toolId    String?
+  requestId String?
+  success   Boolean  @default(true)
+  meta      Json?
+  createdAt DateTime @default(now())
+
+  @@index([type, createdAt])
+  @@index([userId, createdAt])
+  @@index([skillId, createdAt])
+}
+
+/// Per-response auto metrics (safe metadata from ExecutionTrace + suggestions).
+model AssistantTurnMetric {
+  id String @id @default(cuid())
+
+  messageId String  @unique
+  message   Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  plannerMode       String
+  plannerConfidence Float?
+
+  knowledgeProviders String[] @default([])
+  /// [{ toolId, success, status? }] — no payloads / secrets.
+  toolsExecuted Json?
+
+  toolCount        Int @default(0)
+  toolSuccessCount Int @default(0)
+  toolFailureCount Int @default(0)
+
+  responseLatencyMs   Int?
+  retrievalLatencyMs  Int?
+  generationLatencyMs Int?
+  toolLatencyMs       Int?
+
+  sourceCount     Int @default(0)
+  suggestionCount Int @default(0)
+
+  confirmationRequired  Boolean @default(false)
+  confirmationCompleted Boolean @default(false)
+
+  usedRag             Boolean @default(false)
+  usedTools           Boolean @default(false)
+  isHybrid            Boolean @default(false)
+  isUnanswered        Boolean @default(false)
+  isPlannerFallback   Boolean @default(false)
+  suggestionClicked   Boolean @default(false)
+  toolActionFromUi    Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([userId, createdAt])
+  @@index([conversationId])
+  @@index([plannerMode, createdAt])
+}
+
+/// Extensible interaction events (suggestion clicks, tool actions from UI, …).
+model EvaluationEvent {
+  id String @id @default(cuid())
+
+  /// SUGGESTION_CLICK | TOOL_ACTION | FEEDBACK | custom
+  type String
+
+  messageId      String?
+  conversationId String?
+  userId         String
+  user           User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// Safe metadata only (ids, labels, toolId) — never prompts / document text.
+  payload Json?
+
+  createdAt DateTime @default(now())
+
+  @@index([type, createdAt])
+  @@index([messageId])
+  @@index([userId, createdAt])
+  @@index([conversationId, createdAt])
+}
+
+model EvaluationFlag {
+  id String @id @default(cuid())
+
+  type     EvaluationFlagType
+  severity String
+  summary  String
+  /// Safe diagnostic metadata (counts, tool ids, windows) — no content.
+  metadata Json?
+  status   EvaluationFlagStatus @default(OPEN)
+
+  /// Dedupes open flags for the same issue window/key.
+  fingerprint String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, type])
+  @@index([createdAt])
+}
+
+/// Async / background workflow execution job.
+model WorkflowJob {
+  id String @id @default(cuid())
+
+  workflowId   String
+  workflowName String?
+  message      String  @db.Text
+
+  status      WorkflowJobStatus @default(QUEUED)
+  /// Snapshot of step progress for UI polling.
+  progress    Json?
+  currentStep String?
+  error       String?           @db.Text
+  resultAnswer String?          @db.Text
+
+  confirmationId String?
+  /// Assistant message id that holds the final/paused result trace.
+  resultMessageId String?
+  /// Opaque id linking the job to ExecutionTrace.requestId when available.
+  executionTraceId String?
+
+  executionMode String @default("background")
+  queueTimeMs   Int?
+  resumeCount   Int    @default(0)
+
+  startedAt  DateTime?
+  finishedAt DateTime?
+  queuedAt   DateTime  @default(now())
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId, status])
+  @@index([conversationId, status])
+  @@index([status, queuedAt])
+  @@index([confirmationId])
+}

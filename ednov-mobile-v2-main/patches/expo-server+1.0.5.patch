@@ -1,0 +1,124 @@
+diff --git a/node_modules/expo-server/build/cjs/vendor/http.js b/node_modules/expo-server/build/cjs/vendor/http.js
+index 4ffaac4..d7f778b 100644
+--- a/node_modules/expo-server/build/cjs/vendor/http.js
++++ b/node_modules/expo-server/build/cjs/vendor/http.js
+@@ -46,7 +46,7 @@ function createRequestHandler(params, setup) {
+         try {
+             const request = convertRequest(req, res);
+             const response = await requestHandler(request);
+-            await respond(res, response);
++            await respond(res, response, { signal: request.signal });
+         }
+         catch (error) {
+             // http doesn't support async functions, so we have to pass along the
+@@ -67,7 +67,9 @@ function convertRequest(req, res) {
+     const url = new URL(req.url, `http://${req.headers.host}`);
+     // Abort action/loaders once we can no longer write a response
+     const controller = new AbortController();
+-    res.on('close', () => controller.abort());
++    res.once('close', () => controller.abort());
++    res.once('error', () => controller.abort());
++    req.once('error', () => controller.abort());
+     const init = {
+         method: req.method,
+         headers: convertRawHeaders(req.rawHeaders),
+@@ -97,7 +99,10 @@ function convertHeaders(requestHeaders) {
+     }
+     return headers;
+ }
+-async function respond(res, expoRes) {
++async function respond(res, expoRes, options) {
++    if (res.writableEnded || res.destroyed) {
++        return;
++    }
+     res.statusMessage = expoRes.statusText;
+     res.statusCode = expoRes.status;
+     if (typeof res.setHeaders === 'function') {
+@@ -108,8 +113,23 @@ async function respond(res, expoRes) {
+             res.appendHeader(key, value);
+         }
+     }
+-    if (expoRes.body) {
+-        await (0, promises_1.pipeline)(node_stream_1.Readable.fromWeb(expoRes.body), res);
++    if (expoRes.body && !options?.signal?.aborted) {
++        try {
++            await (0, promises_1.pipeline)(node_stream_1.Readable.fromWeb(expoRes.body), res, { signal: options?.signal });
++        }
++        catch (err) {
++            const code = err && typeof err === 'object' && 'code' in err ? err.code : undefined;
++            if (code === 'ERR_STREAM_DESTROYED' ||
++                code === 'ERR_STREAM_PREMATURE_CLOSE' ||
++                code === 'ABORT_ERR' ||
++                code === 'ECONNRESET') {
++                return;
++            }
++            if (err instanceof Error && /closed or destroyed stream/i.test(err.message)) {
++                return;
++            }
++            throw err;
++        }
+     }
+     else {
+         res.end();
+diff --git a/node_modules/expo-server/build/mjs/vendor/http.js b/node_modules/expo-server/build/mjs/vendor/http.js
+index be9397c..31e0293 100644
+--- a/node_modules/expo-server/build/mjs/vendor/http.js
++++ b/node_modules/expo-server/build/mjs/vendor/http.js
+@@ -38,7 +38,7 @@ export function createRequestHandler(params, setup) {
+         try {
+             const request = convertRequest(req, res);
+             const response = await requestHandler(request);
+-            await respond(res, response);
++            await respond(res, response, { signal: request.signal });
+         }
+         catch (error) {
+             // http doesn't support async functions, so we have to pass along the
+@@ -59,7 +59,9 @@ export function convertRequest(req, res) {
+     const url = new URL(req.url, `http://${req.headers.host}`);
+     // Abort action/loaders once we can no longer write a response
+     const controller = new AbortController();
+-    res.on('close', () => controller.abort());
++    res.once('close', () => controller.abort());
++    res.once('error', () => controller.abort());
++    req.once('error', () => controller.abort());
+     const init = {
+         method: req.method,
+         headers: convertRawHeaders(req.rawHeaders),
+@@ -89,7 +91,10 @@ export function convertHeaders(requestHeaders) {
+     }
+     return headers;
+ }
+-export async function respond(res, expoRes) {
++export async function respond(res, expoRes, options) {
++    if (res.writableEnded || res.destroyed) {
++        return;
++    }
+     res.statusMessage = expoRes.statusText;
+     res.statusCode = expoRes.status;
+     if (typeof res.setHeaders === 'function') {
+@@ -100,8 +105,23 @@ export async function respond(res, expoRes) {
+             res.appendHeader(key, value);
+         }
+     }
+-    if (expoRes.body) {
+-        await pipeline(Readable.fromWeb(expoRes.body), res);
++    if (expoRes.body && !options?.signal?.aborted) {
++        try {
++            await pipeline(Readable.fromWeb(expoRes.body), res, { signal: options?.signal });
++        }
++        catch (err) {
++            const code = err && typeof err === 'object' && 'code' in err ? err.code : undefined;
++            if (code === 'ERR_STREAM_DESTROYED' ||
++                code === 'ERR_STREAM_PREMATURE_CLOSE' ||
++                code === 'ABORT_ERR' ||
++                code === 'ECONNRESET') {
++                return;
++            }
++            if (err instanceof Error && /closed or destroyed stream/i.test(err.message)) {
++                return;
++            }
++            throw err;
++        }
+     }
+     else {
+         res.end();

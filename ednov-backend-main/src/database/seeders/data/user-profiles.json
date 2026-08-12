@@ -1,0 +1,5457 @@
+[
+  {
+    "id": "8330617b-1469-464b-bdbd-159fb173d2de",
+    "user_id": "4d389bc2-d60b-43b1-97f3-b8dd51b9f26e",
+    "profile_id": null,
+    "subjects": null,
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "12:00",
+          "start": "09:00"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "14:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-11 15:25:47.290256+00",
+    "updated_at": "2026-03-23 20:19:40.001298+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": true
+    },
+    "tutor_platform_status": "pending",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": null,
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "2560607c-dfab-48a2-8607-0bed1dadac9e",
+    "user_id": "41b3fa0c-2a32-4f5e-a6b4-b6d33ddb484b",
+    "profile_id": null,
+    "subjects": [
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "09:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": {
+      "name": "parc",
+      "email": "Hamza.jemai@yopmail.com",
+      "phone": "9 02 07 93 4",
+      "relation": "legal_guardian"
+    },
+    "created_at": "2026-03-23 21:52:05.006627+00",
+    "updated_at": "2026-04-17 00:20:07.110514+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-03-06",
+    "gender": "F",
+    "address_legacy": "ytuhbjilk,;",
+    "level_id": "6950e5be-6cd6-4d72-b3f2-6a601e1a35ad",
+    "medical_notes": "ytuhijko",
+    "grade_level": null,
+    "address_line1": "ytuhbjilk,;",
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "0e770a88-ed76-4597-b0b8-d5e9fc4d5091",
+    "user_id": "d2862c65-fb5d-40fc-987d-63da7e7a313a",
+    "profile_id": null,
+    "subjects": [
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "12:30",
+          "start": "11:30"
+        },
+        {
+          "day": 1,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 2,
+          "end": "12:30",
+          "start": "11:30"
+        },
+        {
+          "day": 2,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 3,
+          "end": "12:30",
+          "start": "11:30"
+        },
+        {
+          "day": 3,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 4,
+          "end": "12:30",
+          "start": "11:30"
+        },
+        {
+          "day": 4,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 5,
+          "end": "12:30",
+          "start": "11:30"
+        },
+        {
+          "day": 5,
+          "end": "16:30",
+          "start": "15:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-23 22:09:28.894493+00",
+    "updated_at": "2026-04-20 11:21:27.980419+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": "2026-04-13",
+    "engagement_end_date": "2026-04-30",
+    "school_class_id": null,
+    "subject_names": [
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "ffbd12a6-6d66-4ab7-93a6-2198e01e62b2",
+    "user_id": "60785dc2-0953-436e-870d-919dc0d46f07",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "12:30",
+          "start": "11:30"
+        },
+        {
+          "day": 2,
+          "end": "12:30",
+          "start": "11:30"
+        },
+        {
+          "day": 3,
+          "end": "12:30",
+          "start": "11:30"
+        },
+        {
+          "day": 4,
+          "end": "12:30",
+          "start": "11:30"
+        },
+        {
+          "day": 5,
+          "end": "12:30",
+          "start": "11:30"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-24 02:17:06.468818+00",
+    "updated_at": "2026-04-20 11:10:53.5369+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-05-12",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": "Voluptas laborum dolores recusandae Asperiores repellendus Repudiandae labore sit sunt pariatur",
+    "grade_level": null,
+    "address_line1": "Parre 31260 Montespan",
+    "department": "Haute-Garonne (31)",
+    "postal_code": "31260",
+    "city": "Montespan",
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "45eb80bb-1b1a-4400-8191-806c5c100441",
+    "user_id": "53fc8ef1-cca0-43fa-a373-ea9eb0b5a763",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "09:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-24 02:29:30.242167+00",
+    "updated_at": "2026-04-17 00:20:07.385316+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-05-05",
+    "gender": "F",
+    "address_legacy": "barcelone",
+    "level_id": "4e5b4dd8-406f-4fcf-a98e-31a93f2ae3fb",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": "barcelone",
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "01993be0-b2f2-4e18-abaf-e92108c062c1",
+    "user_id": "f23ec2ba-4386-4f2f-ae42-b246d4489d21",
+    "profile_id": null,
+    "subjects": [
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "09:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-24 02:49:23.140561+00",
+    "updated_at": "2026-04-17 00:20:13.723701+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2017-08-16",
+    "gender": "F",
+    "address_legacy": "19 rue impasse",
+    "level_id": "6950e5be-6cd6-4d72-b3f2-6a601e1a35ad",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": "19 rue impasse",
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "science physique",
+      "science experimental"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "4f81b648-4edf-4c03-b7a2-7802ad599a86",
+    "user_id": "e4848775-7e88-4f9a-b617-a5886d7743af",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "09:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "09:00"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "09:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-24 11:38:25.175637+00",
+    "updated_at": "2026-04-17 00:20:06.626968+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2010-02-03",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "6950e5be-6cd6-4d72-b3f2-6a601e1a35ad",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "804dfce2-b006-4beb-acbb-7616919a9fbf",
+    "user_id": "f8b90733-d6a6-419b-987a-983b91d0efe7",
+    "profile_id": null,
+    "subjects": [
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "09:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "09:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-24 11:51:26.359015+00",
+    "updated_at": "2026-04-17 00:20:07.650913+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2014-05-07",
+    "gender": "F",
+    "address_legacy": "15 rue suède",
+    "level_id": "6950e5be-6cd6-4d72-b3f2-6a601e1a35ad",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": "15 rue suède",
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "5272bcc8-ac3e-4337-a0cf-379fc16ae8f6",
+    "user_id": "b29e648b-65f1-49fd-9423-1c46bd27cbb7",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 5,
+          "end": "19:30",
+          "start": "18:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-24 13:11:08.278141+00",
+    "updated_at": "2026-04-21 15:55:43.706644+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "6ab6ac14-e26c-4c00-899d-44b75b27efb7",
+    "user_id": "d92d223e-8443-4ad3-8b74-9ddd250c831f",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "09:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-27 13:06:16.851728+00",
+    "updated_at": "2026-04-17 00:20:09.194006+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2008-09-20",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "4e5b4dd8-406f-4fcf-a98e-31a93f2ae3fb",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "76e680ef-89ca-4012-96a2-00c5bf5d9d81",
+    "user_id": "45392ceb-7b0e-47ba-851b-c0e873a9ddc1",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "09:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-30 14:58:03.6002+00",
+    "updated_at": "2026-04-17 00:20:07.919075+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-02-03",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "855e08f9-f758-49e3-bf39-1aa5f6c7a313",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol",
+      "Français",
+      "science physique"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "59574bc6-1750-4ca2-9d23-6f6613dc559e",
+    "user_id": "165975b9-2a04-4a24-b261-1168b7606496",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 4,
+          "end": "17:30",
+          "start": "16:30"
+        },
+        {
+          "day": 5,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-30 18:25:41.026654+00",
+    "updated_at": "2026-04-17 00:20:08.160362+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "1ab8ee00-200c-4e89-9bf5-89c15b8712ce",
+    "user_id": "01c170b0-f034-42b6-993b-6353c9600afa",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:30",
+          "start": "17:30"
+        },
+        {
+          "day": 2,
+          "end": "18:30",
+          "start": "17:30"
+        },
+        {
+          "day": 3,
+          "end": "18:30",
+          "start": "17:30"
+        },
+        {
+          "day": 4,
+          "end": "18:30",
+          "start": "17:30"
+        },
+        {
+          "day": 5,
+          "end": "19:00",
+          "start": "18:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-30 20:37:54.510189+00",
+    "updated_at": "2026-04-17 00:20:08.431092+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-05-26",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol",
+      "Français",
+      "science physique"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "2a5086e2-e50f-4bef-bb35-fd1c72388c2a",
+    "user_id": "fab55b3d-3d06-4b27-b712-84cbc1a1a46a",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:30",
+          "start": "15:30"
+        },
+        {
+          "day": 2,
+          "end": "17:30",
+          "start": "15:30"
+        },
+        {
+          "day": 3,
+          "end": "17:30",
+          "start": "15:30"
+        },
+        {
+          "day": 4,
+          "end": "17:30",
+          "start": "15:30"
+        },
+        {
+          "day": 5,
+          "end": "17:30",
+          "start": "15:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-30 20:42:42.716226+00",
+    "updated_at": "2026-04-17 00:20:08.705742+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "fa8bf3c0-dd55-4ef8-ae06-bc30fd545d86",
+    "user_id": "c4a1bd87-4c01-406e-bbbf-51eacd078cc8",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:30",
+          "start": "15:30"
+        },
+        {
+          "day": 2,
+          "end": "17:30",
+          "start": "15:30"
+        },
+        {
+          "day": 3,
+          "end": "17:30",
+          "start": "15:30"
+        },
+        {
+          "day": 4,
+          "end": "17:30",
+          "start": "15:30"
+        },
+        {
+          "day": 5,
+          "end": "17:30",
+          "start": "15:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-30 20:48:39.819856+00",
+    "updated_at": "2026-04-17 00:20:08.951969+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Français",
+      "Espagnol"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "b02cea29-e7f7-4804-802e-f2a89ee6a25f",
+    "user_id": "4e0e5752-5bde-4ba2-b499-95cf5cf3f408",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:30",
+          "start": "16:30"
+        },
+        {
+          "day": 2,
+          "end": "17:30",
+          "start": "16:30"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 01:36:28.351814+00",
+    "updated_at": "2026-04-17 00:20:09.459352+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2020-02-05",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "d450cd4c-a1c1-4b12-bd40-fc52c477e64b",
+    "medical_notes": "eeee",
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "355d5297-ff4f-4081-ae5a-11cbc947b948",
+    "user_id": "395512e1-0304-4d1e-8d00-dbb12401d53b",
+    "profile_id": null,
+    "subjects": [
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 3,
+          "end": "17:30",
+          "start": "16:30"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 09:20:39.332195+00",
+    "updated_at": "2026-04-17 00:20:09.711133+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2020-05-01",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Français",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "b031d3cb-d782-447a-b05e-ed490e0197a0",
+    "user_id": "dcb5d082-e808-4873-a92b-f2a296c669b9",
+    "profile_id": null,
+    "subjects": [
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:30",
+          "start": "16:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "16:00"
+        },
+        {
+          "day": 3,
+          "end": "19:00",
+          "start": "17:30"
+        },
+        {
+          "day": 4,
+          "end": "19:00",
+          "start": "18:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 09:23:27.48117+00",
+    "updated_at": "2026-04-17 00:20:09.952733+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Français",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "f87267f4-0c55-4c06-820b-7c7b485befcd",
+    "user_id": "2917af8e-9ff7-4e14-8758-23b5f0a8bbb6",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:30",
+          "start": "16:30"
+        },
+        {
+          "day": 3,
+          "end": "17:30",
+          "start": "16:30"
+        },
+        {
+          "day": 4,
+          "end": "17:30",
+          "start": "16:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:23:55.58881+00",
+    "updated_at": "2026-04-17 00:20:10.189391+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-02-03",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "0825257e-fb25-4980-b8c5-0c8bc1b6ade6",
+    "user_id": "4eeb57a9-2d06-4b74-a6da-d81ae81a8b2f",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "15:30"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "15:30"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "15:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:25:39.250309+00",
+    "updated_at": "2026-04-17 00:20:10.42894+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "science physique"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "070ffd5f-ded0-45fc-ab8b-bc828cd90c30",
+    "user_id": "22ce9783-5469-4c22-9537-7daedf591195",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:26:50.344934+00",
+    "updated_at": "2026-04-17 00:20:10.68249+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-02-03",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "4e5b4dd8-406f-4fcf-a98e-31a93f2ae3fb",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "7066d3fc-9dee-45c7-bed7-605676a2cbaf",
+    "user_id": "c24a29fe-e345-42b6-aca9-264a81c9f07d",
+    "profile_id": null,
+    "subjects": [
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "17:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:28:18.103223+00",
+    "updated_at": "2026-04-17 00:20:10.926978+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2014-05-07",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "698bb5bc-3ade-4163-b6cc-6a8d9eeebda9",
+    "user_id": "8aefe8ea-1bd6-41c5-ba9f-8aeb808076da",
+    "profile_id": null,
+    "subjects": [
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "17:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:31:31.316066+00",
+    "updated_at": "2026-04-17 00:20:11.175591+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2011-02-02",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "6950e5be-6cd6-4d72-b3f2-6a601e1a35ad",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Français",
+      "science physique",
+      "Mathématiques",
+      "science experimental"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "20b2ce49-31f3-4510-b39b-cbcb83f5a3c3",
+    "user_id": "858f4070-57d9-44cd-b700-71a092e7beef",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "16:30",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:33:36.80587+00",
+    "updated_at": "2026-04-17 00:20:11.431969+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2015-06-12",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "6950e5be-6cd6-4d72-b3f2-6a601e1a35ad",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "848e60c1-f5c0-43ad-9594-149d02fbb2a2",
+    "user_id": "011eea8b-98a6-4a10-8b9d-c5def9480f02",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "17:00",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "17:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:37:27.15552+00",
+    "updated_at": "2026-04-17 00:20:11.675701+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2013-05-08",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "6950e5be-6cd6-4d72-b3f2-6a601e1a35ad",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "80f07765-91e6-4b7a-9fd3-d0b4035e0892",
+    "user_id": "969fc31a-d88d-4b17-8e38-04d186695c18",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "16:30",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:43:47.841045+00",
+    "updated_at": "2026-04-17 00:20:11.929354+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "857b8d65-31ed-4cf6-9b66-276255d4aee9",
+    "user_id": "ccc95492-5eda-4485-afff-46d719963167",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "16:30",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:44:49.685451+00",
+    "updated_at": "2026-04-17 00:20:12.176111+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "91c2f230-ba8a-48a6-a4d3-e01974cf46ba",
+    "user_id": "9fb7a953-f93a-4a35-bb31-a840eb7b7e3d",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "16:30",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:45:39.436383+00",
+    "updated_at": "2026-04-17 00:20:12.441382+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "01e3ac18-d6ca-46d8-b444-95572bf74115",
+    "user_id": "c33fd3fc-647b-4d07-8cb5-31c965b768b5",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "16:30"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:49:37.528473+00",
+    "updated_at": "2026-04-17 00:20:12.711482+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-02-03",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "4e5b4dd8-406f-4fcf-a98e-31a93f2ae3fb",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "f8755600-4e61-4450-9db6-c6534da9a5e6",
+    "user_id": "ccb53f48-b977-438d-a64e-b9c3bd5bd0cc",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 2,
+          "end": "19:00",
+          "start": "18:00"
+        },
+        {
+          "day": 3,
+          "end": "19:00",
+          "start": "18:00"
+        },
+        {
+          "day": 4,
+          "end": "19:00",
+          "start": "18:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:50:26.713878+00",
+    "updated_at": "2026-04-17 00:20:12.953732+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "22b5c53c-a551-48f6-9946-76351eaf7bea",
+    "user_id": "9526ee4a-982d-4c7a-b0ff-06b5216e743a",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "16:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 15:53:38.391926+00",
+    "updated_at": "2026-04-17 00:20:13.195224+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "d8a61d07-5c30-40a2-9062-cc58de071b47",
+    "user_id": "e7109074-5dae-4120-ae60-d37ab31f5415",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:30",
+          "start": "17:30"
+        },
+        {
+          "day": 2,
+          "end": "18:30",
+          "start": "17:30"
+        },
+        {
+          "day": 3,
+          "end": "18:30",
+          "start": "17:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-03-31 16:11:16.110556+00",
+    "updated_at": "2026-04-17 00:20:13.456228+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2020-01-07",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": "aaaa",
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "eded7e62-d1d6-4649-b8c8-304308894ddf",
+    "user_id": "c8157894-f79d-4933-a33f-12531aed7083",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "15:30"
+        },
+        {
+          "day": 2,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "19:00",
+          "start": "16:00"
+        },
+        {
+          "day": 4,
+          "end": "19:00",
+          "start": "17:00"
+        },
+        {
+          "day": 5,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 01:37:01.818675+00",
+    "updated_at": "2026-04-17 00:20:13.965525+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": true
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol",
+      "Français",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "4a1b09d1-6fe1-4149-9abf-f3c249d3d26e",
+    "user_id": "ab946775-7a25-43d4-a701-07a2d636ceed",
+    "profile_id": null,
+    "subjects": [
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:30",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 01:47:05.134963+00",
+    "updated_at": "2026-04-17 00:20:14.209622+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2011-12-08",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "3d769f6d-deaa-481c-8deb-e0196150b13d",
+    "user_id": "ebf95afd-2750-4be3-a903-d2b3341f1f32",
+    "profile_id": null,
+    "subjects": [
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 4,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 5,
+          "end": "17:00",
+          "start": "16:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 01:50:27.881078+00",
+    "updated_at": "2026-04-17 00:20:14.45363+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "8067bd02-ac9e-4e51-8ded-5eeb8bbe93d5",
+    "user_id": "b795776f-c15f-4dac-98c6-391e582618ea",
+    "profile_id": null,
+    "subjects": [
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:30",
+          "start": "16:30"
+        },
+        {
+          "day": 2,
+          "end": "17:30",
+          "start": "16:30"
+        },
+        {
+          "day": 3,
+          "end": "17:30",
+          "start": "16:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 02:06:40.95639+00",
+    "updated_at": "2026-04-17 00:20:14.693794+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": true
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "17e96b54-b88e-49d3-a32e-5dc706e4aae2",
+    "user_id": "e1617f9a-11ab-4424-8631-26cffdad81d3",
+    "profile_id": null,
+    "subjects": [],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 5,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 05:48:46.507171+00",
+    "updated_at": "2026-04-01 05:48:46.507171+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-05-05",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "d450cd4c-a1c1-4b12-bd40-fc52c477e64b",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": null,
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "c604995a-0bc3-4ec2-99b9-cd12cab0496a",
+    "user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "profile_id": null,
+    "subjects": [
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 5,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 05:50:39.370653+00",
+    "updated_at": "2026-04-21 15:50:12.480509+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Mathématiques",
+      "science physique"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "c0b77e4b-2540-45b8-bbff-3fba93495ec5",
+    "user_id": "5c770abf-abbc-4006-8d76-1d7000b56f01",
+    "profile_id": null,
+    "subjects": [
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 05:58:08.490913+00",
+    "updated_at": "2026-04-17 00:20:15.295304+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "6bfa5b2f-b6eb-4945-9fbd-01c2da6bdf38",
+    "user_id": "dbf05dfe-8f92-4128-8121-82cf42d0a1d9",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 05:59:23.838722+00",
+    "updated_at": "2026-04-17 00:20:15.558493+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "26e5d462-952c-4a07-8366-e45ea8880ecf",
+    "user_id": "0b522d9b-f5dc-41dd-be8b-770b333c2c4f",
+    "profile_id": null,
+    "subjects": [
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 5,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 06:05:10.421061+00",
+    "updated_at": "2026-04-17 00:20:15.79792+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": true
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "3eb5d337-e4b5-489a-bd91-5322e91630a0",
+    "user_id": "6ec1219f-0f0a-49a9-9cea-f80b55a185c7",
+    "profile_id": null,
+    "subjects": [
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 5,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 08:35:33.425466+00",
+    "updated_at": "2026-04-17 00:20:16.047085+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": true
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Mathématiques",
+      "science physique"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "70a2c83a-dd21-4f03-afad-3de38adb79a5",
+    "user_id": "6fc86507-a7f4-41da-a175-dac959e6fe0f",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 4,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 5,
+          "end": "17:00",
+          "start": "16:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 08:37:48.472756+00",
+    "updated_at": "2026-04-17 00:20:16.293032+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "734150eb-9d56-421c-94fa-d31b8d600fd3",
+    "user_id": "86bd1e6d-80a8-4c55-85ad-722e754d90d5",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 1,
+          "end": "17:30",
+          "start": "16:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-01 09:14:38.657565+00",
+    "updated_at": "2026-04-17 00:20:16.532897+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Français",
+      "Espagnol",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "c1bd724d-f959-4980-a36d-b39374da734e",
+    "user_id": "0da4ec19-9c9e-4da5-9eae-ccb3e36ce949",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "19:00",
+          "start": "18:00"
+        },
+        {
+          "day": 2,
+          "end": "19:00",
+          "start": "18:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-05 19:10:12.75668+00",
+    "updated_at": "2026-04-17 00:20:16.776662+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2021-05-05",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "6f08f02c-7c38-4f79-884d-f5e5b090bd62",
+    "user_id": "caafbf57-96eb-4e81-b9c4-d64585408f0e",
+    "profile_id": null,
+    "subjects": [
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-07 09:22:18.106081+00",
+    "updated_at": "2026-04-17 11:53:14.526552+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2010-01-05",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": "a ne pas matcher",
+    "grade_level": null,
+    "address_line1": "Paris 33880 Saint-Caprais-de-Bordeaux",
+    "department": "Gironde (33)",
+    "postal_code": "33880",
+    "city": "Saint-Caprais-de-Bordeaux",
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "science physique",
+      "Français",
+      "science experimental",
+      "Espagnol"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "ad02a14a-82e9-4cfb-88af-680d2c1e553c",
+    "user_id": "73b2d635-fe95-4716-9157-59523048d61a",
+    "profile_id": null,
+    "subjects": [
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-07 09:29:00.39623+00",
+    "updated_at": "2026-04-17 00:20:17.29109+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "3bd028ef-6558-4fe3-a672-a628ff5803dc",
+    "user_id": "a8c5537e-2ce5-4d3d-8984-a693b172e5a6",
+    "profile_id": null,
+    "subjects": [
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "16:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-07 09:32:44.188906+00",
+    "updated_at": "2026-04-17 00:20:17.537543+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "science physique",
+      "science experimental",
+      "Mathématiques",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "888ac0ed-2287-4620-9bb8-188b141fecaf",
+    "user_id": "6649c10c-59ef-4aba-8660-c3d84d4539ef",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-07 11:58:08.664164+00",
+    "updated_at": "2026-04-17 12:01:05.023823+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": "2026-04-17",
+    "engagement_end_date": "2026-04-30",
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "6c99b19e-3152-4717-9b81-9a7a2233caf2",
+    "user_id": "36dce3c4-d8f8-4849-b0cc-a9dafe4a4481",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 3,
+          "end": "19:30",
+          "start": "18:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-07 15:56:08.49978+00",
+    "updated_at": "2026-04-17 00:20:18.031133+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "3aeea10f-8f4f-470b-9ea9-eb720fbe1191",
+    "user_id": "823af336-b4df-42ff-960b-039213f01870",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-08 08:30:25.537381+00",
+    "updated_at": "2026-04-17 00:20:18.274801+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "ac453d07-089f-4d68-9d5e-f3f60dd8afca",
+    "user_id": "b81615ad-8e69-4298-98c7-9295c8a978de",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-09 07:43:57.657457+00",
+    "updated_at": "2026-04-09 07:43:57.657457+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "e302dd8b-6d02-48a3-8103-335d4aa51499",
+    "user_id": "c65d21c7-73eb-4d50-8e08-55417966888b",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "16:30",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "16:30",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-09 07:55:33.930959+00",
+    "updated_at": "2026-04-17 00:20:18.632712+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "8d3d9a1b-fb05-4be2-9da3-27a4766344f2",
+    "user_id": "7110a6c2-8232-4801-939f-bb41e09798c3",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": null,
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-09 08:16:30.885034+00",
+    "updated_at": "2026-04-17 00:20:18.87518+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "eb03fd10-7177-437c-9440-0b62e4f8f7e4",
+    "user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "16:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-09 08:21:48.512587+00",
+    "updated_at": "2026-04-17 00:20:19.118937+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "92f48cc2-4d04-4990-8468-53e9d1f597be",
+    "user_id": "9b937ec9-159e-4796-a83b-fa63be5d1c2a",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 2,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 3,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 4,
+          "end": "16:00",
+          "start": "15:00"
+        },
+        {
+          "day": 5,
+          "end": "16:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-09 08:33:44.060197+00",
+    "updated_at": "2026-04-17 00:20:19.358601+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2001-02-07",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "f2cff12e-3e43-4b89-8a22-3edf36b2bb53",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "1442376b-1b94-4589-8c30-04b6e0dfaf80",
+    "user_id": "5a3909df-a4cb-44fd-b5f2-b2d89f10acc2",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": null,
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-09 08:35:37.919805+00",
+    "updated_at": "2026-04-17 00:20:19.604694+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2013-05-06",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "f2cff12e-3e43-4b89-8a22-3edf36b2bb53",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "9b808fbd-58a1-48c8-989e-5220f52a2868",
+    "user_id": "fa05f19d-a957-4352-8d0e-7b0582f06a09",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:00",
+          "start": "15:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-09 08:45:15.080078+00",
+    "updated_at": "2026-04-17 00:20:19.846359+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2003-05-07",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "f2cff12e-3e43-4b89-8a22-3edf36b2bb53",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "30124132-3973-4428-96b3-043a109988bd",
+    "user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "16:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-09 08:48:19.466959+00",
+    "updated_at": "2026-04-17 00:20:20.085652+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2018-01-02",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "83e61e3f-0889-4ed8-bc03-dd3424a381cc",
+    "user_id": "abbb679e-a65d-4aad-9175-33b3fcb479a1",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-10 08:12:52.333748+00",
+    "updated_at": "2026-04-17 00:20:20.363062+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2015-06-10",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": "Cette élève a des besoins spécifiques",
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "e203da5b-e8de-4a22-be3a-104f33e6edf1",
+    "user_id": "1dc39b79-ccdf-4111-bf3e-599390d52cc0",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-10 08:14:08.378372+00",
+    "updated_at": "2026-04-17 00:20:20.60745+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "4ed8be0f-bf03-4c0d-96ca-fafcc548902e",
+    "user_id": "c6292635-7d57-463f-8158-2aac929b3419",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-10 08:16:24.076611+00",
+    "updated_at": "2026-04-20 15:29:36.530968+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": true
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "332f0084-fc56-4902-8cd0-0865f581642e",
+    "user_id": "23fe8b6a-92ca-4c48-b1de-4f293025908c",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-10 09:31:35.221083+00",
+    "updated_at": "2026-04-17 00:20:20.958473+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2010-02-03",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "15cdec4c-6f2b-4684-a28b-3eb46c2f79ae",
+    "user_id": "6ff19e61-00ee-42d4-b90d-cc8bf72efb1d",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-10 10:09:55.523359+00",
+    "updated_at": "2026-04-17 00:20:21.23549+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "b2b2a4bb-564c-4285-b046-b8877927a1e2",
+    "user_id": "086d8872-ec93-441c-a030-d5068fb7062d",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-10 10:24:25.018999+00",
+    "updated_at": "2026-04-10 10:24:25.018999+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "11ad92e7-c64f-4cd0-aa04-b5ec6109a910",
+    "user_id": "289bc423-02d1-4a72-aed1-8006f3fdd784",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 5,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-14 11:18:21.813933+00",
+    "updated_at": "2026-04-14 11:18:21.813933+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "18b971ce-2d35-4811-8a02-2731badf8425",
+    "user_id": "bf9be8e2-929c-4a4b-99ad-b29abe0d6ceb",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-14 15:28:47.884414+00",
+    "updated_at": "2026-04-15 15:33:54.762289+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": "2026-04-15",
+    "engagement_end_date": "2026-04-30",
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "b63586cd-fe71-4886-888e-52abd70e0671",
+    "user_id": "a83b6de3-8ba6-4e6a-8673-391f225937f9",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 2,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 3,
+          "end": "16:30",
+          "start": "15:30"
+        },
+        {
+          "day": 5,
+          "end": "16:30",
+          "start": "15:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-14 15:46:28.274579+00",
+    "updated_at": "2026-04-14 15:46:28.274579+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": true
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "61a9ba97-d197-4548-953a-7d8d5febad18",
+    "user_id": "f03e1262-4929-4897-bfaa-a431585906af",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 2,
+          "end": "17:00",
+          "start": "16:00"
+        },
+        {
+          "day": 3,
+          "end": "17:00",
+          "start": "16:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-15 09:00:09.557823+00",
+    "updated_at": "2026-04-15 09:00:09.557823+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Français",
+      "science experimental"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "98720aee-bd1e-4f23-98df-f7711ca38009",
+    "user_id": "74bec1a2-ea77-4fd9-ad3e-7ce8cc823304",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 5,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-15 09:06:28.078307+00",
+    "updated_at": "2026-04-17 00:20:21.903872+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "3074ce92-559f-44f1-b5ba-edabdd39d4e9",
+    "user_id": "b8e5f273-7d0f-4894-98cf-22caac7cb3fa",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-15 09:13:55.088722+00",
+    "updated_at": "2026-04-17 00:20:22.153116+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2014-05-07",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "33dd4c36-b59a-4f22-b890-8d03561f7308",
+    "user_id": "cb3e4159-6659-4e09-b604-49ec9a675a29",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 2,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 3,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 4,
+          "end": "18:00",
+          "start": "17:00"
+        },
+        {
+          "day": 5,
+          "end": "18:00",
+          "start": "17:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-15 14:06:35.093856+00",
+    "updated_at": "2026-04-17 00:20:22.406341+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": "2026-04-15",
+    "engagement_end_date": "2026-05-31",
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "10e69e5a-baa8-4f5f-8953-a5f930beb559",
+    "user_id": "c9d2a9b3-9f33-4a0f-9755-3dafad4ef51e",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "17:30",
+          "start": "16:30"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-16 11:10:15.661645+00",
+    "updated_at": "2026-04-17 00:20:22.738364+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2020-02-13",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "b777d191-a1df-4a17-bfeb-b6a44dfbc32a",
+    "user_id": "bd6e30ae-5a4f-4c64-a113-44ad9b9b1113",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "14:30",
+          "start": "13:30"
+        },
+        {
+          "day": 2,
+          "end": "11:00",
+          "start": "09:30"
+        },
+        {
+          "day": 2,
+          "end": "14:30",
+          "start": "13:30"
+        },
+        {
+          "day": 3,
+          "end": "11:00",
+          "start": "09:30"
+        },
+        {
+          "day": 4,
+          "end": "11:00",
+          "start": "09:30"
+        },
+        {
+          "day": 4,
+          "end": "15:30",
+          "start": "13:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-17 09:34:55.247008+00",
+    "updated_at": "2026-04-17 09:34:55.247008+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "a05f7b03-f43e-418d-87dd-11051246a667",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol",
+      "Français",
+      "science physique"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "054854b0-1421-4db9-9f9e-da4777f11ce4",
+    "user_id": "2ec5d6e4-0588-440b-918b-8d064e80fe22",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "12:00",
+          "start": "11:00"
+        },
+        {
+          "day": 2,
+          "end": "12:00",
+          "start": "11:00"
+        },
+        {
+          "day": 3,
+          "end": "12:00",
+          "start": "11:00"
+        },
+        {
+          "day": 4,
+          "end": "12:00",
+          "start": "11:00"
+        },
+        {
+          "day": 5,
+          "end": "12:00",
+          "start": "11:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-17 12:46:45.087626+00",
+    "updated_at": "2026-04-17 12:46:45.087626+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "20a163e1-4073-4ed2-a42c-aa2746c3caf5",
+    "user_id": "b3e9bf06-c7f5-4542-874d-30c0a0ba27ce",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "12:00",
+          "start": "11:00"
+        },
+        {
+          "day": 2,
+          "end": "12:00",
+          "start": "11:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-17 14:09:05.76931+00",
+    "updated_at": "2026-04-17 14:09:05.76931+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2026-04-15",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "d450cd4c-a1c1-4b12-bd40-fc52c477e64b",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "831e7ce5-891a-42c1-a807-2f2c28242950",
+    "user_id": "44620361-b4eb-40fc-b349-16cdb2449a89",
+    "profile_id": null,
+    "subjects": [
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "09:00",
+          "start": "08:00"
+        },
+        {
+          "day": 1,
+          "end": "11:00",
+          "start": "09:30"
+        },
+        {
+          "day": 2,
+          "end": "11:00",
+          "start": "10:00"
+        },
+        {
+          "day": 3,
+          "end": "11:30",
+          "start": "10:30"
+        },
+        {
+          "day": 4,
+          "end": "11:00",
+          "start": "10:00"
+        },
+        {
+          "day": 5,
+          "end": "09:30",
+          "start": "08:30"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-19 15:41:04.273477+00",
+    "updated_at": "2026-04-19 15:41:04.273477+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2013-08-14",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "f2cff12e-3e43-4b89-8a22-3edf36b2bb53",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Français"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "6966473f-3fb8-4423-a674-41686693a080",
+    "user_id": "1708dbe2-38f1-4f55-8922-55469ae92793",
+    "profile_id": null,
+    "subjects": [
+      "d9ab54db-0d56-4536-a187-8a3454eabca0"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "09:30",
+          "start": "08:00"
+        },
+        {
+          "day": 3,
+          "end": "09:30",
+          "start": "08:30"
+        },
+        {
+          "day": 4,
+          "end": "09:30",
+          "start": "08:00"
+        },
+        {
+          "day": 5,
+          "end": "09:30",
+          "start": "08:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-20 00:23:43.172307+00",
+    "updated_at": "2026-04-20 00:23:43.172307+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2017-05-18",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "f2cff12e-3e43-4b89-8a22-3edf36b2bb53",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "science physique"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "02c556ae-d0f0-4f59-8ecc-811fe5c10f8b",
+    "user_id": "f7f4784b-6f02-45ed-b250-c22ec8f3298f",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "10:30",
+          "start": "08:30"
+        },
+        {
+          "day": 2,
+          "end": "11:00",
+          "start": "09:30"
+        },
+        {
+          "day": 3,
+          "end": "11:30",
+          "start": "10:00"
+        },
+        {
+          "day": 4,
+          "end": "11:30",
+          "start": "09:30"
+        },
+        {
+          "day": 5,
+          "end": "10:30",
+          "start": "08:30"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-20 00:38:24.63096+00",
+    "updated_at": "2026-04-20 00:38:24.63096+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2013-08-22",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "4e5b4dd8-406f-4fcf-a98e-31a93f2ae3fb",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Français",
+      "science experimental"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "d3110968-65e5-4bf0-8991-cb8e6d608b40",
+    "user_id": "f659803b-0abd-4fad-8650-f273e14847f8",
+    "profile_id": null,
+    "subjects": [
+      "259d32d4-e908-4133-b1c0-a33eee9e520e"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "08:00",
+          "start": "07:00"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-20 01:13:13.510946+00",
+    "updated_at": "2026-04-20 01:13:13.510946+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2020-02-11",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "4e5b4dd8-406f-4fcf-a98e-31a93f2ae3fb",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Espagnol"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "1bb80782-baf3-4f2f-883f-c69eea1e9256",
+    "user_id": "71528350-16bb-4121-a36c-3ffbdf36e4d1",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "08:30",
+          "start": "07:30"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-20 10:45:20.310736+00",
+    "updated_at": "2026-04-20 10:45:20.310736+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2026-04-01",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "d450cd4c-a1c1-4b12-bd40-fc52c477e64b",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "37214fa1-1798-42fe-a8ca-55507692f8eb",
+    "user_id": "8414f05d-7056-49f4-be7e-f70996f214e7",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "09:30",
+          "start": "08:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-20 15:23:33.447064+00",
+    "updated_at": "2026-04-20 15:23:33.447064+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": true,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "b6d349d4-bc98-4944-84cf-ca277ed6f4ba",
+    "user_id": "ac3e7865-5a13-42c7-b475-5548e54bd088",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "08:30",
+          "start": "07:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-20 18:59:58.341118+00",
+    "updated_at": "2026-04-20 18:59:58.341118+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2004-08-11",
+    "gender": "F",
+    "address_legacy": null,
+    "level_id": "6950e5be-6cd6-4d72-b3f2-6a601e1a35ad",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "060793a0-15ab-415c-9ed8-f26534946aa0",
+    "user_id": "296cbe87-a2d3-4d55-b7c6-ef07fe50cb31",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "10:30",
+          "start": "09:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-21 11:17:12.42095+00",
+    "updated_at": "2026-04-21 11:17:12.42095+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "2e134030-8e27-43aa-ab26-02fb50c150aa",
+    "user_id": "b35db163-74a9-47fa-9922-eae8fcbb3a30",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70",
+      "259d32d4-e908-4133-b1c0-a33eee9e520e",
+      "417558c9-5a01-4457-8f8c-0d9322c2b09e",
+      "d9ab54db-0d56-4536-a187-8a3454eabca0",
+      "5859a3ec-e020-4865-945f-3663ff5fc4ab",
+      "ab3b8b6a-7b84-4c39-bf9c-5666a427635a"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "08:30",
+          "start": "07:30"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-21 13:57:44.880066+00",
+    "updated_at": "2026-04-21 13:57:44.880066+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire",
+      "Espagnol",
+      "Français",
+      "science physique",
+      "science experimental",
+      "Mathématiques"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "39b86e8f-68d5-449b-8743-65f1fa4b9e50",
+    "user_id": "fd1ba668-d547-413d-bd54-fb4c0504c926",
+    "profile_id": null,
+    "subjects": [
+      "d9ab54db-0d56-4536-a187-8a3454eabca0"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "09:00",
+          "start": "08:00"
+        },
+        {
+          "day": 1,
+          "end": "12:00",
+          "start": "11:00"
+        },
+        {
+          "day": 2,
+          "end": "12:00",
+          "start": "11:00"
+        },
+        {
+          "day": 5,
+          "end": "12:00",
+          "start": "11:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-21 15:28:16.038304+00",
+    "updated_at": "2026-04-21 15:28:16.038304+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": "2026-04-21",
+    "engagement_end_date": "2026-08-26",
+    "school_class_id": null,
+    "subject_names": [],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "38ce7f5b-2bb7-423b-b036-52d66b616592",
+    "user_id": "bccc0fae-0f26-46c8-999a-9ed233c1838d",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "10:30",
+          "start": "09:30"
+        },
+        {
+          "day": 2,
+          "end": "10:30",
+          "start": "09:30"
+        },
+        {
+          "day": 3,
+          "end": "10:30",
+          "start": "09:30"
+        },
+        {
+          "day": 4,
+          "end": "10:30",
+          "start": "09:30"
+        },
+        {
+          "day": 5,
+          "end": "10:30",
+          "start": "09:30"
+        }
+      ]
+    },
+    "is_minor": true,
+    "guardian_contact": null,
+    "created_at": "2026-04-23 10:45:44.530962+00",
+    "updated_at": "2026-04-23 10:45:44.530962+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": {
+      "daily": false,
+      "weekly": false
+    },
+    "tutor_platform_status": "active",
+    "date_of_birth": "2020-02-05",
+    "gender": "M",
+    "address_legacy": null,
+    "level_id": "655df4ea-8aec-43e1-b60b-66c8c772f868",
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": true,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [
+      "Histoire"
+    ],
+    "special_needs_type": null,
+    "special_needs_note": null
+  },
+  {
+    "id": "d40b0c7a-1910-478d-bc4e-6fe9aa4e4a20",
+    "user_id": "e56f3789-b20c-4e36-917b-8a26fd6da15e",
+    "profile_id": null,
+    "subjects": [
+      "ef50bfbd-27fd-45c1-a20b-a76df3043b70"
+    ],
+    "availability": {
+      "weekly": [
+        {
+          "day": 1,
+          "end": "10:00",
+          "start": "09:00"
+        }
+      ]
+    },
+    "is_minor": false,
+    "guardian_contact": null,
+    "created_at": "2026-04-23 10:48:09.740505+00",
+    "updated_at": "2026-04-23 10:48:09.740505+00",
+    "profile_label": null,
+    "vsc_reports_frequencies": null,
+    "tutor_platform_status": "active",
+    "date_of_birth": null,
+    "gender": null,
+    "address_legacy": null,
+    "level_id": null,
+    "medical_notes": null,
+    "grade_level": null,
+    "address_line1": null,
+    "department": null,
+    "postal_code": null,
+    "city": null,
+    "country": "FR",
+    "has_special_needs": false,
+    "engagement_start_date": null,
+    "engagement_end_date": null,
+    "school_class_id": null,
+    "subject_names": [],
+    "special_needs_type": null,
+    "special_needs_note": null
+  }
+]

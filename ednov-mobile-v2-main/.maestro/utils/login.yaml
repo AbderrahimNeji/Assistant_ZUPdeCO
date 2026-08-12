@@ -1,0 +1,31 @@
+# Sous-flow réutilisable : connexion au compte de test
+# Variables requises (passées via env ou le flow parent) : TEST_EMAIL, TEST_PASSWORD
+# Ne lance PAS l'app — le flow parent est responsable du launchApp.
+
+appId: com.zupdeco.ednov
+---
+
+# Attendre que le splash et le chargement initial soient terminés
+- extendedWaitUntil:
+    visible: "Email ou Téléphone"
+    timeout: 30000
+
+- tapOn:
+    id: "login-identifier"
+- eraseText: 80
+- inputText: ${TEST_EMAIL}
+
+- tapOn:
+    id: "login-password"
+- eraseText: 80
+- inputText: ${TEST_PASSWORD}
+
+- hideKeyboard
+
+- tapOn:
+    id: "login-submit"
+
+- waitForAnimationToEnd
+
+# Le tableau de bord doit être visible après login
+- assertVisible: "Tableau de bord"

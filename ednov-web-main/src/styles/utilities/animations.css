@@ -1,0 +1,587 @@
+/* ============================================
+   ANIMATIONS.CSS - Animations génériques
+   ============================================ */
+
+/* ========================================
+   DIALOG / MODAL ANIMATIONS
+   ======================================== */
+
+@keyframes dialog-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Même rendu que .slide-panel-backdrop (variables --overlay-* dans design-system.css) */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: var(--overlay-scrim);
+  backdrop-filter: blur(var(--overlay-blur));
+  -webkit-backdrop-filter: blur(var(--overlay-blur));
+}
+
+.dialog-overlay[data-state='open'] {
+  animation: dialog-overlay-in 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dialog-overlay[data-state='closed'] {
+  animation: dialog-overlay-out 150ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.dialog-content[data-state='open'] {
+  animation: dialog-content-in 250ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dialog-content[data-state='closed'] {
+  animation: dialog-content-out 200ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes dialog-content-in {
+  from {
+    opacity: 0;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) scale(1);
+  }
+}
+
+@keyframes dialog-content-out {
+  from {
+    opacity: 1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) scale(0.95);
+  }
+}
+
+/* ========================================
+   DROPDOWN / SELECT / POPOVER ANIMATIONS
+   ======================================== */
+
+@keyframes radix-dropdown-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes radix-dropdown-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+}
+
+.radix-dropdown-content[data-state='open'] {
+  animation: radix-dropdown-in 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.radix-dropdown-content[data-state='closed'] {
+  animation: radix-dropdown-out 100ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+/* ========================================
+   TOOLTIP ANIMATIONS
+   ======================================== */
+
+@keyframes radix-tooltip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes radix-tooltip-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.radix-tooltip-content[data-state='delayed-open'],
+.radix-tooltip-content[data-state='instant-open'] {
+  animation: radix-tooltip-in 120ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.radix-tooltip-content[data-state='closed'] {
+  animation: radix-tooltip-out 80ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+/* ========================================
+   TOAST ANIMATIONS
+   ======================================== */
+
+@keyframes toast-slide-down {
+  from {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-slide-up {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+}
+
+/* Direct selector - no Tailwind, guaranteed to work */
+.custom-toast[data-state='open'] {
+  animation: toast-slide-down 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.custom-toast[data-state='closed'] {
+  animation: toast-slide-up 0.5s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+/* ========================================
+   FADE ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.animate-fade-in-slow {
+  animation: fadeIn 500ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.animate-fade-out {
+  animation: fadeOut 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+/* ========================================
+   SLIDE ANIMATIONS
+   ======================================== */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 400ms var(--ease-out, cubic-bezier(0, 0, 0.2, 1));
+}
+
+.animate-slide-down {
+  animation: slideDown 400ms var(--ease-out, cubic-bezier(0, 0, 0.2, 1));
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+/* ========================================
+   SCALE ANIMATIONS
+   ======================================== */
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 200ms var(--ease-out, cubic-bezier(0, 0, 0.2, 1));
+}
+
+.animate-scale-out {
+  animation: scaleOut 150ms var(--ease-in, cubic-bezier(0.4, 0, 1, 1));
+}
+
+.animate-pop-in {
+  animation: popIn 300ms var(--ease-bounce, cubic-bezier(0.68, -0.55, 0.265, 1.55));
+}
+
+/* ========================================
+   GLOW & PULSE ANIMATIONS
+   ======================================== */
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgb(var(--primary-rgb, 59, 130, 246) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgb(var(--primary-rgb, 59, 130, 246) / 0.4);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ========================================
+   SHIMMER LOADING ANIMATION
+   ======================================== */
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--muted-rgb, 241, 245, 249) / 0.2) 0%,
+    rgb(var(--muted-rgb, 241, 245, 249) / 0.5) 50%,
+    rgb(var(--muted-rgb, 241, 245, 249) / 0.2) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* ========================================
+   BOUNCE & SHAKE ANIMATIONS
+   ======================================== */
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.3s ease-in-out;
+}
+
+/* ========================================
+   SPIN ANIMATIONS
+   ======================================== */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 2s linear infinite;
+}
+
+.animate-spin-fast {
+  animation: spin 0.5s linear infinite;
+}
+
+/* ========================================
+   STAGGER ANIMATION DELAYS
+   ======================================== */
+
+.stagger-1 {
+  animation-delay: 50ms;
+}
+.stagger-2 {
+  animation-delay: 100ms;
+}
+.stagger-3 {
+  animation-delay: 150ms;
+}
+.stagger-4 {
+  animation-delay: 200ms;
+}
+.stagger-5 {
+  animation-delay: 250ms;
+}
+.stagger-6 {
+  animation-delay: 300ms;
+}
+.stagger-7 {
+  animation-delay: 350ms;
+}
+.stagger-8 {
+  animation-delay: 400ms;
+}
+.stagger-9 {
+  animation-delay: 450ms;
+}
+.stagger-10 {
+  animation-delay: 500ms;
+}
+
+/* Fill mode for staggered animations */
+.animate-stagger {
+  animation-fill-mode: both;
+}
+
+/* ========================================
+   TRANSITION UTILITIES
+   ======================================== */
+
+.transition-fast {
+  transition: all 150ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.transition-normal {
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.transition-slow {
+  transition: all 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.transition-slower {
+  transition: all 500ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+/* Specific property transitions */
+.transition-transform {
+  transition: transform 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.transition-opacity {
+  transition: opacity 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.transition-colors {
+  transition:
+    color 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    background-color 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    border-color 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.transition-shadow {
+  transition: box-shadow 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}

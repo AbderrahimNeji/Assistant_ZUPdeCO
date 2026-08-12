@@ -1,0 +1,55 @@
+# Flow 00 — Connexion + mise en cache des données (prérequis pour les tests offline)
+#
+# Ce flow DOIT être exécuté en premier, avec réseau actif.
+# Il connecte l'utilisateur et navigue sur chaque onglet pour mettre en cache
+# les données nécessaires aux tests hors ligne.
+#
+# Variables d'environnement requises :
+#   TEST_EMAIL     — ex. tuteur@example.com
+#   TEST_PASSWORD  — mot de passe du compte de test
+
+appId: com.zupdeco.ednov
+---
+
+# Démarrage propre
+- launchApp:
+    clearState: true
+
+- waitForAnimationToEnd
+
+# --- Login ---
+- runFlow: ../utils/login.yaml
+
+# --- Tableau de bord : mise en cache ---
+- assertVisible: "Tableau de bord"
+- waitForAnimationToEnd
+
+# --- Séances : mise en cache ---
+- tapOn:
+    label: "Séances"
+- waitForAnimationToEnd
+- assertVisible: "Séances"
+
+# Faire défiler pour charger davantage de séances
+- scroll
+
+# --- Comptes rendus : mise en cache ---
+- tapOn:
+    label: "Comptes rendus"
+- waitForAnimationToEnd
+- assertVisible: "Comptes rendus"
+- scroll
+
+# --- Profil : mise en cache ---
+- tapOn:
+    label: "Profil"
+- waitForAnimationToEnd
+
+# Retour au tableau de bord
+- tapOn:
+    label: "Tableau de bord"
+- waitForAnimationToEnd
+
+# Attendre que le cache React Query soit persisté dans AsyncStorage
+- waitForAnimationToEnd
+- waitForAnimationToEnd

@@ -1,0 +1,404 @@
+/* ============================================
+   MANAGEMENT-PAGE.CSS - Pages de gestion
+   ============================================ */
+
+/* ========================================
+   PAGE LAYOUT
+   ======================================== */
+
+.management-page {
+  padding: var(--space-6);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ========================================
+   PAGE HEADER (TOUJOURS identique)
+   ======================================== */
+
+.management-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-1-nuance-3);
+}
+
+.management-page-title {
+  font-size: var(--font-heading-1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-1-nuance-1);
+}
+
+.management-page-subtitle {
+  font-size: var(--font-body);
+  color: var(--muted-foreground);
+  margin-top: var(--space-1);
+}
+
+.management-page-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Bouton Créer en haut de page (TOUJOURS identique) */
+.management-page-create-button {
+  min-width: 160px;
+  height: 40px;
+  padding: 0 var(--space-5);
+}
+
+/* Bandeau titre + onglets : un seul trait en bas (celui des onglets), sans modifier PageHeader */
+.management-page-header-with-tabs-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.management-page-header-with-tabs-bar > .management-page-header {
+  border-bottom: none;
+  padding-bottom: var(--space-3);
+}
+
+/* Si pas de tabs, remettre le trait sur le header */
+.management-page-header-with-tabs-bar.no-tabs > .management-page-header {
+  border-bottom: 2px solid var(--color-1-nuance-3);
+  padding-bottom: var(--space-4);
+}
+
+/* ========================================
+   COLLAPSE CONTAINER
+   ======================================== */
+
+.collapse-container {
+  overflow: clip; /* clip au lieu de hidden : ne crée pas de stacking context, n'affecte pas les portals */
+  transition: all 400ms var(--ease-out);
+}
+
+.collapse-content {
+  padding: var(--space-6);
+  background: rgb(var(--card-rgb));
+  border: 1px solid var(--color-1-nuance-3);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-md);
+}
+
+.collapse-content-top {
+  margin-bottom: var(--space-4);
+}
+
+.collapse-content-bottom {
+  margin-top: var(--space-4);
+}
+
+/* ========================================
+   SLIDE PANEL
+   ======================================== */
+
+.slide-panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 600px;
+  max-width: 90vw;
+  background: rgb(var(--background-rgb));
+  box-shadow: var(--shadow-2xl);
+  z-index: var(--z-modal);
+  transition: transform 300ms var(--ease-out);
+  overflow-y: auto;
+}
+
+.slide-panel-left {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.slide-panel-left.open {
+  transform: translateX(0);
+}
+
+.slide-panel-right {
+  right: 0;
+  transform: translateX(100%);
+}
+
+.slide-panel-right.open {
+  transform: translateX(0);
+}
+
+.slide-panel-header {
+  position: sticky;
+  top: 0;
+  padding: var(--space-5);
+  background: rgb(var(--background-rgb));
+  border-bottom: 1px solid var(--color-1-nuance-3);
+  z-index: 20;
+}
+
+.slide-panel-title {
+  font-size: var(--font-heading-2);
+  font-weight: 600;
+  color: var(--color-1-nuance-1);
+}
+
+.slide-panel-content {
+  padding: var(--space-6);
+}
+
+.slide-panel-footer {
+  position: sticky;
+  bottom: 0;
+  padding: var(--space-5);
+  background: rgb(var(--background-rgb));
+  border-top: 1px solid var(--color-1-nuance-3);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  z-index: 20;
+}
+
+/* Backdrop pour slide panel (identique aux modales Dialog / BaseModal) */
+.slide-panel-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-scrim);
+  z-index: calc(var(--z-modal) - 1);
+  animation: fadeIn 200ms var(--ease-out);
+  backdrop-filter: blur(var(--overlay-blur));
+  -webkit-backdrop-filter: blur(var(--overlay-blur));
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* ========================================
+   CONTENT AREA
+   ======================================== */
+
+.management-page-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .management-page {
+    padding: var(--space-4);
+  }
+
+  .management-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .management-page-header-with-tabs-bar > .management-page-header {
+    padding-bottom: var(--space-2);
+  }
+
+  .management-page-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .management-page-create-button {
+    width: 100%;
+  }
+
+  .slide-panel {
+    width: 100%;
+    max-width: 100vw;
+  }
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+.dark .management-page-header {
+  border-bottom-color: color-mix(in srgb, var(--color-3-nuance-1) 40%, transparent);
+}
+
+.dark .collapse-content {
+  background: rgb(var(--card-rgb));
+  border-color: color-mix(in srgb, var(--color-3-nuance-1) 40%, transparent);
+}
+
+.dark .slide-panel {
+  background: rgb(var(--background-rgb));
+  border-left: 1px solid color-mix(in srgb, var(--color-3-nuance-1) 40%, transparent);
+}
+
+.dark .slide-panel-header,
+.dark .slide-panel-footer {
+  border-color: color-mix(in srgb, var(--color-3-nuance-1) 40%, transparent);
+}
+
+/* ========================================
+   SLIDE PANEL FORM (Structure interne)
+   ======================================== */
+
+.slide-panel-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.slide-panel-form-header {
+  position: sticky;
+  top: 0;
+  padding: var(--space-5);
+  background: rgb(var(--background-rgb));
+  border-bottom: 1px solid var(--color-1-nuance-3);
+  z-index: 20;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.slide-panel-form-header-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.slide-panel-form-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+}
+
+.slide-panel-form-title {
+  font-size: var(--font-heading-2);
+  font-weight: 600;
+  color: var(--color-1-nuance-1);
+}
+
+.slide-panel-form-subtitle {
+  font-size: var(--font-body-sm);
+  color: var(--muted-foreground);
+  margin-top: var(--space-1);
+}
+
+.slide-panel-form-content {
+  flex: 1 0 auto;
+  padding: var(--space-6);
+  padding-bottom: var(--space-6);
+  overflow-y: auto;
+}
+
+.slide-panel-form-footer {
+  position: sticky;
+  bottom: 0;
+  padding: var(--space-5);
+  background: rgb(var(--background-rgb));
+  border-top: 1px solid var(--color-1-nuance-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  z-index: 20;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   COLLAPSE REPLACE FORM (Structure interne)
+   ======================================== */
+
+.collapse-replace-form {
+  padding: var(--space-6);
+  background: rgb(var(--card-rgb));
+  border: 1px solid var(--color-1-nuance-3);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.collapse-replace-form-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-1-nuance-3);
+}
+
+.collapse-replace-form-header-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.collapse-replace-form-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+}
+
+.collapse-replace-form-title {
+  font-size: var(--font-heading-2);
+  font-weight: 600;
+  color: var(--color-1-nuance-1);
+}
+
+.collapse-replace-form-subtitle {
+  font-size: var(--font-body-sm);
+  color: var(--muted-foreground);
+  margin-top: var(--space-1);
+}
+
+.collapse-replace-form-content {
+  margin-bottom: var(--space-6);
+}
+
+.collapse-replace-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-1-nuance-3);
+}
+
+/* ========================================
+   DARK MODE - FORM STRUCTURES
+   ======================================== */
+
+.dark .slide-panel-form-header,
+.dark .slide-panel-form-footer {
+  border-color: color-mix(in srgb, var(--color-3-nuance-1) 40%, transparent);
+}
+
+.dark .collapse-replace-form {
+  background: rgb(var(--card-rgb));
+  border-color: color-mix(in srgb, var(--color-3-nuance-1) 40%, transparent);
+}
+
+.dark .collapse-replace-form-header {
+  border-bottom-color: color-mix(in srgb, var(--color-3-nuance-1) 50%, transparent);
+}
+
+.dark .collapse-replace-form-footer {
+  border-top-color: color-mix(in srgb, var(--color-3-nuance-1) 40%, transparent);
+}

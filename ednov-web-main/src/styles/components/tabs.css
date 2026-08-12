@@ -1,0 +1,347 @@
+/* ============================================
+   TABS.CSS - Composant Tabs générique réutilisable
+   Style ONGLETS comme navigateur
+   ============================================ */
+
+/* ========================================
+   WRAPPER - Contient navigation + container
+   ======================================== */
+
+.tabs-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  position: relative;
+  border-bottom: 1px solid var(--color-1-nuance-3);
+}
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.tabs-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  flex: 1;
+  background: transparent;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Container size variants - pas de padding, onglets collés à gauche */
+.tabs-container-sm,
+.tabs-container-md,
+.tabs-container-lg {
+  padding: 0;
+}
+
+/* ========================================
+   TAB BASE STYLES - APPARENCE ONGLET
+   ======================================== */
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all var(--duration-normal) var(--ease-out);
+  cursor: pointer;
+  border: 1px solid var(--color-1-nuance-3);
+  border-bottom: none;
+  background: transparent;
+  position: relative;
+  color: var(--color-2-nuance-1);
+  margin-bottom: -1px;
+  margin-left: -1px;
+  flex-shrink: 0;
+  width: 148px;
+  min-width: 148px;
+  max-width: 148px;
+}
+
+.tab:first-child {
+  margin-left: 0;
+}
+
+.tab .tab-icon {
+  color: var(--color-1-nuance-1);
+}
+
+.tab .tab-label {
+  color: var(--color-2-nuance-1);
+}
+
+/* Tab size variants */
+.tab-sm {
+  padding: var(--space-1-5) var(--space-2);
+  font-size: var(--font-caption);
+}
+
+.tab-md {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-caption);
+}
+
+.tab-lg {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-body-sm);
+}
+
+/* Focus visible pour l'accessibilité */
+.tab:focus-visible {
+  outline: 2px solid var(--color-2-nuance-1);
+  outline-offset: 2px;
+}
+
+/* Icon styling */
+.tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.tab-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.tab-label {
+  font-weight: 500;
+  transition: color var(--duration-normal) var(--ease-out);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ========================================
+   HOVER STATE
+   ======================================== */
+
+.tab:hover:not(.tab-active):not(.tab-disabled) {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 11%, transparent);
+  border-color: var(--color-1-nuance-3);
+  z-index: 1;
+}
+
+/* ========================================
+   ACTIVE STATE - ONGLET ACTIF
+   ======================================== */
+
+.tab-active {
+  border-color: var(--color-1-nuance-2);
+  border-bottom-color: transparent;
+  background: var(--color-1-nuance-2);
+  color: white;
+  font-weight: 500;
+  box-shadow: none;
+  z-index: 2;
+}
+
+.tab-active .tab-label,
+.tab-active .tab-icon {
+  color: white;
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-1-nuance-3);
+  z-index: 1;
+}
+
+/* ========================================
+   DISABLED STATE
+   ======================================== */
+
+.tab-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ========================================
+   NAVIGATION BUTTONS
+   ======================================== */
+
+.tabs-nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: rgb(var(--card-rgb));
+  color: var(--color-1-nuance-1);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  flex-shrink: 0;
+  margin-bottom: var(--space-2);
+  position: relative;
+}
+
+.tabs-nav-button:hover:not(.tabs-nav-disabled) {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent);
+  color: var(--color-1-nuance-1);
+  z-index: 1;
+}
+
+.tabs-nav-button:active:not(.tabs-nav-disabled) {
+  transform: scale(0.95);
+}
+
+.tabs-nav-button.tabs-nav-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.tabs-nav-left {
+  margin-left: auto;
+}
+
+.tabs-nav-right {
+  margin-left: var(--space-1);
+}
+
+/* ========================================
+   COLORED VARIANT - Plus utilisé, style uniforme maintenant
+   ======================================== */
+
+/* Toutes les classes de couleur sont supprimées
+   Tous les onglets ont le même style maintenant */
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .tabs-wrapper {
+    gap: var(--space-1);
+  }
+
+  .tabs-nav-button {
+    width: 24px;
+    height: 24px;
+  }
+
+  .tab {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-caption);
+  }
+
+  .tab-sm {
+    padding: var(--space-1-5) var(--space-2);
+    font-size: 0.7rem;
+  }
+
+  .tab-md {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-caption);
+  }
+
+  .tab-lg {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-body-sm);
+  }
+
+  .tab-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Hide labels on mobile except for active tab */
+  .tab-label {
+    display: none;
+  }
+
+  .tab-active .tab-label {
+    display: inline;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-wrapper {
+    gap: var(--space-1);
+  }
+
+  .tabs-nav-button {
+    width: 26px;
+    height: 26px;
+  }
+
+  .tabs-nav-button svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .tab {
+    padding: var(--space-1-5) var(--space-2);
+  }
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+.dark .tabs-wrapper {
+  border-bottom-color: color-mix(in srgb, var(--color-3-nuance-1) 40%, transparent);
+}
+
+.dark .tab {
+  border-color: var(--color-1-nuance-3);
+  color: var(--color-2-nuance-1);
+}
+
+.dark .tab .tab-icon {
+  color: var(--color-1-nuance-1);
+}
+
+.dark .tab .tab-label {
+  color: var(--color-2-nuance-1);
+}
+
+.dark .tab:hover:not(.tab-active):not(.tab-disabled) {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 11%, transparent);
+  border-color: var(--color-2-nuance-1);
+}
+
+.dark .tab-active {
+  background: var(--color-1-nuance-3);
+  border-color: var(--color-1-nuance-3);
+  color: white;
+  box-shadow: none;
+}
+
+.dark .tab-active .tab-label,
+.dark .tab-active .tab-icon {
+  color: white;
+}
+
+.dark .tabs-nav-button {
+  background: rgb(var(--card-rgb));
+  color: var(--color-1-nuance-1);
+}
+
+.dark .tabs-nav-button:hover:not(.tabs-nav-disabled) {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 20%, transparent);
+  color: var(--color-1-nuance-1);
+}

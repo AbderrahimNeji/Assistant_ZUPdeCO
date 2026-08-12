@@ -1,0 +1,31 @@
+---
+description: Design tokens and NativeWind styling for Ednov-mobile; no hardcoded colors
+globs: "**/*.tsx,**/*.ts"
+alwaysApply: false
+---
+
+# Ednov-mobile: Styling & Design Tokens
+
+All UI must use **design tokens** (Tailwind theme or `Colors` from constants). Do **not** use hardcoded hex or rgba in components or screens.
+
+## Source of truth
+
+- **Tailwind**: `tailwind.config.js` — `theme.extend.colors` (light) and `theme.extend.colors.dark` (dark).
+- **Constants**: `constants/Colors.ts` — mirrors the same values for Themed components and non-Tailwind code. Keep in sync with `tailwind.config.js`.
+
+## With NativeWind (Tailwind)
+
+- Use `className` with token names: `bg-background`, `text-text`, `text-textSecondary`, `bg-separator`, `bg-primary`, etc.
+- Dark mode: use the `dark:` variant and `dark-*` colors: `bg-background dark:bg-dark-background`, `bg-separator dark:bg-dark-separator`.
+- Root layout wraps the app with `className="flex-1 bg-background"` and adds the `dark` class when `useColorScheme() === 'dark'` so `dark:` classes apply.
+
+## With constants (Themed components)
+
+- Import `Colors` from `@/constants/Colors`.
+- Use `Colors.light.*` and `Colors.dark.*` for `lightColor` / `darkColor` on `Themed.Text` and `Themed.View`, or `Colors[useColorScheme() ?? 'light'].*` in styles.
+
+## Adding or changing tokens
+
+1. Update `tailwind.config.js` (`theme.extend.colors` and `theme.extend.colors.dark`).
+2. Update `constants/Colors.ts` to match (same keys and values).
+3. Document new tokens in `docs/DESIGN-TOKENS.md`.

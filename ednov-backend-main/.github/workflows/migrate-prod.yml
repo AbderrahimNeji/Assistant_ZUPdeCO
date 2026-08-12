@@ -1,0 +1,68 @@
+name: Migrate Production DB
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false   # Ne jamais annuler un deploy en cours (migrations atomiques)
+
+jobs:
+  deploy-production:
+    name: Run migrations → Production DB
+    runs-on: ubuntu-latest
+    environment: production      # Requiert une approbation manuelle dans GitHub Environments
+
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL_PROD }}
+      DATABASE_SSL: true
+      NODE_ENV: production
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run migrations → Production
+        run: npm run migration:run
+
+      - name: Show migration status
+        run: npm run migration:show
+
+      # ─── Déploiement ──────────────────────────────────────────────────────────
+      # Même options que deploy-staging.yml — utilisez les secrets *_PROD
+      #
+      # ── Render ──
+      # - name: Trigger Render deploy
+      #   run: |
+      #     curl -s -X POST "${{ secrets.RENDER_DEPLOY_HOOK_PROD }}"
+      #
+      # ── Railway ──
+      # - name: Deploy to Railway
+      #   uses: bervProject/railway-deploy@main
+      #   with:
+      #     railway_token: ${{ secrets.RAILWAY_TOKEN }}
+      #     service: ${{ secrets.RAILWAY_SERVICE_PROD }}
+      #
+      # ── Fly.io ──
+      # - uses: superfly/flyctl-actions/setup-flyctl@master
+      # - name: Deploy to Fly.io
+      #   run: flyctl deploy --remote-only --app ${{ secrets.FLY_APP_PROD }}
+      #   env:
+      #     FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      # ─────────────────────────────────────────────────────────────────────────
+
+      - name: Notify deploy success
+        if: success()
+        run: echo "✅ Production déployée — commit ${{ github.sha }}"
+
+      - name: Notify deploy failure
+        if: failure()
+        run: echo "❌ Deploy production échoué — rollback requis !"

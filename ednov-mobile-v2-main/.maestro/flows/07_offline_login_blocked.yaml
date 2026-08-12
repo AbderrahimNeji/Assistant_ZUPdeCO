@@ -1,0 +1,51 @@
+# Flow 07 — Tentative de connexion sans réseau (doit être bloquée avec message)
+#
+# Scénario :
+#   1. L'app est en mode avion AVANT le login
+#   2. L'utilisateur saisit ses identifiants et tente de se connecter
+#   3. Un message d'erreur explique qu'une connexion internet est nécessaire
+#   4. L'utilisateur n'est PAS redirigé vers le tableau de bord
+#
+# Ce test vérifie que le login ne passe pas sans réseau (Firebase nécessite internet).
+
+appId: com.zupdeco.ednov
+---
+
+# Démarrage propre (déconnecte l'utilisateur)
+- launchApp:
+    clearState: true
+
+- waitForAnimationToEnd
+
+# --- Activer le mode avion avant de tenter le login ---
+- setAirplaneMode: enable
+- waitForAnimationToEnd
+
+# La page de login doit être visible
+- assertVisible: "Email ou Téléphone"
+
+# Remplir les champs
+- tapOn:
+    id: "login-identifier"
+- inputText: ${TEST_EMAIL}
+
+- tapOn:
+    id: "login-password"
+- inputText: ${TEST_PASSWORD}
+
+- hideKeyboard
+
+- tapOn:
+    id: "login-submit"
+
+- waitForAnimationToEnd
+
+# Le message d'erreur doit apparaître
+- assertVisible: "Pas de connexion internet"
+
+# L'utilisateur reste sur l'écran de login
+- assertVisible: "Email ou Téléphone"
+- assertNotVisible: "Tableau de bord"
+
+# --- Nettoyer ---
+- setAirplaneMode: disable

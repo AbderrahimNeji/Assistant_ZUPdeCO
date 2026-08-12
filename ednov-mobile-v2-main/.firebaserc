@@ -1,0 +1,20 @@
+{
+  "projects": {
+    "default": "zupdeco-development"
+  },
+  "targets": {
+    "zupdeco-development": {
+      "hosting": {
+        "prod": [
+          "zupdeco-mobile-v2"
+        ],
+        "dev": [
+          "zupdeco-mobile-dev-v2"
+        ],
+        "testing": [
+          "zupdeco-mobile-testing-v2"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+# Flow 05 — Synchronisation automatique au retour de la connexion
+#
+# Scénario :
+#   1. L'utilisateur a 1 CR en file d'attente locale (résultat du flow 04)
+#   2. Le réseau est rétabli (mode avion désactivé)
+#   3. L'app détecte le retour en ligne et lance la synchronisation
+#   4. Le banner de sync affiche "Synchronisation terminée"
+#   5. La bannière hors ligne disparaît
+#   6. La file d'attente est vide (badge "1 action en attente" disparaît)
+#
+# Prérequis : flow 04 complété (1 CR en attente, mode avion encore actif)
+
+appId: com.zupdeco.ednov
+---
+
+- launchApp:
+    clearState: false
+
+- waitForAnimationToEnd
+- assertVisible: "Tableau de bord"
+
+# --- Activer le mode avion pour avoir un CR en attente ---
+- setAirplaneMode: enable
+- waitForAnimationToEnd
+
+- assertVisible:
+    id: "offline-banner"
+
+# S'assurer qu'il y a au moins une action en attente
+# (ce flow est utilisé après le flow 04 qui en crée une)
+- tapOn:
+    label: "Comptes rendus"
+- waitForAnimationToEnd
+
+# Retour au tableau de bord
+- tapOn:
+    label: "Tableau de bord"
+- waitForAnimationToEnd
+
+# --- Rétablir la connexion ---
+- setAirplaneMode: disable
+
+# Attendre que React Query et useOfflineSync détectent le retour en ligne
+- extendedWaitUntil:
+    visible: "Synchronisation terminée"
+    timeout: 15000
+
+# La bannière hors ligne doit disparaître
+- assertNotVisible:
+    id: "offline-banner"
+
+# Le message de synchronisation réussie doit apparaître
+- assertVisible: "Synchronisation terminée"
+
+# Plus de badge "en attente"
+- assertNotVisible: "1 action en attente"
+- assertNotVisible: "en attente"

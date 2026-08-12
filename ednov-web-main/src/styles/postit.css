@@ -1,0 +1,195 @@
+/* ============================================
+   POSTIT.CSS - Styles post-it modernes
+   Style papier modernisé avec animations
+   ============================================ */
+
+.postit-card {
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition:
+    transform 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    box-shadow 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+
+  /* Shadow using semantic variable */
+  box-shadow:
+    0 4px 6px rgb(var(--foreground-rgb, 15, 23, 42) / 0.1),
+    0 2px 4px rgb(var(--foreground-rgb, 15, 23, 42) / 0.06);
+}
+
+/* Folded corner effect - SUPPRIME car interfere avec la punaise */
+
+/* Pin effect - now handled by Lucide icon in component */
+
+/* Paper texture */
+.postit-texture {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgb(var(--foreground-rgb, 15, 23, 42) / 0.015) 2px,
+    rgb(var(--foreground-rgb, 15, 23, 42) / 0.015) 4px
+  );
+}
+
+/* Hover state */
+.postit-card:hover {
+  transform: rotate(0deg) scale(1.02) !important;
+  box-shadow:
+    0 12px 20px rgb(var(--foreground-rgb, 15, 23, 42) / 0.15),
+    0 6px 8px rgb(var(--foreground-rgb, 15, 23, 42) / 0.1);
+}
+
+/* Dragging state */
+.postit-dragging {
+  opacity: 0.6;
+  transform: scale(0.95) rotate(2deg);
+  box-shadow:
+    0 20px 30px rgb(var(--foreground-rgb, 15, 23, 42) / 0.2),
+    0 10px 15px rgb(var(--foreground-rgb, 15, 23, 42) / 0.1);
+}
+
+/* Post-it content text color and scrollbar */
+.postit-content {
+  color: rgb(var(--postit-text, 17, 24, 39));
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--postit-text, 17, 24, 39) / 0.2) transparent;
+}
+
+.postit-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.postit-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.postit-content::-webkit-scrollbar-thumb {
+  background: rgb(var(--postit-text, 17, 24, 39) / 0.2);
+  border-radius: 2px;
+}
+
+.postit-content::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--postit-text, 17, 24, 39) / 0.3);
+}
+
+.postit-title {
+  color: rgb(var(--postit-text, 17, 24, 39));
+  font-weight: 600;
+}
+
+/* Post-it action buttons */
+.postit-action-button {
+  @apply flex items-center justify-center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md, 0.5rem);
+  background: rgb(var(--foreground-rgb, 15, 23, 42) / 0.05);
+  border: 1px solid color-mix(in srgb, var(--color-1-nuance-3) 30%, transparent);
+  color: rgb(var(--postit-text, 17, 24, 39) / 0.7);
+  cursor: pointer;
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.postit-action-button:hover {
+  background: rgb(var(--foreground-rgb, 15, 23, 42) / 0.1);
+  border-color: var(--color-2-nuance-1);
+  color: rgb(var(--postit-text, 17, 24, 39));
+  transform: scale(1.1);
+}
+
+/* Action buttons on overdue (red) post-its - high contrast */
+.postit-action-button-overdue {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.postit-action-button-overdue:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* Post-it status badge */
+.postit-status-badge {
+  @apply inline-flex items-center;
+  padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
+  border-radius: var(--radius-full, 9999px);
+  font-size: var(--font-caption, 0.75rem);
+  font-weight: 500;
+}
+
+.postit-status-pending {
+  background: rgb(var(--color-warning) / 0.15);
+  color: rgb(var(--color-warning));
+}
+
+.postit-status-done {
+  background: rgb(var(--color-success) / 0.15);
+  color: rgb(10, 134, 66);
+}
+
+.postit-status-overdue {
+  background: rgb(var(--color-error) / 0.15);
+  color: rgb(var(--color-error));
+}
+
+/* Edit mode wiggle animation */
+@keyframes postit-wiggle {
+  0%,
+  100% {
+    transform: rotate(var(--postit-rotation, 0deg));
+  }
+  25% {
+    transform: rotate(calc(var(--postit-rotation, 0deg) - 1deg));
+  }
+  75% {
+    transform: rotate(calc(var(--postit-rotation, 0deg) + 1deg));
+  }
+}
+
+.postit-edit-mode {
+  animation: postit-wiggle 0.4s ease-in-out infinite;
+}
+
+/* Dark mode adjustments */
+.dark .postit-action-button {
+  border: 1px solid color-mix(in srgb, var(--color-3-nuance-1) 30%, transparent);
+}
+
+.dark .postit-action-button:hover {
+  border-color: var(--color-2-nuance-1);
+}
+
+/* Pushpin 3D image styling */
+.postit-pushpin {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+/* Post-it modal tilt effect */
+.postit-modal-tilt {
+  transform: rotate(-1deg);
+}
+
+/* Sélectionné : ring orange, scale-up, shadow forte, rotation remise à 0 */
+.postit-selected {
+  transform: scale(1.05) rotate(0deg) !important;
+  box-shadow:
+    0 0 0 3px rgb(var(--accent-rgb, 245, 158, 11)),
+    0 12px 20px rgb(var(--foreground-rgb, 15, 23, 42) / 0.2) !important;
+  transition:
+    transform 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    box-shadow 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    opacity 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    filter 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+/* Non sélectionné quand d'autres le sont : atténué */
+.postit-dimmed {
+  opacity: 0.5;
+  filter: grayscale(0.5);
+  transition:
+    opacity 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    filter 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    transform 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1)),
+    box-shadow 300ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}

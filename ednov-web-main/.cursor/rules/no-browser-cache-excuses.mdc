@@ -1,0 +1,18 @@
+# Ne jamais blâmer le cache ou le navigateur
+
+**INTERDIT** de suggérer au développeur :
+- "Fais F5 / Ctrl+F5"
+- "Vide le cache du navigateur"
+- "Rafraîchis la page"
+- "C'est un problème de cache"
+- "Le serveur doit recharger"
+- "Problème de hot reload"
+
+## Que faire à la place
+
+1. **Vérifier que le fichier a été réellement modifié** en relisant le fichier avec `fresh: true`
+2. **Analyser les terminaux** pour voir les erreurs de compilation/build
+3. **Chercher les vrais problèmes** : erreurs TypeScript, React, CSS, etc.
+4. **Assumer la responsabilité** : si rien ne change visuellement, c'est que la modification est incorrecte ou incomplète
+
+Ne **jamais** rejeter la faute sur des problèmes de cache navigateur.

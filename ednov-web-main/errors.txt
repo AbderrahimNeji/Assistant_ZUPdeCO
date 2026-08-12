@@ -1,0 +1,6 @@
+src/components/dashboard/PostItsSection.tsx(77,10): error TS2451: Cannot redeclare block-scoped variable 'showPersonalFilters'.
+src/components/dashboard/PostItsSection.tsx(77,31): error TS2451: Cannot redeclare block-scoped variable 'setShowPersonalFilters'.
+src/components/dashboard/PostItsSection.tsx(93,10): error TS2451: Cannot redeclare block-scoped variable 'showPersonalFilters'.
+src/components/dashboard/PostItsSection.tsx(93,31): error TS2451: Cannot redeclare block-scoped variable 'setShowPersonalFilters'.
+src/components/post-its/PostItModal.tsx(222,9): error TS2304: Cannot find name 'mode'.
+src/components/post-its/PostItModal.tsx(226,7): error TS2304: Cannot find name 'mode'.

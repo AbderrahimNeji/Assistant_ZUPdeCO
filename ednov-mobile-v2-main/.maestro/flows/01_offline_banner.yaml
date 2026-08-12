@@ -1,0 +1,37 @@
+# Flow 01 — Bannière hors ligne
+#
+# Vérifie que la bannière OfflineBanner apparaît correctement quand le réseau
+# est coupé, avec et sans actions en attente.
+#
+# Prérequis : flow 00 complété (données en cache, utilisateur connecté)
+
+appId: com.zupdeco.ednov
+---
+
+# Relancer l'app sans effacer le cache
+- launchApp:
+    clearState: false
+
+- waitForAnimationToEnd
+- assertVisible: "Tableau de bord"
+
+# --- Passer en mode avion ---
+- setAirplaneMode: enable
+- waitForAnimationToEnd
+
+# La bannière offline doit apparaître (aucune action en attente)
+- assertVisible:
+    id: "offline-banner"
+
+- assertVisible: "Hors ligne — Données en cache"
+
+# Vérifier l'absence de badge de synchronisation (queue vide)
+- assertNotVisible: "en attente"
+
+# --- Repasser en ligne ---
+- setAirplaneMode: disable
+- waitForAnimationToEnd
+
+# La bannière doit disparaître
+- assertNotVisible:
+    id: "offline-banner"

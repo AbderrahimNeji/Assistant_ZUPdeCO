@@ -1,0 +1,835 @@
+/* ============================================
+   FORMS.CSS - Styles formulaires
+   ============================================ */
+
+/* Form Container */
+.form-container {
+  @apply space-y-6;
+}
+
+.form-section {
+  @apply space-y-4;
+}
+
+/* Form Field */
+.form-field {
+  @apply w-full space-y-2;
+}
+
+/* Form Label */
+.form-label {
+  @apply text-sm font-medium;
+}
+
+.form-label-required::after {
+  content: ' *';
+  @apply text-destructive ml-1;
+}
+
+/* Form Input States */
+.form-input-error {
+  @apply border-destructive focus-visible:ring-destructive;
+}
+
+.form-input-success {
+  border-color: rgb(10, 134, 66);
+}
+
+.form-input-success:focus-visible {
+  box-shadow: 0 0 0 2px rgb(var(--color-success) / 0.2);
+}
+
+.form-input-disabled {
+  @apply opacity-50 cursor-not-allowed bg-muted;
+}
+
+/* Form Helper Text */
+.form-helper-text {
+  @apply text-xs text-muted-foreground;
+}
+
+.form-error-text {
+  @apply text-sm text-destructive;
+}
+
+.form-success-text {
+  @apply text-sm;
+  color: rgb(10, 134, 66);
+}
+
+/* Form Group (inline fields) */
+.form-group {
+  @apply grid gap-4;
+}
+
+.form-group-2 {
+  @apply grid-cols-1 md:grid-cols-2;
+}
+
+.form-group-3 {
+  @apply grid-cols-1 md:grid-cols-3;
+}
+
+/* Form Actions */
+.form-actions {
+  @apply flex items-center gap-3 pt-6 border-t;
+}
+
+.form-actions-end {
+  @apply flex items-center justify-end gap-3 pt-6 border-t;
+}
+
+/* Input with Icon */
+.input-with-icon-left {
+  @apply pl-10;
+}
+
+.input-with-icon-right {
+  @apply pr-10;
+}
+
+.input-icon {
+  @apply absolute top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground;
+}
+
+.input-icon-left {
+  @apply left-3;
+}
+
+.input-icon-right {
+  @apply right-3;
+}
+
+/* Dropdown/Select States */
+.dropdown-open {
+  @apply ring-2 ring-primary;
+}
+
+.dropdown-item {
+  @apply relative flex w-full cursor-pointer select-none items-center rounded-sm px-2 py-2 text-sm outline-none;
+  @apply hover:bg-accent hover:text-accent-foreground;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.dropdown-item-selected {
+  @apply bg-accent font-medium;
+}
+
+/* Checkbox/Radio Custom */
+.checkbox-custom {
+  @apply h-4 w-4 rounded border border-primary;
+}
+
+.checkbox-custom-checked {
+  background-color: var(--color-2-nuance-1);
+}
+
+.radio-custom {
+  @apply h-4 w-4 rounded-full border border-primary;
+}
+
+.radio-custom-checked {
+  background-color: var(--color-2-nuance-1);
+}
+
+/* ============================================
+   MODERN FORM COMPONENTS - Refonte 2026
+   ============================================ */
+
+/* ========================================
+   INPUT VARIANTS & SIZES
+   ======================================== */
+
+/* Modern Input Base */
+.modern-input-base {
+  @apply flex w-full items-center rounded-xl border-[1.5px] text-base font-normal;
+  @apply ring-offset-background placeholder:text-muted-foreground/60 placeholder:font-normal;
+  @apply focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60;
+  border-color: var(--color-1-nuance-1);
+  background: rgb(var(--card-rgb));
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.modern-input-base:hover:not(:disabled) {
+  border-color: var(--color-1-nuance-2);
+  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgb(0 0 0 / 0.1));
+}
+
+.modern-input-base:focus-visible {
+  border-width: 2px;
+  border-color: var(--color-1-nuance-2);
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+@keyframes input-glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 5px color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent),
+      0 8px 24px color-mix(in srgb, var(--color-2-nuance-1) 40%, transparent),
+      0 0 40px color-mix(in srgb, var(--color-2-nuance-1) 20%, transparent),
+      inset 0 1px 0 rgb(255 255 255 / 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 0 7px color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent),
+      0 12px 32px color-mix(in srgb, var(--color-2-nuance-1) 50%, transparent),
+      0 0 60px color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent),
+      inset 0 1px 0 rgb(255 255 255 / 0.2);
+  }
+}
+
+/* Input Sizes */
+.modern-input-sm {
+  @apply h-9 px-3 py-2 text-sm;
+}
+
+.modern-input-md {
+  @apply h-11 px-4 py-3 text-base;
+}
+
+.modern-input-lg {
+  @apply h-14 px-5 py-3.5 text-lg;
+}
+
+/* Input Variants */
+.modern-input-default {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+}
+
+.modern-input-filled {
+  background: rgb(var(--muted-rgb) / 0.5);
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 30%, transparent);
+}
+
+.modern-input-ghost {
+  background: transparent;
+  border-color: transparent;
+}
+
+.modern-input-ghost:hover:not(:disabled) {
+  background: rgb(var(--muted-rgb) / 0.3);
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 30%, transparent);
+}
+
+.modern-input-ghost:focus-visible {
+  background: rgb(var(--card-rgb) / 0.3);
+  border-color: var(--color-2-nuance-1);
+}
+
+/* Input States */
+.modern-input-error {
+  border-color: rgb(var(--color-error)) !important;
+  background: rgb(var(--color-error) / 0.08);
+  animation: error-shake-pulse 0.5s ease-in-out;
+}
+
+@keyframes error-shake-pulse {
+  0%,
+  100% {
+    transform: translateX(0);
+    box-shadow: 0 0 0 0 rgb(var(--color-error) / 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-8px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(8px);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgb(var(--color-error) / 0.2),
+      0 0 30px rgb(var(--color-error) / 0.3);
+  }
+}
+
+.modern-input-error:focus-visible {
+  box-shadow:
+    0 0 0 5px rgb(var(--color-error) / 0.15),
+    0 8px 24px rgb(var(--color-error) / 0.25),
+    0 0 40px rgb(var(--color-error) / 0.2);
+  animation: error-border-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes error-border-pulse {
+  0%,
+  100% {
+    border-color: rgb(var(--color-error));
+  }
+  50% {
+    border-color: rgb(var(--color-error) / 0.6);
+  }
+}
+
+.modern-input-success {
+  border-color: rgb(10, 134, 66);
+  background: rgb(var(--color-success) / 0.08);
+  animation: success-glow 1.5s ease-in-out;
+}
+
+@keyframes success-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgb(var(--color-success) / 0);
+  }
+  50% {
+    box-shadow:
+      0 0 0 8px rgb(var(--color-success) / 0.2),
+      0 0 30px rgb(var(--color-success) / 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(var(--color-success) / 0);
+  }
+}
+
+.modern-input-success:focus-visible {
+  box-shadow:
+    0 0 0 5px rgb(var(--color-success) / 0.15),
+    0 8px 24px rgb(var(--color-success) / 0.25),
+    0 0 40px rgb(var(--color-success) / 0.2);
+}
+
+/* Success icon bounce animation */
+.modern-input-success + .modern-input-icon-right,
+.modern-input-icon-right.text-\[rgb\(var\(--color-success\)\)\] {
+  animation: icon-bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes icon-bounce-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.3);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.modern-input-warning {
+  border-color: rgb(var(--color-warning));
+  background: rgb(var(--color-warning) / 0.05);
+}
+
+.modern-input-warning:focus-visible {
+  box-shadow:
+    0 0 0 3px rgb(var(--color-warning) / 0.1),
+    0 4px 12px rgb(var(--color-warning) / 0.15);
+}
+
+/* ========================================
+   MODERN ICONS
+   ======================================== */
+
+.modern-input-icon {
+  @apply absolute top-1/2 -translate-y-1/2 pointer-events-none;
+  color: var(--color-1-nuance-2);
+  z-index: 10;
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.modern-input-icon-sm {
+  @apply h-4 w-4;
+}
+
+.modern-input-icon-md {
+  @apply h-5 w-5;
+}
+
+.modern-input-icon-lg {
+  @apply h-6 w-6;
+}
+
+.modern-input-icon-left {
+  @apply left-4;
+}
+
+.modern-input-icon-right {
+  @apply right-4;
+}
+
+.modern-input-icon-clickable {
+  @apply pointer-events-auto cursor-pointer;
+}
+
+.modern-input-icon-clickable:hover {
+  @apply text-foreground;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Input with icon padding */
+.modern-input-with-icon-left {
+  @apply pl-11;
+}
+
+.modern-input-with-icon-right {
+  @apply pr-11;
+}
+
+.modern-input-sm.modern-input-with-icon-left {
+  @apply pl-10;
+}
+
+.modern-input-sm.modern-input-with-icon-right {
+  @apply pr-10;
+}
+
+.modern-input-lg.modern-input-with-icon-left {
+  @apply pl-12;
+}
+
+.modern-input-lg.modern-input-with-icon-right {
+  @apply pr-12;
+}
+
+/* ========================================
+   MODERN DROPDOWN/SELECT
+   ======================================== */
+
+/* Modern Dropdown Container */
+.modern-dropdown {
+  @apply absolute z-50 mt-2 w-full rounded-xl border shadow-2xl p-2;
+  background: rgb(var(--popover-rgb, 255, 255, 255) / 1) !important; /* 100% opaque */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-color: rgb(var(--border-rgb, 226, 232, 240) / 0.3);
+  box-shadow:
+    0 10px 40px rgb(0 0 0 / 0.15),
+    0 0 0 1px rgb(var(--border-rgb, 226, 232, 240) / 0.2);
+  max-height: 320px;
+  overflow-y: auto;
+  /* Force solid background */
+  background-color: white !important;
+}
+
+.modern-dropdown-lg {
+  max-height: 400px;
+}
+
+/* Modern Dropdown Item avec micro-interactions */
+.modern-dropdown-item {
+  @apply relative flex w-full cursor-pointer select-none items-center rounded-lg text-sm outline-none;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  padding: 8px 12px;
+  text-align: left;
+  justify-content: flex-start;
+  min-height: 36px;
+  white-space: normal;
+  word-break: break-word;
+  transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-dropdown-item:hover:not([disabled]) {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+  transform: translateX(3px);
+  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgb(0 0 0 / 0.1));
+}
+
+.modern-dropdown-item-selected {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 10%, transparent);
+  font-weight: 500;
+  border-left: 1px solid var(--color-2-nuance-1);
+  padding-left: 15px;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+}
+
+.modern-dropdown-item-selected:hover {
+  background: color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent);
+}
+
+/* Dropdown with keyboard navigation */
+.modern-dropdown-item-keyboard-active {
+  background: color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent);
+  border-left: 1px solid var(--color-1-nuance-1);
+  padding-left: 14px;
+}
+
+/* Spinner de chargement — couleur charte */
+.search-spinner {
+  color: var(--color-2-nuance-1) !important;
+  stroke: var(--color-2-nuance-1) !important;
+}
+
+/* ========================================
+   MODERN TAGS/CHIPS
+   ======================================== */
+
+.modern-tag {
+  @apply inline-flex items-center gap-1.5 rounded-full border font-medium;
+  height: 28px;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  border-width: 1px;
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+  animation: tag-in 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+@keyframes tag-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modern-tag-primary {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-2-nuance-1) 15%, transparent),
+    color-mix(in srgb, var(--color-2-nuance-1) 8%, transparent)
+  );
+  border-color: color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+  color: var(--color-2-nuance-1);
+}
+
+.modern-tag-secondary {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-1-nuance-1) 15%, transparent),
+    color-mix(in srgb, var(--color-1-nuance-1) 8%, transparent)
+  );
+  border-color: color-mix(in srgb, var(--color-1-nuance-1) 30%, transparent);
+  color: var(--color-1-nuance-1);
+}
+
+.modern-tag-accent {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-3-nuance-1) 15%, transparent),
+    color-mix(in srgb, var(--color-3-nuance-1) 8%, transparent)
+  );
+  border-color: color-mix(in srgb, var(--color-3-nuance-1) 30%, transparent);
+  color: var(--color-3-nuance-1);
+}
+
+.modern-tag:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgb(0 0 0 / 0.1));
+}
+
+.modern-tag-remove-btn {
+  @apply rounded-full transition-all duration-150;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+}
+
+.modern-tag-remove-btn:hover {
+  background: rgb(var(--color-error) / 0.2);
+  color: rgb(var(--color-error));
+  transform: scale(1.15);
+}
+
+/* ========================================
+   MODERN CHECKBOX & RADIO
+   ======================================== */
+
+/* Modern Checkbox */
+.modern-checkbox {
+  @apply h-5 w-5 shrink-0 border-2 ring-offset-background;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+  border-radius: 0.5rem !important;
+  border-color: var(--color-2-nuance-1);
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.modern-checkbox:hover:not(:disabled) {
+  border-color: var(--color-2-nuance-2);
+  transform: scale(1.05);
+}
+
+.modern-checkbox[data-state='checked'] {
+  background: var(--color-2-nuance-1);
+  border-color: var(--color-2-nuance-2);
+}
+
+.modern-checkbox-indicator {
+  @apply flex items-center justify-center text-white;
+  animation: check-in 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes check-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modern-checkbox-icon {
+  @apply h-3.5 w-3.5;
+  stroke-width: 3;
+}
+
+/* Modern Radio */
+.modern-radio {
+  @apply aspect-square h-5 w-5 rounded-full border-2 ring-offset-background;
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+  border-color: var(--color-1-nuance-2);
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.modern-radio:hover:not(:disabled) {
+  background: rgb(var(--muted-rgb) / 0.3);
+  border-color: var(--color-2-nuance-1);
+  transform: scale(1.05);
+}
+
+.modern-radio[data-state='checked'] {
+  background: radial-gradient(circle, var(--color-2-nuance-1), var(--color-2-nuance-2));
+  border-color: var(--color-2-nuance-1);
+  box-shadow:
+    var(--shadow-sm, 0 1px 3px 0 rgb(0 0 0 / 0.1)),
+    0 0 8px color-mix(in srgb, var(--color-2-nuance-1) 30%, transparent);
+}
+
+.modern-radio-indicator {
+  @apply flex items-center justify-center;
+  animation: radio-in 250ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes radio-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modern-radio-dot {
+  @apply h-3 w-3 rounded-full bg-white;
+}
+
+/* ========================================
+   MODERN SELECT/DROPDOWN TRIGGER
+   ======================================== */
+
+.modern-select-trigger {
+  @apply flex h-11 w-full items-center justify-between rounded-xl border-[1.5px] px-4 py-3;
+  @apply text-base font-normal ring-offset-background;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+  @apply data-[placeholder]:text-muted-foreground/60;
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 50%, transparent);
+  background: rgb(var(--card-rgb) / 0.3);
+  transition: all 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.modern-select-trigger:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--color-1-nuance-2) 70%, transparent);
+  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgb(0 0 0 / 0.1));
+}
+
+.modern-select-trigger:focus {
+  border-color: var(--color-2-nuance-1);
+  box-shadow:
+    0 0 0 3px rgb(var(--primary-rgb, 59, 130, 246) / 0.1),
+    0 4px 12px rgb(var(--primary-rgb, 59, 130, 246) / 0.15);
+}
+
+.modern-select-trigger[data-state='open'] {
+  border-color: var(--color-2-nuance-1);
+}
+
+.modern-select-value {
+  @apply font-medium;
+}
+
+.modern-select-chevron {
+  @apply h-5 w-5 shrink-0;
+  color: var(--color-1-nuance-1);
+  transition: transform 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.modern-select-trigger[data-state='open'] .modern-select-chevron {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   MODERN DROPDOWN CONTENT
+   ======================================== */
+
+.modern-dropdown-content {
+  @apply relative z-50 overflow-hidden rounded-xl border shadow-2xl;
+  background: rgb(var(--popover-rgb, 255, 255, 255) / 1) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-color: rgb(var(--border-rgb, 226, 232, 240) / 0.2);
+  box-shadow:
+    0 10px 40px rgb(0 0 0 / 0.15),
+    0 0 0 1px rgb(var(--border-rgb, 226, 232, 240) / 0.1);
+  animation: dropdown-in 200ms var(--ease-default, cubic-bezier(0.4, 0, 0.2, 1));
+  /* Force solid background */
+  background-color: white !important;
+}
+
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modern-dropdown-viewport {
+  @apply p-1;
+  max-height: var(--radix-select-content-available-height, 320px);
+}
+
+/* ========================================
+   SEARCH COMPONENTS
+   ======================================== */
+
+.modern-search-shortcut-badge {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none;
+  @apply flex items-center gap-1 rounded-md border px-2 py-1;
+  @apply text-xs font-medium;
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 40%, transparent);
+  background: rgb(var(--muted-rgb) / 0.3);
+  color: rgb(var(--foreground-rgb) / 0.5);
+  transition: opacity 150ms ease;
+}
+
+.modern-search-shortcut-badge-hidden {
+  opacity: 0;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgb(var(--primary-rgb, 59, 130, 246) / 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+
+.ripple-effect:active::after {
+  animation: ripple 400ms ease-out;
+}
+
+/* Stagger animation enrichie pour lists */
+.stagger-item {
+  animation: stagger-in 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
+  animation-delay: calc(30ms * var(--stagger-index, 0));
+}
+
+@keyframes stagger-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   PHONE INPUT SPECIFIC STYLES
+   ======================================== */
+
+.phone-input-success-icon {
+  animation: phone-success-bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  filter: drop-shadow(0 0 8px rgb(10, 134, 66));
+}
+
+@keyframes phone-success-bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0) rotate(-180deg);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.4) rotate(10deg);
+  }
+  70% {
+    transform: translateY(-50%) scale(0.9) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1) rotate(0deg);
+  }
+}
+
+/* ========================================
+   DARK MODE OVERRIDES
+   ======================================== */
+
+.dark .modern-input-base {
+  background: rgb(var(--card-rgb, 30, 41, 59));
+  border-color: color-mix(in srgb, var(--color-1-nuance-3) 60%, transparent);
+}
+
+.dark .modern-dropdown {
+  background: rgb(var(--popover-rgb, 30, 41, 59) / 1) !important; /* 100% opaque */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-color: rgb(var(--border-rgb, 51, 65, 85) / 0.5); /* Border plus visible */
+  box-shadow:
+    0 10px 40px rgb(0 0 0 / 0.4),
+    0 0 0 1px rgb(var(--border-rgb, 51, 65, 85) / 0.4);
+  /* Force solid background in dark mode */
+  background-color: rgb(30, 41, 59) !important;
+}
+
+.dark .modern-dropdown-content {
+  background: rgb(var(--popover-rgb, 30, 41, 59) / 1) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-color: rgb(var(--border-rgb, 51, 65, 85) / 0.5);
+  /* Force solid background in dark mode */
+  background-color: rgb(30, 41, 59) !important;
+}

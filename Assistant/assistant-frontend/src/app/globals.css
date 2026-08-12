@@ -1,0 +1,235 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Ednov / ZUP DE CO production design system.
+ * Tokens matched from production screenshots (sidebar, dashboard, tables).
+ */
+
+@theme inline {
+  --font-sans: var(--font-nunito);
+  --font-display: var(--font-poppins);
+  --font-heading: var(--font-poppins);
+  --font-mono: var(--font-geist-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-navy-deep: var(--brand-navy-deep);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-soft: var(--brand-orange-soft);
+  --color-brand-mint: var(--brand-mint);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-peach: var(--brand-peach);
+  --color-brand-teal: var(--brand-teal);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --spacing-page-x: var(--page-padding-x);
+  --spacing-page-y: var(--page-padding-y);
+  --spacing-section: var(--section-gap);
+  --spacing-stack: var(--stack-gap);
+  --spacing-sidebar: var(--sidebar-width);
+}
+
+:root {
+  /* Ednov production radius — cards ~12–14px, controls ~8–10px */
+  --radius: 0.75rem;
+
+  /* Brand — matched to ZUP DE CO / Ednov screenshots */
+  --brand-orange: #ff7a3d;
+  --brand-orange-soft: #ff9a66;
+  --brand-peach: #fff1e8;
+  --brand-navy: #1f2f55;
+  --brand-navy-deep: #172641;
+  --brand-mint: #e8f7f5;
+  --brand-teal: #2bb8a8;
+  --brand-cream: #f5f6f8;
+
+  --background: #f5f6f8;
+  --foreground: #1f2f55;
+  --card: #ffffff;
+  --card-foreground: #1f2f55;
+  --popover: #ffffff;
+  --popover-foreground: #1f2f55;
+  --primary: #ff7a3d;
+  --primary-foreground: #ffffff;
+  --secondary: #fff1e8;
+  --secondary-foreground: #ff7a3d;
+  --muted: #f0f1f4;
+  --muted-foreground: #6b7289;
+  --accent: #fff1e8;
+  --accent-foreground: #ff7a3d;
+  --destructive: #e5484d;
+  --border: #e6e8ee;
+  --input: #e6e8ee;
+  --ring: #ff7a3d;
+  --chart-1: #ff7a3d;
+  --chart-2: #2bb8a8;
+  --chart-3: #1f2f55;
+  --chart-4: #8b7cf6;
+  --chart-5: #f0b429;
+
+  /* Light sidebar (Ednov chrome) */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #3a4660;
+  --sidebar-primary: #ff7a3d;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fff1e8;
+  --sidebar-accent-foreground: #ff7a3d;
+  --sidebar-border: #eceef3;
+  --sidebar-ring: #ff7a3d;
+  --sidebar-width: 15.5rem;
+
+  --page-padding-x: 1.5rem;
+  --page-padding-y: 1.5rem;
+  --section-gap: 1.5rem;
+  --stack-gap: 1rem;
+
+  --gradient-hero: linear-gradient(180deg, #ffffff 0%, #f5f6f8 100%);
+  --gradient-orange: linear-gradient(135deg, #ff8a4c 0%, #ff7a3d 100%);
+  --shadow-glow: 0 10px 28px -14px rgb(255 122 61 / 0.4);
+  --shadow-card: 0 1px 2px rgb(31 47 85 / 0.04), 0 4px 16px -6px rgb(31 47 85 / 0.06);
+  --shadow-bubble: 0 1px 2px rgb(31 47 85 / 0.035), 0 6px 18px -8px rgb(31 47 85 / 0.08);
+}
+
+.dark {
+  --background: #121826;
+  --foreground: #f3f4f8;
+  --card: #1a2234;
+  --card-foreground: #f3f4f8;
+  --popover: #1a2234;
+  --popover-foreground: #f3f4f8;
+  --primary: #ff7a3d;
+  --primary-foreground: #ffffff;
+  --secondary: #2a3348;
+  --secondary-foreground: #ffb08a;
+  --muted: #2a3348;
+  --muted-foreground: #9aa3b8;
+  --accent: #2a3348;
+  --accent-foreground: #ffb08a;
+  --destructive: #f07178;
+  --border: rgb(255 255 255 / 10%);
+  --input: rgb(255 255 255 / 12%);
+  --ring: #ff7a3d;
+  --sidebar: #161e2e;
+  --sidebar-foreground: #f3f4f8;
+  --sidebar-primary: #ff7a3d;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #243049;
+  --sidebar-accent-foreground: #ffb08a;
+  --sidebar-border: rgb(255 255 255 / 10%);
+  --sidebar-ring: #ff7a3d;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.015em;
+  }
+}
+
+@utility bg-hero {
+  background: var(--gradient-hero);
+}
+
+@utility bg-brand-gradient {
+  background: var(--gradient-orange);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility shadow-bubble {
+  box-shadow: var(--shadow-bubble);
+}
+
+/* Ednov-style thin bordered surface */
+@utility surface-card {
+  @apply rounded-xl border border-border bg-card shadow-card;
+}
+
+@utility ednov-title {
+  @apply font-display text-2xl font-bold tracking-tight text-brand-orange md:text-[1.75rem];
+}
+
+@utility ednov-section-title {
+  @apply font-display text-lg font-bold tracking-tight text-brand-orange;
+}
+
+@utility ednov-label {
+  @apply text-[11px] font-bold tracking-wide text-foreground/70 uppercase;
+}
+
+@utility ednov-transition {
+  @apply transition-all duration-200 ease-out;
+}
+
+@keyframes stream-cursor {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

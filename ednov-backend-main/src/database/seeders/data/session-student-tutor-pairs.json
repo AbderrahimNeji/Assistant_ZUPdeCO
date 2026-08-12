@@ -1,0 +1,546 @@
+[
+  {
+    "id": "3915e43e-5817-45bd-8d61-3b38f6f1192c",
+    "session_id": "e43ef6f0-a9d5-41ea-b9d2-86b6a7189bf7",
+    "student_user_id": "60785dc2-0953-436e-870d-919dc0d46f07",
+    "tutor_user_id": "d5d00572-694a-49bd-8895-8cf12ad64b78",
+    "assignment_source": "manual",
+    "created_at": "2026-03-24 02:58:05.286114+00"
+  },
+  {
+    "id": "20c6ab2f-71e0-4bcb-8194-ba2f1aec6206",
+    "session_id": "b635d37b-a34d-4ae7-9037-8b051a289ebb",
+    "student_user_id": "e4848775-7e88-4f9a-b617-a5886d7743af",
+    "tutor_user_id": "3c5881de-949d-424b-9812-0bc436cdcda1",
+    "assignment_source": "manual",
+    "created_at": "2026-03-24 11:44:06.234781+00"
+  },
+  {
+    "id": "026edc60-f347-43b9-958d-4a415956b3cb",
+    "session_id": "4cc5835b-1696-4665-a177-45819cff928d",
+    "student_user_id": "f23ec2ba-4386-4f2f-ae42-b246d4489d21",
+    "tutor_user_id": "b35880a7-e070-4484-a2e1-c87c41ecb7db",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-24 11:54:44.026312+00"
+  },
+  {
+    "id": "ef935453-9633-4c24-991a-d284b2c93c9e",
+    "session_id": "4cc5835b-1696-4665-a177-45819cff928d",
+    "student_user_id": "60785dc2-0953-436e-870d-919dc0d46f07",
+    "tutor_user_id": "b35880a7-e070-4484-a2e1-c87c41ecb7db",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-24 11:54:44.026312+00"
+  },
+  {
+    "id": "2700160a-e9e3-451f-a058-6a7ef65d6433",
+    "session_id": "d2f7349a-ba72-4711-b830-751ec66eb62a",
+    "student_user_id": "53fc8ef1-cca0-43fa-a373-ea9eb0b5a763",
+    "tutor_user_id": "1e4a7853-e6c3-4c2f-8507-81f556669660",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-24 11:56:23.372809+00"
+  },
+  {
+    "id": "112c48eb-bdc9-411d-8910-daaf6a233020",
+    "session_id": "d2f7349a-ba72-4711-b830-751ec66eb62a",
+    "student_user_id": "e4848775-7e88-4f9a-b617-a5886d7743af",
+    "tutor_user_id": "1e4a7853-e6c3-4c2f-8507-81f556669660",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-24 11:56:23.372809+00"
+  },
+  {
+    "id": "d64e1015-0c2a-4d4e-b777-035f709b8caa",
+    "session_id": "a90e5716-fdda-437f-8674-2119dfcaba94",
+    "student_user_id": "41b3fa0c-2a32-4f5e-a6b4-b6d33ddb484b",
+    "tutor_user_id": "14618e75-b88f-42eb-970e-250d5d56d732",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-24 11:57:25.791404+00"
+  },
+  {
+    "id": "d924f394-41f3-49ea-b70e-ad1de069e187",
+    "session_id": "a90e5716-fdda-437f-8674-2119dfcaba94",
+    "student_user_id": "f8b90733-d6a6-419b-987a-983b91d0efe7",
+    "tutor_user_id": "14618e75-b88f-42eb-970e-250d5d56d732",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-24 11:57:25.791404+00"
+  },
+  {
+    "id": "197c1879-5011-407c-baf4-122ccdfc0e86",
+    "session_id": "884f7fd2-aac6-43b2-959f-54de8b8c387e",
+    "student_user_id": "41b3fa0c-2a32-4f5e-a6b4-b6d33ddb484b",
+    "tutor_user_id": "d2862c65-fb5d-40fc-987d-63da7e7a313a",
+    "assignment_source": "auto_binome_coeur",
+    "created_at": "2026-03-24 13:25:24.345874+00"
+  },
+  {
+    "id": "0c1c9908-4d08-4827-bac0-106a60192597",
+    "session_id": "a7288ad4-2413-4bba-8f64-8cb22870a9ff",
+    "student_user_id": "f23ec2ba-4386-4f2f-ae42-b246d4489d21",
+    "tutor_user_id": "c78f2650-7e4d-4903-8ff9-05ec179f0c86",
+    "assignment_source": "manual",
+    "created_at": "2026-03-24 14:25:35.451839+00"
+  },
+  {
+    "id": "817342bb-233d-4dd3-bc87-70ca17bfceb1",
+    "session_id": "e43ef6f0-a9d5-41ea-b9d2-86b6a7189bf7",
+    "student_user_id": "53fc8ef1-cca0-43fa-a373-ea9eb0b5a763",
+    "tutor_user_id": "eae01c6d-ccc7-43f7-93ef-5757210d4aaf",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-24 14:29:32.359464+00"
+  },
+  {
+    "id": "992a792e-3fd3-4470-bbbe-59546014f910",
+    "session_id": "e43ef6f0-a9d5-41ea-b9d2-86b6a7189bf7",
+    "student_user_id": "e4848775-7e88-4f9a-b617-a5886d7743af",
+    "tutor_user_id": "cb3e4159-6659-4e09-b604-49ec9a675a29",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-24 14:29:32.359464+00"
+  },
+  {
+    "id": "49774d5f-d14d-41ba-b73e-080bacec929d",
+    "session_id": "884f7fd2-aac6-43b2-959f-54de8b8c387e",
+    "student_user_id": "e4848775-7e88-4f9a-b617-a5886d7743af",
+    "tutor_user_id": "c7cc095e-ead1-445a-829e-1a64d9a1f8a5",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-26 15:03:27.420209+00"
+  },
+  {
+    "id": "d3d4e630-fc48-4ddc-b0c0-17f73b91abcc",
+    "session_id": "884f7fd2-aac6-43b2-959f-54de8b8c387e",
+    "student_user_id": "4210ec4a-4c11-4a6f-b3c6-1d6946c9389a",
+    "tutor_user_id": "c7cc095e-ead1-445a-829e-1a64d9a1f8a5",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-26 15:03:27.420209+00"
+  },
+  {
+    "id": "f6840b21-53b4-47ad-9169-556f98a95332",
+    "session_id": "884f7fd2-aac6-43b2-959f-54de8b8c387e",
+    "student_user_id": "eee73c7f-d31a-416a-b338-bf1fc9b8708d",
+    "tutor_user_id": "0e7588dd-cf6e-4211-ba8f-316c6f2c4867",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-26 15:03:27.420209+00"
+  },
+  {
+    "id": "6e1e2b08-c588-43b9-9fca-5a49dcc2a262",
+    "session_id": "884f7fd2-aac6-43b2-959f-54de8b8c387e",
+    "student_user_id": "53fc8ef1-cca0-43fa-a373-ea9eb0b5a763",
+    "tutor_user_id": "91608cf0-c6db-47df-bb00-d78ac6e8a385",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-03-26 15:03:27.420209+00"
+  },
+  {
+    "id": "a24a289e-eab7-4730-9c61-f618b6b060c2",
+    "session_id": "1dd92107-55d9-4d07-adcf-9bd9485cb78d",
+    "student_user_id": "d92d223e-8443-4ad3-8b74-9ddd250c831f",
+    "tutor_user_id": "0e7588dd-cf6e-4211-ba8f-316c6f2c4867",
+    "assignment_source": "manual",
+    "created_at": "2026-03-27 13:24:53.211411+00"
+  },
+  {
+    "id": "bac31b77-e5b5-418a-a1ae-03a051185e48",
+    "session_id": "1dd92107-55d9-4d07-adcf-9bd9485cb78d",
+    "student_user_id": "e4848775-7e88-4f9a-b617-a5886d7743af",
+    "tutor_user_id": "eae01c6d-ccc7-43f7-93ef-5757210d4aaf",
+    "assignment_source": "manual",
+    "created_at": "2026-03-27 13:24:53.211411+00"
+  },
+  {
+    "id": "15f80f65-4de1-4e05-9ddf-b92e90ebbe9d",
+    "session_id": "1dd92107-55d9-4d07-adcf-9bd9485cb78d",
+    "student_user_id": "f23ec2ba-4386-4f2f-ae42-b246d4489d21",
+    "tutor_user_id": "b4bcd6ae-0d88-4bed-a464-683a11c32f6b",
+    "assignment_source": "manual",
+    "created_at": "2026-03-27 13:24:53.211411+00"
+  },
+  {
+    "id": "ec100ee4-e030-4e4a-8abb-6734988dbb60",
+    "session_id": "008e9d7d-9be2-4531-bad1-df463bfb5aa2",
+    "student_user_id": "d92d223e-8443-4ad3-8b74-9ddd250c831f",
+    "tutor_user_id": "c78f2650-7e4d-4903-8ff9-05ec179f0c86",
+    "assignment_source": "auto_binome_coeur",
+    "created_at": "2026-03-27 13:31:27.682114+00"
+  },
+  {
+    "id": "d62d1839-23e9-4273-a9b1-b4154a433e95",
+    "session_id": "7717fe95-6bec-4d61-b1c2-c2b5d4477892",
+    "student_user_id": "f23ec2ba-4386-4f2f-ae42-b246d4489d21",
+    "tutor_user_id": "c78f2650-7e4d-4903-8ff9-05ec179f0c86",
+    "assignment_source": "manual",
+    "created_at": "2026-03-28 07:21:44.967697+00"
+  },
+  {
+    "id": "7fcba372-21e9-4c56-92cd-acc6555b7be3",
+    "session_id": "7717fe95-6bec-4d61-b1c2-c2b5d4477892",
+    "student_user_id": "e4848775-7e88-4f9a-b617-a5886d7743af",
+    "tutor_user_id": "cb3e4159-6659-4e09-b604-49ec9a675a29",
+    "assignment_source": "manual",
+    "created_at": "2026-03-28 07:21:44.967697+00"
+  },
+  {
+    "id": "e349d551-8dff-45b2-9268-a78cab1d2f78",
+    "session_id": "7717fe95-6bec-4d61-b1c2-c2b5d4477892",
+    "student_user_id": "d92d223e-8443-4ad3-8b74-9ddd250c831f",
+    "tutor_user_id": "15883fae-ced1-4ca7-8366-86b3a5d7bf00",
+    "assignment_source": "manual",
+    "created_at": "2026-03-28 07:21:44.967697+00"
+  },
+  {
+    "id": "3e7188cd-0b13-4fd6-9f4b-f57fdd0b7280",
+    "session_id": "b014db45-f1bc-42fb-9674-1442e8263338",
+    "student_user_id": "f23ec2ba-4386-4f2f-ae42-b246d4489d21",
+    "tutor_user_id": "91608cf0-c6db-47df-bb00-d78ac6e8a385",
+    "assignment_source": "manual",
+    "created_at": "2026-03-30 11:43:34.692868+00"
+  },
+  {
+    "id": "b03d512b-353b-4fa0-8c8a-a38ecb7fb4b6",
+    "session_id": "16d823ba-92e7-4e3b-b08c-d0cbf0ba3f04",
+    "student_user_id": "d92d223e-8443-4ad3-8b74-9ddd250c831f",
+    "tutor_user_id": "c7cc095e-ead1-445a-829e-1a64d9a1f8a5",
+    "assignment_source": "manual",
+    "created_at": "2026-03-30 11:56:18.75901+00"
+  },
+  {
+    "id": "3b53778a-a418-4e61-89c3-69cc2a79d5a1",
+    "session_id": "6280eb64-abf8-489e-a88d-6f7aeeb2f492",
+    "student_user_id": "45392ceb-7b0e-47ba-851b-c0e873a9ddc1",
+    "tutor_user_id": "bf39e862-8d8e-4090-b37f-3b05141509ca",
+    "assignment_source": "manual",
+    "created_at": "2026-03-30 15:01:20.457712+00"
+  },
+  {
+    "id": "f7dca50c-5a84-4266-a118-c6952be5ea0f",
+    "session_id": "fe127390-e4d1-4937-9899-09f5c4fb1b6e",
+    "student_user_id": "45392ceb-7b0e-47ba-851b-c0e873a9ddc1",
+    "tutor_user_id": "fab55b3d-3d06-4b27-b712-84cbc1a1a46a",
+    "assignment_source": "manual",
+    "created_at": "2026-03-30 21:00:26.782753+00"
+  },
+  {
+    "id": "c843878f-92fb-4764-96cb-75b57254c553",
+    "session_id": "fe127390-e4d1-4937-9899-09f5c4fb1b6e",
+    "student_user_id": "01c170b0-f034-42b6-993b-6353c9600afa",
+    "tutor_user_id": "fab55b3d-3d06-4b27-b712-84cbc1a1a46a",
+    "assignment_source": "manual",
+    "created_at": "2026-03-30 21:00:26.782753+00"
+  },
+  {
+    "id": "442bd6c0-138d-4cd8-bc6e-feca1a0967bf",
+    "session_id": "ea65b7ae-1b01-450a-bf34-b731a4c0fa99",
+    "student_user_id": "45392ceb-7b0e-47ba-851b-c0e873a9ddc1",
+    "tutor_user_id": "c7cc095e-ead1-445a-829e-1a64d9a1f8a5",
+    "assignment_source": "manual",
+    "created_at": "2026-03-31 09:45:07.762371+00"
+  },
+  {
+    "id": "37e62aaa-b373-4144-a46b-a0b0fcbb467b",
+    "session_id": "ea65b7ae-1b01-450a-bf34-b731a4c0fa99",
+    "student_user_id": "01c170b0-f034-42b6-993b-6353c9600afa",
+    "tutor_user_id": "1e4a7853-e6c3-4c2f-8507-81f556669660",
+    "assignment_source": "manual",
+    "created_at": "2026-03-31 09:45:07.762371+00"
+  },
+  {
+    "id": "c9e52723-847b-4341-a220-fc0e78603dd4",
+    "session_id": "ea65b7ae-1b01-450a-bf34-b731a4c0fa99",
+    "student_user_id": "395512e1-0304-4d1e-8d00-dbb12401d53b",
+    "tutor_user_id": "dcb5d082-e808-4873-a92b-f2a296c669b9",
+    "assignment_source": "manual",
+    "created_at": "2026-03-31 09:45:07.762371+00"
+  },
+  {
+    "id": "93d8a961-21c7-44d5-8f72-b0f2016f477a",
+    "session_id": "ea65b7ae-1b01-450a-bf34-b731a4c0fa99",
+    "student_user_id": "e4848775-7e88-4f9a-b617-a5886d7743af",
+    "tutor_user_id": "dcb5d082-e808-4873-a92b-f2a296c669b9",
+    "assignment_source": "manual",
+    "created_at": "2026-03-31 09:45:07.762371+00"
+  },
+  {
+    "id": "3dd499f3-acf7-4ca8-9d0a-0bfa5e2268ea",
+    "session_id": "ea65b7ae-1b01-450a-bf34-b731a4c0fa99",
+    "student_user_id": "f8b90733-d6a6-419b-987a-983b91d0efe7",
+    "tutor_user_id": "b35880a7-e070-4484-a2e1-c87c41ecb7db",
+    "assignment_source": "manual",
+    "created_at": "2026-03-31 09:45:07.762371+00"
+  },
+  {
+    "id": "a48cb695-9630-4dc2-a097-812aad712f9f",
+    "session_id": "623a663f-be08-439d-9e83-629edb94ce36",
+    "student_user_id": "e4848775-7e88-4f9a-b617-a5886d7743af",
+    "tutor_user_id": "d2862c65-fb5d-40fc-987d-63da7e7a313a",
+    "assignment_source": "manual",
+    "created_at": "2026-03-31 23:54:13.404917+00"
+  },
+  {
+    "id": "e65da212-bc20-410d-bce6-af2c82f92079",
+    "session_id": "02fa4620-459e-479c-a018-a8bb7af9a200",
+    "student_user_id": "ab946775-7a25-43d4-a701-07a2d636ceed",
+    "tutor_user_id": "2591689a-283d-4852-b8e2-ca6531ea2c03",
+    "assignment_source": "auto_balanced",
+    "created_at": "2026-04-01 01:47:31.922572+00"
+  },
+  {
+    "id": "24a4c85a-e115-49f6-816c-8a44f3329f3e",
+    "session_id": "6657e05f-5449-4934-a6c7-df26b8fd71a5",
+    "student_user_id": "d92d223e-8443-4ad3-8b74-9ddd250c831f",
+    "tutor_user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "assignment_source": "manual",
+    "created_at": "2026-04-01 07:30:12.329689+00"
+  },
+  {
+    "id": "bee4f27d-97ac-492b-b237-531a25e61202",
+    "session_id": "9004a856-24b2-46ea-bcc4-3f1b2893c4c6",
+    "student_user_id": "ab946775-7a25-43d4-a701-07a2d636ceed",
+    "tutor_user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "assignment_source": "manual",
+    "created_at": "2026-04-01 08:46:10.128255+00"
+  },
+  {
+    "id": "18e7c2d6-9ffc-4ddc-97ad-73d2d7f1c730",
+    "session_id": "a534cb3d-dfa1-48f0-9f37-3c4782c2d21e",
+    "student_user_id": "d92d223e-8443-4ad3-8b74-9ddd250c831f",
+    "tutor_user_id": "1e4a7853-e6c3-4c2f-8507-81f556669660",
+    "assignment_source": "manual",
+    "created_at": "2026-04-01 08:47:42.729161+00"
+  },
+  {
+    "id": "9bb046da-1753-4e12-a0f3-bdaee0272e0a",
+    "session_id": "a534cb3d-dfa1-48f0-9f37-3c4782c2d21e",
+    "student_user_id": "ab946775-7a25-43d4-a701-07a2d636ceed",
+    "tutor_user_id": "969fc31a-d88d-4b17-8e38-04d186695c18",
+    "assignment_source": "manual",
+    "created_at": "2026-04-01 08:47:42.729161+00"
+  },
+  {
+    "id": "0a377f9c-a3dd-48f5-a633-411a104526c0",
+    "session_id": "4736e2a5-8a4b-4c00-aa46-b55dc0a3a8fd",
+    "student_user_id": "ab946775-7a25-43d4-a701-07a2d636ceed",
+    "tutor_user_id": "823af336-b4df-42ff-960b-039213f01870",
+    "assignment_source": "manual",
+    "created_at": "2026-04-08 09:08:39.198932+00"
+  },
+  {
+    "id": "8715b97f-5690-4d10-8c8d-5cdcf13084b5",
+    "session_id": "4736e2a5-8a4b-4c00-aa46-b55dc0a3a8fd",
+    "student_user_id": "0da4ec19-9c9e-4da5-9eae-ccb3e36ce949",
+    "tutor_user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "assignment_source": "manual",
+    "created_at": "2026-04-08 09:08:39.198932+00"
+  },
+  {
+    "id": "9fc14f15-c6f9-4ec3-9804-d9f890e97cb6",
+    "session_id": "7a0cda73-3299-49b3-babd-60befda51c48",
+    "student_user_id": "9b937ec9-159e-4796-a83b-fa63be5d1c2a",
+    "tutor_user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "assignment_source": "manual",
+    "created_at": "2026-04-10 08:29:13.137901+00"
+  },
+  {
+    "id": "ba6b7cc5-51df-49c3-b190-fb255bdb73cd",
+    "session_id": "e78fa640-c79e-41c8-b680-ad239fee6273",
+    "student_user_id": "9b937ec9-159e-4796-a83b-fa63be5d1c2a",
+    "tutor_user_id": "86bd1e6d-80a8-4c55-85ad-722e754d90d5",
+    "assignment_source": "manual",
+    "created_at": "2026-04-10 10:34:17.543781+00"
+  },
+  {
+    "id": "864adcc8-1613-4380-a680-59b4c598fcb9",
+    "session_id": "e78fa640-c79e-41c8-b680-ad239fee6273",
+    "student_user_id": "23fe8b6a-92ca-4c48-b1de-4f293025908c",
+    "tutor_user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "assignment_source": "manual",
+    "created_at": "2026-04-10 10:34:17.543781+00"
+  },
+  {
+    "id": "3c58f5cf-8f09-4a16-9147-a20a56951b84",
+    "session_id": "997db5cf-7006-4198-b979-e91181b9e88c",
+    "student_user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "tutor_user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "assignment_source": "manual",
+    "created_at": "2026-04-13 10:43:52.763081+00"
+  },
+  {
+    "id": "1621a9bc-6b4d-4dc8-a952-4e5a885e3d8a",
+    "session_id": "997db5cf-7006-4198-b979-e91181b9e88c",
+    "student_user_id": "5a3909df-a4cb-44fd-b5f2-b2d89f10acc2",
+    "tutor_user_id": "91608cf0-c6db-47df-bb00-d78ac6e8a385",
+    "assignment_source": "manual",
+    "created_at": "2026-04-13 10:43:52.763081+00"
+  },
+  {
+    "id": "bcee1c6a-fea6-491e-97ec-5af696118369",
+    "session_id": "997db5cf-7006-4198-b979-e91181b9e88c",
+    "student_user_id": "23fe8b6a-92ca-4c48-b1de-4f293025908c",
+    "tutor_user_id": "91608cf0-c6db-47df-bb00-d78ac6e8a385",
+    "assignment_source": "manual",
+    "created_at": "2026-04-13 10:43:52.763081+00"
+  },
+  {
+    "id": "63468103-d146-44e1-98fa-1fd4097b0e9b",
+    "session_id": "d61b6d16-e6af-4a8b-a1bb-7950aae8eb89",
+    "student_user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "tutor_user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "assignment_source": "manual",
+    "created_at": "2026-04-13 12:09:06.400806+00"
+  },
+  {
+    "id": "ed53f289-cc4b-482c-afc3-09d256537af0",
+    "session_id": "2809da0b-79b4-414a-88a2-04ee39905a10",
+    "student_user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "tutor_user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "assignment_source": "manual",
+    "created_at": "2026-04-13 12:21:04.775742+00"
+  },
+  {
+    "id": "43155d33-972f-4906-94d6-c9adaacabbd6",
+    "session_id": "cca12ebd-412a-4407-bd01-984ef8527dbc",
+    "student_user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "tutor_user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "assignment_source": "manual",
+    "created_at": "2026-04-13 12:23:56.086958+00"
+  },
+  {
+    "id": "a060dd26-9025-45ca-86ff-ab75e08bdb27",
+    "session_id": "bc4d235a-d5bd-4164-9ff5-c4c468ba3365",
+    "student_user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "tutor_user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "assignment_source": "manual",
+    "created_at": "2026-04-13 12:28:05.009377+00"
+  },
+  {
+    "id": "98101a91-0f0d-4aae-930c-639491aee318",
+    "session_id": "95590f03-f42b-4822-8312-36232478c81a",
+    "student_user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "tutor_user_id": "b81615ad-8e69-4298-98c7-9295c8a978de",
+    "assignment_source": "auto_binome_coeur",
+    "created_at": "2026-04-13 15:25:23.491113+00"
+  },
+  {
+    "id": "3a0124c0-74ea-4fea-b334-82371dfbfbf1",
+    "session_id": "d410ae05-2f15-4589-b300-aec82e16128e",
+    "student_user_id": "abbb679e-a65d-4aad-9175-33b3fcb479a1",
+    "tutor_user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "assignment_source": "manual",
+    "created_at": "2026-04-14 11:29:11.333162+00"
+  },
+  {
+    "id": "ec526837-ccd7-4d18-80e8-56c6f4d1aa60",
+    "session_id": "d410ae05-2f15-4589-b300-aec82e16128e",
+    "student_user_id": "9b937ec9-159e-4796-a83b-fa63be5d1c2a",
+    "tutor_user_id": "86bd1e6d-80a8-4c55-85ad-722e754d90d5",
+    "assignment_source": "manual",
+    "created_at": "2026-04-14 11:29:11.333162+00"
+  },
+  {
+    "id": "1924ae37-a2a6-4a46-87a1-9c700b01b8fb",
+    "session_id": "b42062a9-7570-4583-ab57-d8228af38805",
+    "student_user_id": "60785dc2-0953-436e-870d-919dc0d46f07",
+    "tutor_user_id": "f03e1262-4929-4897-bfaa-a431585906af",
+    "assignment_source": "manual",
+    "created_at": "2026-04-15 09:38:00.264347+00"
+  },
+  {
+    "id": "e13f7085-4d79-439a-a475-dfab63c0e5f0",
+    "session_id": "b42062a9-7570-4583-ab57-d8228af38805",
+    "student_user_id": "b8e5f273-7d0f-4894-98cf-22caac7cb3fa",
+    "tutor_user_id": "c78f2650-7e4d-4903-8ff9-05ec179f0c86",
+    "assignment_source": "manual",
+    "created_at": "2026-04-15 09:38:00.264347+00"
+  },
+  {
+    "id": "f0dcf1e7-1d47-4b8e-966d-1cd4bc9f9573",
+    "session_id": "b42062a9-7570-4583-ab57-d8228af38805",
+    "student_user_id": "f8b90733-d6a6-419b-987a-983b91d0efe7",
+    "tutor_user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "assignment_source": "manual",
+    "created_at": "2026-04-15 09:38:00.264347+00"
+  },
+  {
+    "id": "fc2537c0-7d36-4a7e-aff8-1b5c7e534059",
+    "session_id": "75c0d4a0-a7d1-4e7b-b9f4-3eb7bdc1e4d9",
+    "student_user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "tutor_user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "assignment_source": "manual",
+    "created_at": "2026-04-17 14:44:31.969683+00"
+  },
+  {
+    "id": "42dabd44-3a27-4980-9d57-623ea0112a96",
+    "session_id": "75c0d4a0-a7d1-4e7b-b9f4-3eb7bdc1e4d9",
+    "student_user_id": "fa05f19d-a957-4352-8d0e-7b0582f06a09",
+    "tutor_user_id": "b81615ad-8e69-4298-98c7-9295c8a978de",
+    "assignment_source": "manual",
+    "created_at": "2026-04-17 14:44:31.969683+00"
+  },
+  {
+    "id": "3e41a006-1e4e-40b5-964b-b58d625395f1",
+    "session_id": "9a1a7217-ec10-422e-8a45-3272bb72579b",
+    "student_user_id": "f23ec2ba-4386-4f2f-ae42-b246d4489d21",
+    "tutor_user_id": "d2862c65-fb5d-40fc-987d-63da7e7a313a",
+    "assignment_source": "manual",
+    "created_at": "2026-04-20 09:41:48.275715+00"
+  },
+  {
+    "id": "9d1112eb-bfae-4588-9fbb-be7891f2abb4",
+    "session_id": "f0899884-c234-4a7c-8aac-128c9c5123bb",
+    "student_user_id": "60785dc2-0953-436e-870d-919dc0d46f07",
+    "tutor_user_id": "1e4a7853-e6c3-4c2f-8507-81f556669660",
+    "assignment_source": "manual",
+    "created_at": "2026-04-20 09:43:14.051705+00"
+  },
+  {
+    "id": "f89c4d74-e5e3-446a-936c-5de10d44aea0",
+    "session_id": "5892e60f-b753-4222-8e43-117f8ec01871",
+    "student_user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "tutor_user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "assignment_source": "manual",
+    "created_at": "2026-04-20 14:24:59.439801+00"
+  },
+  {
+    "id": "e710dc3b-297e-4dde-b53d-5a772280e2d4",
+    "session_id": "5892e60f-b753-4222-8e43-117f8ec01871",
+    "student_user_id": "fa05f19d-a957-4352-8d0e-7b0582f06a09",
+    "tutor_user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "assignment_source": "manual",
+    "created_at": "2026-04-20 14:24:59.439801+00"
+  },
+  {
+    "id": "5d26fb77-9bec-4407-9280-f3fc2148afc2",
+    "session_id": "de180f50-fb3c-4ede-8109-8b905103eaf1",
+    "student_user_id": "3e808580-1a42-417b-96fc-18e451b36689",
+    "tutor_user_id": "8c8736f6-65b3-468c-8805-9e3c6c480f15",
+    "assignment_source": "manual",
+    "created_at": "2026-04-21 11:58:28.928083+00"
+  },
+  {
+    "id": "5b984510-49c6-4b60-a1f7-3282d25f78b0",
+    "session_id": "de180f50-fb3c-4ede-8109-8b905103eaf1",
+    "student_user_id": "fa05f19d-a957-4352-8d0e-7b0582f06a09",
+    "tutor_user_id": "b81615ad-8e69-4298-98c7-9295c8a978de",
+    "assignment_source": "manual",
+    "created_at": "2026-04-21 11:58:28.928083+00"
+  },
+  {
+    "id": "939026c3-1b76-4e43-bd71-5c43845be23f",
+    "session_id": "22c6abb9-7a39-4d05-9eba-3261b3d2750e",
+    "student_user_id": "60785dc2-0953-436e-870d-919dc0d46f07",
+    "tutor_user_id": "d2862c65-fb5d-40fc-987d-63da7e7a313a",
+    "assignment_source": "manual",
+    "created_at": "2026-04-22 10:48:04.179906+00"
+  },
+  {
+    "id": "5720764b-6810-4814-a4dd-f0202a8c29dc",
+    "session_id": "c49e9732-6360-4312-aa32-5d5cbe2786d7",
+    "student_user_id": "d92d223e-8443-4ad3-8b74-9ddd250c831f",
+    "tutor_user_id": "c78f2650-7e4d-4903-8ff9-05ec179f0c86",
+    "assignment_source": "manual",
+    "created_at": "2026-04-23 15:14:41.495914+00"
+  },
+  {
+    "id": "73750216-4cf4-4c2d-a937-24ec6406443f",
+    "session_id": "41f85991-4f5c-403d-a4aa-a198400afc80",
+    "student_user_id": "d92d223e-8443-4ad3-8b74-9ddd250c831f",
+    "tutor_user_id": "04ca9456-25c4-40ab-9b5b-ea23f6d0a575",
+    "assignment_source": "manual",
+    "created_at": "2026-04-27 07:43:37.165502+00"
+  }
+]

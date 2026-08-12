@@ -1,0 +1,62 @@
+---
+name: context7-mcp
+description: Fetch up-to-date library/framework/SDK/API documentation via Context7 MCP. Use when implementing or configuring third-party libraries in Ednov Web — React, Vite, TanStack Query, Radix UI, Firebase JS, axios, ApexCharts, dnd-kit, etc. Use for API syntax, setup, migrations, or version-specific examples. Prefer over web search for library docs. Do not wait for the user to say "use context7".
+alwaysApply: false
+---
+
+# Context7 MCP — up-to-date documentation
+
+Use **Context7** (`context7` in `mcp.json`) **without waiting** for the user to say "use context7".
+
+## When to use it
+
+- Documentation, config, setup, or migration for a **library / framework / SDK / API / CLI / cloud service**
+- Code generation that relies on an external library (React, Next.js, Supabase, Prisma, Tailwind, Firebase, etc.)
+- API syntax, official examples, recent version changes
+- **Even if you think you know the answer** — training data may be outdated
+- Prefer Context7 over web search for library documentation
+
+## When not to use it
+
+- Internal refactoring, project business logic, code review
+- General programming concepts with no third-party library
+- Local repo code (use lean-ctx / file reads)
+
+## Workflow (required)
+
+1. **`resolve-library-id`**
+   - `libraryName`: official name (`Next.js`, not `nextjs`)
+   - `query`: the user's full question (not a single keyword)
+   - Skip this step if the user already provides an ID in `/org/project` or `/org/project/version` format
+
+2. **Pick the best match**: exact name, relevance, snippet count, reputation (High/Medium), benchmark score (higher is better). If ambiguous, rephrase or ask for clarification.
+
+3. **`query-docs`**
+   - `libraryId`: e.g. `/vercel/next.js`, `/supabase/supabase`, `/vercel/next.js/v14.3.0`
+   - `query`: specific question with context (e.g. "JWT middleware App Router Next.js 15")
+
+4. **Answer** using the fetched docs; cite the version when relevant.
+
+## Best practices
+
+| Situation | Action |
+|-----------|--------|
+| Version mentioned ("Next.js 14", "React 19") | Versioned ID if available |
+| Known library | Direct ID in prompt: `use library /supabase/supabase` |
+| Vague request | Detailed question in `query` |
+| Secrets | **Never** put keys, tokens, or proprietary code in `query` |
+
+## Limits
+
+- Max **3 calls** per tool per question (`resolve-library-id`, `query-docs`)
+- Do not invent APIs not present in Context7 docs
+
+## Ednov Web stack (Context7 priority)
+
+React, Vite, React Router, TanStack Query, Radix UI, Firebase JS SDK, axios, date-fns, ApexCharts, dnd-kit, Tailwind/design system CSS.
+
+## Trigger examples
+
+- "Configure Supabase email/password auth" → Context7
+- "useQuery with invalidation after mutation" → Context7 (`@tanstack/react-query`)
+- "Rename this variable in my service" → not Context7

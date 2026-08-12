@@ -1,0 +1,12 @@
+---
+description: Accessibility (a11y) for Ednov-mobile React Native components
+globs: "**/*.tsx"
+alwaysApply: false
+---
+
+# Ednov-mobile: Accessibility
+
+- Add `accessibilityLabel` to interactive and meaningful elements (buttons, links, images, form fields, custom controls). Use clear, concise labels that describe the action or content.
+- Add `accessibilityHint` when the result of an action is not obvious from the label alone.
+- Use `accessibilityRole` where it helps (e.g. `button`, `link`, `header`, `image`). Prefer semantic roles over generic ones.
+- Ensure focus order and touch targets are logical and sufficient size; avoid disabling accessibility unless strictly necessary.

@@ -1,0 +1,41 @@
+{
+  "name": "evaluation-qa-seed",
+  "description": "Small functional / business / hybrid QA seed for Copilot evaluation scaffolding",
+  "cases": [
+    {
+      "id": "func-tutor-path",
+      "mode": "functional",
+      "question": "Quelles sont les étapes du parcours tuteur ?",
+      "expectedAnswer": "Doit citer la documentation fonctionnelle (chapitres / pages) sans inventer de règles.",
+      "notes": "Documentation RAG"
+    },
+    {
+      "id": "biz-matching-status",
+      "mode": "business",
+      "question": "Quels appariements sont incomplets ?",
+      "expectedAnswer": "Doit s'appuyer sur les données live BI / matching et lister des entités lisibles.",
+      "notes": "Live data"
+    },
+    {
+      "id": "hybrid-missing-conditions",
+      "mode": "hybrid",
+      "question": "Pourquoi ce matching est-il bloqué et que manque-t-il ?",
+      "expectedAnswer": "Réponse structurée: statut actuel, conditions requises, conditions manquantes, règle métier, action recommandée — avec citations docs + faits live.",
+      "notes": "Hybrid structured explanation"
+    },
+    {
+      "id": "func-cancel-session",
+      "mode": "functional",
+      "question": "Quelles sont les règles pour annuler une séance ?",
+      "expectedAnswer": "Règles issues de la documentation, avec page / chapitre.",
+      "notes": "Docs"
+    },
+    {
+      "id": "biz-dashboard",
+      "mode": "business",
+      "question": "Quels indicateurs clés dois-je regarder aujourd'hui ?",
+      "expectedAnswer": "Résumé basé sur les stats / dashboard live.",
+      "notes": "Live"
+    }
+  ]
+}

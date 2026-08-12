@@ -1,0 +1,26 @@
+---
+description: Expo Router file-based routing and navigation conventions for Ednov-mobile
+globs: "**/app/**/*.tsx,**/**/components/**/*.tsx"
+alwaysApply: false
+---
+
+# Ednov-mobile: Expo Router & Navigation
+
+Use **expo-router** (file-based routing). Do not introduce raw React Navigation navigators for screen structure; use the file system and layouts.
+
+## Route structure
+
+- Routes live under `app/`. Use route groups with parentheses: `(tabs)`, `(auth)`, etc.
+- Use `_layout.tsx` for layout and nesting; keep layout files thin (structure and providers only).
+- Dynamic segments: use `[id].tsx` (or `[slug].tsx`); access params via `useLocalSearchParams()` from expo-router.
+
+## Navigation
+
+- Use `<Link href="...">` for declarative navigation, or `router.push()`, `router.replace()`, `router.back()` from `expo-router` for imperative navigation.
+- Prefer `href` paths that match the file structure (e.g. `/(tabs)/two`, `/modal`).
+- Deep linking: follow Expo Router and React Navigation deep linking best practices when adding or changing schemes.
+
+## Conventions
+
+- One main screen per file under `app/`; shared UI goes in `components/`.
+- Use `+not-found.tsx` for 404; use `_layout.tsx` at each level to define tabs or stack for that segment.

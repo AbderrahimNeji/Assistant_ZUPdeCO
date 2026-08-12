@@ -1,0 +1,98 @@
+# Prefer generic components
+
+**ALWAYS** check for and use existing generic components before creating a new component or raw HTML element.
+
+## Base rule
+
+Before writing a button, input, modal, table, badge, etc.:
+
+1. **Search** under `src/components/` for available generic components
+2. **Read** the generic component’s docs/implementation
+3. **Use** the generic component when it fits
+4. Create a custom component only if the need is **truly specific** and cannot be covered by generics
+
+## Components to prefer
+
+### Buttons
+- `<Button>` — generic button with variants
+- Check props: `variant`, `size`, `loading`, etc.
+
+### DataTables
+- **ALWAYS** use generic DataTable components
+- **NEVER** build a table from scratch
+- Existing examples: `TutorsDataTable`, `VolunteersDataTable`, `SubjectsDataTable`
+
+### Badges and labels
+- `<LabelBadge>` — info badges, statuses, categories
+- **Read** the component carefully to understand available props and variants
+- See how it is used in existing tables
+
+### Modals
+- `<BaseModal>`, `<InfoModal>` — generic modals
+- Do not build a custom modal without checking existing ones
+
+### Inputs and forms
+- Check `src/components/forms/` for inputs, selects, etc.
+- `<SegmentedControl>` for styled radio groups
+
+## Verification process
+
+### For a DataTable
+
+1. **Read** an existing DataTable **end to end** (e.g. `TutorsDataTable.tsx`)
+2. **Identify** patterns used:
+   - Columns and configuration
+   - Filters and structure
+   - Actions and handlers
+   - Badges and mapping
+3. **Consult** matching `*-config.ts` files (e.g. `tutor-config.ts`, `subject-config.ts`)
+4. **Replicate** the same pattern for the new DataTable
+
+### For types/categories/statuses
+
+- **Always** consult the relevant `xxx-config.ts` files
+- Examples: `student-config.ts`, `session-config.ts`, `subject-config.ts`
+- These files define:
+  - Available types
+  - Display labels
+  - Badge colors/variants
+  - Filter options
+
+## Example workflow
+
+```tsx
+// ❌ Bad — custom button
+<div className="custom-button" onClick={handler}>
+  Click me
+</div>
+
+// ✅ Good — generic component
+import { Button } from '@/components/common/Button';
+
+<Button variant="primary" onClick={handler}>
+  Click me
+</Button>
+```
+
+```tsx
+// ❌ Bad — badge from scratch
+<span className="status-badge">{status}</span>
+
+// ✅ Good — LabelBadge
+import { LabelBadge } from '@/components/common/LabelBadge';
+import { STUDENT_STATUS_CONFIG } from '@/config/student-config';
+
+<LabelBadge
+  label={STUDENT_STATUS_CONFIG[status].label}
+  variant={STUDENT_STATUS_CONFIG[status].variant}
+/>
+```
+
+## Edge cases
+
+Create a custom component only if:
+- The need is **highly specific** to business context
+- No generic can be adapted (even with props)
+- Adaptation cost exceeds creation cost
+
+In that case, **document** why the generic was not used.

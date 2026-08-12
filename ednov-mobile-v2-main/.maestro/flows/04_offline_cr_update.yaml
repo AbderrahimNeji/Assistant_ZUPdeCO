@@ -1,0 +1,80 @@
+# Flow 04 — Modification d'un CR en attente de synchronisation (hors ligne)
+#
+# Scénario :
+#   1. L'utilisateur est en mode avion avec un CR déjà en file d'attente (flow 03)
+#   2. Il ouvre la liste des CRs
+#   3. Il tape sur le CR en attente (badge "En attente de sync")
+#   4. Le formulaire se pré-remplit avec les données précédemment saisies
+#   5. Il modifie la note et le commentaire
+#   6. Il soumet → le CR remplace l'ancien dans la file (pas de doublon)
+#   7. La bannière affiche toujours "1 action en attente"
+#
+# Prérequis : flow 03 complété (1 CR local "En attente de sync" dans la liste)
+
+appId: com.zupdeco.ednov
+---
+
+- launchApp:
+    clearState: false
+
+- waitForAnimationToEnd
+- assertVisible: "Tableau de bord"
+
+# --- Activer le mode avion ---
+- setAirplaneMode: enable
+- waitForAnimationToEnd
+
+- assertVisible:
+    id: "offline-banner"
+
+# --- Naviguer vers les CRs ---
+- tapOn:
+    label: "Comptes rendus"
+- waitForAnimationToEnd
+- assertVisible: "Comptes rendus"
+
+# Le CR en attente doit être visible avec le badge de synchronisation
+- assertVisible: "En attente de sync"
+
+# Taper dessus pour l'éditer
+- tapOn: "En attente de sync"
+- waitForAnimationToEnd
+
+# --- Le formulaire doit être pré-rempli ---
+- assertVisible: "Saisir un CR"
+- assertVisible: "Enregistrer (hors ligne)"
+
+# Vérifier que le commentaire précédent est présent
+- assertVisible: "Séance productive"
+
+# --- Modifier la note (changer de 4 à 3) ---
+- tapOn:
+    id: "cr-note-3"
+
+# --- Modifier le commentaire ---
+- tapOn:
+    id: "cr-commentaire"
+- eraseText: 200
+- inputText: "Séance correcte, quelques difficultés sur les exercices. Modifié offline."
+- hideKeyboard
+
+# Sélectionner un nouveau ressenti
+- tapOn:
+    label: "Neutre"
+
+# --- Soumettre la modification ---
+- tapOn:
+    id: "cr-submit-button"
+
+- waitForAnimationToEnd
+
+# Confirmation de sauvegarde locale
+- assertVisible: "Sauvegardé localement"
+
+# La file doit toujours contenir exactement 1 action (pas de doublon)
+- assertVisible: "1 action en attente"
+- assertNotVisible: "2 action"
+- assertNotVisible: "3 action"
+
+# --- Désactiver le mode avion ---
+- setAirplaneMode: disable

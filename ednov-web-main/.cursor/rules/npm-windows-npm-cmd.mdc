@@ -1,0 +1,25 @@
+---
+description: On Windows, invoke npm via npm.cmd (shell / local CI)
+alwaysApply: true
+---
+
+# npm on Windows (`npm.cmd`)
+
+The dev environment is **Windows**. When you suggest or run a command that invokes **npm** in PowerShell or `cmd`, use **`npm.cmd`** instead of the bare string `npm`.
+
+## When
+
+- Scripts documented in responses (`install`, `run`, `exec`, etc.).
+- Shell commands for the agent or user in this repo on Windows.
+
+## Examples
+
+```text
+✅ npm.cmd install
+✅ npm.cmd run build
+✅ npx → if invocation issues, prefer `npx.cmd` similarly when relevant.
+
+❌ npm install   (may fail or be ambiguous depending on the shell)
+```
+
+On Linux/macOS, `npm` remains the usual form; this rule mainly targets **Windows**.

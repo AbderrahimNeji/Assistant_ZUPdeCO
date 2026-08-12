@@ -1,0 +1,143 @@
+/* ============================================
+   HELPERS.CSS - Classes utilitaires réutilisables
+   ============================================ */
+
+/* Card Containers */
+.card-container {
+  @apply rounded-lg border bg-card p-6 shadow-sm;
+}
+
+.card-container-lg {
+  @apply rounded-xl border bg-card p-8 shadow-lg;
+}
+
+.card-container-sm {
+  @apply rounded-md border bg-card p-4 shadow-sm;
+}
+
+/* Flex Utilities */
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
+.flex-start {
+  @apply flex items-center justify-start;
+}
+
+.flex-end {
+  @apply flex items-center justify-end;
+}
+
+.flex-col-center {
+  @apply flex flex-col items-center justify-center;
+}
+
+/* Text Utilities */
+.text-muted {
+  @apply text-sm text-muted-foreground;
+}
+
+.text-section-title {
+  @apply text-xl font-semibold;
+  color: var(--color-1-nuance-1);
+}
+
+.text-page-title {
+  @apply text-2xl font-bold;
+  color: var(--color-1-nuance-1);
+}
+
+.text-error {
+  @apply text-sm text-destructive;
+}
+
+.text-helper {
+  @apply text-xs text-muted-foreground;
+}
+
+/* Transition Utilities */
+.transition-standard {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.transition-fast {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.transition-slow {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+/* Hover Effects */
+.hover-lift {
+  @apply hover:shadow-2xl hover:scale-[1.03] transition-standard;
+}
+
+.hover-primary {
+  @apply hover:text-primary transition-colors;
+  background-color: hsl(var(--primary) / 0.1);
+}
+
+.hover-secondary {
+  @apply hover:text-secondary transition-colors;
+  background-color: hsl(var(--secondary) / 0.1);
+}
+
+.hover-accent {
+  @apply hover:text-accent transition-colors;
+  background-color: hsl(var(--accent) / 0.1);
+}
+
+/* Ring/Border Theme */
+.ring-primary {
+  @apply ring-2;
+  --tw-ring-color: hsl(var(--primary));
+}
+
+.ring-secondary {
+  @apply ring-2;
+  --tw-ring-color: hsl(var(--secondary));
+}
+
+.ring-accent {
+  @apply ring-2;
+  --tw-ring-color: hsl(var(--accent));
+}
+
+.border-primary {
+  border-color: var(--color-2-nuance-1);
+}
+
+.border-secondary {
+  border-color: var(--color-1-nuance-1);
+}
+
+.border-accent {
+  border-color: var(--color-3-nuance-1);
+}
+
+/* Focus States */
+.focus-primary {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
+}
+
+.focus-secondary {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary;
+}
+
+/* Spacing Utilities */
+.section-spacing {
+  @apply space-y-6;
+}
+
+.content-padding {
+  @apply px-6 py-4;
+}
+
+.content-padding-lg {
+  @apply px-8 py-6;
+}

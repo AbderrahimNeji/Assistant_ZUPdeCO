@@ -1,0 +1,78 @@
+# Flow 03 — Création d'un CR en mode hors ligne
+#
+# Scénario :
+#   1. L'utilisateur passe en mode avion
+#   2. Il ouvre le formulaire CR depuis la liste des CRs (CR "À saisir")
+#   3. Il remplit les champs : note, commentaire, ressenti
+#   4. Il soumet → le CR est mis en file d'attente locale
+#   5. La bannière indique "1 action en attente"
+#   6. Le snackbar confirme "Sauvegardé localement"
+#
+# Prérequis : flow 00 complété (au moins un CR "À saisir" en cache)
+
+appId: com.zupdeco.ednov
+---
+
+- launchApp:
+    clearState: false
+
+- waitForAnimationToEnd
+- assertVisible: "Tableau de bord"
+
+# --- Activer le mode avion ---
+- setAirplaneMode: enable
+- waitForAnimationToEnd
+
+- assertVisible:
+    id: "offline-banner"
+
+# --- Naviguer vers les CRs ---
+- tapOn:
+    label: "Comptes rendus"
+- waitForAnimationToEnd
+- assertVisible: "Comptes rendus"
+
+# Chercher un CR "À saisir" et l'ouvrir
+# (Maestro tape sur le premier élément correspondant au texte)
+- tapOn: "À saisir"
+- waitForAnimationToEnd
+
+# --- Le formulaire CR s'ouvre ---
+- assertVisible: "Saisir un CR"
+
+# Le message hors ligne doit être visible dans le formulaire
+- assertVisible: "Hors ligne — les données seront synchronisées"
+
+# Le bouton doit indiquer le mode hors ligne
+- assertVisible: "Enregistrer (hors ligne)"
+
+# --- Remplir le formulaire ---
+
+# Sélectionner la note 4
+- tapOn:
+    id: "cr-note-4"
+
+# Saisir le commentaire
+- tapOn:
+    id: "cr-commentaire"
+- inputText: "Séance productive, bonne concentration. Test offline Maestro."
+- hideKeyboard
+
+# Sélectionner le ressenti "Plutôt à l'aise"
+- tapOn:
+    label: "Plutôt à l'aise"
+
+# --- Soumettre le CR (mise en file d'attente) ---
+- tapOn:
+    id: "cr-submit-button"
+
+- waitForAnimationToEnd
+
+# Confirmation de sauvegarde locale
+- assertVisible: "Sauvegardé localement"
+
+# La bannière doit maintenant indiquer 1 action en attente
+- assertVisible: "1 action en attente"
+
+# --- Désactiver le mode avion ---
+- setAirplaneMode: disable

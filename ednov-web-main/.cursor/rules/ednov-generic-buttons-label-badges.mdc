@@ -1,0 +1,29 @@
+---
+description: Mandatory use of shared Button and LabelBadge presets/variants in Ednov-web (no one-off duplicates).
+globs: Ednov-web/**/*.tsx
+alwaysApply: false
+---
+
+# Generic buttons and label chips (Ednov-web)
+
+## Mandatory rule
+
+When adding or changing **buttons**, **icon-only actions**, or **label / chip / tag** UI in `Ednov-web`, you **must** use the shared primitives and their **presets** or **variants** whenever the result would match an existing pattern. Do **not** recreate the same look with raw `button` elements, ad-hoc Tailwind on `@/components/ui/button`, or custom `div` “badges” that duplicate these components.
+
+## `Button` (`src/components/forms/Button.tsx`)
+
+- **Default path**: import `Button` from `@/components/forms/Button` (not only shadcn’s `Button` from `@/components/ui/button` for app-level actions).
+- **`preset`**: Prefer `preset` from the existing `ButtonPreset` union (e.g. row actions, pagination, forms, modals, post-its). Presets bundle `variant`, `size`, icon, tooltip, and layout classes.
+- **`variant` / `color` / `size`**: If no preset fits but the visual matches the design system, use this component’s `variant` (`primary`, `secondary`, `cancel`, `danger`, `ghost`, `outline`, `delete`, `custom`) and optional `color` (same idea as `LabelBadge` for tinted controls).
+- **New repeated patterns**: If you need the same combination in more than one place, **extend** `ButtonPreset` and `BUTTON_PRESETS` in `Button.tsx` instead of copying `className` strings across features.
+
+## `LabelBadge` (`src/components/common/LabelBadge.tsx`)
+
+- **Default path**: Use `LabelBadge` for compact labels with optional icon, border, and semantic or brand colors—not bespoke `rounded-md border px-2 …` stacks unless there is a documented exception.
+- **`variant`**: Use `ghost`, `outlined`, `solid`, or semantic variants (`active`, `disabled`, `on-hold`, `male`, `female`) as documented in the component. Semantic variants use design tokens; for others, pass `color` as required.
+
+## Checklist before shipping new UI
+
+1. Search for an existing **`preset`** on `Button` or **`variant`** on `LabelBadge` that fits.
+2. If close but not exact, prefer **extending** the generic component (new preset/variant) over a local duplicate.
+3. Keep accessibility and tooltips consistent with what `Button` already provides for icon-only actions.

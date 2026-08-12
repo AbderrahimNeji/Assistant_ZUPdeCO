@@ -1,0 +1,3 @@
+#!/bin/sh
+# TypeScript errors are caught by CI — pre-commit kept minimal for mobile
+exit 0

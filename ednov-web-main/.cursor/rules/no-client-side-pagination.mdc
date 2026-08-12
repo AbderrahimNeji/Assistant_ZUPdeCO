@@ -1,0 +1,53 @@
+# Pagination and filtering — ALWAYS on the API side
+
+**ABSOLUTE RULE**: Never paginate or filter data on the client.
+
+## ❌ FORBIDDEN
+
+```typescript
+// Client-side pagination
+const currentData = data.slice(startIndex, endIndex);
+
+// Client-side filtering
+const filtered = data.filter(item => item.status === 'active');
+```
+
+## ✅ REQUIRED
+
+```typescript
+// Pagination via API
+const { data: apiResponse } = useQuery({
+  queryKey: ['items', currentPage, itemsPerPage, filters],
+  queryFn: () => getItems({
+    page: currentPage,
+    pageSize: itemsPerPage,
+    status: filters.status,
+    // ... other filters
+  }),
+});
+
+// API already returns paginated data
+const data = apiResponse?.data || [];
+```
+
+## Why
+
+- **Performance**: Avoids loading thousands of unnecessary records
+- **Scalability**: Works with very large datasets
+- **Consistency**: The database is the source of truth
+- **Security**: Avoids exposing unauthorized data to the client
+
+## Exception ONLY
+
+Client-side pagination is allowed **ONLY** if:
+1. External data is **already filtered** by the parent component
+2. Total item count is small (< 100)
+3. Explicitly documented in code with a comment
+
+## DataTables
+
+All DataTables must:
+- Accept `page`, `pageSize`, `filters` props
+- Pass those params to the API via `useQuery`
+- Use `data` directly without `.slice()`
+- Have the API return `{ data: T[], total: number }`

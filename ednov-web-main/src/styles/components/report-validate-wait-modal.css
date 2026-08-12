@@ -1,0 +1,29 @@
+/* Modale validation CR — espacement contenu / en-tête / pied */
+.report-validate-wait-modal.dialog-content {
+  gap: 0.75rem;
+}
+
+.report-validate-wait-modal .report-validate-wait-modal__body {
+  margin-top: 0.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.report-validate-wait-modal .report-validate-wait-modal__body p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted-foreground);
+}
+
+.report-validate-wait-modal .report-validate-wait-modal__body p + p {
+  margin-top: 0.75rem;
+}
+
+.report-validate-wait-modal .report-validate-wait-modal__header-rule {
+  margin-top: 0.75rem !important;
+}
+
+.report-validate-wait-modal .report-validate-wait-modal__footer-rule {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.75rem !important;
+}
