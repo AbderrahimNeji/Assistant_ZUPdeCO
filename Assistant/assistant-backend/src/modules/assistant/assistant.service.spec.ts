@@ -33,6 +33,8 @@ import { AssistantService } from './assistant.service';
 import { ProactiveSuggestionFacade } from './suggestions/proactive-suggestion.facade';
 import { EvaluationRecorderService } from '../evaluation/evaluation-recorder.service';
 import { SmallTalkService } from '../small-talk/small-talk.service';
+import { BackgroundWorkflowService } from '../workflow/background-workflow.service';
+import { WorkflowEngineService } from '../workflow/workflow.engine';
 
 describe('AssistantService', () => {
   let service: AssistantService;
@@ -48,6 +50,23 @@ describe('AssistantService', () => {
   const memoryService = {
     getRecentMessages: jest.fn(),
     saveMessage: jest.fn(),
+    beginTurn: jest.fn(),
+    setActivePath: jest.fn(),
+  };
+
+  const workflowEngine = {
+    match: jest.fn().mockReturnValue(null),
+    getPaused: jest.fn().mockReturnValue(null),
+    resume: jest.fn(),
+    start: jest.fn(),
+  };
+
+  const backgroundWorkflows = {
+    findWaitingByConfirmation: jest.fn().mockResolvedValue(null),
+    resumeConfirmation: jest.fn(),
+    attachResultMessage: jest.fn(),
+    retry: jest.fn(),
+    enqueue: jest.fn(),
   };
 
   const embeddingService = {
@@ -103,6 +122,9 @@ describe('AssistantService', () => {
 
   const languageService = {
     detectLanguage: jest.fn().mockResolvedValue('English'),
+    insufficientContextMessage: jest
+      .fn()
+      .mockReturnValue(RAG_INSUFFICIENT_CONTEXT_MESSAGE),
   };
 
   const intentService = {
@@ -143,6 +165,8 @@ describe('AssistantService', () => {
           useValue: evaluationRecorder,
         },
         { provide: SmallTalkService, useValue: smallTalk },
+        { provide: WorkflowEngineService, useValue: workflowEngine },
+        { provide: BackgroundWorkflowService, useValue: backgroundWorkflows },
       ],
     }).compile();
 
@@ -155,6 +179,16 @@ describe('AssistantService', () => {
     prisma.conversation.update.mockResolvedValue({});
     memoryService.getRecentMessages.mockResolvedValue([]);
     memoryService.saveMessage.mockResolvedValue({ id: 'msg-assistant-1' });
+    memoryService.beginTurn.mockResolvedValue({
+      assistantParentId: 'user-msg-1',
+      branchId: 'branch-1',
+      assistantVersion: 1,
+      userMessageId: 'user-msg-1',
+      activeBranchId: 'branch-1',
+    });
+    memoryService.setActivePath.mockResolvedValue({});
+    workflowEngine.match.mockReturnValue(null);
+    backgroundWorkflows.findWaitingByConfirmation.mockResolvedValue(null);
     proactiveSuggestions.build.mockResolvedValue([]);
     evaluationRecorder.recordFromTrace.mockClear();
     smallTalk.match.mockReturnValue(null);
@@ -253,12 +287,13 @@ describe('AssistantService', () => {
       'user-1',
       [{ name: 'a.pdf', text: 'Attachment body' }],
     );
-    expect(memoryService.saveMessage).toHaveBeenNthCalledWith(
-      1,
-      'conv-1',
-      'user',
-      'Summarize this\n\n[Attached: a.pdf]',
-    );
+    expect(memoryService.beginTurn).toHaveBeenCalledWith({
+      conversationId: 'conv-1',
+      content: 'Summarize this\n\n[Attached: a.pdf]',
+      regenerate: undefined,
+      editMessageId: undefined,
+      parentMessageId: undefined,
+    });
   });
 
   it('should throw NotFoundException for missing conversation', async () => {

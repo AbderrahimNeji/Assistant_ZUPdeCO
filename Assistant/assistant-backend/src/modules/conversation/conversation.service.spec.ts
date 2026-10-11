@@ -2,6 +2,7 @@ import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { PrismaService } from '../../prisma/prisma.service';
+import { MemoryService } from '../memory/memory.service';
 import { ConversationService } from './conversation.service';
 
 describe('ConversationService', () => {
@@ -31,6 +32,13 @@ describe('ConversationService', () => {
       providers: [
         ConversationService,
         { provide: PrismaService, useValue: prisma },
+        {
+          provide: MemoryService,
+          useValue: {
+            resolveLeafForActivation: jest.fn(),
+            setActivePath: jest.fn(),
+          },
+        },
       ],
     }).compile();
 

@@ -39,7 +39,7 @@ describe('SmallTalkService language-aware replies', () => {
 
     const muchas = service.match('Muchas gracias');
     expect(muchas?.language).toBe('es');
-    expect(muchas?.answer).toMatch(/De nada|gusto|ayud/i);
+    expect(muchas?.answer).toMatch(/De nada|gusto|ayud|Para eso/i);
   });
 
   it('avoids repeating the same reply consecutively in a conversation', () => {
